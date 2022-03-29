@@ -1,6 +1,6 @@
 # Front End Capstone
 
-## Table of Cotents
+## Table of Contents
 
 ## Install
 
