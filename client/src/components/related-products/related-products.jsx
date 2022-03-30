@@ -12,7 +12,7 @@ export default class RelatedProducts extends React.Component {
   render() {
     return (
       <div>
-        Related Products Section
+        Branch updated!
       </div>
     )
   }
