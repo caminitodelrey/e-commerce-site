@@ -8,6 +8,5 @@ app.use(express.json());
 const PORT = 3000;
 
 app.listen(PORT, () => {
-  console.log('CRUDdy Todo server is running in the terminal');
   console.log(`To get started, visit: http://localhost:${PORT}`);
 });
