@@ -5,7 +5,7 @@ class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hello: 'world'
+      hello: 'world of mine'
     }
   }
 
