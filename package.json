@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client-dev": "npx webpack --w",
+    "react-dev": "webpack --mode development --watch",
+    "server-dev": "npx nodemon ./server/index.js",
+    "build": "webpack --config ./webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,9 +15,13 @@
     "axios": "^0.26.1",
     "eslint": "^8.12.0",
     "eslint-config-airbnb": "^19.0.4",
+    "express": "^4.17.3",
     "nodemon": "^2.0.15",
+    "npx": "^10.2.2",
+    "path": "^0.12.7",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
