@@ -2,8 +2,6 @@
 
 ## Table of Contents
 
-- [Front End Capstone](#front-end-capstone)
-  - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
   - [Requirements](#requirements)
   - [Development](#development)
@@ -18,7 +16,7 @@
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node v16.13.1
+- Node 16.13.1
 ## Development
 
 ### Installing Dependencies
