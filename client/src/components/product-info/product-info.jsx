@@ -13,6 +13,8 @@ class ProductInfo extends React.Component {
     return (
       <div>
         [Product Info component goes here]
+        This is a merging test ✨
+
       </div>
     )
   }
