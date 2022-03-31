@@ -5,7 +5,7 @@ import getData from '../../helper.js';
 
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/related-products.jsx';
-import QuestionsAnswers from './questions-answers/questions-answers.jsx';
+import QA from './qa/qa.jsx';
 import RatingsReviews from './ratings-and-reviews/ratings-and-reviews.jsx';
 
 export default class App extends React.Component {
@@ -30,7 +30,7 @@ export default class App extends React.Component {
       <div>
         <ProductInfo product={this.state.selectedProduct}/>
         <RelatedProducts product={this.state.selectedProduct}/>
-        <QuestionsAnswers product={this.state.selectedProduct}/>
+        <QA product={this.state.selectedProduct}/>
         <RatingsReviews product={this.state.selectedProduct}/>
       </div>
     )
