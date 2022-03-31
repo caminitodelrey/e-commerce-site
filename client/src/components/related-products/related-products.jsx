@@ -42,13 +42,15 @@ export default class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      product: {}
     }
   }
 
   render() {
     return (
       <div>
-        [Related Product]
+        <h1> Related Product </h1>
+
       </div>
     )
   }

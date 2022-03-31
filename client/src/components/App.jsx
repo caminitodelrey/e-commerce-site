@@ -22,7 +22,6 @@ export default class App extends React.Component {
   //       this.setState({selectedProduct: res.data});
   //     })
   //     .catch(err => console.log('didmount error: ', err));
-
   // }
 
   render () {
