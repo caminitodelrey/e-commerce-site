@@ -108,3 +108,7 @@ config.js
 ## Bundle
 client/dist/bundle.js
 client/dist/bundle.js.LICENSE.txt
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json

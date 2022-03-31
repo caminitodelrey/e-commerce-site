@@ -10,6 +10,8 @@ export default class RelatedProducts extends React.Component {
     }
   }
 
+  // Product-id: 37311 to 38321
+
   render() {
     return (
       <div>
