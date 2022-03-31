@@ -21,21 +21,21 @@ class QuestionsAnswers extends React.Component {
   // product_id: 37311 - 38199
 
 
-  componentDidMount() {
-    // GET /qa/questions
-    // List Questions
-    // Retrieves a list of questions for a particular product.
-    // This list does not include any reported questions.
-    axios({
-      method: 'get',
-      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=38199',
-      headers: {
-        'User-Agent': 'request',
-        'Authorization': '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'
-      }
-    }).then(data => console.log(data)) // Refactor
-      .catch(err => console.error(err));
-  }
+  // componentDidMount() {
+  //   // GET /qa/questions
+  //   // List Questions
+  //   // Retrieves a list of questions for a particular product.
+  //   // This list does not include any reported questions.
+  //   axios({
+  //     method: 'get',
+  //     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=38199',
+  //     headers: {
+  //       'User-Agent': 'request',
+  //       'Authorization': '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'
+  //     }
+  //   }).then(data => console.log(data)) // Refactor
+  //     .catch(err => console.error(err));
+  // }
 
   // GET /qa/questions/:question_id/answers
   // Answers List
