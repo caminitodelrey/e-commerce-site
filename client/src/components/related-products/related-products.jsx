@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import getData from '../../../helper.js';
 
 export default class RelatedProducts extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class RelatedProducts extends React.Component {
   render() {
     return (
       <div>
-        Branch updated!
+        [Related Product]
       </div>
     )
   }

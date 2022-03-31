@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import getData from '../../../helper.js';
 class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
