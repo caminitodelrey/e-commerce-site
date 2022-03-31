@@ -33,9 +33,9 @@ class QA extends React.Component {
     // This list does not include any reported questions.
     const url = `qa/questions?product_id=${this.state.product.id}`;
     getData(url)
-      .then(res => this.setState{
+      .then(res => this.setState({
         questions: res.data
-      })
+      }))
       .catch(err => console.error(err));
 
     // axios({

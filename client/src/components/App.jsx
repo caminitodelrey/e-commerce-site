@@ -5,7 +5,7 @@ import getData from '../../helper.js';
 
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/related-products.jsx';
-import QA from './qa/qa.jsx';
+import QA from './QA/QA.jsx';
 import RatingsReviews from './ratings-and-reviews/ratings-and-reviews.jsx';
 
 export default class App extends React.Component {
