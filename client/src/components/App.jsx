@@ -12,18 +12,18 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedProduct: {}
+      selectedProduct: '37311'
     }
   }
 
-  componentDidMount() {
-    getData('products/37311')
-      .then(res => {
-        this.setState({selectedProduct: res.data});
-      })
-      .catch(err => console.log('didmount error: ', err));
+  // componentDidMount() {
+  //   getData('products/37311')
+  //     .then(res => {
+  //       this.setState({selectedProduct: res.data});
+  //     })
+  //     .catch(err => console.log('didmount error: ', err));
 
-  }
+  // }
 
   render () {
     return (
