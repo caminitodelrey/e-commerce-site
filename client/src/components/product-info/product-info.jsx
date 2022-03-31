@@ -11,10 +11,12 @@ class ProductInfo extends React.Component {
   }
 
   render() {
+    const product = this.props.product;
     return (
       <div>
-        [Product Info component goes here]
-        This is a merging test ✨
+        <p>rating goes here</p>
+        <p>{product.category}</p>
+        <p>{product.title}</p>
 
       </div>
     )

@@ -1,11 +1,16 @@
 import React from 'react';
 import axios from 'axios';
+
 import getData from '../../../helper.js';
-class QuestionsAnswers extends React.Component {
+import SearchQA from './componentsQA/SearchQA.jsx';
+import ListQA from './componentsQA/ListQA.jsx';
+
+class QA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: this.props.selectedProduct
+      product: this.props.selectedProduct,
+      questions: []
     }
   }
 
@@ -21,21 +26,28 @@ class QuestionsAnswers extends React.Component {
   // product_id: 37311 - 38199
 
 
-  // componentDidMount() {
-  //   // GET /qa/questions
-  //   // List Questions
-  //   // Retrieves a list of questions for a particular product.
-  //   // This list does not include any reported questions.
-  //   axios({
-  //     method: 'get',
-  //     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=38199',
-  //     headers: {
-  //       'User-Agent': 'request',
-  //       'Authorization': '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'
-  //     }
-  //   }).then(data => console.log(data)) // Refactor
-  //     .catch(err => console.error(err));
-  // }
+  componentDidMount() {
+    // GET /qa/questions
+    // List Questions
+    // Retrieves a list of questions for a particular product.
+    // This list does not include any reported questions.
+    const url = `qa/questions?product_id=${this.state.product.id}`;
+    getData(url)
+      .then(res => this.setState({
+        questions: res.data
+      }))
+      .catch(err => console.error(err));
+
+    // axios({
+    //   method: 'get',
+    //   baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=38199',
+    //   headers: {
+    //     'User-Agent': 'request',
+    //     'Authorization': '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'
+    //   }
+    // }).then(data => console.log(data)) // Refactor
+    //   .catch(err => console.error(err));
+  }
 
   // GET /qa/questions/:question_id/answers
   // Answers List
@@ -85,12 +97,30 @@ class QuestionsAnswers extends React.Component {
 
 
   render() {
+    const {product, questions} = this.state;
     return (
-      <div>
-        [QuestionsAnswers component goes here]
+      <div className="QA">
+
+        <div><span>{"QUESTIONS & ANSWERS"}</span></div>
+
+        <SearchQA product={product}/>
+        <ListQA product={product} questions={questions} />
+
+        <div className="BottomButtonsQA">
+          <div>
+            <input
+              type="submit"
+              value="MORE ANSWERED QUESTIONS"/>
+          </div>
+          <div>
+            <input
+              type="submit"
+              value="ADD A QUESTION +"/>
+            </div>
+        </div>
       </div>
     )
   }
 }
 
-export default QuestionsAnswers;
+export default QA;
