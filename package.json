@@ -17,7 +17,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "express": "^4.17.3",
     "nodemon": "^2.0.15",
-    "npx": "^10.2.2",
+    "npx": "^3.0.0",
     "path": "^0.12.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
