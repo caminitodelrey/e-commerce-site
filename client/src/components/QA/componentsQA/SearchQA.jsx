@@ -4,8 +4,14 @@ class SearchQA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      product: this.props.product,
       searchText: ''
     }
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+  }
+
+  handleSearchChange(e) {
+    this.setState({ searchText: e.target.value });
   }
 
 
@@ -17,6 +23,7 @@ class SearchQA extends React.Component {
         <input
           type="text"
           value={searchText}
+          onChange={this.handleSearchChange}
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
       </div>
     )
