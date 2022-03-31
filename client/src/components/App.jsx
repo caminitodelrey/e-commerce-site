@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/related-products.jsx';
-import QuestionsAnswers from './questions-answers/questions-answers.jsx';
+import QA from './qa/qa.jsx';
 import RatingsReviews from './ratings-and-reviews/ratings-and-reviews.jsx';
 
 export default class App extends React.Component {
@@ -15,14 +15,13 @@ export default class App extends React.Component {
   render () {
     return (
       <div>
-        test
         {/* <MainWrapper>
           <p>Example Text</p>
         </MainWrapper> */}
 
         <ProductInfo />
         <RelatedProducts />
-        <QuestionsAnswers />
+        <QA />
         <RatingsReviews />
       </div>
     )
