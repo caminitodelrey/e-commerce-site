@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+import getData from '../../../helper.js';
 import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
 
