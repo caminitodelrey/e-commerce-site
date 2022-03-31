@@ -4,18 +4,19 @@ class SearchQA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hello: 'world'
+      searchText: ''
     }
   }
 
 
 
   render() {
+    const {searchText} = this.state;
     return (
       <div>
         <input
           type="text"
-          value="Search"
+          value={searchText}
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
       </div>
     )

@@ -9,43 +9,12 @@ class QA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: this.props.selectedProduct,
-      // product: {
-      //   id: 37311,
-      //   campus: "hr-rfe",
-      //   name: "Camo Onesie",
-      //   slogan: "Blend in to your crowd",
-      //   description: "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-      //   category: "Jackets",
-      //   default_price: 140.00,
-      //   created_at: "2021-08-13T14:37:33.145Z",
-      //   updated_at: "2021-08-13T14:37:33.145Z",
-      //   features: [
-      //       {
-      //           feature: "Fabric",
-      //           value: "Canvas"
-      //       },
-      //       {
-      //           feature: "Buttons",
-      //           value: "Brass"
-      //       }
-      //   ]
-      // },
+      product: this.props.product,
       questions: []
     }
   }
 
-  // {
-  //   "id": 1,
-  //   "name": "Camo Onesie",
-  //   "slogan": "Blend in to your crowd",
-  //   "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-  //   "category": "Jackets",
-  //   "default_price": "140"
-  // },
-
   // product_id: 37311 - 38199
-
 
   componentDidMount() {
     // GET /qa/questions
@@ -109,20 +78,11 @@ class QA extends React.Component {
   // Note, this action does not delete the answer, but the answer will not be returned in the above GET request.
 
 
-
-
-
-
-
-
-
-
-
-
   render() {
     const {product, questions} = this.state;
     return (
       <div className="QA">
+        <div><span>{"[ ================== Q&A ================== ]"}</span></div>
 
         <div><span>{"QUESTIONS & ANSWERS"}</span></div>
 
@@ -141,6 +101,7 @@ class QA extends React.Component {
               value="ADD A QUESTION +"/>
             </div>
         </div>
+        <div><span>{"[ ================== Q&A ================== ]"}</span></div>
       </div>
     )
   }
