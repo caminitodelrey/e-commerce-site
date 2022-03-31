@@ -12,15 +12,23 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [],
-      selectedProduct: []
+      selectedProduct: {}
     }
+  }
+
+  componentDidMount() {
+    getData('products/37311')
+      .then(res => {
+        this.setState({selectedProduct: res.data});
+      })
+      .catch(err => console.log('didmount error: ', err));
+
   }
 
   render () {
     return (
       <div>
-        <ProductInfo products={this.state.products}/>
+        <ProductInfo product={this.state.selectedProduct}/>
         <RelatedProducts product={this.state.selectedProduct}/>
         <QA product={this.state.selectedProduct}/>
         <RatingsReviews product={this.state.selectedProduct}/>
