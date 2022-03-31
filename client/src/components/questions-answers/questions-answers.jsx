@@ -9,10 +9,6 @@ class QuestionsAnswers extends React.Component {
     }
   }
 
-  componentDidMount() {
-    // axios.get()
-  }
-
   // {
   //   "id": 1,
   //   "name": "Camo Onesie",
@@ -21,6 +17,22 @@ class QuestionsAnswers extends React.Component {
   //   "category": "Jackets",
   //   "default_price": "140"
   // },
+
+  // product_id: 37311 - 38199
+
+  componentDidMount() {
+    axios({
+      method: 'get',
+      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=38199',
+      headers: {
+        'User-Agent': 'request',
+        'Authorization': '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'
+      }
+    }).then(data => console.log(data)) // Refactor
+      .catch(err => console.error(err));
+  }
+
+
 
 
   render() {
