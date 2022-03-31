@@ -106,4 +106,5 @@ typings/
 config.js
 
 ## Bundle
-*bundle.js
+client/dist/bundle.js
+client/dist/bundle.js.LICENSE.txt
