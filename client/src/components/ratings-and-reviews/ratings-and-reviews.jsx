@@ -7,7 +7,6 @@ import Sort from './sort/Sort.jsx';
 import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx'
 
 export default function RatingsReviews ({product}) {
-  console.log(product);
   return (
     <div>
       <h1>RatingsReviews</h1>
