@@ -9,7 +9,8 @@ import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx'
 export default function RatingsReviews ({product}) {
   console.log(product);
   return (
-    <div>[RatingsReviews testing test git flow]
+    <div>
+      <h1>RatingsReviews</h1>
       <div>
         <RatingBreakDown />
       </div>
