@@ -6,7 +6,7 @@ class ListQA extends React.Component {
     super(props);
     this.state = {
       product: this.props.product,
-      questions: this.props.questions
+      questions: this.props.questions // why not working?
     }
   }
 
@@ -21,6 +21,7 @@ class ListQA extends React.Component {
     )
   }
 }
+
 
 
 export default ListQA;

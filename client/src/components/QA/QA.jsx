@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 import getData from '../../../helper.js';
 import SearchQA from './componentsQA/SearchQA.jsx';
@@ -9,7 +9,7 @@ class QA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: this.props.product,
+      product: { id: 37313 }, //this.props.product || { id: 37311 },
       questions: []
     }
   }
@@ -22,11 +22,10 @@ class QA extends React.Component {
     // Retrieves a list of questions for a particular product.
     // This list does not include any reported questions.
 
-    // const url = `qa/questions?product_id=${this.state.product.id}`;
-    const url = 'qa/questions?product_id=37311';
+    const url = `qa/questions?product_id=${this.state.product.id}`;
     getData(url)
       .then(res => this.setState({
-        questions: res.data
+        questions: res.data.results
       }))
       .catch(err => console.error(err));
 
@@ -80,6 +79,7 @@ class QA extends React.Component {
 
   render() {
     const {product, questions} = this.state;
+    console.log(questions);
     return (
       <div className="QA">
         <div><span>{"[ ================== Q&A ================== ]"}</span></div>
@@ -99,7 +99,7 @@ class QA extends React.Component {
             <input
               type="submit"
               value="ADD A QUESTION +"/>
-            </div>
+          </div>
         </div>
         <div><span>{"[ ================== Q&A ================== ]"}</span></div>
       </div>

@@ -5,7 +5,7 @@ class ListEntryQA extends React.Component {
     super(props);
     this.state = {
       product: this.props.product,
-      // question: this.props.question
+      question: this.props.question
     }
   }
 
