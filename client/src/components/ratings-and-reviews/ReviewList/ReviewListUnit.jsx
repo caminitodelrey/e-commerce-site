@@ -8,22 +8,21 @@ export default function ReivewListUnit ({review}) {
     <div className="ratings-flexbox-container" style={{
       borderStyle: 'solid',
       borderColor: 'Green',
-    }}>
-      <p>-----------</p>
-      <p>title:{review2.summary}
-      <div className="ratings-starRatings">
-        <span class="rating-star">*</span>
-        <span class="rating-star">*</span>
-        <span class="rating-star">*</span>
-        <span class="rating-star">*</span>
-        <span class="rating-star">*</span>
-        rating:{review2.rating}
-      </div>
+      }}>
+      <div>title:{review2.summary}
+        <div className="ratings-starRatings">
+          <span className="rating-star">*</span>
+          <span className="rating-star">*</span>
+          <span className="rating-star">*</span>
+          <span className="rating-star">*</span>
+          <span className="rating-star">*</span>
+          rating:{review2.rating}
+        </div>
         <br />
         <span>{review2.reviewer_name}</span>
         <br />
         <span>{review2.date}</span>
-      </p>
+      </div>
       <p>review:{review2.body}</p>
 
       <div>

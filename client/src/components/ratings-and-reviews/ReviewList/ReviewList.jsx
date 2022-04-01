@@ -22,9 +22,9 @@ export default function () {
           )
         })}
       </div>
-      <dib>
+      <div>
         <button onClick={handleMoreReviews}>More Reviews</button>
-      </dib>
+      </div>
     </div>
   )
 };
