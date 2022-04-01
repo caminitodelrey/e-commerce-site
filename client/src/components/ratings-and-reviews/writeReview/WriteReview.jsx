@@ -9,10 +9,10 @@ export default function WriteReview () {
   }
 
   const writeReview2 = !writeReview ?
-          <div onClick={HandleWriteReview}>
+          <button onClick={HandleWriteReview}>
             Write Review
-          </div> :
-          <div onClick={HandleWriteReview}>Cancle</div>
+          </button> :
+          <button onClick={HandleWriteReview}>Cancle</button>
   return (
     <div><h3>-[WriteReview conponent]</h3>
       {writeReview2}

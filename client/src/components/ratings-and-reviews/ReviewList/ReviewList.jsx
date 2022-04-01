@@ -5,10 +5,16 @@ import ReviewListUnit from './ReviewListUnit.jsx';
 
 export default function () {
   const reviews = ReviewsExampleData.results;
+  const [reviewsCount, setReviewsCount] = useState(2)
+
+  const handleMoreReviews = () => {
+    setReviewsCount(reviewsCount+2);
+  }
+
   return (
     <div><h3>-[ReviewList]</h3>
       <div>
-        {reviews.slice(0, 2).map((review, key) => {
+        {reviews.slice(0, reviewsCount).map((review, key) => {
           return (
             <div key={key}>
               <ReviewListUnit review={review}/>
@@ -16,6 +22,9 @@ export default function () {
           )
         })}
       </div>
+      <dib>
+        <button onClick={handleMoreReviews}>More Reviews</button>
+      </dib>
     </div>
   )
 };
