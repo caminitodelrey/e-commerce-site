@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 import getData from '../../../helper.js';
 import SearchQA from './componentsQA/SearchQA.jsx';
@@ -9,43 +9,12 @@ class QA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: this.props.selectedProduct,
-      // product: {
-      //   id: 37311,
-      //   campus: "hr-rfe",
-      //   name: "Camo Onesie",
-      //   slogan: "Blend in to your crowd",
-      //   description: "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-      //   category: "Jackets",
-      //   default_price: 140.00,
-      //   created_at: "2021-08-13T14:37:33.145Z",
-      //   updated_at: "2021-08-13T14:37:33.145Z",
-      //   features: [
-      //       {
-      //           feature: "Fabric",
-      //           value: "Canvas"
-      //       },
-      //       {
-      //           feature: "Buttons",
-      //           value: "Brass"
-      //       }
-      //   ]
-      // },
+      product: this.props.product || { id: 37311 },
       questions: []
     }
   }
 
-  // {
-  //   "id": 1,
-  //   "name": "Camo Onesie",
-  //   "slogan": "Blend in to your crowd",
-  //   "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-  //   "category": "Jackets",
-  //   "default_price": "140"
-  // },
-
   // product_id: 37311 - 38199
-
 
   componentDidMount() {
     // GET /qa/questions
@@ -53,11 +22,10 @@ class QA extends React.Component {
     // Retrieves a list of questions for a particular product.
     // This list does not include any reported questions.
 
-    // const url = `qa/questions?product_id=${this.state.product.id}`;
-    const url = 'qa/questions?product_id=37311';
+    const url = `qa/questions?product_id=${this.state.product.id}`;
     getData(url)
       .then(res => this.setState({
-        questions: res.data
+        questions: res.data.results
       }))
       .catch(err => console.error(err));
 
@@ -109,20 +77,12 @@ class QA extends React.Component {
   // Note, this action does not delete the answer, but the answer will not be returned in the above GET request.
 
 
-
-
-
-
-
-
-
-
-
-
   render() {
     const {product, questions} = this.state;
+    // console.log(questions);
     return (
       <div className="QA">
+        <div><span>{"[ ================== Q&A ================== ]"}</span></div>
 
         <div><span>{"QUESTIONS & ANSWERS"}</span></div>
 
@@ -139,8 +99,9 @@ class QA extends React.Component {
             <input
               type="submit"
               value="ADD A QUESTION +"/>
-            </div>
+          </div>
         </div>
+        <div><span>{"[ ================== Q&A ================== ]"}</span></div>
       </div>
     )
   }
