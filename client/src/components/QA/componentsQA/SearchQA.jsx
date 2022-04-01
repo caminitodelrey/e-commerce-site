@@ -14,6 +14,11 @@ class SearchQA extends React.Component {
     this.setState({ searchText: e.target.value });
   }
 
+  handleSearchSubmit(e) {
+    if(e.keyCode === 13) {
+      console.log(`Searching Questions for ${this.state.searchText}`);
+    }
+  }
 
 
   render() {
@@ -21,9 +26,12 @@ class SearchQA extends React.Component {
     return (
       <div>
         <input
+          id="search"
           type="text"
+          autoComplete="off"
           value={searchText}
           onChange={this.handleSearchChange}
+          onKeyDown={(e) => this.handleSearchSubmit(e)}
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
       </div>
     )

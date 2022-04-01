@@ -9,7 +9,7 @@ class QA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: { id: 37313 }, //this.props.product || { id: 37311 },
+      product: this.props.product || { id: 37311 },
       questions: []
     }
   }
@@ -79,7 +79,7 @@ class QA extends React.Component {
 
   render() {
     const {product, questions} = this.state;
-    console.log(questions);
+    // console.log(questions);
     return (
       <div className="QA">
         <div><span>{"[ ================== Q&A ================== ]"}</span></div>
