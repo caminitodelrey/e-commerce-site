@@ -5,11 +5,20 @@ export default function ReivewListUnit ({review}) {
     date:'', reviewer_name: '', response: '', helpfulness: 0, recommend: true};
 
   return (
-    <div>
+    <div className="ratings-flexbox-container" style={{
+      borderStyle: 'solid',
+      borderColor: 'Green',
+    }}>
       <p>-----------</p>
       <p>title:{review2.summary}
-        <br />
-        <span>rating:{review2.rating}</span>
+      <div className="ratings-starRatings">
+        <span class="rating-star">*</span>
+        <span class="rating-star">*</span>
+        <span class="rating-star">*</span>
+        <span class="rating-star">*</span>
+        <span class="rating-star">*</span>
+        rating:{review2.rating}
+      </div>
         <br />
         <span>{review2.reviewer_name}</span>
         <br />
@@ -18,15 +27,15 @@ export default function ReivewListUnit ({review}) {
       <p>review:{review2.body}</p>
 
       <div>
-        {`Response: ${review2.response}`}
+        {review2.response ? `Response: ${review2.response}` : null}
       </div>
 
       <div>
-        {`Helpfulness: ${review2.helpfulness}`}
+        {`Helpfulness: Yes ${review2.helpfulness} | Report`}
       </div>
 
       <div>
-        {`Recommended: ${review2.recommend}`}
+        {`Recommended: ${review2.recommend ? 'Yes': 'No'}`}
       </div>
     </div>
   )
