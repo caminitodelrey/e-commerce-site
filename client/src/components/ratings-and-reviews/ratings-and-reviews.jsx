@@ -19,9 +19,17 @@ export default function RatingsReviews ({product}) {
       </div>
       <div>
         <Sort />
+      </div>
+      <div className="reviewListGridBox" style={{
+          borderStyle: 'solid',
+          borderColor: 'green',
+        }}>
         <ReviewList />
       </div>
-      <div>
+      <div className="writeReviewGridBox" style={{
+          borderStyle: 'solid',
+          borderColor: 'green',
+        }}>
         <WriteReview />
       </div>
     </div>

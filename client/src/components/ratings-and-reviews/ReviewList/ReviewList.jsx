@@ -8,7 +8,7 @@ export default function () {
   return (
     <div><h3>-[ReviewList]</h3>
       <div>
-        {reviews.map((review, key) => {
+        {reviews.slice(0, 2).map((review, key) => {
           return (
             <div key={key}>
               <ReviewListUnit review={review}/>
