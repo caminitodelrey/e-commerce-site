@@ -5,14 +5,14 @@ export default function ReivewListUnit ({review}) {
     date:'', reviewer_name: '', response: '', helpfulness: 0,
     recommend: true, photos: {url: ''}};
 
-    console.log(review2.photos[0].url)
+    // console.log(review2.photos[0].url)
 
   return (
     <div className="ratings-flexbox-container" style={{
       borderStyle: 'solid',
       borderColor: 'Green',
       }}>
-      <div>titlesssss:{review2.summary}
+      <div>title:{review2.summary}
         <div className="ratings-starRatings">
           <span className="rating-star">*</span>
           <span className="rating-star">*</span>
@@ -32,10 +32,7 @@ export default function ReivewListUnit ({review}) {
       </div>
       <br />
       <div>
-        {review2.photos.length !== 0 ?
-          review2.photos.map((photo, key) => {
-            return
-          })<img src={review2.photos[0].url} />}
+        Photos here
       </div>
       <br />
       <div>
