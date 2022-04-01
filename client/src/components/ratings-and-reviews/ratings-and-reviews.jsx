@@ -18,11 +18,11 @@ export default function RatingsReviews ({product}) {
         <ProductBreakDown />
       </div>
       <div>
-        <WriteReview />
-      </div>
-      <div>
         <Sort />
         <ReviewList />
+      </div>
+      <div>
+        <WriteReview />
       </div>
     </div>
 

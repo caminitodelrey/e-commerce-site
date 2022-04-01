@@ -6,9 +6,8 @@ import ReviewListUnit from './ReviewListUnit.jsx';
 export default function () {
   const reviews = ReviewsExampleData.results;
   return (
-    <div>-[ReviewList]
+    <div><h3>-[ReviewList]</h3>
       <div>
-        --[ReivewListUnit test]
         {reviews.map((review, key) => {
           return (
             <div key={key}>
