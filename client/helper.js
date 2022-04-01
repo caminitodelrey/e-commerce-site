@@ -9,7 +9,7 @@ export default function getData(endpoint) {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: endpoint,
     headers: {
-      'User-Agent': 'request',
+      // 'User-Agent': 'request',
       'Authorization': config.TOKEN
     }
   })

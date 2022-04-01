@@ -5,7 +5,7 @@ class ListEntryQA extends React.Component {
     super(props);
     this.state = {
       product: this.props.product,
-      //question: this.props.question
+      question: this.props.question
     }
   }
 
@@ -16,18 +16,18 @@ class ListEntryQA extends React.Component {
       <div>
         <div>
           <div>
-            <p>Q:</p>
+            <span>Q:</span>
             <input type="submit" value="Yes"/>
             <input type="submit" value="Add Answer"/>
           </div>
           <div>
-            <p>A:</p>
+            <span>A:</span>
 
           </div>
         </div>
 
         <div>
-          <input type="submit" value="LOAD MORE AMSWERS"/>
+          <input type="submit" value="LOAD MORE ANSWERS"/>
         </div>
       </div>
     )
