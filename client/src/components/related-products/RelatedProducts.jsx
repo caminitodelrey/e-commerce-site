@@ -8,7 +8,7 @@ import Cards from './subcomponents/Cards.jsx';
 // products/37311/related
 // product_id: 37311 - 38199
 
-class RelatedProducts extends React.Component {
+export default class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,18 +61,16 @@ class RelatedProducts extends React.Component {
     let { relatedProducts } = this.state;
 
     return (
-      <CarousalContainer className='carousel'>
+      <div className='carousel'>
         <div className='related-header'>
           <h1>Related Products</h1>
         </div>
-        <CardsContainer>
+        <div>
           <Cards
             products={relatedProducts}
           />
-        </CardsContainer>
-      </CarousalContainer>
+        </div>
+      </div>
     )
   }
 }
-
-export default RelatedProducts;

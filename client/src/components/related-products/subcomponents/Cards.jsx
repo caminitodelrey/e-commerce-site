@@ -1,18 +1,28 @@
 import React from 'react';
-import { Card, CarouselImage } from '../../../style/Carousel.js';
+// import { Card, CarouselImage } from '../../../style/Carousel.js';
 
-function Cards ({ products }) {
+export default function Cards ({ products }) {
 
-    console.log(products)
+  const Card = products.map((product) =>
+    <div key={product.toString()}>
+      <div className='img-container'>
+        <img src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
+      </div>
 
-    if (products.length >= 4) {
-      return (
-        <div>
-          {products[0].category}
-        </div>
-      )
-    }
+      <div className='description'>
+        {product.category} <br/>
+        {product.name} <br/>
+        $ {product.price} <br/>
+        {/* add rating */}
+      </div>
+
+    </div>
+  );
+
+  return (
+    <div className='card-container'>
+      {Card}
+    </div>
+  );
 
 }
-
-export default Cards;
