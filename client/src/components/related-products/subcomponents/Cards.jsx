@@ -1,4 +1,7 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from "@fortawesome/free-regular-svg-icons"
+
 import { Card } from '../../../style/Carousel.js';
 
 export default function Cards ({ products }) {
@@ -14,6 +17,7 @@ export default function Cards ({ products }) {
         <div className='product-card__wishlist'>
           <div className='product-card__wishlist-icon-container'>
 
+          <FontAwesomeIcon icon={faHeart} />
           </div>
         </div>
       </div>
