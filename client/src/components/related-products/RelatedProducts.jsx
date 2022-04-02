@@ -5,7 +5,8 @@ import getData from '../../../helper.js';
 import { GlobalFont } from '../../theme/globalStyle.js';
 import { Carousel } from '../../theme/carouselStyle.js';
 
-import Cards from './subcomponents/Cards.jsx';
+import Related from './carousels/Related.jsx';
+import YourOutfits from './carousels/YourOutfits.jsx';
 
 // products/37311/related
 // product_id: 37311 - 38199
@@ -75,12 +76,12 @@ export default class RelatedProducts extends React.Component {
         <div className='related-header'>
           <h1>RELATED PRODUCTS</h1>
         </div>
-        <Cards products={relatedProducts}/>
+        <Related products={relatedProducts}/>
 
         <div className='selected-header'>
           <h1>YOUR OUTFITS</h1>
         </div>
-        <Cards products={selectedProducts}/>
+        <YourOutfits products={selectedProducts}/>
       </Carousel>
     )
   }

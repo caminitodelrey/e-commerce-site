@@ -28,7 +28,7 @@ export const CardsContainer = styled.div`
 `;
 
 export const CardContainer = styled.section`
-  // border: 1px solid green;
+  border: 1px solid green;
   flex: 0 0 auto;
   display: flex;
   width: 230px;

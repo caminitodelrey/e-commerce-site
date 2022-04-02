@@ -1,22 +1,23 @@
 import React from 'react';
-import ActionButton from './ActionButton.jsx';
+import Ratings from '../subcomponents/Ratings.jsx';
+import Modal from '../subcomponents/Modal.jsx';
 
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { MdOutlineClose } from "react-icons/md";
 
-import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
+import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg, WishlistContainer } from '../../../theme/carouselStyle.js';
 
-export default function Cards ({ products }) {
+export default function YourOutfits ({ products }) {
 
   const Card = products.map((product) =>
     <CardContainer className='product-card-container' key={product.name}>
-
       <CardAssetContainer className='product-card__asset'>
           <div className='product-card__img'>
-            <a>
-              <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
-            </a>
+            <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
           </div>
-          <ActionButton />
+          <WishlistContainer className='product-card__wishlist-icon-container'>
+            <MdOutlineClose />
+          </WishlistContainer>
       </CardAssetContainer>
 
       <div className='product-card__details'>
@@ -30,7 +31,7 @@ export default function Cards ({ products }) {
           ${product.price.replace(/\.00$/,'')}
         </p>
         <p className='product-card__rating'>
-        TO DO: ratings
+          <Ratings />
         </p>
       </div>
 
