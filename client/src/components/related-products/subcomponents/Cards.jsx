@@ -1,6 +1,8 @@
 import React from 'react';
 import ActionButton from './ActionButton.jsx';
 
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+
 import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
 
 export default function Cards ({ products }) {
@@ -37,7 +39,9 @@ export default function Cards ({ products }) {
 
   return (
     <CardsContainer className='cards-container'>
+      <FaChevronLeft />
       {Card}
+      <FaChevronRight />
     </CardsContainer>
   );
 
