@@ -1,8 +1,7 @@
 import React from 'react';
+import ActionButton from './ActionButton.jsx';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from "@fortawesome/free-regular-svg-icons"
-import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg, WishlistContainer } from '../../../theme/carouselStyle.js';
+import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
 
 export default function Cards ({ products }) {
 
@@ -15,9 +14,7 @@ export default function Cards ({ products }) {
               <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
             </a>
           </div>
-          <WishlistContainer className='product-card__wishlist-icon-container'>
-            <FontAwesomeIcon icon={faHeart} />
-          </WishlistContainer>
+          <ActionButton />
       </CardAssetContainer>
 
       <div className='product-card__details'>
