@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import getData from '../../../helper.js';
 
-import { Carousel } from '../../style/Carousel.js';
+import { GlobalFont } from '../../theme/globalStyle.js';
+import { Carousel } from '../../theme/carouselStyle.js';
+
 import Cards from './subcomponents/Cards.jsx';
 
 // products/37311/related
@@ -63,7 +65,7 @@ export default class RelatedProducts extends React.Component {
     return (
       <Carousel className='carousel'>
         <div className='related-header'>
-          <h1>Related Products</h1>
+          <h1>RELATED PRODUCTS</h1>
         </div>
         <Cards products={relatedProducts}/>
       </Carousel>

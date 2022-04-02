@@ -1,8 +1,8 @@
 import React from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from "@fortawesome/free-regular-svg-icons"
-
-import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg } from '../../../style/Carousel.js';
+import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg, WishlistContainer } from '../../../theme/carouselStyle.js';
 
 export default function Cards ({ products }) {
 
@@ -10,17 +10,15 @@ export default function Cards ({ products }) {
     <CardContainer className='product-card-container' key={product.name}>
 
       <CardAssetContainer className='product-card__asset'>
-        <div className='product-card__wishlist'>
-          <div className='product-card__wishlist-icon-container'>
-            <FontAwesomeIcon icon={faHeart} />
+          <div className='product-card__img'>
+            <a>
+              <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
+            </a>
           </div>
-        </div>
+          <WishlistContainer className='product-card__wishlist-icon-container'>
+            <FontAwesomeIcon icon={faHeart} />
+          </WishlistContainer>
 
-        <div className='product-card__img'>
-          <a>
-            <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
-          </a>
-        </div>
 
       </CardAssetContainer>
 

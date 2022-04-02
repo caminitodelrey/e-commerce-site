@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import getData from '../../helper.js';
+
+import styled from 'styled-components';
 
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
@@ -46,7 +47,7 @@ export default class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='app'>
         <ProductInfo product={this.state.selectedProduct}/>
         <RelatedProducts product={this.state.selectedProduct}/>
         <QA product={this.state.selectedProduct}/>
