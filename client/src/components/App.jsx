@@ -4,7 +4,7 @@ import axios from 'axios';
 import getData from '../../helper.js';
 
 import ProductInfo from './product-info/product-info.jsx';
-import RelatedProducts from './related-products/related-products.jsx';
+import RelatedProducts from './related-products/RelatedProducts.jsx';
 import QA from './QA/QA.jsx';
 import RatingsReviews from './ratings-and-reviews/ratings-and-reviews.jsx';
 
