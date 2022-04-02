@@ -2,25 +2,27 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from "@fortawesome/free-regular-svg-icons"
 
-import { Card } from '../../../style/Carousel.js';
+import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg } from '../../../style/Carousel.js';
 
 export default function Cards ({ products }) {
 
   const Card = products.map((product) =>
-    <div className='product-card-container' key={product.name}>
+    <CardContainer className='product-card-container' key={product.name}>
 
-      <div className='product-card__asset'>
-        <a>
-          <img src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
-        </a>
-
+      <CardAssetContainer className='product-card__asset'>
         <div className='product-card__wishlist'>
           <div className='product-card__wishlist-icon-container'>
-
-          <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart} />
           </div>
         </div>
-      </div>
+
+        <div className='product-card__img'>
+          <a>
+            <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
+          </a>
+        </div>
+
+      </CardAssetContainer>
 
       <div className='product-card__details'>
         <p className='product-card__category'>
@@ -37,13 +39,13 @@ export default function Cards ({ products }) {
         </p>
       </div>
 
-    </div>
+    </CardContainer>
   );
 
   return (
-    <div className='cards-container'>
+    <CardsContainer className='cards-container'>
       {Card}
-    </div>
+    </CardsContainer>
   );
 
 }
