@@ -19,7 +19,7 @@ export const Carousel = styled.div`
 
 // Cards.jsx
 export const CardsContainer = styled.div`
-  border: 1px solid blue;
+  // border: 1px solid blue;
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
@@ -28,7 +28,7 @@ export const CardsContainer = styled.div`
 `;
 
 export const CardContainer = styled.section`
-  border: 1px solid green;
+  // border: 1px solid green;
   flex: 0 0 auto;
   display: flex;
   width: 230px;
@@ -36,7 +36,7 @@ export const CardContainer = styled.section`
 `;
 
 export const CardAssetContainer = styled.div`
-  border: 1px solid orange;
+  // border: 1px solid orange;
   overflow: hidden;
   height: 230px;
 `;

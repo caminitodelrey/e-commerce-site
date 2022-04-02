@@ -14,7 +14,15 @@ export default class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      relatedProducts: []
+      relatedProducts: [],
+      selectedProducts: [{
+        image: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
+        category: 'pants',
+        name: 'Morning Joggers',
+        price: '40.00',
+        sale: null,
+        rating: { 1: '1', 2: '2', 3: '1', 4: '5', 5: '3'}
+      }]
     }
   }
 
@@ -33,6 +41,7 @@ export default class RelatedProducts extends React.Component {
               let relatedProducts = [...this.state.relatedProducts];
 
               let product = {
+                id: data[0].data.id,
                 image: data[1].data.results[0].photos[0].url,
                 category: data[0].data.category,
                 name: data[0].data.name,
@@ -59,8 +68,7 @@ export default class RelatedProducts extends React.Component {
   }
 
   render() {
-
-    let { relatedProducts } = this.state;
+    let { relatedProducts, selectedProducts } = this.state
 
     return (
       <Carousel className='carousel'>
@@ -68,6 +76,11 @@ export default class RelatedProducts extends React.Component {
           <h1>RELATED PRODUCTS</h1>
         </div>
         <Cards products={relatedProducts}/>
+
+        <div className='selected-header'>
+          <h1>YOUR OUTFITS</h1>
+        </div>
+        <Cards products={selectedProducts}/>
       </Carousel>
     )
   }

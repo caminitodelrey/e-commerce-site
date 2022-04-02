@@ -18,8 +18,6 @@ export default function Cards ({ products }) {
           <WishlistContainer className='product-card__wishlist-icon-container'>
             <FontAwesomeIcon icon={faHeart} />
           </WishlistContainer>
-
-
       </CardAssetContainer>
 
       <div className='product-card__details'>
