@@ -14,16 +14,14 @@ export const CardsContainer = styled.div`
 
 // Cards.jsx
 export const Card = styled.div`
-  width: 220px;
-  height: 90%;
-  display: flex;
-  align-items: center;
-  border: 1px solid blue;
-  overflow: hidden;
 `;
+// width: 220px;
+// display: flex;
+// align-items: center;
+//border: 1px solid blue;
 
-export const CarouselImage = styled.img`
-  width: 100px;
-  display: flex;
-  position: absolute;
-`;
+// export const Card = styled.img`
+//   width: 100px;
+//   display: flex;
+//   position: absolute;
+// `;

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import getData from '../../../helper.js';
 
-import { CarousalContainer, CardsContainer } from '../../style/Carousel.js';
+import { CarousalContainer } from '../../style/Carousel.js';
 import Cards from './subcomponents/Cards.jsx';
 
 // products/37311/related
@@ -61,16 +61,12 @@ export default class RelatedProducts extends React.Component {
     let { relatedProducts } = this.state;
 
     return (
-      <div className='carousel'>
+      <CarousalContainer className='carousel'>
         <div className='related-header'>
           <h1>Related Products</h1>
         </div>
-        <div>
-          <Cards
-            products={relatedProducts}
-          />
-        </div>
-      </div>
+        <Cards products={relatedProducts}/>
+      </CarousalContainer>
     )
   }
 }
