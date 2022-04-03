@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
 import ProductImg from '../subcomponents/ProductImg.jsx';
+import Modal from '../subcomponents/Modal.jsx';
 import ActionButton from '../subcomponents/ActionButton.jsx';
 
 import { FaChevronRight, FaChevronLeft, FaiHeart } from "react-icons/fa";
@@ -12,11 +13,22 @@ export default function RelatedCarousel ({ products, mainProduct }) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
+  const [modal, setModal] = useState({
+    display: false,
+    clickedProduct: {}
+  });
 
   //set the length to match current children from props
   useEffect(() => {
     setLength(products.length)
   }, [products])
+
+  const toggleModal = (product) => {
+    setModal({
+      display: !display,
+      clickedProduct: product
+    });
+  }
 
   const next = () => {
     if (currentIndex < (length - 1)) {
@@ -33,7 +45,12 @@ export default function RelatedCarousel ({ products, mainProduct }) {
   const Card = products.map((product) =>
     <CardContainer key={product.name}>
       <CardAssetContainer>
-          <ProductImg product={product} mainProduct={mainProduct}/>
+        <div div className='product-card__img' onClick={() => toggleModal(product)}>
+          <ProductImg
+            product={product}
+            mainProduct={mainProduct}
+          />
+        </div>
           {/* <ActionButton product={product}/> */}
       </CardAssetContainer>
 
@@ -55,7 +72,10 @@ export default function RelatedCarousel ({ products, mainProduct }) {
     </CardContainer>
   );
 
+  const { display, clickedProduct } = modal;
+
   return (
+
     <CardsContainer>
       <CardsWrapper>
 
@@ -84,7 +104,14 @@ export default function RelatedCarousel ({ products, mainProduct }) {
         }
 
       </CardsWrapper>
+
+      {display && (
+        <Modal
+          toggleModal={toggleModal}
+          product={clickedProduct}
+          mainProduct={mainProduct}
+        />
+      )}
     </CardsContainer>
   );
-
 }
