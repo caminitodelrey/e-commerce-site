@@ -5,7 +5,7 @@ import { FaHeart } from "react-icons/fa";
 
 import { WishlistContainer, Rotate } from '../../../theme/carouselStyle.js';
 
-export default function ActionButton (props) {
+export default function ActionButton ({product}) {
 
   const [isHovered, iconIsHovered] = useState(false);
 

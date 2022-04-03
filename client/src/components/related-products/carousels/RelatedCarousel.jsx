@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
-import Modal from '../subcomponents/Modal.jsx';
+import ProductImg from '../subcomponents/ProductImg.jsx';
+import ActionButton from '../subcomponents/ActionButton.jsx';
 
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
-import { MdOutlineClose } from "react-icons/md";
+import { FaChevronRight, FaChevronLeft, FaiHeart } from "react-icons/fa";
+import { FiHeart } from "react-icons/fi";
 
-import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg, WishlistContainer } from '../../../theme/carouselStyle.js';
+import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
 
-export default function YourOutfits ({ products }) {
+export default function RelatedCarousel ({ products, mainProduct }) {
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [length, setLength] = useState(products.length);
+
+  //set the length to match current children from props
+  useEffect(() => {
+    setLength(products.length)
+  }, [products])
+
+
 
   const Card = products.map((product) =>
     <CardContainer className='product-card-container' key={product.name}>
       <CardAssetContainer className='product-card__asset'>
-          <div className='product-card__img'>
-            <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
-          </div>
-          <WishlistContainer className='product-card__wishlist-icon-container'>
-            <MdOutlineClose />
-          </WishlistContainer>
+          <ProductImg product={product} mainProduct={mainProduct}/>
+          <ActionButton product={product}/>
       </CardAssetContainer>
 
       <div className='product-card__details'>

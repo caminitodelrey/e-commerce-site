@@ -3,10 +3,10 @@ import axios from 'axios';
 import getData from '../../../helper.js';
 
 import { GlobalFont } from '../../theme/globalStyle.js';
-import { Carousel } from '../../theme/carouselStyle.js';
+import { Carousels } from '../../theme/carouselStyle.js';
 
-import Related from './carousels/Related.jsx';
-import YourOutfits from './carousels/YourOutfits.jsx';
+import RelatedCarousel from './carousels/RelatedCarousel.jsx';
+import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 
 // products/37311/related
 // product_id: 37311 - 38199
@@ -72,17 +72,17 @@ export default class RelatedProducts extends React.Component {
     let { relatedProducts, selectedProducts } = this.state
 
     return (
-      <Carousel className='carousel'>
+      <Carousels className='carousel'>
         <div className='related-header'>
-          <h1>RELATED PRODUCTS</h1>
+          <h3>COMPLETE THE LOOK</h3>
         </div>
-        <Related products={relatedProducts} mainProduct={this.props.product}/>
+        <RelatedCarousel products={relatedProducts} mainProduct={this.props.product}/>
 
         <div className='selected-header'>
-          <h1>YOUR OUTFITS</h1>
+          <h3>WISHLIST</h3>
         </div>
-        <YourOutfits products={selectedProducts}/>
-      </Carousel>
+        <WishlistCarousel products={selectedProducts}/>
+      </Carousels>
     )
   }
 }

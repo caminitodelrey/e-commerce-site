@@ -8,7 +8,6 @@ export default function ProductImg ({product, mainProduct}) {
 
   const toggleModal = () => {
     setModal(!modal);
-    console.log('clicked!')
   }
 
   if (modal) {
