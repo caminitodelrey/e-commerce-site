@@ -47,12 +47,12 @@ export default class App extends React.Component {
 
   render () {
     return (
-      <div className='app'>
+      <>
         <ProductInfo product={this.state.selectedProduct}/>
         <RelatedProducts product={this.state.selectedProduct}/>
         <QA product={this.state.selectedProduct}/>
         <RatingsReviews product={this.state.selectedProduct}/>
-      </div>
+      </>
     )
   }
 }

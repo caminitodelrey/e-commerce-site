@@ -1,6 +1,6 @@
 import React from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
-import Modal from '../subcomponents/Modal.jsx';
+import ProductImg from '../subcomponents/ProductImg.jsx';
 
 import { FaChevronRight, FaChevronLeft, FaiHeart } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
@@ -9,13 +9,14 @@ import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg, Wishli
 
 export default function Related ({ products }) {
 
+  function handleModal () {
+    console.log('clicked')
+  }
 
   const Card = products.map((product) =>
     <CardContainer className='product-card-container' key={product.name}>
       <CardAssetContainer className='product-card__asset'>
-          <div className='product-card__img'>
-            <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
-          </div>
+          <ProductImg product={product}/>
           <WishlistContainer className='product-card__wishlist-icon-container'>
             <FiHeart />
           </WishlistContainer>
