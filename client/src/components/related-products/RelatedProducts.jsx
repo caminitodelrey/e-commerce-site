@@ -89,6 +89,7 @@ export default class RelatedProducts extends React.Component {
           <RelatedCarousel
             products={relatedProducts}
             mainProduct={this.props.product}
+            show={4}
             />
 
           <div className='selected-header'>

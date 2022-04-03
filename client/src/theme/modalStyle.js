@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ModalContainer = styled.div`
+  z-index: 1;
   position: fixed;
   left: 0;
   top: 0;

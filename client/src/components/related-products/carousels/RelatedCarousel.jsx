@@ -9,7 +9,7 @@ import { FiHeart } from "react-icons/fi";
 
 import { CardsContainer, CardsWrapper, ContentWrapper, Content, LeftChevron, RightChevron, CardContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
 
-export default function RelatedCarousel ({ products, mainProduct }) {
+export default function RelatedCarousel ({ products, mainProduct, show }) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
@@ -31,7 +31,7 @@ export default function RelatedCarousel ({ products, mainProduct }) {
   }
 
   const next = () => {
-    if (currentIndex < (length - 1)) {
+    if (currentIndex < (length - show)) {
       setCurrentIndex(prevState => prevState + 1)
     }
   }
@@ -51,7 +51,7 @@ export default function RelatedCarousel ({ products, mainProduct }) {
             mainProduct={mainProduct}
           />
         </div>
-          {/* <ActionButton product={product}/> */}
+        <ActionButton product={product}/>
       </CardAssetContainer>
 
       <div className='product-card__details'>
@@ -78,31 +78,25 @@ export default function RelatedCarousel ({ products, mainProduct }) {
 
     <CardsContainer>
       <CardsWrapper>
-
         {
           currentIndex > 0 &&
           <LeftChevron className='left-arrow' onClick={prev}>
             <FaChevronLeft />
           </LeftChevron>
         }
-
           <ContentWrapper>
             <Content
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-
+              style={{ transform: `translateX(-${currentIndex * (100 / show)}%)` }}
+              >
               {Card}
-
             </Content>
           </ContentWrapper>
-
         {
-          currentIndex < (length - 1) &&
+          currentIndex < (length - show) &&
           <RightChevron className='right-arrow' onClick={next}>
             <FaChevronRight />
           </RightChevron>
         }
-
       </CardsWrapper>
 
       {display && (

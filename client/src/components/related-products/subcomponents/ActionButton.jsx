@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FiHeart } from "react-icons/fi";
 import { FaHeart } from "react-icons/fa";
 
-import { WishlistContainer, Rotate } from '../../../theme/carouselStyle.js';
+import { WishlistContainer } from '../../../theme/carouselStyle.js';
 
 export default function ActionButton ({product}) {
 
@@ -12,7 +12,7 @@ export default function ActionButton ({product}) {
   return (
     <>
       <WishlistContainer
-        onMouseOver={() => iconIsHovered(!isHovered)}
+        onMouseEnter={() => iconIsHovered(!isHovered)}
         onMouseLeave={() => iconIsHovered(!isHovered)}
         >
 
