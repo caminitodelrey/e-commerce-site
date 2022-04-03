@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 // RelatedProducts.jsx
 export const Carousel = styled.div`
@@ -49,10 +49,20 @@ export const CardAssetImg = styled.img`
   object-fit: cover;
 `;
 
+// const glow = keyframes`
+// `;
+
 export const WishlistContainer = styled.div`
   top: -235px;
   left: 192px;
   position: relative;
   padding: 10px 10px 8px;
   color: rgba(11, 191, 125);
+
+  &:hover {
+    cursor: pointer;
+  }
 `
+// &:hover {
+  //   animation: ${glow} 1s linear infinite;
+  // }
