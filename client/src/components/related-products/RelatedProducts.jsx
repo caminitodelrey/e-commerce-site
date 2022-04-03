@@ -15,6 +15,7 @@ export default class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      status: 'pending',
       relatedProducts: [],
       selectedProducts: [{
         image: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
@@ -54,12 +55,16 @@ export default class RelatedProducts extends React.Component {
               relatedProducts.push(product);
 
               this.setState({
+                status: 'resolved',
                 relatedProducts: relatedProducts
               })
             });
         });
       })
       .catch(err => {
+        this.setState({
+          status: 'rejected'
+        })
         console.error('getRelatedProducts Error:', err);
       })
   }
@@ -69,20 +74,34 @@ export default class RelatedProducts extends React.Component {
   }
 
   render() {
-    let { relatedProducts, selectedProducts } = this.state
+    let { status, relatedProducts, selectedProducts } = this.state;
 
-    return (
-      <Carousels className='carousel'>
-        <div className='related-header'>
-          <h3>COMPLETE THE LOOK</h3>
-        </div>
-        <RelatedCarousel products={relatedProducts} mainProduct={this.props.product}/>
+    if (status === 'pending') {
+      return <div>Loading...</div>
+    }
 
-        <div className='selected-header'>
-          <h3>WISHLIST</h3>
+    if (status === 'resolved') {
+      return (
+        <Carousels className='carousel'>
+          <div className='related-header'>
+            <h3>COMPLETE THE LOOK</h3>
+          </div>
+          <RelatedCarousel products={relatedProducts} mainProduct={this.props.product}/>
+
+          <div className='selected-header'>
+            <h3>WISHLIST</h3>
+          </div>
+          <WishlistCarousel products={selectedProducts}/>
+        </Carousels>
+      )
+    }
+
+    if (status === 'rejected') {
+      return (
+        <div>
+          <div>We are sorry. There was a problem loading products to complete the look.</div>
         </div>
-        <WishlistCarousel products={selectedProducts}/>
-      </Carousels>
-    )
+      )
+    }
   }
 }

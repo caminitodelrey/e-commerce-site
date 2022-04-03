@@ -9,7 +9,7 @@ import { FiHeart } from "react-icons/fi";
 import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
 
 export default function RelatedCarousel ({ products, mainProduct }) {
-
+  console.log(products.length)
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
 
@@ -18,11 +18,21 @@ export default function RelatedCarousel ({ products, mainProduct }) {
     setLength(products.length)
   }, [products])
 
+  const next = () => {
+    if (currentIndex < (length - 1)) {
+      setCurrentIndex(prevState => prevState + 1)
+    }
+  }
 
+  const prev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(prevState => prevState - 1)
+    }
+  }
 
   const Card = products.map((product) =>
-    <CardContainer className='product-card-container' key={product.name}>
-      <CardAssetContainer className='product-card__asset'>
+    <CardContainer key={product.name}>
+      <CardAssetContainer>
           <ProductImg product={product} mainProduct={mainProduct}/>
           <ActionButton product={product}/>
       </CardAssetContainer>
@@ -47,9 +57,19 @@ export default function RelatedCarousel ({ products, mainProduct }) {
 
   return (
     <CardsContainer className='cards-container'>
-      <FaChevronLeft />
+
+      {/* <FaChevronLeft onClick={prev}/> */}
+      <button className='left-arrow'>
+        &lt;
+      </button>
+
       {Card}
-      <FaChevronRight />
+
+      <button className='right-arrow'>
+        &gt;
+      </button>
+      {/* <FaChevronRight onClick={next}/> */}
+
     </CardsContainer>
   );
 
