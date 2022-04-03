@@ -13,8 +13,7 @@ export const ModalContainer = styled.div`
 `
 
 export const ModalHeader = styled.div`
-  border: 1px solid red;
-  padding: 5px 30px;
+  padding: 15px 0 0 50px;
 `
 
 export const ModalContent = styled.div`

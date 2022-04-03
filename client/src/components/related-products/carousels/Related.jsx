@@ -1,11 +1,12 @@
 import React from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
 import ProductImg from '../subcomponents/ProductImg.jsx';
+import ActionButton from '../subcomponents/ActionButton.jsx';
 
 import { FaChevronRight, FaChevronLeft, FaiHeart } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
 
-import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg, WishlistContainer } from '../../../theme/carouselStyle.js';
+import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
 
 export default function Related ({ products, mainProduct }) {
 
@@ -13,9 +14,7 @@ export default function Related ({ products, mainProduct }) {
     <CardContainer className='product-card-container' key={product.name}>
       <CardAssetContainer className='product-card__asset'>
           <ProductImg product={product} mainProduct={mainProduct}/>
-          <WishlistContainer className='product-card__wishlist-icon-container'>
-            <FiHeart />
-          </WishlistContainer>
+          <ActionButton />
       </CardAssetContainer>
 
       <div className='product-card__details'>

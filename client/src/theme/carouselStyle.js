@@ -29,7 +29,7 @@ export const CardsContainer = styled.div`
 `;
 
 export const CardContainer = styled.section`
-  border: 1px solid green;
+  // border: 1px solid green;
   flex: 0 0 auto;
   display: flex;
   width: 230px;
@@ -54,5 +54,5 @@ export const WishlistContainer = styled.div`
   left: 192px;
   position: relative;
   padding: 10px 10px 8px;
-  background: white;
+  color: rgba(11, 191, 125);
 `
