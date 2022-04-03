@@ -8,7 +8,14 @@ export default function ProductImg ({product, mainProduct}) {
 
   const toggleModal = () => {
     setModal(!modal);
+    console.log('clicked!')
   }
+
+  // if (modal) {
+  //   document.body.classList.add('active-modal');
+  // } else {
+  //   document.body.classList.remove('active-modal');
+  // }
 
     return (
       <>
