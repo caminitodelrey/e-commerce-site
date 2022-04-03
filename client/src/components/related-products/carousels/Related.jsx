@@ -7,16 +7,12 @@ import { FiHeart } from "react-icons/fi";
 
 import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg, WishlistContainer } from '../../../theme/carouselStyle.js';
 
-export default function Related ({ products }) {
-
-  function handleModal () {
-    console.log('clicked')
-  }
+export default function Related ({ products, mainProduct }) {
 
   const Card = products.map((product) =>
     <CardContainer className='product-card-container' key={product.name}>
       <CardAssetContainer className='product-card__asset'>
-          <ProductImg product={product}/>
+          <ProductImg product={product} mainProduct={mainProduct}/>
           <WishlistContainer className='product-card__wishlist-icon-container'>
             <FiHeart />
           </WishlistContainer>

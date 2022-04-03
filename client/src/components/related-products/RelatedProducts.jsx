@@ -76,7 +76,7 @@ export default class RelatedProducts extends React.Component {
         <div className='related-header'>
           <h1>RELATED PRODUCTS</h1>
         </div>
-        <Related products={relatedProducts}/>
+        <Related products={relatedProducts} mainProduct={this.props.product}/>
 
         <div className='selected-header'>
           <h1>YOUR OUTFITS</h1>
