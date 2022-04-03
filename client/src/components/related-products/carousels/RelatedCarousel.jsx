@@ -6,10 +6,10 @@ import ActionButton from '../subcomponents/ActionButton.jsx';
 import { FaChevronRight, FaChevronLeft, FaiHeart } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
 
-import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
+import { CardsContainer, CardsWrapper, ContentWrapper, Content, LeftChevron, RightChevron, CardContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
 
 export default function RelatedCarousel ({ products, mainProduct }) {
-  console.log(products.length)
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
 
@@ -34,7 +34,7 @@ export default function RelatedCarousel ({ products, mainProduct }) {
     <CardContainer key={product.name}>
       <CardAssetContainer>
           <ProductImg product={product} mainProduct={mainProduct}/>
-          <ActionButton product={product}/>
+          {/* <ActionButton product={product}/> */}
       </CardAssetContainer>
 
       <div className='product-card__details'>
@@ -56,20 +56,34 @@ export default function RelatedCarousel ({ products, mainProduct }) {
   );
 
   return (
-    <CardsContainer className='cards-container'>
+    <CardsContainer>
+      <CardsWrapper>
 
-      {/* <FaChevronLeft onClick={prev}/> */}
-      <button className='left-arrow'>
-        &lt;
-      </button>
+        {
+          currentIndex > 0 &&
+          <LeftChevron className='left-arrow' onClick={prev}>
+            <FaChevronLeft />
+          </LeftChevron>
+        }
 
-      {Card}
+          <ContentWrapper>
+            <Content
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
 
-      <button className='right-arrow'>
-        &gt;
-      </button>
-      {/* <FaChevronRight onClick={next}/> */}
+              {Card}
 
+            </Content>
+          </ContentWrapper>
+
+        {
+          currentIndex < (length - 1) &&
+          <RightChevron className='right-arrow' onClick={next}>
+            <FaChevronRight />
+          </RightChevron>
+        }
+
+      </CardsWrapper>
     </CardsContainer>
   );
 

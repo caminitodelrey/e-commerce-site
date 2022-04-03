@@ -40,7 +40,7 @@ export default class Modal extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+
     return (
       <ModalContainer onClick={this.props.toggleModal}>
         <ModalContent onClick={this.props.toggleModal}>

@@ -86,7 +86,10 @@ export default class RelatedProducts extends React.Component {
           <div className='related-header'>
             <h3>COMPLETE THE LOOK</h3>
           </div>
-          <RelatedCarousel products={relatedProducts} mainProduct={this.props.product}/>
+          <RelatedCarousel
+            products={relatedProducts}
+            mainProduct={this.props.product}
+            />
 
           <div className='selected-header'>
             <h3>WISHLIST</h3>

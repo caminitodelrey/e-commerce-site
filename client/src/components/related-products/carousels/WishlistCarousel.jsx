@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
 import Modal from '../subcomponents/Modal.jsx';
 
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";
 
-import { CardContainer, CardsContainer, CardAssetContainer, CardAssetImg, WishlistContainer } from '../../../theme/carouselStyle.js';
+import { CardsContainer, CardsWrapper, ContentWrapper, Content, LeftChevron, RightChevron, CardContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
+
 
 export default function WishlistCarousel ({ products }) {
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [length, setLength] = useState(products.length);
+
+  useEffect(() => {
+    setLength(products.length)
+  }, [products])
+
+  const next = () => {
+    if (currentIndex < (length - 1)) {
+      setCurrentIndex(prevState => prevState + 1)
+    }
+  }
+
+  const prev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(prevState => prevState - 1)
+    }
+  }
 
   const Card = products.map((product) =>
     <CardContainer className='product-card-container' key={product.name}>
@@ -15,9 +35,9 @@ export default function WishlistCarousel ({ products }) {
           <div className='product-card__img'>
             <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/default.jpg'} />
           </div>
-          <WishlistContainer className='product-card__wishlist-icon-container'>
-            <MdOutlineClose />
-          </WishlistContainer>
+
+          {/* <MdOutlineClose /> */}
+
       </CardAssetContainer>
 
       <div className='product-card__details'>
@@ -40,9 +60,29 @@ export default function WishlistCarousel ({ products }) {
 
   return (
     <CardsContainer className='cards-container'>
-      <FaChevronLeft />
-      {Card}
-      <FaChevronRight />
+      <CardsWrapper>
+        <ContentWrapper>
+          <Content>
+
+            {
+              currentIndex > 0 &&
+              <LeftChevron className='left-arrow' onClick={prev}>
+                &lt;
+              </LeftChevron>
+            }
+
+            {Card}
+
+            {
+              currentIndex < (length - 1) &&
+              <RightChevron className='right-arrow' onClick={next}>
+                &gt;
+              </RightChevron>
+            }
+
+          </Content>
+        </ContentWrapper>
+      </CardsWrapper>
     </CardsContainer>
   );
 
