@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
-import getData from '../../helper.js';
+// import styled from 'styled-components';
+// import axios from 'axios';
+// import getData from '../../helper.js';
 
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/related-products.jsx';
@@ -10,7 +10,7 @@ import RatingsReviews from './ratings-and-reviews/ratings-and-reviews.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       selectedProduct: {
         id: 37311,
@@ -33,7 +33,9 @@ export default class App extends React.Component {
             }
         ]
       }
+
     }
+
   }
 
   // componentDidMount() {

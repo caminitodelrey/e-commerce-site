@@ -7,20 +7,21 @@
     "react-dev": "webpack --mode development --watch",
     "server-dev": "npx nodemon ./server/index.js",
     "build": "webpack --config ./webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/eslint",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1",
-    "eslint": "^8.12.0",
-    "eslint-config-airbnb": "^19.0.4",
     "express": "^4.17.3",
+    "moment": "^2.29.2",
     "nodemon": "^2.0.15",
-    "npx": "^3.0.0",
+    "npx": "^10.2.2",
     "path": "^0.12.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-icons": "^4.3.1",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
@@ -28,6 +29,14 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.4",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "jest": "^27.5.1",
+    "prettier": "2.6.2",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"
   }
