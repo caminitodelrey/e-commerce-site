@@ -8,8 +8,7 @@ export const Carousels = styled.div`
 
 export const CarouselHeader = styled.div`
   padding-left: 10px;
-  top: -20px;
-  border: 1px solid #bbb;
+  // border: 1px solid #bbb;
 `
 
 // Cards.jsx
