@@ -1,17 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default function ReivewListUnit ({review}) {
-  const review2 = review || {summary: '', rating: '', body:'',
-    date:'', reviewer_name: '', response: '', helpfulness: 0,
-    recommend: true, photos: {url: ''}};
+export default function ReivewListUnit({ review }) {
+  const review2 = review || {
+    summary: '', rating: '', body: '',
+    date: '', reviewer_name: '', response: '', helpfulness: 0,
+    recommend: true, photos: { url: '' },
+  };
 
-    // console.log(review2.photos[0].url)
+  // console.log(review2.photos[0].url)
 
   return (
     <div className="ratings-flexbox-container" style={{
       borderStyle: 'solid',
       borderColor: 'Green',
-      }}>
+    }}>
       <div>title:{review2.summary}
         <div className="ratings-starRatings">
           <span className="rating-star">*</span>
@@ -36,7 +38,7 @@ export default function ReivewListUnit ({review}) {
           return (
             <div key={key}>
               <span>
-                <img src={photo.url}/>
+                <img src={photo.url} />
               </span>
             </div>
           )
@@ -52,7 +54,7 @@ export default function ReivewListUnit ({review}) {
       </div>
 
       <div>
-        {`Recommended: ${review2.recommend ? 'Yes': 'No'}`}
+        {`Recommended: ${review2.recommend ? 'Yes' : 'No'}`}
       </div>
     </div>
   )

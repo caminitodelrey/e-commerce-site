@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import ReviewsExampleData from '../ReviewsExampleData.jsx';
 import ReviewListUnit from './ReviewListUnit.jsx';
 
@@ -8,7 +8,7 @@ export default function () {
   const [reviewsCount, setReviewsCount] = useState(2)
 
   const handleMoreReviews = () => {
-    setReviewsCount(reviewsCount+2);
+    setReviewsCount(reviewsCount + 2);
   }
 
   return (
@@ -17,7 +17,7 @@ export default function () {
         {reviews.slice(0, reviewsCount).map((review, key) => {
           return (
             <div key={key}>
-              <ReviewListUnit review={review}/>
+              <ReviewListUnit review={review} />
             </div>
           )
         })}
