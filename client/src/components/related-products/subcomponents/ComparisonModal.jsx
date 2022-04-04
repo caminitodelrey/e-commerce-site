@@ -21,21 +21,6 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
       .then((data) => {
         // main: data[0].data.features
         // related: data[1].data.features
-
-        const feature = '';
-        const relatedValue = '';
-        const mainValue = '';
-
-        // I want to push eachFeature (obj) ot features (arr)
-        setFeatures((prevState) => (
-          [...prevState, {
-            [feature]: '',
-            [relatedValue]: '',
-            [mainValue]: '',
-          }]
-        ));
-
-        console.log(features);
       })
       .catch((err) => {
         throw Error(err);
