@@ -46,8 +46,7 @@ export const Content = styled.div`
   scrollbar-width: none;
 `;
 
-// Carousel Chevrons
-export const LeftChevron = styled.button`
+const Chevron = styled.button`
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -55,34 +54,27 @@ export const LeftChevron = styled.button`
   width: 50px;
   height: 50px;
   border: 1px solid transparent;
-  left: -30px;
   background-color: transparent;
   color: rgba(10, 89, 51);
   cursor: pointer;
+`
+
+// Carousel Chevrons
+export const LeftChevron = styled(Chevron)`
+  left: -30px;
 `;
 
-export const RightChevron = styled.button`
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  transform: translate(-50%);
-  width: 50px;
-  height: 50px;
-  border: 1px solid transparent;
+export const RightChevron = styled(Chevron)`
   right: -80px;
-  background-color: transparent;
-  color: rgba(10, 89, 51);
-  cursor: pointer;
 `;
 
 // Card in Cards.jsx
 export const CardContainer = styled.section`
-  // border: 1px solid green;
+  border: 1px solid green;
   width: 100%;
   flex-shrink: 0;
   flex-grow: 1;
   padding: 20px;
-  width: calc(100% / 4.5);
 `;
 
 export const CardAssetContainer = styled.div`

@@ -18,6 +18,8 @@ export default function RelatedCarousel ({ products, mainProduct, show }) {
     clickedProduct: {}
   });
 
+  const { display, clickedProduct } = modal;
+
   //set the length to match current children from props
   useEffect(() => {
     setLength(products.length)
@@ -31,7 +33,7 @@ export default function RelatedCarousel ({ products, mainProduct, show }) {
   }
 
   const next = () => {
-    if (currentIndex < (length - show)) {
+    if (currentIndex < (length - (show - 1))) {
       setCurrentIndex(prevState => prevState + 1)
     }
   }
@@ -42,8 +44,16 @@ export default function RelatedCarousel ({ products, mainProduct, show }) {
     }
   }
 
+  // const scrollStyle = {
+  //   width: `calc(100% / (${show}))`,
+  //   transform: `translateX(-${currentIndex * (100 / show)}%)`
+  // };
+
   const Card = products.map((product) =>
-    <CardContainer key={product.name}>
+    <CardContainer
+      key={product.name}
+      style={{width: `calc(100% / ${show})`}}
+    >
       <CardAssetContainer>
         <div div className='product-card__img' onClick={() => toggleModal(product)}>
           <ProductImg
@@ -72,8 +82,6 @@ export default function RelatedCarousel ({ products, mainProduct, show }) {
     </CardContainer>
   );
 
-  const { display, clickedProduct } = modal;
-
   return (
 
     <CardsContainer>
@@ -85,14 +93,12 @@ export default function RelatedCarousel ({ products, mainProduct, show }) {
           </LeftChevron>
         }
           <ContentWrapper>
-            <Content
-              style={{ transform: `translateX(-${currentIndex * (100 / show)}%)` }}
-              >
+            <Content style={{transform: `translateX(-${currentIndex * (100 / (show + 1))}%)`}}>
               {Card}
             </Content>
           </ContentWrapper>
         {
-          currentIndex < (length - show) &&
+          currentIndex < (length - (show - 1)) &&
           <RightChevron className='right-arrow' onClick={next}>
             <FaChevronRight />
           </RightChevron>
