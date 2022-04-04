@@ -3,6 +3,7 @@
   "rules": {
     "react/prop-types": "off",
     "import/extensions": "off",
-    "array-callback-return": "off"
+    "array-callback-return": "off",
+    "no-unused-expressions": "off"
   }
 }
