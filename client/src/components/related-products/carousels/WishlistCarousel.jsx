@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
-import Modal from '../subcomponents/Modal.jsx';
 
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";

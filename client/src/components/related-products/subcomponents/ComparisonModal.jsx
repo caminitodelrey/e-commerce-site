@@ -4,10 +4,11 @@ import getData from '../../../../helper.js';
 import { FcCheckmark } from "react-icons/fc";
 import { ModalContainer, ModalHeader, ModalContent, ModalBody, TableRow } from '../../../theme/modalStyle.js';
 
-export default class Modal extends React.Component {
+export default class ComparisonModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      features: [], // combined features and values
       mainProductFeature: [],
       productFeature: []
     }
@@ -19,16 +20,41 @@ export default class Modal extends React.Component {
       getData(`products/${this.props.product.id}`)
     ])
       .then(data => {
-        let mainProductFeature = [...this.state.mainProductFeature];
-        let productFeature = [...this.state.productFeature];
+        // let mainProductFeature = [...this.state.mainProductFeature];
+        // let productFeature = [...this.state.productFeature];
 
-        mainProductFeature.push(data[0].data.features);
-        productFeature.push(data[1].data.features);
+        // mainProductFeature.push(data[0].data.features);
+        // productFeature.push(data[1].data.features);
 
-        this.setState({
-          mainProductFeature: mainProductFeature,
-          productFeature: productFeature
-        })
+        // this.setState({
+        //   mainProductFeature: mainProductFeature,
+        //   productFeature: productFeature
+        // })
+
+        let features = [...this.state.features];
+
+        let mainProductFeatures = data[0].data.features;
+        let relatedProductFeatures = data[1].data.features;
+        let allFeatures = {};
+
+        for (let i = 0; i < relatedProductFeatures.length; i++) {
+          let comparisonFeatureObj = {
+            feature: relatedProductFeatures[i].feature,
+            relatedValue: relatedProductFeatures[i].value
+          };
+          mainProductFeatures.forEach(featureObj => {
+            if(featureObj.feature === comparisonFeatureObj.feature) {
+              comparisonFeatureObj['mainValue'] = comparisonFeatureObj.relatedValue;
+            }
+          });
+
+          comparisonFeatureObj['mainValue'] = comparisonFeatureObj['mainValue'] || '';
+
+        }
+
+
+
+
       })
       .catch(err => {
         console.error('getFeatures Error:', err);
@@ -40,7 +66,6 @@ export default class Modal extends React.Component {
   }
 
   render() {
-
     return (
       <ModalContainer onClick={this.props.toggleModal}>
         <ModalContent onClick={this.props.toggleModal}>
@@ -57,6 +82,8 @@ export default class Modal extends React.Component {
                 </tr>
               </thead>
               <tbody>
+
+
                 <TableRow>
                   <td><FcCheckmark /></td>
                   <td>GMO and Pesticide-free</td>
@@ -67,6 +94,8 @@ export default class Modal extends React.Component {
                   <td>Made with 100% Genetic Modification</td>
                   <td></td>
                 </TableRow>
+
+
               </tbody>
             </table>
           </ModalBody>

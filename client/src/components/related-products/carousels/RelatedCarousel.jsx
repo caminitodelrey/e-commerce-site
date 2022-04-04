@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
 import ProductImg from '../subcomponents/ProductImg.jsx';
-import Modal from '../subcomponents/Modal.jsx';
+import ComparisonModal from '../subcomponents/ComparisonModal.jsx';
 import ActionButton from '../subcomponents/ActionButton.jsx';
 
-import { FaChevronRight, FaChevronLeft, FaiHeart } from "react-icons/fa";
-import { FiHeart } from "react-icons/fi";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 import { CardsContainer, CardsWrapper, ContentWrapper, Content, LeftChevron, RightChevron, CardContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
 
@@ -44,18 +43,13 @@ export default function RelatedCarousel ({ products, mainProduct, show }) {
     }
   }
 
-  // const scrollStyle = {
-  //   width: `calc(100% / (${show}))`,
-  //   transform: `translateX(-${currentIndex * (100 / show)}%)`
-  // };
-
   const Card = products.map((product) =>
     <CardContainer
       key={product.name}
       style={{width: `calc(100% / ${show})`}}
     >
       <CardAssetContainer>
-        <div div className='product-card__img' onClick={() => toggleModal(product)}>
+        <div className='product-card__img' onClick={() => toggleModal(product)}>
           <ProductImg
             product={product}
             mainProduct={mainProduct}
@@ -106,7 +100,7 @@ export default function RelatedCarousel ({ products, mainProduct, show }) {
       </CardsWrapper>
 
       {display && (
-        <Modal
+        <ComparisonModal
           toggleModal={toggleModal}
           product={clickedProduct}
           mainProduct={mainProduct}
