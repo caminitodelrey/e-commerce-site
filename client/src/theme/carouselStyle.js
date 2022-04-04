@@ -6,11 +6,6 @@ export const Carousels = styled.div`
   padding: 50px 150px;
 `;
 
-export const CarouselHeader = styled.div`
-  padding-left: 10px;
-  // border: 1px solid #bbb;
-`
-
 // Cards.jsx
 export const CardsContainer = styled.div`
   // border: 1px solid blue;
@@ -47,7 +42,7 @@ const Chevron = styled.button`
   width: 47px;
   height: 45px;
   border: 1px solid black;
-  background-color: transparent;
+  background-color: white;
   color: rgba(10, 89, 51);
   cursor: pointer;
 `
@@ -63,11 +58,10 @@ export const RightChevron = styled(Chevron)`
 
 // Card in Cards.jsx
 export const CardContainer = styled.section`
-  //border: 1px solid green;
+  // border: 1px solid green;
   width: 100%;
   flex-shrink: 0;
   flex-grow: 1;
-  padding: 20px;
 `;
 
 export const CardAssetContainer = styled.div`
@@ -82,20 +76,21 @@ export const CardAssetContainer = styled.div`
 `;
 
 export const CardAssetImg = styled.img`
-  // width: 100%;
   width: 260px;
   height: 360px;
+  border-radius: 10px;
   align-items: center;
   object-fit: cover;
 `;
 
 export const ActionButtonContainer = styled.div`
   position: absolute;
-  top: 3%;
+  top: 0%;
   transform: translateX(630%);
   padding: 10px 10px 7px 10px;
-  color: rgba(11, 191, 125);
+  border-radius: 0 6px ;
   background: #fff;
+  color: rgba(11, 191, 125);
 
   &:hover {
     cursor: pointer;

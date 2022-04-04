@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import getData from '../../../helper.js';
 
-import { Carousels, CarouselHeader } from '../../theme/carouselStyle.js';
+import { Carousels } from '../../theme/carouselStyle.js';
 
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
 import WishlistCarousel from './carousels/WishlistCarousel.jsx';
@@ -82,18 +82,18 @@ export default class RelatedProducts extends React.Component {
     if (status === 'resolved') {
       return (
         <Carousels className='carousel'>
-          <CarouselHeader className='related-header'>
-            <h3>COMPLETE THE LOOK</h3>
-          </CarouselHeader>
+          <div className='related-header'>
+            <h2>COMPLETE THE LOOK</h2>
+          </div>
           <RelatedCarousel
             products={relatedProducts}
             mainProduct={this.props.product}
             show={4}
             />
 
-          <CarouselHeader className='selected-header'>
-            <h3>WISHLIST</h3>
-          </CarouselHeader>
+          <div className='selected-header'>
+            <h2>WISHLIST</h2>
+          </div>
           <WishlistCarousel products={selectedProducts}/>
         </Carousels>
       )
