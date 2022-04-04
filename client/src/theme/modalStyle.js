@@ -13,13 +13,24 @@ export const ModalContainer = styled.div`
   justify-content: center;
 `
 
-export const ModalHeader = styled.div`
-  padding: 15px 0 0 50px;
+export const ModalTitle = styled.div`
+  padding-left: 10px;
+  font-size: 0.875em;
+  color: rgba(128, 128, 128, 0.8)
+`
+
+export const ModalProductName = styled.th`
+  font-weight: 700;
+  font-size: 1em;
+  padding-bottom: 10px;
+  border-bottom: 3px solid rgba(3, 115, 83, 0.3);
 `
 
 export const ModalContent = styled.div`
   width: 600px;
+  padding: 20px;
   background-color: white;
+  border-radius: 20px;
 `
 
 export const ModalBody = styled.div`

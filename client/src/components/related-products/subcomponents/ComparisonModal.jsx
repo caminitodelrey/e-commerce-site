@@ -2,7 +2,7 @@ import React from 'react';
 import getData from '../../../../helper.js';
 
 import { FcCheckmark } from "react-icons/fc";
-import { ModalContainer, ModalHeader, ModalContent, ModalBody, TableRow } from '../../../theme/modalStyle.js';
+import { ModalContainer, ModalTitle, ModalProductName, ModalContent, ModalBody, TableRow } from '../../../theme/modalStyle.js';
 
 export default class ComparisonModal extends React.Component {
   constructor(props) {
@@ -69,16 +69,16 @@ export default class ComparisonModal extends React.Component {
     return (
       <ModalContainer onClick={this.props.toggleModal}>
         <ModalContent onClick={this.props.toggleModal}>
-          <ModalHeader>
-            <h3>Compare</h3>
-          </ModalHeader>
+          <ModalTitle>
+            <p>COMPARING</p>
+          </ModalTitle>
           <ModalBody>
             <table>
               <thead>
                 <tr>
-                  <th width='30%'>{this.props.mainProduct.name}</th>
+                  <ModalProductName width='30%'>{this.props.mainProduct.name}</ModalProductName>
                   <th></th>
-                  <th width='30%'>{this.props.product.name}</th>
+                  <ModalProductName width='30%'>{this.props.product.name}</ModalProductName>
                 </tr>
               </thead>
               <tbody>

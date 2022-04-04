@@ -85,7 +85,7 @@ export const CardAssetImg = styled.img`
 
 // Product Card Details
 export const ProductCategory = styled.p`
-  color: rgb(128,128,128);
+  color: rgb(128, 128, 128);
   font-size: 0.875em;
 `
 
