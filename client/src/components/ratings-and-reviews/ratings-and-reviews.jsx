@@ -6,7 +6,7 @@ import WriteReview from './writeReview/WriteReview.jsx';
 import Sort from './sort/Sort.jsx';
 import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx';
 
-export default function RatingsReviews({ product }) {
+export default function RatingsReviews() {
   return (
     <div>
       <h1>RatingsReviewssssss</h1>
