@@ -32,7 +32,15 @@ export default function ReivewListUnit ({review}) {
       </div>
       <br />
       <div>
-        Photos here
+        {review2.photos.map((photo, key) => {
+          return (
+            <div key={key}>
+              <span>
+                <img src={photo.url}/>
+              </span>
+            </div>
+          )
+        })}
       </div>
       <br />
       <div>
