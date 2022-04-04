@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import TestRenderer from 'react-test-renderer';
 // import axios from 'axios';
 // import moment from 'moment';
 
@@ -23,9 +24,7 @@ export default function QA({ product }) {
     // const url = `qa/questions?product_id=${product.id}`;
     const url = `qa/questions?product_id=37313`;
     getData(url)
-      .then((res) => {
-        setQuestions(res.data.results);
-      })
+      .then((res) => {setQuestions(res.data.results)})
       .catch((err) => console.error(err));
   }, []);
 
