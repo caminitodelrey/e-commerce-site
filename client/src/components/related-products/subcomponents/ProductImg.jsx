@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardAssetImg } from '../../../theme/carouselStyle.js';
 
-export default function ProductImg({ product, mainProduct }) {
+export default function ProductImg({ product }) {
   return (
     <>
       {/* <CardAssetImg src={product.image || 'https://durmazz.com/writable/uploads/products/

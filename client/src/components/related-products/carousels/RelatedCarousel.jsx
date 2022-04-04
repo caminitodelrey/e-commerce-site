@@ -70,7 +70,7 @@ export default function RelatedCarousel({ products, mainProduct, show }) {
           role="button"
           tabIndex="0"
         >
-          <ProductImg product={product} mainProduct={mainProduct} />
+          <ProductImg product={product} />
         </div>
         <ActionButton product={product} />
       </CardAssetContainer>
@@ -85,7 +85,7 @@ export default function RelatedCarousel({ products, mainProduct, show }) {
           {product.price.replace(/\.00$/, '')}
         </ProductPrice>
         <p className="product-card__rating">
-          <Ratings />
+          <Ratings ratings={product.ratings} />
         </p>
       </div>
     </CardContainer>

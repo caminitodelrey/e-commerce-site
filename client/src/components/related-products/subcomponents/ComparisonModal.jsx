@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FcCheckmark } from 'react-icons/fc';
 import {
   ModalContainer,
@@ -11,51 +11,40 @@ import {
 import getData from '../../../../helper.js';
 
 export default function ComparisonModal({ toggleModal, product, mainProduct }) {
-  // getFeatures() {
-  //   Promise.all([
-  //     getData(`products/${this.props.mainProduct.id}`),
-  //     getData(`products/${this.props.product.id}`),
-  //   ])
-  //     .then((data) => {
-  //       // let mainProductFeature = [...this.state.mainProductFeature];
-  //       // let productFeature = [...this.state.productFeature];
+  const [features, setFeatures] = useState([]);
 
-  //       // mainProductFeature.push(data[0].data.features);
-  //       // productFeature.push(data[1].data.features);
+  const getFeatures = () => {
+    Promise.all([
+      getData(`products/${mainProduct.id}`),
+      getData(`products/${product.id}`),
+    ])
+      .then((data) => {
+        // main: data[0].data.features
+        // related: data[1].data.features
 
-  //       // this.setState({
-  //       //   mainProductFeature: mainProductFeature,
-  //       //   productFeature: productFeature
-  //       // })
+        const feature = '';
+        const relatedValue = '';
+        const mainValue = '';
 
-  //       let features = [...this.state.features];
+        // I want to push eachFeature (obj) ot features (arr)
+        setFeatures((prevState) => (
+          [...prevState, {
+            [feature]: '',
+            [relatedValue]: '',
+            [mainValue]: '',
+          }]
+        ));
 
-  //       let mainProductFeatures = data[0].data.features;
-  //       let relatedProductFeatures = data[1].data.features;
-  //       let allFeatures = {};
+        console.log(features);
+      })
+      .catch((err) => {
+        throw Error(err);
+      });
+  };
 
-  //       for (let i = 0; i < relatedProductFeatures.length; i += 1) {
-  //         let comparisonFeatureObj = {
-  //           feature: relatedProductFeatures[i].feature,
-  //           relatedValue: relatedProductFeatures[i].value,
-  //         };
-  //         mainProductFeatures.forEach((featureObj) => {
-  //           if (featureObj.feature === comparisonFeatureObj.feature) {
-  //             comparisonFeatureObj.mainValue = comparisonFeatureObj.relatedValue;
-  //           }
-  //         });
-
-  //         comparisonFeatureObj.mainValue = comparisonFeatureObj.mainValue || '';
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error('getFeatures Error:', err);
-  //     });
-  // }
-
-  // componentDidMount() {
-  //   this.getFeatures();
-  // }
+  useEffect(() => {
+    getFeatures();
+  }, []);
 
   return (
     <ModalContainer onClick={toggleModal}>
@@ -71,9 +60,7 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
                   {mainProduct.name}
                 </ModalProductName>
                 <th> </th>
-                <ModalProductName width="30%">
-                  {product.name}
-                </ModalProductName>
+                <ModalProductName width="30%">{product.name}</ModalProductName>
               </tr>
             </thead>
             <tbody>
