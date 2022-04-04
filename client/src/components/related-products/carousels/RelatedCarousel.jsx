@@ -6,7 +6,7 @@ import ActionButton from '../subcomponents/ActionButton.jsx';
 
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
-import { CardsContainer, CardsWrapper, ContentWrapper, Content, LeftChevron, RightChevron, CardContainer, CardAssetContainer, CardAssetImg } from '../../../theme/carouselStyle.js';
+import { CardsContainer, CardsWrapper, ContentWrapper, Content, LeftChevron, RightChevron, CardContainer, CardAssetContainer, CardAssetImg, ProductCategory, ProductName, ProductPrice } from '../../../theme/carouselStyle.js';
 
 export default function RelatedCarousel ({ products, mainProduct, show }) {
 
@@ -59,15 +59,15 @@ export default function RelatedCarousel ({ products, mainProduct, show }) {
       </CardAssetContainer>
 
       <div className='product-card__details'>
-        <p className='product-card__category'>
+        <ProductCategory className='product-card__category'>
           {product.category.toUpperCase()}
-        </p>
-        <p className='product-card__name'>
+        </ProductCategory>
+        <ProductName className='product-card__name'>
           {product.name}
-        </p>
-        <p className='product-card__price'>
+        </ProductName>
+        <ProductPrice className='product-card__price'>
           ${product.price.replace(/\.00$/,'')}
-        </p>
+        </ProductPrice>
         <p className='product-card__rating'>
           <Ratings />
         </p>

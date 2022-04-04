@@ -83,6 +83,24 @@ export const CardAssetImg = styled.img`
   object-fit: cover;
 `;
 
+// Product Card Details
+export const ProductCategory = styled.p`
+  color: rgb(128,128,128);
+  font-size: 0.875em;
+`
+
+export const ProductName = styled.p`
+  font-weight: bold;
+  margin-top: -8px;
+`
+
+export const ProductPrice = styled.p`
+  margin-top: -8px;
+  color: rgb(10, 89, 81);
+  font-size: 0.9em;
+`
+
+// Action Button
 export const ActionButtonContainer = styled.div`
   position: absolute;
   top: 0%;
