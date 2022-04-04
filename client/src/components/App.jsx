@@ -2,8 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import getData from '../../helper.js';
 
-import styled from 'styled-components';
-
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
 import QA from './QA/QA.jsx';

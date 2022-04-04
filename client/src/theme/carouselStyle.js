@@ -4,19 +4,12 @@ import styled from "styled-components";
 export const Carousels = styled.div`
   // border: 1px solid red;
   padding: 50px 150px;
-
-  @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
-
-  h1, h2, h3 {
-    font-family: 'Lato', sans-serif;
-    font-weight: 900;
-  }
-
-   & p, th, td {
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-  }
 `;
+
+export const CarouselHeader = styled.div`
+  padding-left: 10px;
+  border: 1px solid #bbb;
+`
 
 // Cards.jsx
 export const CardsContainer = styled.div`
