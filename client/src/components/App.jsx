@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import getData from '../../helper.js';
 
+import { GlobalStyle } from '../theme/globalStyle.js';
+
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
 import QA from './QA/QA.jsx';
@@ -72,6 +74,7 @@ export default class App extends React.Component {
   render () {
     return (
       <>
+        <GlobalStyle />
         <ProductInfo product={this.state.selectedProduct}/>
         <RelatedProducts product={this.state.selectedProduct}/>
         <QA product={this.state.selectedProduct}/>

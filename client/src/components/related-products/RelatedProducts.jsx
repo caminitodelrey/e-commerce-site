@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import getData from '../../../helper.js';
 
-import { GlobalFont } from '../../theme/globalStyle.js';
 import { Carousels, CarouselHeader } from '../../theme/carouselStyle.js';
 
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
