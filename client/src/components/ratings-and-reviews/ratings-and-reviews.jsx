@@ -1,12 +1,21 @@
-import React from 'react';
-// import getData from '../../../helper.js';
+import React, { useEffect, useState } from 'react';
+import getData from '../../../helper.js';
 import ReviewList from './ReviewList/ReviewList.jsx';
 import RatingBreakDown from './ratingBreakDown/RatingBreakDown.jsx';
 import WriteReview from './writeReview/WriteReview.jsx';
 import Sort from './sort/Sort.jsx';
 import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx';
 
-export default function RatingsReviews() {
+export default function RatingsReviews({ product }) {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    getData(`reviews?page=2&count=10&sort=newest&product_id=${product.id}`)
+      .then(({ data }) => {
+        setReviews(data.results);
+      });
+  }, []);
+
   return (
     <div>
       <h1>RatingsReviewssssss</h1>
@@ -26,7 +35,7 @@ export default function RatingsReviews() {
           borderColor: 'green',
         }}
       >
-        <ReviewList />
+        <ReviewList reviews={reviews} />
       </div>
       <div
         className="writeReviewGridBox"
@@ -38,6 +47,5 @@ export default function RatingsReviews() {
         <WriteReview />
       </div>
     </div>
-
   );
 }

@@ -172,7 +172,6 @@ export default function WriteReview() {
 
   return (
     <div>
-      <h3>-[WriteReview conponent]</h3>
       {writeReview2}
     </div>
   );

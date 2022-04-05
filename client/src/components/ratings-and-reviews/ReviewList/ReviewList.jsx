@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import ReviewsExampleData from '../ReviewsExampleData.jsx';
 import ReviewListUnit from './ReviewListUnit.jsx';
 
-export default function ReviewList() {
-  const reviews = ReviewsExampleData.results;
+export default function ReviewList({ reviews }) {
+  // const reviews = ReviewsExampleData.results;
   const [reviewsCount, setReviewsCount] = useState(2);
 
   const handleMoreReviews = () => {
