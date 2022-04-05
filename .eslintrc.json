@@ -5,5 +5,9 @@
     "import/extensions": "off",
     "array-callback-return": "off",
     "no-unused-expressions": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true
   }
 }

@@ -10,22 +10,22 @@ import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 export default function RelatedProducts({ product }) {
   const [status, setStatus] = useState('pending');
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [selectedProduct] = useState([
-    {
-      image:
-        'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-      category: 'pants',
-      name: 'Morning Joggers',
-      price: '40.00',
-      sale: null,
-      rating: {
-        1: '1',
-        2: '2',
-        3: '1',
-        4: '5',
-        5: '3',
-      },
-    },
+  const [selectedProducts, setSelectedProduct] = useState([
+    // {
+    //   image:
+    //     'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+    //   category: 'pants',
+    //   name: 'Morning Joggers',
+    //   price: '40.00',
+    //   sale: null,
+    //   rating: {
+    //     1: '1',
+    //     2: '2',
+    //     3: '1',
+    //     4: '5',
+    //     5: '3',
+    //   },
+    // },
   ]);
 
   const getRelatedProducts = () => {
@@ -60,6 +60,12 @@ export default function RelatedProducts({ product }) {
     getRelatedProducts();
   }, []);
 
+  useEffect(() => {
+    // const savedProducts = JSON.parse(window.localStorage.getItem('wishlist'));
+    // savedProducts ? setSelectedProduct(savedProducts) : null;
+    setSelectedProduct(JSON.parse(localStorage.getItem('wishlist') || []));
+  }, []);
+
   if (status === 'pending') {
     return <div>Loading...</div>;
   }
@@ -74,12 +80,13 @@ export default function RelatedProducts({ product }) {
           products={relatedProducts}
           mainProduct={product}
           show={4}
+          setSelectedProduct={setSelectedProduct}
         />
 
         <div className="selected-header">
           <h2>WISHLIST</h2>
         </div>
-        <WishlistCarousel products={selectedProduct} />
+        <WishlistCarousel products={selectedProducts} />
       </Carousels>
     );
   }

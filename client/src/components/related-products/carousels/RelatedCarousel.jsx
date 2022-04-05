@@ -20,7 +20,9 @@ import {
   ProductPrice,
 } from '../../../theme/carouselStyle.js';
 
-export default function RelatedCarousel({ products, mainProduct, show }) {
+export default function RelatedCarousel({
+  products, mainProduct, show, setSelectedProduct,
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
   const [modal, setModal] = useState({
@@ -72,7 +74,11 @@ export default function RelatedCarousel({ products, mainProduct, show }) {
         >
           <ProductImg product={product} />
         </div>
-        <ActionButton product={product} />
+        <ActionButton
+          products={products}
+          product={product}
+          setSelectedProduct={setSelectedProduct}
+        />
       </CardAssetContainer>
 
       <div className="product-card__details">
