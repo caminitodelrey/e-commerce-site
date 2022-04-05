@@ -1,9 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // RelatedProducts.jsx
 export const Carousels = styled.div`
   // border: 1px solid red;
   padding: 50px 150px;
+  width: 1200px;
+  position: relative;
+  margin: auto;
 `;
 
 // Cards.jsx
@@ -13,7 +16,6 @@ export const CardsContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 
 export const CardsWrapper = styled.div`
   display: flex;
@@ -45,7 +47,7 @@ const Chevron = styled.button`
   background-color: white;
   color: rgba(10, 89, 51);
   cursor: pointer;
-`
+`;
 
 // Carousel Chevrons
 export const LeftChevron = styled(Chevron)`
@@ -67,7 +69,7 @@ export const CardContainer = styled.section`
 export const CardAssetContainer = styled.div`
   // border: 1px solid orange;
   overflow: hidden;
-  width: 260px;
+  min-width: 260px;
   height: 360px;
 
   &:hover {
@@ -87,18 +89,18 @@ export const CardAssetImg = styled.img`
 export const ProductCategory = styled.p`
   color: rgb(128, 128, 128);
   font-size: 0.875em;
-`
+`;
 
 export const ProductName = styled.p`
   font-weight: bold;
   margin-top: -8px;
-`
+`;
 
 export const ProductPrice = styled.p`
   margin-top: -8px;
   color: rgb(10, 89, 81);
   font-size: 0.9em;
-`
+`;
 
 // Action Button
 export const ActionButtonContainer = styled.div`

@@ -21,13 +21,34 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
       .then((data) => {
         const mainFeatures = data[0].data.features;
         const relatedFeatures = data[1].data.features;
-        const map = new Map();
+        let allFeatures = {};
 
-        mainFeatures.forEach((main) => map.set(main.feature, main));
-        relatedFeatures.forEach((related) =>
-          map.set(related.feature, { ...map.get(related.feature), ...related }));
+        console.log('mainFeatures', mainFeatures);
+        console.log('relatedFeatures', relatedFeatures);
 
-        const mergedArr = Array.from(map.values());
+        let featureCounter = Math.max(mainFeatures.length, relatedFeatures.length);
+
+
+        for (let i = 0; i < featureCounter; i += 1) {
+
+
+          let allFeatures = {
+            featureType: relatedFeatures[i].feature,
+            relatedValue: relatedFeatures[i].value,
+          };
+        }
+
+        // const dummyFeatures = features;
+        // dummyFeatures.push();
+        // setFeatures(dummyFeatures);
+
+        // const map = new Map();
+        // mainFeatures.forEach((main) => map.set(main.feature, main));
+        // relatedFeatures.forEach((related) =>
+        //   map.set(related.feature, { ...map.get(related.feature), ...related }));
+
+        // const mergedArr = Array.from(map.values());
+
       })
       .catch((err) => {
         throw Error(err);

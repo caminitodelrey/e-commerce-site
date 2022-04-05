@@ -108,13 +108,13 @@ export default function RelatedCarousel({
         <ContentWrapper>
           <Content
             style={{
-              transform: `translateX(-${currentIndex * (100 / (show + 1))}%)`,
+              transform: `translateX(-${currentIndex * (100 / (show))}%)`,
             }}
           >
             {Card}
           </Content>
         </ContentWrapper>
-        {currentIndex < length - (show - 1) && (
+        {currentIndex < length - (show) && (
           <RightChevron className="right-arrow" onClick={next}>
             <FaChevronRight />
           </RightChevron>
