@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineCheck } from 'react-icons/ai';
+import { TiStar, TiStarOutline } from 'react-icons/ti';
 import moment from 'moment';
 
 export default function ReivewListUnit({ review }) {
@@ -35,13 +36,16 @@ export default function ReivewListUnit({ review }) {
     >
       <div>
         <span className="ratings-starRatings">
-          <span className="rating-star">*</span>
-          <span className="rating-star">*</span>
-          <span className="rating-star">*</span>
-          <span className="rating-star">*</span>
-          <span className="rating-star">*</span>
-          rating:
-          {singleReview.rating}
+          {singleReview.rating >= 1
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
+          {singleReview.rating >= 2
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
+          {singleReview.rating >= 3
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
+          {singleReview.rating >= 4
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
+          {singleReview.rating >= 5
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
         </span>
         {' '}
         <span>

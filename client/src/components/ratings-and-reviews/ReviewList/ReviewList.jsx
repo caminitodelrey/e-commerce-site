@@ -11,7 +11,6 @@ export default function ReviewList({ reviews }) {
 
   return (
     <div>
-      <h3>-[ReviewList]</h3>
       <div>
         {reviews.slice(0, reviewsCount).map((review) => (
           <div key={review.review_id}>
