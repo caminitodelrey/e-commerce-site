@@ -19,8 +19,15 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
       getData(`products/${product.id}`),
     ])
       .then((data) => {
-        // main: data[0].data.features
-        // related: data[1].data.features
+        const mainFeatures = data[0].data.features;
+        const relatedFeatures = data[1].data.features;
+        const map = new Map();
+
+        mainFeatures.forEach((main) => map.set(main.feature, main));
+        relatedFeatures.forEach((related) =>
+          map.set(related.feature, { ...map.get(related.feature), ...related }));
+
+        const mergedArr = Array.from(map.values());
       })
       .catch((err) => {
         throw Error(err);
