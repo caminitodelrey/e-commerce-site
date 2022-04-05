@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TestRenderer from 'react-test-renderer';
+// import TestRenderer from 'react-test-renderer';
 // import axios from 'axios';
 // import moment from 'moment';
 
@@ -21,11 +21,9 @@ export default function QA({ product }) {
   ]);
 
   useEffect(() => {
-    // const url = `qa/questions?product_id=${product.id}`;
-    const url = `qa/questions?product_id=37313`;
-    getData(url)
-      .then((res) => {setQuestions(res.data.results)})
-      .catch((err) => console.error(err));
+    getData(`qa/questions?product_id=${product.id}`)
+      .then((res) => { setQuestions(res.data.results); })
+      .catch((err) => { throw Error(err); });
   }, []);
 
   // componentDidMount() {
@@ -91,7 +89,8 @@ export default function QA({ product }) {
   // PUT /qa/questions/:question_id/report
   // Report Question
   // Updates a question to show it was reported.
-  // Note, this action does not delete the question, but the question will not be returned in the above GET request.
+  // Note, this action does not delete the question,
+  // but the question will not be returned in the above GET request.
 
   // PUT /qa/answers/:answer_id/helpful
   // Mark Answer as Helpful
@@ -100,18 +99,19 @@ export default function QA({ product }) {
   // PUT /qa/answers/:answer_id/report
   // Report Answer
   // Updates an answer to show it has been reported.
-  // Note, this action does not delete the answer, but the answer will not be returned in the above GET request.
+  // Note, this action does not delete the answer,
+  // but the answer will not be returned in the above GET request.
 
   // const { product, questions } = this.state;
   // console.log(questions);
   return (
     <div className="QA">
       <div>
-        <span>{'[ ================== Q&A ================== ]'}</span>
+        <span>[ ================== Q&A ================== ]</span>
       </div>
 
       <div>
-        <span>{'QUESTIONS & ANSWERS'}</span>
+        <span>QUESTIONS & ANSWERS</span>
       </div>
 
       <SearchQA product={product} />
@@ -126,7 +126,7 @@ export default function QA({ product }) {
         </div>
       </div>
       <div>
-        <span>{'[ ================== Q&A ================== ]'}</span>
+        <span>[ ================== Q&A ================== ]</span>
       </div>
     </div>
   );
