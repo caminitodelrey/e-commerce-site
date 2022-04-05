@@ -63,7 +63,7 @@ export default function RelatedCarousel({
   };
 
   const Card = products.map((product) => (
-    <CardContainer key={product.name} style={{ width: `calc(100% / ${show})` }}>
+    <CardContainer id="card" key={product.name} style={{ width: `calc(100% / ${show})` }}>
       <CardAssetContainer>
         <div
           className="product-card__img"

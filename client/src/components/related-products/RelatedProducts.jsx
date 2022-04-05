@@ -81,8 +81,7 @@ export default function RelatedProducts({ product }) {
     return (
       <div>
         <div>
-          We are sorry. There was a problem loading products to complete the
-          look.
+          We are sorry. There was a problem loading recommended products and your wishlist.
         </div>
       </div>
     );
