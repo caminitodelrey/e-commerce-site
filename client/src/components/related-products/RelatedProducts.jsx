@@ -10,23 +10,7 @@ import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 export default function RelatedProducts({ product }) {
   const [status, setStatus] = useState('pending');
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [selectedProduct] = useState([
-    {
-      image:
-        'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-      category: 'pants',
-      name: 'Morning Joggers',
-      price: '40.00',
-      sale: null,
-      rating: {
-        1: '1',
-        2: '2',
-        3: '1',
-        4: '5',
-        5: '3',
-      },
-    },
-  ]);
+  const [selectedProducts, setSelectedProduct] = useState([]);
 
   const getRelatedProducts = () => {
     getData(`products/${product.id}/related`)
@@ -60,6 +44,10 @@ export default function RelatedProducts({ product }) {
     getRelatedProducts();
   }, []);
 
+  useEffect(() => {
+    setSelectedProduct(JSON.parse(window.localStorage.getItem('wishlist')) || []);
+  }, []);
+
   if (status === 'pending') {
     return <div>Loading...</div>;
   }
@@ -74,12 +62,17 @@ export default function RelatedProducts({ product }) {
           products={relatedProducts}
           mainProduct={product}
           show={4}
+          selectedProducts={selectedProducts}
+          setSelectedProduct={setSelectedProduct}
         />
 
         <div className="selected-header">
           <h2>WISHLIST</h2>
         </div>
-        <WishlistCarousel products={selectedProduct} />
+        <WishlistCarousel
+          products={selectedProducts}
+          show={4}
+        />
       </Carousels>
     );
   }
@@ -88,8 +81,7 @@ export default function RelatedProducts({ product }) {
     return (
       <div>
         <div>
-          We are sorry. There was a problem loading products to complete the
-          look.
+          We are sorry. There was a problem loading recommended products and your wishlist.
         </div>
       </div>
     );

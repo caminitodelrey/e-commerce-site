@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
 import ProductImg from '../subcomponents/ProductImg.jsx';
 import ComparisonModal from '../subcomponents/ComparisonModal.jsx';
-import ActionButton from '../subcomponents/ActionButton.jsx';
+import WishlistActionButton from '../subcomponents/WishlistActionButton.jsx';
 
 import {
   CardsContainer,
@@ -20,7 +20,9 @@ import {
   ProductPrice,
 } from '../../../theme/carouselStyle.js';
 
-export default function RelatedCarousel({ products, mainProduct, show }) {
+export default function RelatedCarousel({
+  products, mainProduct, show, setSelectedProduct, selectedProducts,
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
   const [modal, setModal] = useState({
@@ -61,7 +63,7 @@ export default function RelatedCarousel({ products, mainProduct, show }) {
   };
 
   const Card = products.map((product) => (
-    <CardContainer key={product.name} style={{ width: `calc(100% / ${show})` }}>
+    <CardContainer id="card" key={product.name} style={{ width: `calc(100% / ${show})` }}>
       <CardAssetContainer>
         <div
           className="product-card__img"
@@ -72,7 +74,11 @@ export default function RelatedCarousel({ products, mainProduct, show }) {
         >
           <ProductImg product={product} />
         </div>
-        <ActionButton product={product} />
+        <WishlistActionButton
+          product={product}
+          selectedProducts={selectedProducts}
+          setSelectedProduct={setSelectedProduct}
+        />
       </CardAssetContainer>
 
       <div className="product-card__details">
