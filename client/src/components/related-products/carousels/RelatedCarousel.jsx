@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
 import ProductImg from '../subcomponents/ProductImg.jsx';
 import ComparisonModal from '../subcomponents/ComparisonModal.jsx';
-import ActionButton from '../subcomponents/ActionButton.jsx';
+import WishlistActionButton from '../subcomponents/WishlistActionButton.jsx';
 
 import {
   CardsContainer,
@@ -21,7 +21,7 @@ import {
 } from '../../../theme/carouselStyle.js';
 
 export default function RelatedCarousel({
-  products, mainProduct, show, setSelectedProduct,
+  products, mainProduct, show, setSelectedProduct, selectedProducts,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
@@ -74,9 +74,9 @@ export default function RelatedCarousel({
         >
           <ProductImg product={product} />
         </div>
-        <ActionButton
-          products={products}
+        <WishlistActionButton
           product={product}
+          selectedProducts={selectedProducts}
           setSelectedProduct={setSelectedProduct}
         />
       </CardAssetContainer>
