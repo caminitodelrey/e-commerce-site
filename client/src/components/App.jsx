@@ -11,7 +11,7 @@ import RatingsReviews from './ratings-and-reviews/ratings-and-reviews.jsx';
 // an example with 6 related products --> id: 37318
 export default function App() {
   const [selectedProduct, setSelectedProduct] = useState({
-    id: 37311,
+    id: 37313, // change to 37311
     campus: 'hr-rfe',
     name: 'Camo Onesie',
     slogan: 'Blend in to your crowd',

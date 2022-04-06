@@ -19,30 +19,23 @@ export default function QA({ product }) {
       answers: {},
     },
   ]);
+  const [filteredQuestions, setFilteredQuestions] = useState(questions);
+  const [questionsDisplayed, setQuestionsDisplayed] = useState(2);
 
   useEffect(() => {
     getData(`qa/questions?product_id=${product.id}`)
-      .then((res) => { setQuestions(res.data.results); })
-      .catch((err) => { throw Error(err); });
-  }, []);
+      .then((res) => {
+        setQuestions(res.data.results);
+        setFilteredQuestions(res.data.results);
+      })
+      .catch((err) => {
+        throw Error(err);
+      });
+  }, [product.id]);
 
-  // componentDidMount() {
-  //   const url = `qa/questions?product_id=${this.state.product.id}`;
-  //   getData(url)
-  //     .then((res) => this.setState({
-  //       questions: res.data.results,
-  //     }))
-  //     .catch((err) => console.error(err));
-  // }
-
-  // export default class QA extends React.Component {
-  //   constructor(props) {
-  //     super(props);
-  //     this.state = {
-  //       product: this.props.product || { id: 37311 },
-  //       questions: [],
-  //     };
-  //   }
+  const handleMoreQuestions = () => {
+    setQuestionsDisplayed(questionsDisplayed + 2);
+  };
 
   //   // product_id: 37311 - 38199
 
@@ -107,26 +100,29 @@ export default function QA({ product }) {
   return (
     <div className="QA">
       <div>
-        <span>[ ================== Q&A ================== ]</span>
+        <h1>Questions & Answers</h1>
       </div>
 
-      <div>
-        <span>QUESTIONS & ANSWERS</span>
-      </div>
-
-      <SearchQA product={product} />
-      <ListQA product={product} questions={questions} />
+      <SearchQA product={product} filteredQuestions={filteredQuestions} />
+      <ListQA
+        product={product}
+        filteredQuestions={filteredQuestions}
+        questionsDisplayed={questionsDisplayed}
+      />
 
       <div className="BottomButtonsQA">
         <div>
-          <input type="submit" value="MORE ANSWERED QUESTIONS" />
+          {filteredQuestions.length - questionsDisplayed > 0 ? (
+            <input
+              type="submit"
+              value={`More Answered Questions (${filteredQuestions.length - questionsDisplayed})`}
+              onClick={handleMoreQuestions}
+            />
+          ) : null}
         </div>
         <div>
-          <input type="submit" value="ADD A QUESTION +" />
+          <input type="submit" value="Add a Question +" />
         </div>
-      </div>
-      <div>
-        <span>[ ================== Q&A ================== ]</span>
       </div>
     </div>
   );

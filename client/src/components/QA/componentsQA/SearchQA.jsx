@@ -1,41 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class SearchQA extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      product: this.props.product,
-      searchText: '',
-    };
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-  }
+export default function SearchQA({ filteredQuestions }) {
+  const [searchText, setSearchText] = useState('');
 
-  handleSearchChange(e) {
-    this.setState({ searchText: e.target.value });
-  }
-
-  handleSearchSubmit(e) {
+  const handleSearchChange = (e) => { setSearchText(e.target.value); }; // move to QA?
+  const handleSearchSubmit = (e) => {
     if (e.keyCode === 13) {
-      console.log(`Searching Questions for ${this.state.searchText}`);
+      console.log(`Searching Questions for ${searchText}`); // delete later
     }
-  }
+  };
 
-  render() {
-    const { searchText } = this.state;
-    return (
-      <div>
-        <input
-          id="search"
-          type="text"
-          autoComplete="off"
-          value={searchText}
-          onChange={this.handleSearchChange}
-          onKeyDown={(e) => this.handleSearchSubmit(e)}
-          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-        />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <input
+        id="search"
+        type="search"
+        autoComplete="off"
+        maxLength="150"
+        value={searchText}
+        onChange={handleSearchChange}
+        onKeyDown={(e) => handleSearchSubmit(e)}
+        placeholder="Have a question? Search for answers..."
+      />
+      <i role="presentation" />
+    </div>
+  );
 }
 
-export default SearchQA;
+// class SearchQA extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       product: this.props.product,
+//       searchText: '',
+//     };
+//     this.handleSearchChange = this.handleSearchChange.bind(this);
+//   }
+
+//   handleSearchChange(e) {
+//     this.setState({ searchText: e.target.value });
+//   }
+
+//   handleSearchSubmit(e) {
+//     if (e.keyCode === 13) {
+//       console.log(`Searching Questions for ${this.state.searchText}`);
+//     }
+//   }
+
+//   render() {
+//     const { searchText } = this.state;
+//     return (
+//       <div>
+//         <input
+//           id="search"
+//           type="text"
+//           autoComplete="off"
+//           value={searchText}
+//           onChange={this.handleSearchChange}
+//           onKeyDown={(e) => this.handleSearchSubmit(e)}
+//           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+//         />
+//       </div>
+//     );
+//   }
+// }
+
+// export default SearchQA;
