@@ -18,6 +18,7 @@ export default function CarouselCard({
   products,
   toggleModal,
   handleKeyDown,
+  setMainProduct,
   selectedProducts,
   setSelectedProduct,
 }) {
@@ -33,6 +34,7 @@ export default function CarouselCard({
             <div
               className="product-card__img"
               onClick={() => toggleModal(product)}
+              // onClick={() => setMainProduct(product)}
               onKeyDown={handleKeyDown}
               role="button"
               tabIndex="0"
@@ -54,7 +56,8 @@ export default function CarouselCard({
               <PriceContainer>
                 <ProductPrice style={{ color: 'red' }}>
                   $
-                  {product.price.replace(/\.00$/, '') - product.sale.replace(/\.00$/, '')}
+                  {product.price.replace(/\.00$/, '')
+                  - product.sale.replace(/\.00$/, '')}
                 </ProductPrice>
                 <PreSalePrice>
                   $

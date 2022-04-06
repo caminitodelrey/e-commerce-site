@@ -14,9 +14,10 @@ import {
 } from '../../../theme/carouselStyle.js';
 
 export default function RelatedCarousel({
+  show,
   products,
   mainProduct,
-  show,
+  setMainProduct,
   setSelectedProduct,
   selectedProducts,
 }) {
@@ -78,6 +79,7 @@ export default function RelatedCarousel({
               products={products}
               toggleModal={toggleModal}
               handleKeyDown={handleKeyDown}
+              setMainProduct={setMainProduct}
               selectedProducts={selectedProducts}
               setSelectedProduct={setSelectedProduct}
             />

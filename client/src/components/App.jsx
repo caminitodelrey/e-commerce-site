@@ -35,7 +35,7 @@ export default function App() {
     <>
       <GlobalStyle />
       <ProductInfo product={selectedProduct} />
-      <RelatedProducts product={selectedProduct} />
+      <RelatedProducts product={selectedProduct} setMainProduct={setSelectedProduct} />
       <QA product={selectedProduct} />
       <RatingsReviews product={selectedProduct} />
     </>
