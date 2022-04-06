@@ -12,6 +12,7 @@ import getData from '../../../../helper.js';
 
 export default function ComparisonModal({ toggleModal, product, mainProduct }) {
   const [features, setFeatures] = useState([]);
+  const [isLoaded, setisLoading] = useState(false);
 
   const getFeatures = () => {
     Promise.all([
@@ -21,34 +22,43 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
       .then((data) => {
         const mainFeatures = data[0].data.features;
         const relatedFeatures = data[1].data.features;
-        let allFeatures = {};
+        const map = new Map();
 
-        console.log('mainFeatures', mainFeatures);
-        console.log('relatedFeatures', relatedFeatures);
-
-        let featureCounter = Math.max(mainFeatures.length, relatedFeatures.length);
-
-
-        for (let i = 0; i < featureCounter; i += 1) {
-
-
-          let allFeatures = {
-            featureType: relatedFeatures[i].feature,
-            relatedValue: relatedFeatures[i].value,
+        mainFeatures.forEach((main) => {
+          const sorted = {
+            feature: main.feature,
+            main: main.value,
+            related: null,
           };
-        }
+          map.set(main.feature, sorted);
+        });
 
-        // const dummyFeatures = features;
-        // dummyFeatures.push();
-        // setFeatures(dummyFeatures);
+        relatedFeatures.forEach((related) => {
+          const relatedSorted = {
+            feature: related.feature,
+            main: null,
+            related: related.value,
+          };
+          map.set(related.feature, relatedSorted);
+        });
 
-        // const map = new Map();
-        // mainFeatures.forEach((main) => map.set(main.feature, main));
-        // relatedFeatures.forEach((related) =>
-        //   map.set(related.feature, { ...map.get(related.feature), ...related }));
+        mainFeatures.forEach((main) => {
+          relatedFeatures.forEach((related) => {
+            if ((main.feature).includes(related.feature)) {
+              const combined = {
+                feature: main.feature,
+                main: main.value,
+                related: related.value,
+              };
+              map.set(main.feature, combined);
+            }
+          });
+        });
 
-        // const mergedArr = Array.from(map.values());
+        const mergedArr = Array.from(map.values());
 
+        setFeatures(mergedArr);
+        setisLoading(true);
       })
       .catch((err) => {
         throw Error(err);
@@ -59,44 +69,35 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
     getFeatures();
   }, []);
 
-  return (
-    <ModalContainer onClick={toggleModal}>
-      <ModalContent onClick={toggleModal}>
-        <ModalTitle>
-          <p>COMPARING</p>
-        </ModalTitle>
-        <ModalBody>
-          <table>
-            <thead>
-              <tr>
-                <ModalProductName width="30%">
-                  {mainProduct.name}
-                </ModalProductName>
-                <th> </th>
-                <ModalProductName width="30%">{product.name}</ModalProductName>
-              </tr>
-            </thead>
-            <tbody>
-              <TableRow>
-                <td>
-                  <FcCheckmark />
-                </td>
-                <td>GMO and Pesticide-free</td>
-                <td>
-                  <FcCheckmark />
-                </td>
-              </TableRow>
-              <TableRow>
-                <td>
-                  <FcCheckmark />
-                </td>
-                <td>Made with 100% Genetic Modification</td>
-                <td> </td>
-              </TableRow>
-            </tbody>
-          </table>
-        </ModalBody>
-      </ModalContent>
-    </ModalContainer>
-  );
+  if (isLoaded) {
+    return (
+      <ModalContainer onClick={toggleModal}>
+        <ModalContent onClick={toggleModal}>
+          <ModalTitle>
+            <p>COMPARING</p>
+          </ModalTitle>
+          <ModalBody>
+            <table>
+              <thead>
+                <tr>
+                  <ModalProductName>{mainProduct.name}</ModalProductName>
+                  <th width="300px"> </th>
+                  <ModalProductName>{product.name}</ModalProductName>
+                </tr>
+              </thead>
+              <tbody>
+                {features.map((feature) => (
+                  <TableRow key={feature.feature}>
+                    <td>{feature.main !== null ? <FcCheckmark /> : ''}</td>
+                    <td>{feature.feature}</td>
+                    <td>{feature.related !== null ? <FcCheckmark /> : ''}</td>
+                  </TableRow>
+                ))}
+              </tbody>
+            </table>
+          </ModalBody>
+        </ModalContent>
+      </ModalContainer>
+    );
+  }
 }

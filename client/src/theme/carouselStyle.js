@@ -51,7 +51,7 @@ const Chevron = styled.button`
 
 // Carousel Chevrons
 export const LeftChevron = styled(Chevron)`
-  left: -30px;
+  left: -80px;
 `;
 
 export const RightChevron = styled(Chevron)`

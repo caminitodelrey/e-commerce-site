@@ -21,7 +21,11 @@ import {
 } from '../../../theme/carouselStyle.js';
 
 export default function RelatedCarousel({
-  products, mainProduct, show, setSelectedProduct, selectedProducts,
+  products,
+  mainProduct,
+  show,
+  setSelectedProduct,
+  selectedProducts,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
@@ -63,7 +67,11 @@ export default function RelatedCarousel({
   };
 
   const Card = products.map((product) => (
-    <CardContainer id="card" key={product.name} style={{ width: `calc(100% / ${show})` }}>
+    <CardContainer
+      id="card"
+      key={product.name}
+      style={{ width: `calc(100% / ${show})` }}
+    >
       <CardAssetContainer>
         <div
           className="product-card__img"
@@ -108,13 +116,13 @@ export default function RelatedCarousel({
         <ContentWrapper>
           <Content
             style={{
-              transform: `translateX(-${currentIndex * (100 / (show))}%)`,
+              transform: `translateX(-${currentIndex * (100 / show)}%)`,
             }}
           >
             {Card}
           </Content>
         </ContentWrapper>
-        {currentIndex < length - (show) && (
+        {currentIndex < length - show && (
           <RightChevron className="right-arrow" onClick={next}>
             <FaChevronRight />
           </RightChevron>

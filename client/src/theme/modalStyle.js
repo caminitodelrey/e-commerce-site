@@ -24,6 +24,7 @@ export const ModalProductName = styled.th`
   font-size: 1em;
   padding-bottom: 10px;
   border-bottom: 3px solid rgba(3, 115, 83, 0.3);
+  width: 150px;
 `;
 
 export const ModalContent = styled.div`
