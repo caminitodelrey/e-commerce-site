@@ -29,23 +29,46 @@ export default function App() {
     //     value: '"AllLight Composition Resin"',
     //   },
     // ],
-    "id": 37311,
+    // "id": 37311,
+    // "campus": "hr-rfe",
+    // "name": "Camo Onesie",
+    // "slogan": "Blend in to your crowd",
+    // "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+    // "category": "Jackets",
+    // "default_price": "140.00",
+    // "created_at": "2021-08-13T14:37:33.145Z",
+    // "updated_at": "2021-08-13T14:37:33.145Z",
+    // "features": [
+    //   {
+    //     "feature": "Fabric",
+    //     "value": "Canvas"
+    //   },
+    //   {
+    //     "feature": "Buttons",
+    //     "value": "Brass"
+    //   }
+    // ],
+    "id": 37318,
     "campus": "hr-rfe",
-    "name": "Camo Onesie",
-    "slogan": "Blend in to your crowd",
-    "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-    "category": "Jackets",
-    "default_price": "140.00",
+    "name": "YEasy 350",
+    "slogan": "Just jumped over jumpman",
+    "description": "These stretchy knit shoes show off asymmetrical lacing and a big sculpted rubber midsole. In a nod to adidas soccer heritage.",
+    "category": "Kicks",
+    "default_price": "450.00",
     "created_at": "2021-08-13T14:37:33.145Z",
     "updated_at": "2021-08-13T14:37:33.145Z",
     "features": [
       {
-        "feature": "Fabric",
-        "value": "Canvas"
+        "feature": "Sole",
+        "value": "Rubber"
       },
       {
-        "feature": "Buttons",
-        "value": "Brass"
+        "feature": "Material",
+        "value": "FullControlSkin"
+      },
+      {
+        "feature": "Stitching",
+        "value": "Double Stitch"
       }
     ]
   });

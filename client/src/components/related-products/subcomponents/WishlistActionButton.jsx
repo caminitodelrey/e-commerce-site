@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 
-import { ActionButtonContainer } from '../../../theme/carouselStyle.js';
+import { ActionButtonContainer } from '../../../theme/buttonStyle.js';
 
 export default function WishlistActionButton({
   product,

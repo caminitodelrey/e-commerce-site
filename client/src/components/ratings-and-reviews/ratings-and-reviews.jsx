@@ -22,7 +22,7 @@ export default function RatingsReviews({ product }) {
     ).then(({ data }) => {
       setMetaData(data);
     });
-  }, []);
+  }, [product.id]);
 
   return (
     <div>

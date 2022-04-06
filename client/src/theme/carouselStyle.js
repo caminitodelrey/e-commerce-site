@@ -113,18 +113,3 @@ export const PreSalePrice = styled.p`
   text-decoration: line-through;
   font-size: 0.9em;
 `;
-
-// Action Button
-export const ActionButtonContainer = styled.div`
-  position: absolute;
-  top: 0%;
-  transform: translateX(630%);
-  padding: 10px 10px 7px 10px;
-  border-radius: 0 6px ;
-  background: #fff;
-  color: rgba(11, 191, 125);
-
-  &:hover {
-    cursor: pointer;
-  }
-`;

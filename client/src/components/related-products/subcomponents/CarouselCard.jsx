@@ -13,6 +13,11 @@ import {
   PreSalePrice,
 } from '../../../theme/carouselStyle.js';
 
+import {
+  CompareButtonContainer,
+  CompareButton,
+} from '../../../theme/buttonStyle.js';
+
 export default function CarouselCard({
   show,
   products,
@@ -33,7 +38,6 @@ export default function CarouselCard({
           <CardAssetContainer>
             <div
               className="product-card__img"
-              // onClick={() => toggleModal(product)}
               onClick={() => getProductData(product.id)}
               onKeyDown={handleKeyDown}
               role="button"
@@ -46,6 +50,14 @@ export default function CarouselCard({
               selectedProducts={selectedProducts}
               setSelectedProduct={setSelectedProduct}
             />
+            <CompareButtonContainer>
+              <CompareButton
+                type="button"
+                onClick={() => toggleModal(product)}
+              >
+                COMPARE
+              </CompareButton>
+            </CompareButtonContainer>
           </CardAssetContainer>
 
           <div className="product-card__details">
