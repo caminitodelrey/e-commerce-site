@@ -15,6 +15,18 @@ export const ActionButtonContainer = styled.div`
   }
 `;
 
+// Compare button
+export const CompareButton = styled.button`
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+  color: rgba(11, 191, 125, .9);
+  background-color: #fff;
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.1)
+`;
+
 // Compare button container
 export const CompareButtonContainer = styled.div`
   position: absolute;
@@ -23,21 +35,10 @@ export const CompareButtonContainer = styled.div`
   padding: 10px 10px 7px 10px;
   color: rgba(11, 191, 125);
 
-  &:hover {
+  &:hover ${CompareButton} {
     cursor: pointer;
-  }
-`;
-
-export const CompareButton = styled.button`
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  text-decoration: none;
-  padding: 8px;
-  background-color: rgba(11, 191, 125, .9);
-  color: #fff;
-
-  &:hover {
-    cursor: pointer;
+    color: #fff;
+    background-color: rgba(11, 191, 125, .9);
+    box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
 `;

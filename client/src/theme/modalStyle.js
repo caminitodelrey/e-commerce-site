@@ -32,7 +32,7 @@ export const ModalContent = styled.div`
   padding: 20px;
   background-color: white;
   border-radius: 20px;
-  box-shadow: -1px 3px 46px 15px rgba(11, 191, 125, .6)
+  box-shadow: -1px 3px 35px 15px rgba(11, 191, 125, .6)
 `;
 
 export const ModalBody = styled.div`
