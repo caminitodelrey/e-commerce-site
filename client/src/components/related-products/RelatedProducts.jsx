@@ -7,7 +7,7 @@ import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 // products/37311/related
 // product_id: 37311 - 38199
 
-export default function RelatedProducts({ product, setMainProduct }) {
+export default function RelatedProducts({ product, getProductData }) {
   const [status, setStatus] = useState('pending');
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [selectedProducts, setSelectedProduct] = useState([]);
@@ -62,7 +62,7 @@ export default function RelatedProducts({ product, setMainProduct }) {
           show={4}
           products={relatedProducts}
           mainProduct={product}
-          setMainProduct={setMainProduct}
+          getProductData={getProductData}
           selectedProducts={selectedProducts}
           setSelectedProduct={setSelectedProduct}
         />

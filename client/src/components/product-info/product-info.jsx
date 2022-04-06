@@ -5,7 +5,6 @@ import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
 
 export default function ({ product }) {
-  const [productId, setProductId] = useState('37311');
   const [styles, setStyles] = useState(
     product.styles || [
       {
@@ -23,13 +22,13 @@ export default function ({ product }) {
   const [photoList, setPhotoList] = useState(selectedStyle.photos);
 
   useEffect(() => {
-    getData(`products/${productId}/styles`)
+    getData(`products/${product.id}/styles`)
       .then((res) => {
         setStyles(res.data.results);
         selectStyle(res.data.results[0]);
       })
       .catch((err) => console.log('getData catch: ', err));
-  }, []);
+  }, [product]);
 
   useEffect(() => {
     selectStyle(styles[0]);

@@ -18,7 +18,7 @@ export default function CarouselCard({
   products,
   toggleModal,
   handleKeyDown,
-  setMainProduct,
+  getProductData,
   selectedProducts,
   setSelectedProduct,
 }) {
@@ -33,8 +33,8 @@ export default function CarouselCard({
           <CardAssetContainer>
             <div
               className="product-card__img"
-              onClick={() => toggleModal(product)}
-              // onClick={() => setMainProduct(product)}
+              // onClick={() => toggleModal(product)}
+              onClick={() => getProductData(product.id)}
               onKeyDown={handleKeyDown}
               role="button"
               tabIndex="0"

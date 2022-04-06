@@ -17,7 +17,7 @@ export default function RelatedCarousel({
   show,
   products,
   mainProduct,
-  setMainProduct,
+  getProductData,
   setSelectedProduct,
   selectedProducts,
 }) {
@@ -79,7 +79,7 @@ export default function RelatedCarousel({
               products={products}
               toggleModal={toggleModal}
               handleKeyDown={handleKeyDown}
-              setMainProduct={setMainProduct}
+              getProductData={getProductData}
               selectedProducts={selectedProducts}
               setSelectedProduct={setSelectedProduct}
             />
