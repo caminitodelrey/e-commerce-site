@@ -88,9 +88,9 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
               <tbody>
                 {features.map((feature) => (
                   <TableRow key={feature.feature}>
-                    <td>{feature.main !== null ? <FcCheckmark /> : ''}</td>
+                    <td>{feature.main === true ? <FcCheckmark /> : feature.main}</td>
                     <td>{feature.feature}</td>
-                    <td>{feature.related !== null ? <FcCheckmark /> : ''}</td>
+                    <td>{feature.related === true ? <FcCheckmark /> : feature.related}</td>
                   </TableRow>
                 ))}
               </tbody>
