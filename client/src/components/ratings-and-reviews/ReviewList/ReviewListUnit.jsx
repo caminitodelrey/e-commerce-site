@@ -82,25 +82,27 @@ export default function ReivewListUnit({ review }) {
       <div style={{}}>
         Helpful?
         {' '}
-        <span
+        <u
           className="helpful"
           role="button"
           onKeyPress={null}
           tabIndex={0}
           onClick={handleHelpful}
         >
-          {`Yes ${singleReview.helpfulness} |`}
+          Yes
+        </u>
+        <span>
+          {`(${singleReview.helpfulness}) | `}
         </span>
-        <span
+        <u
           className="helpful"
           role="button"
           onKeyPress={null}
           tabIndex={0}
           onClick={handleReport}
         >
-          {' '}
           Report
-        </span>
+        </u>
       </div>
     </div>
   );
