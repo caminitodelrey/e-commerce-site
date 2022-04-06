@@ -1,10 +1,8 @@
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 
 import React, { useState, useEffect } from 'react';
-import Ratings from '../subcomponents/Ratings.jsx';
-import ProductImg from '../subcomponents/ProductImg.jsx';
 import ComparisonModal from '../subcomponents/ComparisonModal.jsx';
-import WishlistActionButton from '../subcomponents/WishlistActionButton.jsx';
+import CarouselCard from '../subcomponents/CarouselCard.jsx';
 
 import {
   CardsContainer,
@@ -13,11 +11,6 @@ import {
   Content,
   LeftChevron,
   RightChevron,
-  CardContainer,
-  CardAssetContainer,
-  ProductCategory,
-  ProductName,
-  ProductPrice,
 } from '../../../theme/carouselStyle.js';
 
 export default function RelatedCarousel({
@@ -66,45 +59,6 @@ export default function RelatedCarousel({
     }
   };
 
-  const Card = products.map((product) => (
-    <CardContainer
-      id="card"
-      key={product.name}
-      style={{ width: `calc(100% / ${show})` }}
-    >
-      <CardAssetContainer>
-        <div
-          className="product-card__img"
-          onClick={() => toggleModal(product)}
-          onKeyDown={handleKeyDown}
-          role="button"
-          tabIndex="0"
-        >
-          <ProductImg product={product} />
-        </div>
-        <WishlistActionButton
-          product={product}
-          selectedProducts={selectedProducts}
-          setSelectedProduct={setSelectedProduct}
-        />
-      </CardAssetContainer>
-
-      <div className="product-card__details">
-        <ProductCategory className="product-card__category">
-          {product.category.toUpperCase()}
-        </ProductCategory>
-        <ProductName className="product-card__name">{product.name}</ProductName>
-        <ProductPrice className="product-card__price">
-          $
-          {product.price.replace(/\.00$/, '')}
-        </ProductPrice>
-        <p className="product-card__rating">
-          <Ratings ratings={product.ratings} />
-        </p>
-      </div>
-    </CardContainer>
-  ));
-
   return (
     <CardsContainer>
       <CardsWrapper>
@@ -119,7 +73,14 @@ export default function RelatedCarousel({
               transform: `translateX(-${currentIndex * (100 / show)}%)`,
             }}
           >
-            {Card}
+            <CarouselCard
+              show={show}
+              products={products}
+              toggleModal={toggleModal}
+              handleKeyDown={handleKeyDown}
+              selectedProducts={selectedProducts}
+              setSelectedProduct={setSelectedProduct}
+            />
           </Content>
         </ContentWrapper>
         {currentIndex < length - show && (

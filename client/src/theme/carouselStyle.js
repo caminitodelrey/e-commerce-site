@@ -9,7 +9,7 @@ export const Carousels = styled.div`
   margin: auto;
 `;
 
-// Cards.jsx
+// RelatedCarousel.jsx
 export const CardsContainer = styled.div`
   // border: 1px solid blue;
   width: 100%;
@@ -58,7 +58,7 @@ export const RightChevron = styled(Chevron)`
   right: -80px;
 `;
 
-// Card in Cards.jsx
+// CarouselCard.jsx
 export const CardContainer = styled.section`
   // border: 1px solid green;
   width: 100%;
@@ -96,9 +96,21 @@ export const ProductName = styled.p`
   margin-top: -8px;
 `;
 
+export const PriceContainer = styled.div`
+  display: flex;
+`;
+
 export const ProductPrice = styled.p`
   margin-top: -8px;
   color: rgb(10, 89, 81);
+  font-size: 0.9em;
+`;
+
+export const PreSalePrice = styled.p`
+  margin-top: -8px;
+  padding-left: 10px;
+  color: rgb(10, 89, 81);
+  text-decoration: line-through;
   font-size: 0.9em;
 `;
 
