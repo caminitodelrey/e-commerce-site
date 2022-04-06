@@ -46,7 +46,7 @@ export default function RatingsReviews({ product }) {
         <RatingBreakDown metaData={metaData} />
       </div>
       <div>
-        <ProductBreakDown />
+        <ProductBreakDown metaData={metaData} />
       </div>
       <div>
         <h4>

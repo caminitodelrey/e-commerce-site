@@ -1,4 +1,5 @@
 import React from 'react';
+import PercentageBar from './PercentageBar';
 
 export default function RatingBreakDown({ metaData }) {
   const metaData2 = metaData || {
@@ -37,18 +38,35 @@ export default function RatingBreakDown({ metaData }) {
     Object.values(metaData2.ratings)
       .map((num, i) => Number(num) * Number(i + 1))
       .reduce((pre, cur) => pre + cur)
-      / (Number(metaData2.recommended.false) + Number(metaData2.recommended.true))
+    / (Number(metaData2.recommended.false) + Number(metaData2.recommended.true))
   ).toFixed(1);
 
-  const recommendPercentage = Math.floor((
-    Number(metaData2.recommended.true)
-      / (Number(metaData2.recommended.false) + Number(metaData2.recommended.true))
-  ) * 100);
+  const recommendPercentage = Math.floor(
+    (Number(metaData2.recommended.true)
+      / (Number(metaData2.recommended.false)
+        + Number(metaData2.recommended.true)))
+      * 100,
+  );
+
+  const starPercentage = (rating) => Math.floor(
+    (Number(metaData2.ratings[rating])
+        / (Number(metaData2.recommended.false)
+          + Number(metaData2.recommended.true)))
+        * 100,
+  );
+
+  const starPercentageArray = [
+    { percent: starPercentage(5), star: 5 },
+    { percent: starPercentage(4), star: 4 },
+    { percent: starPercentage(3), star: 3 },
+    { percent: starPercentage(2), star: 2 },
+    { percent: starPercentage(1), star: 1 },
+  ];
 
   return (
     <div>
       <h4>RATINGS & REVIEWS</h4>
-      <h1>{findRatings}</h1>
+      <h1>{`${findRatings} / 5`}</h1>
       <div>
         <div>
           {recommendPercentage}
@@ -56,19 +74,11 @@ export default function RatingBreakDown({ metaData }) {
         </div>
         <br />
         <div>
-          <u>5 stars</u>
-        </div>
-        <div>
-          <u>4 stars</u>
-        </div>
-        <div>
-          <u>3 stars</u>
-        </div>
-        <div>
-          <u>2 stars</u>
-        </div>
-        <div>
-          <u>1 stars</u>
+          {starPercentageArray.map((item) => (
+            <div key={item.percent}>
+              <PercentageBar star={item.star} percent={item.percent} />
+            </div>
+          ))}
         </div>
       </div>
     </div>
