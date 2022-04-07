@@ -7,6 +7,7 @@ import {
   ModalContent,
   ModalBody,
   TableRow,
+  TableRowFeature,
 } from '../../../theme/modalStyle.js';
 import getData from '../../../../helper.js';
 
@@ -44,7 +45,7 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
 
         mainFeatures.forEach((main) => {
           relatedFeatures.forEach((related) => {
-            if ((main.feature).includes(related.feature)) {
+            if (main.feature.includes(related.feature)) {
               const combined = {
                 feature: main.feature,
                 main: main.value,
@@ -88,9 +89,31 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
               <tbody>
                 {features.map((feature) => (
                   <TableRow key={feature.feature}>
-                    <td>{feature.main === true ? <FcCheckmark /> : feature.main}</td>
-                    <td>{feature.feature}</td>
-                    <td>{feature.related === true ? <FcCheckmark /> : feature.related}</td>
+                    <td>
+                      {feature.main !== null ? (
+                        <div>
+                          <FcCheckmark />
+                          &nbsp;
+                          {feature.main}
+                        </div>
+                      ) : (
+                        ''
+                      )}
+                    </td>
+                    <TableRowFeature>
+                      {feature.feature}
+                    </TableRowFeature>
+                    <td>
+                      {feature.related !== null ? (
+                        <div>
+                          <FcCheckmark />
+                          &nbsp;
+                          {feature.related}
+                        </div>
+                      ) : (
+                        ''
+                      )}
+                    </td>
                   </TableRow>
                 ))}
               </tbody>

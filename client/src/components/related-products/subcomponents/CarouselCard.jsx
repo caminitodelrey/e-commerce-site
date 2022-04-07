@@ -23,22 +23,21 @@ export default function CarouselCard({
   products,
   toggleModal,
   handleKeyDown,
-  getProductData,
-  selectedProducts,
-  setSelectedProduct,
+  handleProductChange,
+  likedProducts,
+  setLikedProducts,
 }) {
   return (
     <>
-      {products.map((product) => (
+      {products.map((product, index) => (
         <CardContainer
-          id="card"
-          key={product.name}
+          key={index}
           style={{ width: `calc(100% / ${show})` }}
         >
           <CardAssetContainer>
             <div
               className="product-card__img"
-              onClick={() => getProductData(product.id)}
+              onClick={() => handleProductChange(product.id)}
               onKeyDown={handleKeyDown}
               role="button"
               tabIndex="0"
@@ -47,8 +46,8 @@ export default function CarouselCard({
             </div>
             <WishlistActionButton
               product={product}
-              selectedProducts={selectedProducts}
-              setSelectedProduct={setSelectedProduct}
+              likedProducts={likedProducts}
+              setLikedProducts={setLikedProducts}
             />
             <CompareButtonContainer>
               <CompareButton

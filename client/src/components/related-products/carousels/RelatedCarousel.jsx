@@ -17,9 +17,9 @@ export default function RelatedCarousel({
   show,
   products,
   mainProduct,
-  getProductData,
-  setSelectedProduct,
-  selectedProducts,
+  handleProductChange,
+  setLikedProducts,
+  likedProducts,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
@@ -79,9 +79,9 @@ export default function RelatedCarousel({
               products={products}
               toggleModal={toggleModal}
               handleKeyDown={handleKeyDown}
-              getProductData={getProductData}
-              selectedProducts={selectedProducts}
-              setSelectedProduct={setSelectedProduct}
+              handleProductChange={handleProductChange}
+              likedProducts={likedProducts}
+              setLikedProducts={setLikedProducts}
             />
           </Content>
         </ContentWrapper>

@@ -48,43 +48,46 @@ export default function App() {
     //     "value": "Brass"
     //   }
     // ],
-    "id": 37318,
-    "campus": "hr-rfe",
-    "name": "YEasy 350",
-    "slogan": "Just jumped over jumpman",
-    "description": "These stretchy knit shoes show off asymmetrical lacing and a big sculpted rubber midsole. In a nod to adidas soccer heritage.",
-    "category": "Kicks",
-    "default_price": "450.00",
-    "created_at": "2021-08-13T14:37:33.145Z",
-    "updated_at": "2021-08-13T14:37:33.145Z",
-    "features": [
+    id: 37318,
+    campus: 'hr-rfe',
+    name: 'YEasy 350',
+    slogan: 'Just jumped over jumpman',
+    description:
+      'These stretchy knit shoes show off asymmetrical lacing and a big sculpted rubber midsole. In a nod to adidas soccer heritage.',
+    category: 'Kicks',
+    default_price: '450.00',
+    created_at: '2021-08-13T14:37:33.145Z',
+    updated_at: '2021-08-13T14:37:33.145Z',
+    features: [
       {
-        "feature": "Sole",
-        "value": "Rubber"
+        feature: 'Sole',
+        value: 'Rubber',
       },
       {
-        "feature": "Material",
-        "value": "FullControlSkin"
+        feature: 'Material',
+        value: 'FullControlSkin',
       },
       {
-        "feature": "Stitching",
-        "value": "Double Stitch"
-      }
-    ]
+        feature: 'Stitching',
+        value: 'Double Stitch',
+      },
+    ],
   });
 
-  const getProductData = (productId) => {
-    getData(`products/${productId}`)
-      .then(({ data }) => {
-        setSelectedProduct(data);
-      });
+  const handleProductChange = (productId) => {
+    getData(`products/${productId}`).then(({ data }) => {
+      setSelectedProduct(data);
+    });
   };
 
   return (
     <>
       <GlobalStyle />
       <ProductInfo product={selectedProduct} />
-      <RelatedProducts product={selectedProduct} getProductData={getProductData} />
+      <RelatedProducts
+        product={selectedProduct}
+        handleProductChange={handleProductChange}
+      />
       <QA product={selectedProduct} />
       <RatingsReviews product={selectedProduct} />
     </>

@@ -61,7 +61,6 @@ export const RightChevron = styled(Chevron)`
 // CarouselCard.jsx
 export const CardContainer = styled.section`
   // border: 1px solid green;
-  width: 100%;
   flex-shrink: 0;
   flex-grow: 1;
 `;

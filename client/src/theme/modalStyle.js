@@ -7,7 +7,7 @@ export const ModalContainer = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +32,7 @@ export const ModalContent = styled.div`
   padding: 20px;
   background-color: white;
   border-radius: 20px;
-  box-shadow: -1px 3px 35px 15px rgba(11, 191, 125, .6)
+  /* box-shadow: -1px 3px 35px 15px rgba(11, 191, 125, .6) */
 `;
 
 export const ModalBody = styled.div`
@@ -41,5 +41,11 @@ export const ModalBody = styled.div`
 
 export const TableRow = styled.tr`
   height: 40px;
+  text-align: left;
+  color: rgba(128, 128, 128, 0.8);
+`;
+
+export const TableRowFeature = styled.td`
   text-align: center;
+  color: rgb(50, 78, 89);
 `;

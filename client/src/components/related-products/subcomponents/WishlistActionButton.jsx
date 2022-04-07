@@ -7,8 +7,8 @@ import { ActionButtonContainer } from '../../../theme/buttonStyle.js';
 
 export default function WishlistActionButton({
   product,
-  selectedProducts,
-  setSelectedProduct,
+  likedProducts,
+  setLikedProducts,
 }) {
   const [isHovered, iconIsHovered] = useState(false);
   const [disable, setDisable] = useState(false);
@@ -16,15 +16,15 @@ export default function WishlistActionButton({
   const addToWishlist = (selectedProduct) => () => {
     if (disable === false) {
       if (!window.localStorage.getItem('wishlist')) {
-        setSelectedProduct([...selectedProducts, selectedProduct]);
-        window.localStorage.setItem('wishlist', JSON.stringify([...selectedProducts, selectedProduct]));
+        setLikedProducts([...likedProducts, selectedProduct]);
+        window.localStorage.setItem('wishlist', JSON.stringify([...likedProducts, selectedProduct]));
         setDisable(true);
       } else {
         const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
         const itemExist = storedItems.some((obj) => obj.id === selectedProduct.id);
         if (!itemExist) {
-          setSelectedProduct([...selectedProducts, selectedProduct]);
-          window.localStorage.setItem('wishlist', JSON.stringify([...selectedProducts, selectedProduct]));
+          setLikedProducts([...likedProducts, selectedProduct]);
+          window.localStorage.setItem('wishlist', JSON.stringify([...likedProducts, selectedProduct]));
           setDisable(true);
         }
       }

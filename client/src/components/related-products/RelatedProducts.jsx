@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import getData from '../../../helper.js';
 import { Carousels } from '../../theme/carouselStyle.js';
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
@@ -7,10 +7,10 @@ import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 // products/37311/related
 // product_id: 37311 - 38199
 
-export default function RelatedProducts({ product, getProductData }) {
+export default function RelatedProducts({ product, handleProductChange }) {
   const [status, setStatus] = useState('pending');
+  const [likedProducts, setLikedProducts] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [selectedProducts, setSelectedProduct] = useState([]);
 
   const getRelatedProducts = () => {
     getData(`products/${product.id}/related`)
@@ -41,11 +41,13 @@ export default function RelatedProducts({ product, getProductData }) {
   };
 
   useEffect(() => {
+    // clear the prevState when this reruns via useEffect
+    setRelatedProducts([]);
     getRelatedProducts();
-  }, []);
+  }, [product]);
 
   useEffect(() => {
-    setSelectedProduct(JSON.parse(window.localStorage.getItem('wishlist')) || []);
+    setLikedProducts(JSON.parse(window.localStorage.getItem('wishlist')) || []);
   }, []);
 
   if (status === 'pending') {
@@ -62,16 +64,16 @@ export default function RelatedProducts({ product, getProductData }) {
           show={4}
           products={relatedProducts}
           mainProduct={product}
-          getProductData={getProductData}
-          selectedProducts={selectedProducts}
-          setSelectedProduct={setSelectedProduct}
+          handleProductChange={handleProductChange}
+          likedProducts={likedProducts}
+          setLikedProducts={setLikedProducts}
         />
 
         <div className="selected-header">
           <h2>WISHLIST</h2>
         </div>
         <WishlistCarousel
-          products={selectedProducts}
+          products={likedProducts}
           show={4}
         />
       </Carousels>
