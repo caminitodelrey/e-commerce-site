@@ -9,7 +9,7 @@ import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 
 export default function RelatedProducts({ product, handleProductChange }) {
   const [status, setStatus] = useState('pending');
-  const [likedProducts, setLikedProducts] = useState([]);
+  const [wishlistProducts, setWishlistProducts] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   const getRelatedProducts = () => {
@@ -46,7 +46,7 @@ export default function RelatedProducts({ product, handleProductChange }) {
   }, [product]);
 
   useEffect(() => {
-    setLikedProducts(JSON.parse(window.localStorage.getItem('wishlist')) || []);
+    setWishlistProducts(JSON.parse(window.localStorage.getItem('wishlist')) || []);
   }, []);
 
   if (status === 'pending') {
@@ -60,20 +60,18 @@ export default function RelatedProducts({ product, handleProductChange }) {
           <h2>COMPLETE THE LOOK</h2>
         </div>
         <RelatedCarousel
-          show={4}
           products={relatedProducts}
           mainProduct={product}
           handleProductChange={handleProductChange}
-          likedProducts={likedProducts}
-          setLikedProducts={setLikedProducts}
+          wishlistProducts={wishlistProducts}
+          setWishlistProducts={setWishlistProducts}
         />
 
         <div className="selected-header">
           <h2>WISHLIST</h2>
         </div>
         <WishlistCarousel
-          products={likedProducts}
-          show={4}
+          products={wishlistProducts}
         />
       </Carousels>
     );

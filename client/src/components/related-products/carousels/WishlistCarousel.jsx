@@ -2,9 +2,10 @@ import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 // import { MdOutlineClose } from 'react-icons/md';
 
 import React, { useState, useEffect } from 'react';
-import Ratings from '../subcomponents/Ratings.jsx';
-import ProductImg from '../subcomponents/ProductImg.jsx';
-// import ActionButton from '../subcomponents/ActionButton.jsx';
+// import Ratings from '../subcomponents/Ratings.jsx';
+// import ProductImg from '../subcomponents/ProductImg.jsx';
+// import RemoveButton from '../subcomponents/RemoveButton.jsx';
+// import RelatedCard from './RelatedCard.jsx';
 
 import {
   CardsContainer,
@@ -13,20 +14,36 @@ import {
   Content,
   LeftChevron,
   RightChevron,
-  CardContainer,
-  CardAssetContainer,
-  ProductCategory,
-  ProductName,
-  ProductPrice,
 } from '../../../theme/carouselStyle.js';
 
-export default function WishlistCarousel({ products, show }) {
+export default function RelatedCarousel({
+  show,
+  products,
+  // mainProduct,
+  handleProductChange,
+  setLikedProducts,
+  likedProducts,
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
+  // const [modal, setModal] = useState({
+  //   display: false,
+  //   clickedProduct: {},
+  // });
 
+  // const { display, clickedProduct } = modal;
+
+  // set the length to match current children from props
   useEffect(() => {
     setLength(products.length);
   }, [products]);
+
+  // const toggleModal = (product) => {
+  //   setModal({
+  //     display: !display,
+  //     clickedProduct: product,
+  //   });
+  // };
 
   const next = () => {
     if (currentIndex < length - (show - 1)) {
@@ -40,35 +57,11 @@ export default function WishlistCarousel({ products, show }) {
     }
   };
 
-  const Card = products.map((product) => (
-    <CardContainer key={product.name} style={{ width: `calc(100% / ${show})` }}>
-      <CardAssetContainer>
-        <div
-          className="product-card__img"
-        >
-          <ProductImg product={product} />
-        </div>
-        {/* <ActionButton
-          products={products}
-          product={product}
-        /> */}
-      </CardAssetContainer>
-
-      <div className="product-card__details">
-        <ProductCategory className="product-card__category">
-          {product.category.toUpperCase()}
-        </ProductCategory>
-        <ProductName className="product-card__name">{product.name}</ProductName>
-        <ProductPrice className="product-card__price">
-          $
-          {product.price.replace(/\.00$/, '')}
-        </ProductPrice>
-        <p className="product-card__rating">
-          <Ratings ratings={product.ratings} />
-        </p>
-      </div>
-    </CardContainer>
-  ));
+  // const handleKeyDown = (e) => {
+  //   if (e.keyCode === 27) {
+  //     toggleModal();
+  //   }
+  // };
 
   return (
     <CardsContainer>
@@ -81,19 +74,34 @@ export default function WishlistCarousel({ products, show }) {
         <ContentWrapper>
           <Content
             style={{
-              transform: `translateX(-${currentIndex * (100 / (show + 1))}%)`,
+              transform: `translateX(-${currentIndex * (100 / show)}%)`,
             }}
           >
-            {Card}
+            {/* <RelatedCard
+              show={show}
+              products={products}
+              // toggleModal={toggleModal}
+              // handleKeyDown={handleKeyDown}
+              handleProductChange={handleProductChange}
+              likedProducts={likedProducts}
+              setLikedProducts={setLikedProducts}
+            /> */}
           </Content>
         </ContentWrapper>
-        {currentIndex < length - (show - 1) && (
+        {currentIndex < length - show && (
           <RightChevron className="right-arrow" onClick={next}>
             <FaChevronRight />
           </RightChevron>
         )}
       </CardsWrapper>
 
+      {/* {display && (
+        <ComparisonModal
+          toggleModal={toggleModal}
+          product={clickedProduct}
+          mainProduct={mainProduct}
+        />
+      )} */}
     </CardsContainer>
   );
 }

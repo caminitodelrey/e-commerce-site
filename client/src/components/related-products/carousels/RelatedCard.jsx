@@ -1,7 +1,7 @@
 import React from 'react';
-import Ratings from './Ratings.jsx';
-import ProductImg from './ProductImg.jsx';
-import WishlistButton from './WishlistButton.jsx';
+import Ratings from '../subcomponents/Ratings.jsx';
+import ProductImg from '../subcomponents/ProductImg.jsx';
+import WishlistButton from '../subcomponents/WishlistButton.jsx';
 
 import {
   CardContainer,
@@ -18,14 +18,14 @@ import {
   CompareButton,
 } from '../../../theme/buttonStyle.js';
 
-export default function CarouselCard({
+export default function RelatedCard({
   show,
   products,
   toggleModal,
   handleKeyDown,
   handleProductChange,
-  likedProducts,
-  setLikedProducts,
+  wishlistProducts,
+  setWishlistProducts,
 }) {
   return (
     <>
@@ -46,8 +46,8 @@ export default function CarouselCard({
             </div>
             <WishlistButton
               product={product}
-              likedProducts={likedProducts}
-              setLikedProducts={setLikedProducts}
+              wishlistProducts={wishlistProducts}
+              setWishlistProducts={setWishlistProducts}
             />
             <CompareButtonContainer>
               <CompareButton
