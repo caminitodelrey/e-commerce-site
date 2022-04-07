@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import getData from '../../../helper.js';
 import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
+import AddQuestion from './componentsQA/AddQuestion.jsx';
 
 export default function QA({ product }) {
   const [questions, setQuestions] = useState([
@@ -21,6 +22,7 @@ export default function QA({ product }) {
   ]);
   const [filteredQuestions, setFilteredQuestions] = useState(questions);
   const [questionsDisplayed, setQuestionsDisplayed] = useState(2);
+  const [addQuestionModal, setAddQuestionModal] = useState(false);
 
   useEffect(() => {
     getData(`qa/questions?product_id=${product.id}`)
@@ -35,6 +37,10 @@ export default function QA({ product }) {
 
   const handleMoreQuestions = () => {
     setQuestionsDisplayed(questionsDisplayed + 2);
+  };
+
+  const toggleAddQuestionModal = () => {
+    setAddQuestionModal(!addQuestionModal);
   };
 
   //   // product_id: 37311 - 38199
@@ -121,8 +127,17 @@ export default function QA({ product }) {
           ) : null}
         </div>
         <div>
-          <input type="submit" value="Add a Question +" />
+          <input
+            type="submit"
+            value="Add a Question +"
+            onClick={toggleAddQuestionModal}
+          />
         </div>
+        <AddQuestion
+          product={product}
+          addQuestionModal={addQuestionModal}
+          toggleAddQuestionModal={toggleAddQuestionModal}
+        />
       </div>
     </div>
   );

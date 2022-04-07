@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 
 export default function SearchQA({ filteredQuestions }) {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState(''); // move to QA? -> conditional render questions | filteredQuestions
 
-  const handleSearchChange = (e) => { setSearchText(e.target.value); }; // move to QA?
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+    if (e.target.value.length > 2) {
+      console.log(`Searching Questions for ${e.target.value}`);
+      console.log(searchText);
+    }
+  }; // move to QA?
   const handleSearchSubmit = (e) => {
+    if (searchText.length > 2) { // PROBLEM -> lagging by 1 key
+      // console.log(`Searching Questions for ${searchText}`);
+      // console.log(searchText.length);
+    }
     if (e.keyCode === 13) {
       console.log(`Searching Questions for ${searchText}`); // delete later
     }
@@ -26,43 +36,3 @@ export default function SearchQA({ filteredQuestions }) {
     </div>
   );
 }
-
-// class SearchQA extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       product: this.props.product,
-//       searchText: '',
-//     };
-//     this.handleSearchChange = this.handleSearchChange.bind(this);
-//   }
-
-//   handleSearchChange(e) {
-//     this.setState({ searchText: e.target.value });
-//   }
-
-//   handleSearchSubmit(e) {
-//     if (e.keyCode === 13) {
-//       console.log(`Searching Questions for ${this.state.searchText}`);
-//     }
-//   }
-
-//   render() {
-//     const { searchText } = this.state;
-//     return (
-//       <div>
-//         <input
-//           id="search"
-//           type="text"
-//           autoComplete="off"
-//           value={searchText}
-//           onChange={this.handleSearchChange}
-//           onKeyDown={(e) => this.handleSearchSubmit(e)}
-//           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-//         />
-//       </div>
-//     );
-//   }
-// }
-
-// export default SearchQA;

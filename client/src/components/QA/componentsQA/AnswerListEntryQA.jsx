@@ -11,7 +11,19 @@ export default function AnswerListEntryQA({ product, filteredQuestion, answer })
           {answer.body}
         </span>
       </div>
-
+      {answer.photos.length ? (
+        <div className="pictures">
+          {answer.photos.map((pic) => (
+            <img
+              key={pic}
+              src={pic}
+              style={{ height: '100px', weight: '100px' }}
+              alt={`${answer.answerer_name}'s data failed to load`}
+              className="answer-pic"
+            />
+          ))}
+        </div>
+      ) : null}
       <div className="">
         <span>{`by: ${answer.answerer_name}, `}</span>
         <span>{moment(answer.date).format('MMMM D, YYYY')}</span>
