@@ -13,7 +13,9 @@ import {
   PreSalePrice,
 } from '../../../theme/carouselStyle.js';
 
-export default function RelatedCard({
+import { ActionButtonContainer } from '../../../theme/buttonStyle.js';
+
+export default function WishlistCard({
   show,
   products,
   handleKeyDown,
@@ -38,33 +40,36 @@ export default function RelatedCard({
             >
               <ProductImg product={product} />
             </div>
-            <RemoveButton
-              clickedProduct={product}
-              wishlistProducts={wishlistProducts}
-              setWishlistProducts={setWishlistProducts}
-            />
+            <ActionButtonContainer>
+              <RemoveButton
+                clickedProduct={product}
+                wishlistProducts={wishlistProducts}
+                setWishlistProducts={setWishlistProducts}
+              />
+            </ActionButtonContainer>
           </CardAssetContainer>
 
           <div className="product-card__details">
-            <ProductCategory>{product.category.toUpperCase()}</ProductCategory>
+            <ProductCategory>
+              {product.category}
+            </ProductCategory>
             <ProductName>{product.name}</ProductName>
 
             {product.sale ? (
               <PriceContainer>
                 <ProductPrice style={{ color: 'red' }}>
                   $
-                  {product.price.replace(/\.00$/, '')
-                  - product.sale.replace(/\.00$/, '')}
+                  {product.price - product.sale}
                 </ProductPrice>
                 <PreSalePrice>
                   $
-                  {product.price.replace(/\.00$/, '')}
+                  {product.price}
                 </PreSalePrice>
               </PriceContainer>
             ) : (
               <ProductPrice>
                 $
-                {product.price.replace(/\.00$/, '')}
+                {product.price}
               </ProductPrice>
             )}
 

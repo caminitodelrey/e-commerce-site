@@ -1,8 +1,6 @@
 import React from 'react';
 import { MdOutlineClose } from 'react-icons/md';
 
-import { ActionButtonContainer } from '../../../theme/buttonStyle.js';
-
 export default function RemoveButton({
   clickedProduct,
   wishlistProducts,
@@ -22,8 +20,8 @@ export default function RemoveButton({
   };
 
   return (
-    <ActionButtonContainer onClick={removeWishlist()}>
-      <MdOutlineClose />
-    </ActionButtonContainer>
+    <div>
+      <MdOutlineClose onClick={removeWishlist()} />
+    </div>
   );
 }

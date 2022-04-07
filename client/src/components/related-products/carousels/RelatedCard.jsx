@@ -16,6 +16,7 @@ import {
 import {
   CompareButtonContainer,
   CompareButton,
+  ActionButtonContainer,
 } from '../../../theme/buttonStyle.js';
 
 export default function RelatedCard({
@@ -44,11 +45,13 @@ export default function RelatedCard({
             >
               <ProductImg product={product} />
             </div>
-            <WishlistButton
-              product={product}
-              wishlistProducts={wishlistProducts}
-              setWishlistProducts={setWishlistProducts}
-            />
+            <ActionButtonContainer>
+              <WishlistButton
+                product={product}
+                wishlistProducts={wishlistProducts}
+                setWishlistProducts={setWishlistProducts}
+              />
+            </ActionButtonContainer>
             <CompareButtonContainer>
               <CompareButton
                 type="button"
@@ -67,18 +70,21 @@ export default function RelatedCard({
               <PriceContainer>
                 <ProductPrice style={{ color: 'red' }}>
                   $
-                  {product.price.replace(/\.00$/, '')
-                  - product.sale.replace(/\.00$/, '')}
+                  {product.price - product.sale}
+                  {/* {product.price.replace(/\.00$/, '')
+                  - product.sale.replace(/\.00$/, '')} */}
                 </ProductPrice>
                 <PreSalePrice>
                   $
-                  {product.price.replace(/\.00$/, '')}
+                  {product.price}
+                  {/* {product.price.replace(/\.00$/, '')} */}
                 </PreSalePrice>
               </PriceContainer>
             ) : (
               <ProductPrice>
                 $
-                {product.price.replace(/\.00$/, '')}
+                {product.price}
+                {/* {product.price.replace(/\.00$/, '')} */}
               </ProductPrice>
             )}
 

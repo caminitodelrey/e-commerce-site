@@ -42,6 +42,7 @@ export const ModalBody = styled.div`
 `;
 
 export const TableRow = styled.tr`
+  border: 1px solid red;
   height: 40px;
   text-align: left;
   color: rgba(128, 128, 128, 0.8);
