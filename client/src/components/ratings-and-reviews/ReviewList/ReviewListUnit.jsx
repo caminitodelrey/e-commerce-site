@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { AiOutlineCheck } from 'react-icons/ai';
+import { TiStar, TiStarOutline } from 'react-icons/ti';
 import moment from 'moment';
+import ReviewPicsUnit from './ReviewPicsUnit';
 
 export default function ReivewListUnit({ review }) {
   const review2 = review || {
@@ -35,13 +37,16 @@ export default function ReivewListUnit({ review }) {
     >
       <div>
         <span className="ratings-starRatings">
-          <span className="rating-star">*</span>
-          <span className="rating-star">*</span>
-          <span className="rating-star">*</span>
-          <span className="rating-star">*</span>
-          <span className="rating-star">*</span>
-          rating:
-          {singleReview.rating}
+          {singleReview.rating >= 1
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
+          {singleReview.rating >= 2
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
+          {singleReview.rating >= 3
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
+          {singleReview.rating >= 4
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
+          {singleReview.rating >= 5
+            ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
         </span>
         {' '}
         <span>
@@ -64,7 +69,7 @@ export default function ReivewListUnit({ review }) {
       <div>
         {singleReview.photos.map((photo) => (
           <span key={photo.id}>
-            <img style={{ height: '150px', weight: '150px' }} src={photo.url} alt="" />
+            <ReviewPicsUnit src={photo.url} />
           </span>
         ))}
       </div>
@@ -78,25 +83,29 @@ export default function ReivewListUnit({ review }) {
       <div style={{}}>
         Helpful?
         {' '}
-        <span
+        <u
           className="helpful"
           role="button"
           onKeyPress={null}
           tabIndex={0}
           onClick={handleHelpful}
+          style={{ cursor: 'pointer' }}
         >
-          {`Yes ${singleReview.helpfulness} |`}
+          Yes
+        </u>
+        <span>
+          {`(${singleReview.helpfulness}) | `}
         </span>
-        <span
+        <u
           className="helpful"
           role="button"
           onKeyPress={null}
           tabIndex={0}
           onClick={handleReport}
+          style={{ cursor: 'pointer' }}
         >
-          {' '}
           Report
-        </span>
+        </u>
       </div>
     </div>
   );
