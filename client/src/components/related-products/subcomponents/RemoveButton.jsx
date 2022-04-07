@@ -5,14 +5,19 @@ import { ActionButtonContainer } from '../../../theme/buttonStyle.js';
 
 export default function RemoveButton({
   clickedProduct,
-  selectedProducts,
-  setSelectedProduct,
+  wishlistProducts,
+  setWishlistProducts,
 }) {
   const removeWishlist = () => () => {
-    // get the index of the clickedProduct from selectedProducts
-    const index = selectedProducts.indexOf(clickedProduct);
-    const newList = [...selectedProducts.slice(0, index), ...selectedProducts.slice(index + 1)];
-    setSelectedProduct(newList);
+    // get the index of the clickedProduct from wishlistProducts
+    const index = wishlistProducts.indexOf(clickedProduct);
+
+    const newList = [
+      ...wishlistProducts.slice(0, index),
+      ...wishlistProducts.slice(index + 1),
+    ];
+
+    setWishlistProducts(newList);
     localStorage.setItem('wishlist', JSON.stringify(newList));
   };
 

@@ -72,6 +72,9 @@ export default function RelatedProducts({ product, handleProductChange }) {
         </div>
         <WishlistCarousel
           products={wishlistProducts}
+          handleProductChange={handleProductChange}
+          wishlistProducts={wishlistProducts}
+          setWishlistProducts={setWishlistProducts}
         />
       </Carousels>
     );

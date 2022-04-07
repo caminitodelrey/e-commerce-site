@@ -1,11 +1,7 @@
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
-// import { MdOutlineClose } from 'react-icons/md';
 
 import React, { useState, useEffect } from 'react';
-// import Ratings from '../subcomponents/Ratings.jsx';
-// import ProductImg from '../subcomponents/ProductImg.jsx';
-// import RemoveButton from '../subcomponents/RemoveButton.jsx';
-// import RelatedCard from './RelatedCard.jsx';
+import WishlistCard from './WishlistCard.jsx';
 
 import {
   CardsContainer,
@@ -16,34 +12,22 @@ import {
   RightChevron,
 } from '../../../theme/carouselStyle.js';
 
-export default function RelatedCarousel({
-  show,
+export default function WishlistCarousel({
   products,
-  // mainProduct,
   handleProductChange,
-  setLikedProducts,
-  likedProducts,
+  setWishlistProducts,
+  wishlistProducts,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
-  // const [modal, setModal] = useState({
-  //   display: false,
-  //   clickedProduct: {},
-  // });
 
-  // const { display, clickedProduct } = modal;
+  // determines the initial number of product cards shown on page
+  const show = 4;
 
-  // set the length to match current children from props
+  // determines the total number of cards
   useEffect(() => {
     setLength(products.length);
   }, [products]);
-
-  // const toggleModal = (product) => {
-  //   setModal({
-  //     display: !display,
-  //     clickedProduct: product,
-  //   });
-  // };
 
   const next = () => {
     if (currentIndex < length - (show - 1)) {
@@ -56,12 +40,6 @@ export default function RelatedCarousel({
       setCurrentIndex((prevState) => prevState - 1);
     }
   };
-
-  // const handleKeyDown = (e) => {
-  //   if (e.keyCode === 27) {
-  //     toggleModal();
-  //   }
-  // };
 
   return (
     <CardsContainer>
@@ -77,15 +55,13 @@ export default function RelatedCarousel({
               transform: `translateX(-${currentIndex * (100 / show)}%)`,
             }}
           >
-            {/* <RelatedCard
+            <WishlistCard
               show={show}
               products={products}
-              // toggleModal={toggleModal}
-              // handleKeyDown={handleKeyDown}
               handleProductChange={handleProductChange}
-              likedProducts={likedProducts}
-              setLikedProducts={setLikedProducts}
-            /> */}
+              wishlistProducts={wishlistProducts}
+              setWishlistProducts={setWishlistProducts}
+            />
           </Content>
         </ContentWrapper>
         {currentIndex < length - show && (
@@ -94,14 +70,6 @@ export default function RelatedCarousel({
           </RightChevron>
         )}
       </CardsWrapper>
-
-      {/* {display && (
-        <ComparisonModal
-          toggleModal={toggleModal}
-          product={clickedProduct}
-          mainProduct={mainProduct}
-        />
-      )} */}
     </CardsContainer>
   );
 }
