@@ -1,7 +1,7 @@
 import React from 'react';
 import Ratings from './Ratings.jsx';
 import ProductImg from './ProductImg.jsx';
-import WishlistActionButton from './WishlistActionButton.jsx';
+import WishlistButton from './WishlistButton.jsx';
 
 import {
   CardContainer,
@@ -44,7 +44,7 @@ export default function CarouselCard({
             >
               <ProductImg product={product} />
             </div>
-            <WishlistActionButton
+            <WishlistButton
               product={product}
               likedProducts={likedProducts}
               setLikedProducts={setLikedProducts}

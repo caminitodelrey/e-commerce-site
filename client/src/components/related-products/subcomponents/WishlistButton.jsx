@@ -5,7 +5,7 @@ import { FaHeart } from 'react-icons/fa';
 
 import { ActionButtonContainer } from '../../../theme/buttonStyle.js';
 
-export default function WishlistActionButton({
+export default function WishlistButton({
   product,
   likedProducts,
   setLikedProducts,

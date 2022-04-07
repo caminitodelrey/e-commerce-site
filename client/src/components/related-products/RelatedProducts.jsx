@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import getData from '../../../helper.js';
 import { Carousels } from '../../theme/carouselStyle.js';
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
@@ -41,7 +41,6 @@ export default function RelatedProducts({ product, handleProductChange }) {
   };
 
   useEffect(() => {
-    // clear the prevState when this reruns via useEffect
     setRelatedProducts([]);
     getRelatedProducts();
   }, [product]);
