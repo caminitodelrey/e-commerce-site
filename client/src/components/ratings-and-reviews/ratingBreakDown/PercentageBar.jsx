@@ -13,7 +13,7 @@ export default function PercentageBar(props) {
   const fillerStyles = {
     height: '100%',
     width: `${percent}%`,
-    backgroundColor: 'black',
+    backgroundColor: 'green',
     borderRadius: 'inherit',
     textAlign: 'right',
   };
