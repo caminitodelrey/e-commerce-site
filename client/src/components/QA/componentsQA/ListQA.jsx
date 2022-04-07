@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ListEntryQA from './ListEntryQA.jsx';
 
-export default function ListQA({ product, filteredQuestions, questionsDisplayed }) {
+export default function ListQA({
+  product,
+  filteredQuestions,
+  questionsDisplayed,
+}) {
   filteredQuestions = filteredQuestions || [
     {
       question_id: 573538,
@@ -19,9 +23,10 @@ export default function ListQA({ product, filteredQuestions, questionsDisplayed 
     campus: 'hr-rfe',
     name: 'Camo Onesie',
     slogan: 'Blend in to your crowd',
-    description: 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
+    description:
+      'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
     category: 'Jackets',
-    default_price: 140.00,
+    default_price: 140.0,
     created_at: '2021-08-13T14:37:33.145Z',
     updated_at: '2021-08-13T14:37:33.145Z',
     features: [
@@ -38,8 +43,13 @@ export default function ListQA({ product, filteredQuestions, questionsDisplayed 
 
   return (
     <div id="list">
-      {filteredQuestions.slice(0, questionsDisplayed).map((q) =>
-        <ListEntryQA key={q.question_id} product={product} filteredQuestion={q} />)}
+      {filteredQuestions.slice(0, questionsDisplayed).map((q) => (
+        <ListEntryQA
+          key={q.question_id}
+          product={product}
+          filteredQuestion={q}
+        />
+      ))}
     </div>
   );
 }

@@ -27,6 +27,10 @@ export default function SearchQA({ filteredQuestions }) {
         type="search"
         autoComplete="off"
         maxLength="150"
+        style={{
+          height: '30px',
+          width: '700px',
+        }}
         value={searchText}
         onChange={handleSearchChange}
         onKeyDown={(e) => handleSearchSubmit(e)}
