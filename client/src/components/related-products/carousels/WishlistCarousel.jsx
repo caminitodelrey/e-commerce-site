@@ -1,5 +1,4 @@
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
-// import { BsPlusLg } from 'react-icons/bs';
 
 import React, { useState, useEffect } from 'react';
 import WishlistCard from './WishlistCard.jsx';
@@ -19,7 +18,6 @@ import {
   DeactivatedLeftChevron,
   DeactivatedRightChevron,
   DefaultCard,
-  // DefaultCardButton,
 } from '../../../theme/buttonStyle.js';
 
 export default function WishlistCarousel({
@@ -31,7 +29,6 @@ export default function WishlistCarousel({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
-  // const [disable, setDisable] = useState(false);
 
   // determines the initial number of product cards shown on page
   const show = 3;
@@ -62,15 +59,6 @@ export default function WishlistCarousel({
           wishlistProducts={wishlistProducts}
           setWishlistProducts={setWishlistProducts}
         />
-        {/* <DefaultCardButton
-          type="submit"
-          onClick={addToWishlist(currentProduct)}
-          disabled={disable}
-        >
-          <BsPlusLg />
-          &nbsp;
-          ADD CURRENT OUTFIT
-        </DefaultCardButton> */}
       </DefaultCard>
 
       <WishlistCardsContainer>

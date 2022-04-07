@@ -70,21 +70,18 @@ export default function RelatedCard({
               <PriceContainer>
                 <ProductPrice style={{ color: 'red' }}>
                   $
-                  {product.price - product.sale}
-                  {/* {product.price.replace(/\.00$/, '')
-                  - product.sale.replace(/\.00$/, '')} */}
+                  {product.price.replace(/\.00$/, '')
+                  - product.sale.replace(/\.00$/, '')}
                 </ProductPrice>
                 <PreSalePrice>
                   $
-                  {product.price}
-                  {/* {product.price.replace(/\.00$/, '')} */}
+                  {product.price.replace(/\.00$/, '')}
                 </PreSalePrice>
               </PriceContainer>
             ) : (
               <ProductPrice>
                 $
-                {product.price}
-                {/* {product.price.replace(/\.00$/, '')} */}
+                {product.price.replace(/\.00$/, '')}
               </ProductPrice>
             )}
 

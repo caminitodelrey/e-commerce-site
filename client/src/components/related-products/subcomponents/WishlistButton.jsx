@@ -42,6 +42,7 @@ export default function WishlistButton({
       onMouseEnter={() => iconIsHovered(!isHovered)}
       onMouseLeave={() => iconIsHovered(!isHovered)}
       onClick={addToWishlist(product)}
+      role="button"
       disabled={disable}
     >
       {/* To Do: Change this to css animation */}
