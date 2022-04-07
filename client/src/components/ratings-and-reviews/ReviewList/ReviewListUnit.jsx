@@ -104,7 +104,7 @@ export default function ReivewListUnit({ review }) {
           onClick={handleReport}
           style={{ cursor: 'pointer' }}
         >
-          Report
+          No
         </u>
       </div>
     </div>

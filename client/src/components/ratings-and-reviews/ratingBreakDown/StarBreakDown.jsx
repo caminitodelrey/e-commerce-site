@@ -30,7 +30,6 @@ function StarBreakDown({ averageRating, height, width }) {
           stars.push(1.0);
           break;
         default:
-          console.log('OOPS');
           stars.push(0);
           break;
       }
@@ -49,13 +48,13 @@ function StarBreakDown({ averageRating, height, width }) {
             width: `${width}px`,
             display: 'inline-block',
           }}
-          key={item}
+          key={Math.random()}
         >
           <div style={{
             position: 'relative',
             display: 'inline-block',
             height: `${height}px`,
-            backgroundColor: '#333333',
+            backgroundColor: 'green',
             width: `${parseInt(item * width, 10)}px`,
           }}
           >
@@ -64,7 +63,7 @@ function StarBreakDown({ averageRating, height, width }) {
                 height: `${height}px`,
                 width: `${width}px`,
               }}
-              src="https://github.com/psfonseka/five-stars/blob/master/dist/star.png?raw=true"
+              src="star.png"
               alt="stars alt"
             />
           </div>

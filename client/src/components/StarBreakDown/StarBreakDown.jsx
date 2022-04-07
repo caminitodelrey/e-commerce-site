@@ -63,7 +63,7 @@ function StarBreakDown({ averageRating, height, width }) {
                 height: `${height}px`,
                 width: `${width}px`,
               }}
-              src="https://github.com/psfonseka/five-stars/blob/master/dist/star.png?raw=true"
+              src="star.png"
               alt="stars alt"
             />
           </div>

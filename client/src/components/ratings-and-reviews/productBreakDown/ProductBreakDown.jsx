@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import PercentageBar from '../ratingBreakDown/PercentageBar.jsx';
+// import PercentageBar from '../ratingBreakDown/PercentageBar.jsx';
+import { VscTriangleDown } from 'react-icons';
 
 export default function ProductBreakDown({ metaData }) {
   metaData = metaData || {
@@ -45,7 +46,9 @@ export default function ProductBreakDown({ metaData }) {
           percent={Math.floor((metaData.characteristics.Fit.value / 5) * 100)}
         /> */}
       </div>
-      <div>{`Comfort ${metaData.characteristics.Comfort.value}`}</div>
+      <div>
+        {`Comfort ${metaData.characteristics.Comfort.value}`}
+      </div>
     </div>
   );
 }
