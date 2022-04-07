@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function SearchQA({ filteredQuestions }) {
+export default function SearchQA({ questions, filteredQuestions, handleSearchFilter }) {
   const [searchText, setSearchText] = useState(''); // move to QA? -> conditional render questions | filteredQuestions
+
+  useEffect(() => {
+    handleSearchFilter(searchText);
+  }, [searchText]);
 
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
-    if (e.target.value.length > 2) {
-      console.log(`Searching Questions for ${e.target.value}`);
-      console.log(searchText);
-    }
   }; // move to QA?
+
   const handleSearchSubmit = (e) => {
-    if (searchText.length > 2) { // PROBLEM -> lagging by 1 key
-      // console.log(`Searching Questions for ${searchText}`);
-      // console.log(searchText.length);
-    }
     if (e.keyCode === 13) {
-      console.log(`Searching Questions for ${searchText}`); // delete later
+      // console.log(`Searching Questions for ${searchText}`); // delete later
+      handleSearchFilter(searchText);
     }
   };
 

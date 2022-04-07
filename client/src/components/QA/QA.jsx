@@ -23,6 +23,7 @@ export default function QA({ product }) {
   const [filteredQuestions, setFilteredQuestions] = useState(questions);
   const [questionsDisplayed, setQuestionsDisplayed] = useState(2);
   const [addQuestionModal, setAddQuestionModal] = useState(false);
+  const [filtered, setFiltered] = useState(false);
 
   useEffect(() => {
     getData(`qa/questions?product_id=${product.id}`)
@@ -41,6 +42,21 @@ export default function QA({ product }) {
 
   const toggleAddQuestionModal = () => {
     setAddQuestionModal(!addQuestionModal);
+  };
+
+  const handleSearchFilter = (text) => {
+    const newFilteredQuestions = questions.filter((obj) =>
+      obj.question_body.toLowerCase().includes(text.toLowerCase()),
+    );
+    // console.log(newFilteredQuestions);
+    setFilteredQuestions(newFilteredQuestions);
+    if (text.length === 0) {
+      setFiltered(false);
+    } else if (text.length > 2) {
+      setFiltered(true);
+    } else {
+      setFiltered(false);
+    }
   };
 
   //   // product_id: 37311 - 38199
@@ -109,10 +125,15 @@ export default function QA({ product }) {
         <h1>Questions & Answers</h1>
       </div>
 
-      <SearchQA product={product} filteredQuestions={filteredQuestions} />
+      <SearchQA
+        product={product}
+        handleSearchFilter={handleSearchFilter}
+        questions={questions}
+        filteredQuestions={filteredQuestions}
+      />
       <ListQA
         product={product}
-        filteredQuestions={filteredQuestions}
+        filteredQuestions={filtered ? filteredQuestions : questions}
         questionsDisplayed={questionsDisplayed}
       />
 
@@ -121,7 +142,9 @@ export default function QA({ product }) {
           {filteredQuestions.length - questionsDisplayed > 0 ? (
             <input
               type="submit"
-              value={`More Answered Questions (${filteredQuestions.length - questionsDisplayed})`}
+              value={`More Answered Questions (${
+                filteredQuestions.length - questionsDisplayed
+              })`}
               onClick={handleMoreQuestions}
             />
           ) : null}
