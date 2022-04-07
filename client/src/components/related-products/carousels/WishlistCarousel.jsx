@@ -1,24 +1,29 @@
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
+import { BsPlusLg } from 'react-icons/bs';
 
 import React, { useState, useEffect } from 'react';
 import WishlistCard from './WishlistCard.jsx';
 import WishlistButton from '../subcomponents/WishlistButton.jsx';
 
 import {
-  CardAssetContainer,
   WishlistCardsContainer,
   CardsWrapper,
   ContentWrapper,
   Content,
-  WishlistLeftChevron,
-  WishlistLeftChevronDisabled,
-  DeactivatedChevron,
-  RightChevron,
-  DefaultCard,
   WishlistContainer,
 } from '../../../theme/carouselStyle.js';
 
+import {
+  WishlistLeftChevron,
+  RightChevron,
+  DeactivatedLeftChevron,
+  DeactivatedRightChevron,
+  DefaultCard,
+  DefaultCardButton,
+} from '../../../theme/buttonStyle.js';
+
 export default function WishlistCarousel({
+  currentProduct,
   products,
   handleProductChange,
   setWishlistProducts,
@@ -47,32 +52,47 @@ export default function WishlistCarousel({
     }
   };
 
+  // const addToWishlist = (product) => {
+  //   if (!window.localStorage.getItem('wishlist')) {
+  //     setWishlistProducts([...wishlistProducts, product]);
+  //     window.localStorage.setItem('wishlist', JSON.stringify([...wishlistProducts, product]));
+  //     // setDisable(true);
+  //   } else {
+  //     const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
+  //     const itemExist = storedItems.some((obj) => obj.id === product.id);
+  //     if (!itemExist) {
+  //       setWishlistProducts([...wishlistProducts, product]);
+  //       window.localStorage.setItem('wishlist', JSON.stringify([...wishlistProducts, product]));
+  //       // setDisable(true);
+  //     }
+  //   }
+  // }
+
   return (
     <WishlistContainer>
+
       <DefaultCard>
-        <p>Add Outfit</p>
-        <CardAssetContainer>
-          <WishlistButton
-            // product={products}
-            wishlistProducts={wishlistProducts}
-            setWishlistProducts={setWishlistProducts}
-          />
-        </CardAssetContainer>
+        <DefaultCardButton
+          type="submit"
+          // onClick={addToWishlist(currentProduct)}
+        >
+          <BsPlusLg />
+          &nbsp;
+          ADD CURRENT OUTFIT
+        </DefaultCardButton>
       </DefaultCard>
 
       <WishlistCardsContainer>
         <CardsWrapper>
-
           {currentIndex > 0 ? (
             <WishlistLeftChevron className="left-arrow" onClick={prev}>
               <FaChevronLeft />
             </WishlistLeftChevron>
           ) : (
-            <WishlistLeftChevronDisabled className="left-arrow">
+            <DeactivatedLeftChevron className="left-arrow">
               <FaChevronLeft />
-            </WishlistLeftChevronDisabled>
+            </DeactivatedLeftChevron>
           )}
-
           <ContentWrapper>
             <Content
               style={{
@@ -88,19 +108,18 @@ export default function WishlistCarousel({
               />
             </Content>
           </ContentWrapper>
-
           {currentIndex < length - show ? (
             <RightChevron className="right-arrow" onClick={next}>
               <FaChevronRight />
             </RightChevron>
           ) : (
-            <DeactivatedChevron className="right-arrow">
+            <DeactivatedRightChevron className="right-arrow">
               <FaChevronRight />
-            </DeactivatedChevron>
+            </DeactivatedRightChevron>
           )}
-
         </CardsWrapper>
       </WishlistCardsContainer>
+
     </WishlistContainer>
   );
 }

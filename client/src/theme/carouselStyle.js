@@ -14,22 +14,11 @@ export const WishlistContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const DefaultCard = styled.div`
-  height: 360px;
-  min-width: 260px;
-  margin-right: 40px;
-  border-radius: 10px;
-  background-color: rgba(128, 128, 128, 0.2);
-`;
-
 export const WishlistCardsContainer = styled.div`
   width: 900px;
 `;
 
 // RelatedCarousel.jsx
-export const CardsContainer = styled.div`
-`;
-
 export const CardsWrapper = styled.div`
   /* display: flex;
   width: 100%; */
@@ -48,45 +37,6 @@ export const Content = styled.div`
   scrollbar-width: none;
 `;
 
-// Carousel Chevrons
-const Chevron = styled.button`
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  transform: translate(-50%);
-  width: 47px;
-  height: 45px;
-  border: 1px solid black;
-  background-color: white;
-  color: rgba(10, 89, 51);
-  cursor: pointer;
-`;
-
-export const LeftChevron = styled(Chevron)`
-  left: -80px;
-  `;
-
-export const RightChevron = styled(Chevron)`
-  right: -80px;
-  `;
-
-// Chevrons specific to Wishlist Carousel
-export const WishlistLeftChevron = styled(Chevron)`
-  top: 40%;
-  right: -80px;
-`;
-
-export const DeactivatedChevron = styled(Chevron)`
-  right: -80px;
-  color: rgba(128, 128, 128, 0.5);
-  border: 1px solid rgba(128, 128, 128, 0.5);
-`;
-
-export const WishlistLeftChevronDisabled = styled(DeactivatedChevron)`
-  top: 40%;
-`;
-
-// RelatedCard.jsx & WishlistCard.jsx
 export const CardContainer = styled.section`
   max-width: 300px;
   flex-shrink: 0;

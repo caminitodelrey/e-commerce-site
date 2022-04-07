@@ -5,13 +5,15 @@ import ComparisonModal from '../subcomponents/ComparisonModal.jsx';
 import RelatedCard from './RelatedCard.jsx';
 
 import {
-  CardsContainer,
   CardsWrapper,
   ContentWrapper,
   Content,
+} from '../../../theme/carouselStyle.js';
+
+import {
   LeftChevron,
   RightChevron,
-} from '../../../theme/carouselStyle.js';
+} from '../../../theme/buttonStyle.js';
 
 export default function RelatedCarousel({
   products,
@@ -63,7 +65,7 @@ export default function RelatedCarousel({
   };
 
   return (
-    <CardsContainer>
+    <div>
       <CardsWrapper>
         {currentIndex > 0 && (
           <LeftChevron className="left-arrow" onClick={prev}>
@@ -101,6 +103,6 @@ export default function RelatedCarousel({
           mainProduct={mainProduct}
         />
       )}
-    </CardsContainer>
+    </div>
   );
 }

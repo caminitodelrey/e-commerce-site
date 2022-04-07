@@ -71,6 +71,7 @@ export default function RelatedProducts({ product, handleProductChange }) {
           <h2>WISHLIST</h2>
         </div>
         <WishlistCarousel
+          currentProduct={product}
           products={wishlistProducts}
           handleProductChange={handleProductChange}
           wishlistProducts={wishlistProducts}

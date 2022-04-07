@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
+
+import React, { useState } from 'react';
 
 import { ActionButtonContainer } from '../../../theme/buttonStyle.js';
 
