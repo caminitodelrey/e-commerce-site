@@ -5,11 +5,9 @@ class ListEntryQA extends React.Component {
     super(props);
     this.state = {
       product: this.props.product,
-      question: this.props.question
-    }
+      question: this.props.question,
+    };
   }
-
-
 
   render() {
     return (
@@ -17,22 +15,20 @@ class ListEntryQA extends React.Component {
         <div>
           <div>
             <span>Q:</span>
-            <input type="submit" value="Yes"/>
-            <input type="submit" value="Add Answer"/>
+            <input type="submit" value="Yes" />
+            <input type="submit" value="Add Answer" />
           </div>
           <div>
             <span>A:</span>
-
           </div>
         </div>
 
         <div>
-          <input type="submit" value="LOAD MORE ANSWERS"/>
+          <input type="submit" value="LOAD MORE ANSWERS" />
         </div>
       </div>
-    )
+    );
   }
 }
-
 
 export default ListEntryQA;
