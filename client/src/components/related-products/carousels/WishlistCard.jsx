@@ -23,9 +23,9 @@ export default function RelatedCard({
 }) {
   return (
     <>
-      {products.map((product, index) => (
+      {products.map((product) => (
         <CardContainer
-          key={index}
+          key={product.id}
           style={{ width: `calc(100% / ${show})` }}
         >
           <CardAssetContainer>
@@ -74,7 +74,6 @@ export default function RelatedCard({
           </div>
         </CardContainer>
       ))}
-      ;
     </>
   );
 }

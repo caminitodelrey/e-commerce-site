@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const ActionButtonContainer = styled.div`
   position: absolute;
   top: 0%;
-  transform: translateX(630%);
+  transform: translateX(623%);
   padding: 10px 10px 7px 10px;
   border-radius: 0 6px;
   background: #fff;
@@ -14,6 +14,23 @@ export const ActionButtonContainer = styled.div`
     cursor: pointer;
   }
 `;
+
+// Test: style similar to compare button?
+// export const ActionButtonContainer = styled.div`
+//   position: absolute;
+//   top: 2%;
+//   transform: translateX(600%);
+//   padding: 10px;
+//   background: #fff;
+//   color: rgba(11, 191, 125);
+//   border-radius: 5px;
+//   width: 15px;
+//   height: 15px;
+
+//   &:hover {
+//     cursor: pointer;
+//   }
+// `;
 
 // Compare button
 export const CompareButton = styled.button`

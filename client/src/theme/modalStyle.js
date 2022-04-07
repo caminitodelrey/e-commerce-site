@@ -25,6 +25,7 @@ export const ModalProductName = styled.th`
   padding-bottom: 10px;
   border-bottom: 3px solid rgba(3, 115, 83, 0.3);
   width: 150px;
+  position: sticky;
 `;
 
 export const ModalContent = styled.div`
@@ -37,6 +38,7 @@ export const ModalContent = styled.div`
 
 export const ModalBody = styled.div`
   padding: 10px;
+  overflow-y: auto;
 `;
 
 export const TableRow = styled.tr`
