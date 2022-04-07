@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function SearchQA({ questions, filteredQuestions, handleSearchFilter }) {
+export default function SearchQA({ handleSearchFilter }) {
   const [searchText, setSearchText] = useState(''); // move to QA? -> conditional render questions | filteredQuestions
 
   useEffect(() => {

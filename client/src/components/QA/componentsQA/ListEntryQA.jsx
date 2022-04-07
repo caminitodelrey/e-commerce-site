@@ -4,7 +4,7 @@ import AddAnswerQA from './AddAnswerQA.jsx';
 
 export default function ListEntryQA({
   product,
-  filteredQuestion,
+  question,
 }) {
   const [answersDisplayed, setAnswersDisplayed] = useState(2);
   const [hiddenAnswers, setHiddenAnswers] = useState(true);
@@ -12,7 +12,7 @@ export default function ListEntryQA({
 
   const handleMoreAnswers = () => {
     answersDisplayed === 2
-      ? setAnswersDisplayed(filteredQuestion.answers.length)
+      ? setAnswersDisplayed(question.answers.length)
       : setAnswersDisplayed(2);
     setHiddenAnswers(!hiddenAnswers);
   };
@@ -21,7 +21,7 @@ export default function ListEntryQA({
     setAddAnswerModal(!addAnswerModal);
   };
 
-  const x = filteredQuestion.question_body;
+  const x = question.question_body;
   return (
     <div>
       <div>
@@ -37,7 +37,7 @@ export default function ListEntryQA({
             <input type="submit" value="Yes" />
             <span>
               {' '}
-              {`(${filteredQuestion.question_helpfulness})`}
+              {`(${question.question_helpfulness})`}
             </span>
             <span>
               {' | '}
@@ -51,27 +51,27 @@ export default function ListEntryQA({
         </div>
         <AddAnswerQA
           product={product}
-          filteredQuestion={filteredQuestion}
+          question={question}
           addAnswerModal={addAnswerModal}
           toggleAddAnswerModal={toggleAddAnswerModal}
         />
         <div>
-          {Object.values(filteredQuestion.answers).slice(0, answersDisplayed).map((a) => (
+          {Object.values(question.answers).slice(0, answersDisplayed).map((a) => (
             <AnswerListEntryQA
               key={a.id}
               product={product}
-              filteredQuestion={filteredQuestion}
+              question={question}
               answer={a}
             />
           ))}
         </div>
       </div>
       <div>
-        {Object.values(filteredQuestion.answers).length > 2
+        {Object.values(question.answers).length > 2
           ? (hiddenAnswers ? (
             <input
               type="submit"
-              value={`\\/ See More Answers (${Object.values(filteredQuestion.answers).length - answersDisplayed})`}
+              value={`\\/ See More Answers (${Object.values(question.answers).length - answersDisplayed})`}
               onClick={handleMoreAnswers}
             />
           ) : (

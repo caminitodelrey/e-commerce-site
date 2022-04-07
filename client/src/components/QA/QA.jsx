@@ -26,7 +26,8 @@ export default function QA({ product }) {
   const [filtered, setFiltered] = useState(false);
 
   useEffect(() => {
-    getData(`qa/questions?product_id=${product.id}`)
+    // getData(`qa/questions?product_id=${product.id}`)
+    getData(`qa/questions?product_id=38189`)
       .then((res) => {
         setQuestions(res.data.results);
         setFilteredQuestions(res.data.results);
@@ -50,16 +51,15 @@ export default function QA({ product }) {
     );
     // console.log(newFilteredQuestions);
     setFilteredQuestions(newFilteredQuestions);
-    if (text.length === 0) {
+    if (text.length < 3) {
       setFiltered(false);
-    } else if (text.length > 2) {
+    }
+    else if (text.length > 2) {
       setFiltered(true);
-    } else {
-      setFiltered(false);
     }
   };
 
-  //   // product_id: 37311 - 38199
+  const questionsList = filtered ? filteredQuestions : questions;
 
   //   componentDidMount() {
   //     // GET /qa/questions
@@ -126,24 +126,21 @@ export default function QA({ product }) {
       </div>
 
       <SearchQA
-        product={product}
         handleSearchFilter={handleSearchFilter}
-        questions={questions}
-        filteredQuestions={filteredQuestions}
       />
       <ListQA
         product={product}
-        filteredQuestions={filtered ? filteredQuestions : questions}
+        questions={questionsList}
         questionsDisplayed={questionsDisplayed}
       />
 
       <div className="BottomButtonsQA">
         <div>
-          {filteredQuestions.length - questionsDisplayed > 0 ? (
+          {questionsList.length - questionsDisplayed > 0 ? (
             <input
               type="submit"
               value={`More Answered Questions (${
-                filteredQuestions.length - questionsDisplayed
+                questionsList.length - questionsDisplayed
               })`}
               onClick={handleMoreQuestions}
             />

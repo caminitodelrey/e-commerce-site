@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
-export default function AnswerListEntryQA({ product, filteredQuestion, answer }) {
+export default function AnswerListEntryQA({ answer }) {
   return (
     <>
       <div className="answer-body">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function AddAnswerQA({
   product,
-  filteredQuestion,
+  question,
   addAnswerModal,
   toggleAddAnswerModal,
 }) {
@@ -26,7 +26,7 @@ export default function AddAnswerQA({
     return (
       <div>
         <h3>Submit your answer</h3>
-        <h3>{`${product.name}: "${filteredQuestion.question_body}"`}</h3>
+        <h3>{`${product.name}: "${question.question_body}"`}</h3>
         <div className="add-answer">
           <div className="add-answer-body">
             <span>Your Answer*</span>

@@ -3,10 +3,10 @@ import ListEntryQA from './ListEntryQA.jsx';
 
 export default function ListQA({
   product,
-  filteredQuestions,
+  questions,
   questionsDisplayed,
 }) {
-  filteredQuestions = filteredQuestions || [
+  questions = questions || [
     {
       question_id: 573538,
       question_body: 'demo',
@@ -43,11 +43,11 @@ export default function ListQA({
 
   return (
     <div id="list">
-      {filteredQuestions.slice(0, questionsDisplayed).map((q) => (
+      {questions.slice(0, questionsDisplayed).map((q) => (
         <ListEntryQA
           key={q.question_id}
           product={product}
-          filteredQuestion={q}
+          question={q}
         />
       ))}
     </div>
