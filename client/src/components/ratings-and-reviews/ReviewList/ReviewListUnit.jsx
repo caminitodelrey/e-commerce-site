@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { TiStar, TiStarOutline } from 'react-icons/ti';
 import moment from 'moment';
+import ReviewPicsUnit from './ReviewPicsUnit';
 
 export default function ReivewListUnit({ review }) {
   const review2 = review || {
@@ -68,7 +69,7 @@ export default function ReivewListUnit({ review }) {
       <div>
         {singleReview.photos.map((photo) => (
           <span key={photo.id}>
-            <img style={{ height: '150px', weight: '150px' }} src={photo.url} alt="" />
+            <ReviewPicsUnit src={photo.url} />
           </span>
         ))}
       </div>
@@ -88,6 +89,7 @@ export default function ReivewListUnit({ review }) {
           onKeyPress={null}
           tabIndex={0}
           onClick={handleHelpful}
+          style={{ cursor: 'pointer' }}
         >
           Yes
         </u>
@@ -100,6 +102,7 @@ export default function ReivewListUnit({ review }) {
           onKeyPress={null}
           tabIndex={0}
           onClick={handleReport}
+          style={{ cursor: 'pointer' }}
         >
           Report
         </u>

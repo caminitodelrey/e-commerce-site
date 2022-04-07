@@ -11,7 +11,12 @@ export default function ReviewList({ reviews }) {
 
   return (
     <div>
-      <div>
+      <div style={{
+        padding: '1rem',
+        maxHeight: '550px',
+        overflow: 'auto',
+      }}
+      >
         {reviews.slice(0, reviewsCount).map((review) => (
           <div key={review.review_id}>
             <ReviewListUnit review={review} />
