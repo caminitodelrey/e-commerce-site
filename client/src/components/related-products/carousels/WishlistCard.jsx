@@ -51,7 +51,7 @@ export default function WishlistCard({
 
           <div className="product-card__details">
             <ProductCategory>
-              {product.category}
+              {product.category.toUpperCase()}
             </ProductCategory>
             <ProductName>{product.name}</ProductName>
 

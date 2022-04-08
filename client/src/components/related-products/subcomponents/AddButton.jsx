@@ -43,22 +43,24 @@ export default function AddButton({
   }, [product]);
 
   const addToWishlist = (selectedProduct) => () => {
-    // check if the item is already in the wishlist carousel
     const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
-    const itemExist = storedItems.some(
+    const itemExists = storedItems.some(
       (obj) => obj.id === selectedProduct.id,
     );
-    if (!itemExist) {
+
+    if (itemExists) {
+      setDisable(false);
+    } else {
       setWishlistProducts([...wishlistProducts, selectedProduct]);
-      window.localStorage.setItem('wishlist', JSON.stringify([...wishlistProducts, selectedProduct]));
+      window.localStorage.setItem(
+        'wishlist',
+        JSON.stringify([...wishlistProducts, selectedProduct])
+      );
     }
-    setDisable(true);
   };
 
   return (
-    <div
-      disabled={disable}
-    >
+    <div>
       <DefaultCardButton
         type="submit"
         onClick={addToWishlist(currentProduct)}

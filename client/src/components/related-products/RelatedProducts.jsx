@@ -67,7 +67,7 @@ export default function RelatedProducts({ product, handleProductChange }) {
           setWishlistProducts={setWishlistProducts}
         />
 
-        <div className="selected-header">
+        <div className="wishlist-header" style={{ 'paddingTop': '50px' }}>
           <h2>WISHLIST</h2>
         </div>
         <WishlistCarousel

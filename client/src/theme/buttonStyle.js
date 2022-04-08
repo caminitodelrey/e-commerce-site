@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { FiHeart } from 'react-icons/fi';
 
 // Carousel Chevrons
 const Chevron = styled.button`
@@ -32,25 +33,14 @@ export const DeactivatedRightChevron = styled(Chevron)`
   right: -80px;
   color: rgba(128, 128, 128, 0.5);
   border: 1px solid rgba(128, 128, 128, 0.5);
+
+  &:hover {
+    cursor: default;
+  }
 `;
 
 export const DeactivatedLeftChevron = styled(DeactivatedRightChevron)`
   top: 40%;
-`;
-
-// Wishlist and Remove buttons container
-export const ActionButtonContainer = styled.div`
-  position: absolute;
-  top: 0%;
-  transform: translateX(623%);
-  padding: 10px 10px 7px 10px;
-  border-radius: 0 6px;
-  background: #fff;
-  color: rgba(11, 191, 125);
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 // Compare button
@@ -80,6 +70,47 @@ export const CompareButtonContainer = styled.div`
   }
 `;
 
+// Wishlist and Remove buttons container
+export const ActionButtonContainer = styled.div`
+  position: absolute;
+  top: 0%;
+  transform: translateX(623%);
+  padding: 10px 10px 7px 10px;
+  border-radius: 0 6px;
+  background: #fff;
+  color: rgba(11, 191, 125);
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+// Wishlist Button
+const heartbeat = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
+export const AnimatedWishlistButton = styled(FiHeart)`
+  color: rgba(11, 191, 125, .9);
+  cursor: pointer;
+
+  &:hover {
+    animation: ${heartbeat} 1s infinite;
+    fill: rgba(11, 191, 125, .9);
+    color: rgba(11, 191, 125, .9);
+    opacity: 1;
+    transition: opacity 500mx;
+  }
+`;
+
 // Wishlist Carousel - Default Card Button
 export const DefaultCard = styled.div`
   display: flex;
@@ -94,7 +125,7 @@ export const DefaultCard = styled.div`
 
 export const DefaultCardButton = styled.button`
   position: relative;
-  top: 40%;
+  top: 150px;
   height: 50px;
   min-width: 50px;
   text-align: center;

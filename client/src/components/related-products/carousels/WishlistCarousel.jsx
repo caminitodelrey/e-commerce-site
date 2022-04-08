@@ -50,6 +50,7 @@ export default function WishlistCarousel({
     }
   };
 
+
   return (
     <WishlistContainer>
 
@@ -64,7 +65,9 @@ export default function WishlistCarousel({
       <WishlistCardsContainer>
         <CardsWrapper>
 
-          {currentIndex > 0 ? (
+          { length <= show
+            ? (<div></div>)
+            : currentIndex > 0 ? (
             <WishlistLeftChevron className="left-arrow" onClick={prev}>
               <FaChevronLeft />
             </WishlistLeftChevron>
@@ -89,7 +92,10 @@ export default function WishlistCarousel({
               />
             </Content>
           </ContentWrapper>
-          {currentIndex < length - show ? (
+
+          { length <= show
+            ? (<div></div>)
+            : currentIndex < length - show ? (
             <RightChevron className="right-arrow" onClick={next}>
               <FaChevronRight />
             </RightChevron>
@@ -98,6 +104,7 @@ export default function WishlistCarousel({
               <FaChevronRight />
             </DeactivatedRightChevron>
           )}
+
         </CardsWrapper>
       </WishlistCardsContainer>
 

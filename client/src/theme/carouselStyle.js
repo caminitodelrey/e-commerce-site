@@ -12,6 +12,7 @@ export const Carousels = styled.div`
 export const WishlistContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  min-height: 500px;
 `;
 
 export const WishlistCardsContainer = styled.div`

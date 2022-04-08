@@ -1,5 +1,6 @@
-import React from 'react';
 import { MdOutlineClose } from 'react-icons/md';
+
+import React from 'react';
 
 export default function RemoveButton({
   clickedProduct,
