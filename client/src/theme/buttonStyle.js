@@ -4,12 +4,12 @@ import { MdOutlineClose } from 'react-icons/md';
 
 // Carousel Chevrons
 const Chevron = styled.button`
-  position: absolute;
   z-index: 1;
+  position: absolute;
   top: 50%;
-  transform: translate(-50%);
   width: 47px;
   height: 45px;
+  transform: translate(-50%);
   border: 1px solid black;
   background-color: white;
   color: rgba(10, 89, 51);
@@ -24,7 +24,7 @@ export const RightChevron = styled(Chevron)`
   right: -80px;
   `;
 
-// Chevrons specific to Wishlist Carousel
+// Wishlist Carousel Chevrons
 export const WishlistLeftChevron = styled(Chevron)`
   top: 40%;
   right: -80px;
@@ -44,6 +44,28 @@ export const DeactivatedLeftChevron = styled(DeactivatedRightChevron)`
   top: 40%;
 `;
 
+// Thumbnail Carousel Chevrons
+export const SmLeftChevron = styled.button`
+  z-index: 3;
+  position: absolute;
+  top: 25px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  border: unset;
+  /* background-color: white;
+  color: rgba(10, 89, 51); */
+  border-radius: 50%;
+  background-color: #fff;
+  color: rgb(11, 191, 125);
+  cursor: pointer;
+`;
+
+export const SmRightChevron = styled(SmLeftChevron)`
+  right: -0px;
+`;
+
 // Compare button
 export const CompareButton = styled.button`
   border: none;
@@ -53,14 +75,14 @@ export const CompareButton = styled.button`
   padding: 8px;
   color: rgba(11, 191, 125, .9);
   background-color: #fff;
-  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.1)
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.1);
 `;
 
 export const CompareButtonContainer = styled.div`
   position: absolute;
-  top: 0%;
-  transform: translateX(0%);
-  padding: 10px 10px 7px 10px;
+  /* border: 1px solid red; */
+  bottom: 75px;
+  transform: translateX(180px);
   color: rgba(11, 191, 125);
 
   &:hover ${CompareButton} {

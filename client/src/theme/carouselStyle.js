@@ -98,7 +98,6 @@ export const ThumbnailCardsWrapper = styled.div`
   height: 70px;
   position: relative;
   top: -80px;
-  /* background-color: rgba(10, 19, 10, .4); */
   /* border: 1px solid red; */
 `;
 
@@ -119,6 +118,7 @@ export const ThumbnailCardContainer = styled.div`
   max-width: 65px;
   flex-shrink: 0;
   flex-grow: 1;
+  background-color: rgba(10, 19, 10, .4);
 `;
 
 export const ThumbnailAssetContainer = styled.div`
@@ -127,7 +127,7 @@ export const ThumbnailAssetContainer = styled.div`
 `;
 
 export const ThumbnailImg = styled.img`
-  z-index: 3;
+  z-index: 2;
   width: 65px;
   height: 70px;
   align-items: center;

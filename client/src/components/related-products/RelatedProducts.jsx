@@ -58,7 +58,7 @@ export default function RelatedProducts({ product, handleProductChange }) {
     return (
       <Carousels className="carousel">
         <div className="related-header">
-          <h2>COMPLETE THE LOOK</h2>
+          <h2>OTHERS ALSO BOUGHT</h2>
         </div>
         <RelatedCarousel
           products={relatedProducts}

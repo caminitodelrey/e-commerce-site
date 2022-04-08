@@ -68,7 +68,7 @@ export default function AddButton({
       >
         <BsPlusLg />
         &nbsp;
-        ADD CURRENT OUTFIT
+        ADD CURRENT ITEM
       </DefaultCardButton>
     </div>
   );
