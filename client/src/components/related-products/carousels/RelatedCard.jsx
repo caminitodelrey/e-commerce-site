@@ -86,7 +86,7 @@ export default function RelatedCard({
             )}
 
             <div className="product-card__rating">
-              <Ratings ratings={product.ratings} />
+              <Ratings rating={product.rating} />
             </div>
           </div>
         </CardContainer>

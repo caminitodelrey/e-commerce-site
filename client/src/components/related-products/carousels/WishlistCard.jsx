@@ -75,7 +75,7 @@ export default function WishlistCard({
             )}
 
             <div className="product-card__rating">
-              <Ratings ratings={product.ratings} />
+              <Ratings rating={product.rating} />
             </div>
           </div>
         </CardContainer>
