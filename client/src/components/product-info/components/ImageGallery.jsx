@@ -8,10 +8,9 @@ import { IoIosCheckmarkCircle } from 'react-icons/io';
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-const width = 1000;
 const height = 1000;
 const galleryThumbSize = 100;
-const gallerySize = 7;
+const gallerySize = 3;
 // let wrapperSize = (galleryThumbSize + 2) * gallerySize;
 let moveCounter = 0;
 
@@ -32,8 +31,7 @@ export default function ImageGallery({ photoList }) {
     moveCounter * gallerySize + gallerySize,
   );
   const [currThumbPage, setCurrThumbPage] = useState(calculatePage);
-  let moveLimit = Math.ceil(photoList.length / gallerySize) - 1; // 6/3 = 2 - 1 = 1     12/3 = 4
-
+  const moveLimit = Math.ceil(photoList.length / gallerySize) - 1; // 6/3 = 2 - 1 = 1     12/3 = 4
   // moveCounter 0
   // moveLimit 3
   // photoList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -107,14 +105,8 @@ export default function ImageGallery({ photoList }) {
   };
 
   useEffect(() => {
-    if (photoList.length < gallerySize) {
-      setWrapperSize((galleryThumbSize + 2) * photoList.length);
-      moveLimit = 0;
-    } else {
-      setWrapperSize((galleryThumbSize + 2) * gallerySize);
-    }
     setCurrThumbPage(calculatePage);
-  });
+  }, [mainPhoto]);
 
   useEffect(() => {
     if (!currThumbPage.includes(mainPhoto)) {
@@ -125,7 +117,7 @@ export default function ImageGallery({ photoList }) {
         moveThumbs(1);
       }
     }
-  }, [mainPhoto]);
+  }, [currThumbPage]);
 
   return (
     <GalleryWrapper>
@@ -135,7 +127,12 @@ export default function ImageGallery({ photoList }) {
             moveThumbs(-1);
           }}
         />
-        <GalleryThumbWrapper height={wrapperSize}>
+        <GalleryThumbWrapper
+          height={Math.min(
+            wrapperSize,
+            photoList.length * (galleryThumbSize + 2),
+          )}
+        >
           {renderGalleryThumbs()}
         </GalleryThumbWrapper>
         <StyledFaChevronCircleDown
@@ -156,13 +153,6 @@ export default function ImageGallery({ photoList }) {
   );
 }
 
-const GalleryWrapper = styled.div`
-  position: relative;
-  margin: auto;
-  width: 100%;
-  height: ${height}px;
-`;
-
 const CheckmarkCircleCss = css`
   color: rgba(255, 255, 255, 1);
   width: 50px;
@@ -171,7 +161,6 @@ const CheckmarkCircleCss = css`
   position: relative;
   display: block;
   filter: drop-shadow(0 0 0.3rem black);
-  cursor: pointer;
 `;
 
 const StyledFaChevronCircleUp = styled(FaChevronCircleUp)`
@@ -193,20 +182,25 @@ const StyledIoIosCheckmarkCircle = styled(IoIosCheckmarkCircle)`
   filter: drop-shadow(0 0 0.3rem black);
 `;
 
-const ArrowCss = css`
+const LeftArrow = styled(FaChevronLeft)`
   width: 50px;
   height: 50px;
   color: white;
   filter: drop-shadow(0 0 0.3rem black);
-  cursor: pointer;
-`;
-
-const LeftArrow = styled(FaChevronLeft)`
-  ${ArrowCss}
 `;
 
 const RightArrow = styled(FaChevronRight)`
-  ${ArrowCss}
+  width: 50px;
+  height: 50px;
+  color: white;
+  filter: drop-shadow(0 0 0.3rem black);
+`;
+
+const GalleryWrapper = styled.div`
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: ${height}px;
 `;
 
 const GalleryThumbNav = styled.div`
@@ -228,11 +222,10 @@ const GalleryThumbDiv = styled.div`
   width: ${galleryThumbSize}px;
   height: ${galleryThumbSize}px;
   margin: 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   transform: translateY(${(props) => props.pos}px);
   border-radius: 10px;
   transition: transform 1s;
-  cursor: pointer;
 `;
 
 const GalleryThumbImg = styled.img`
