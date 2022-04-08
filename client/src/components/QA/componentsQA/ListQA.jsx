@@ -5,6 +5,8 @@ export default function ListQA({
   product,
   questions,
   questionsDisplayed,
+  handleHelpfulQuestionSubmit,
+  handleHelpfulAnswerSubmit,
 }) {
   questions = questions || [
     {
@@ -48,6 +50,8 @@ export default function ListQA({
           key={q.question_id}
           product={product}
           question={q}
+          handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
+          handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
         />
       ))}
     </div>

@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
-export default function AnswerListEntryQA({ answer }) {
+export default function AnswerListEntryQA({
+  answer,
+  handleHelpfulAnswerSubmit,
+}) {
+  const [helpfulClickedA, setHelpfulClickedA] = useState(false);
+  const handleHelpfulnessClickA = () => {
+    if (!helpfulClickedA) {
+      handleHelpfulAnswerSubmit(answer.id);
+      setHelpfulClickedA(true);
+    }
+  };
   return (
     <>
       <div className="answer-body">
         <span>
           <strong>A:</strong>
-          {' '}
-          {answer.body}
+          {` ${answer.body}`}
         </span>
       </div>
       {answer.photos.length ? (
@@ -17,7 +26,7 @@ export default function AnswerListEntryQA({ answer }) {
             <img
               key={pic}
               src={pic}
-              style={{ height: '100px', weight: '100px' }}
+              style={{ height: '100px' }}
               alt={`${answer.answerer_name}'s data failed to load`}
               className="answer-pic"
             />
@@ -28,15 +37,25 @@ export default function AnswerListEntryQA({ answer }) {
         <span>{`by: ${answer.answerer_name}, `}</span>
         <span>{moment(answer.date).format('MMMM D, YYYY')}</span>
         <span>{' | '}</span>
-        <span>{'Helpful? '}</span>
-        <input
-          type="submit"
-          value="Yes"
-          onKeyPress={null}
-          tabIndex={0}
-          // onClick={handleHelpful}
-        />
-        <span>{` (${answer.helpfulness})`}</span>
+        <span>Helpful? </span>
+        {helpfulClickedA
+          ? (
+            <>
+              <button type="submit">Answer Helpful!</button>
+              <span>{` (${answer.helpfulness + 1})`}</span>
+            </>
+          )
+          : (
+            <>
+              <button
+                type="submit"
+                onClick={handleHelpfulnessClickA}
+              >
+                Yes
+              </button>
+              <span>{` (${answer.helpfulness})`}</span>
+            </>
+          )}
         <span>{' | '}</span>
         <input
           type="submit"

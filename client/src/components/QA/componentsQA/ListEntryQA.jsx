@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react';
 import AnswerListEntryQA from './AnswerListEntryQA.jsx';
 import AddAnswerQA from './AddAnswerQA.jsx';
 
-export default function ListEntryQA({ product, question }) {
+export default function ListEntryQA({
+  product,
+  question,
+  handleHelpfulQuestionSubmit,
+  handleHelpfulAnswerSubmit,
+}) {
   const [answersDisplayed, setAnswersDisplayed] = useState(2);
   const [hiddenAnswers, setHiddenAnswers] = useState(true);
   const [addAnswerModal, setAddAnswerModal] = useState(false);
+  const [helpfulClickedQ, setHelpfulClickedQ] = useState(false);
 
   const handleMoreAnswers = () => {
     answersDisplayed === 2
@@ -18,6 +24,13 @@ export default function ListEntryQA({ product, question }) {
     setAddAnswerModal(!addAnswerModal);
   };
 
+  const handleHelpfulnessClickQ = () => {
+    if (!helpfulClickedQ) {
+      handleHelpfulQuestionSubmit(question.question_id);
+      setHelpfulClickedQ(true);
+    }
+  };
+
   const x = question.question_body;
   return (
     <div>
@@ -28,16 +41,26 @@ export default function ListEntryQA({ product, question }) {
           </span>
           <div>
             <span>Helpful? </span>
-            <button
-              type="submit"
-              onClick={() => console.log('Question helpful!!')}
-            >
-              Yes
-            </button>
-            <span>
-              {' '}
-              {`(${question.question_helpfulness})`}
-            </span>
+            {helpfulClickedQ
+              ? (
+                <>
+                  <button type="submit">Question Helpful!</button>
+                  <span>
+                    {` (${question.question_helpfulness + 1})`}
+                  </span>
+                </>
+              )
+              : (
+                <>
+                  <button
+                    type="submit"
+                    onClick={handleHelpfulnessClickQ}
+                  >
+                    Yes
+                  </button>
+                  <span>{` (${question.question_helpfulness})`}</span>
+                </>
+              )}
             <span>{' | '}</span>
             <input
               type="submit"
@@ -62,6 +85,7 @@ export default function ListEntryQA({ product, question }) {
                 product={product}
                 question={question}
                 answer={a}
+                handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
               />
             ))}
         </div>

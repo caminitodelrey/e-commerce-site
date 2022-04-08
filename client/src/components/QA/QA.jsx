@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // remove after moving axios functions to helper.js
 // import TestRenderer from 'react-test-renderer';
 // import moment from 'moment';
 
@@ -38,28 +39,37 @@ export default function QA({ product }) {
             (a, b) => b.question_helpfulness - a.question_helpfulness,
           ),
         );
-      })
-      .catch((err) => {
-        throw Error(err);
-      });
+      }).catch((err) => { throw Error(err); });
   }, [product.id]);
 
-  //     // axios({
-  //     //   method: 'get',
-  //     //   baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=38199',
-  //     //   headers: {
-  //     //     'User-Agent': 'request',
-  //     //     'Authorization': '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'
-  //     //   }
-  //     // }).then(data => console.log(data)) // Refactor
-  //     //   .catch(err => console.error(err));
-  //   }
-
-  const handleHelpfulQuestionSubmit = (q) => {
+  // PUT /qa/questions/:question_id/helpful
+  // Mark Question as Helpful
+  // Updates a question to show it was found helpful.
+  const handleHelpfulQuestionSubmit = (qId) => {
     axios({
       method: 'put',
-      baseURL: ''
-    });
+      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+      url: `/qa/questions/${qId}/helpful`,
+      headers: {
+        Authorization: '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',
+      },
+    }).then((res) => console.log(res)) // refactor???
+      .catch((err) => { throw Error(err); });
+  };
+
+  // PUT /qa/answers/:answer_id/helpful
+  // Mark Answer as Helpful
+  // Updates an answer to show it was found helpful.
+  const handleHelpfulAnswerSubmit = (aId) => {
+    axios({
+      method: 'put',
+      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+      url: `/qa/answers/${aId}/helpful`,
+      headers: {
+        Authorization: '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',
+      },
+    }).then((res) => console.log(res)) // refactor???
+      .catch((err) => { throw Error(err); });
   };
 
   const handleMoreQuestions = () => {
@@ -149,6 +159,8 @@ export default function QA({ product }) {
         product={product}
         questions={questionsList}
         questionsDisplayed={questionsDisplayed}
+        handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
+        handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
       />
 
       <div className="BottomButtonsQA">
