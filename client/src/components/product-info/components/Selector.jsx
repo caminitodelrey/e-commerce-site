@@ -7,9 +7,37 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
   const skuVals = Object.values(currentStyle.skus);
   const [currSize, setSize] = useState(-1);
   const [quantities, setQuantities] = useState([]);
+  const [error, setError] = useState({
+    show: false,
+    value: 'Select a size before adding to cart',
+    display: null,
+  });
+
+  const checkError = () => {
+    if (currSize === -1) {
+      setError({
+        show: error.show,
+        value: error.value,
+        display: error.value,
+      });
+    } else {
+      setError({
+        show: error.show,
+        value: error.value,
+        display: null,
+      });
+    }
+  };
+
+  const turnOffError = () => {
+    const errorCopy = error;
+    errorCopy.display = null;
+    setError(errorCopy);
+  };
 
   const changeSize = (event) => {
     setSize(event.target.value);
+    turnOffError();
   };
 
   useEffect(() => {
@@ -22,6 +50,7 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
   }, [currSize]);
 
   const handleStyleClick = (index) => {
+    turnOffError();
     if (currentStyle.style_id !== productStyles[index].style_id) {
       setSize(-1);
       setQuantities([]);
@@ -64,12 +93,13 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
   return (
     <div>
       {renderPrice()}
+      <StyledError>{error.display}</StyledError>
       <p>{`Select a style >  ${currentStyle.name}`}</p>
       <StyleSelectDiv>
         {productStyles.map((style, index) => {
           if (style.style_id === currentStyle.style_id) {
             return (
-              <div key={style.style_id} style={{position: 'relative' }}>
+              <div key={style.style_id} style={{ position: 'relative' }}>
                 <StyleThumb
                   selected
                   src={style.photos[0].thumbnail_url}
@@ -100,7 +130,7 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
       {renderQuantity()}
 
       <button type="button"> 🌟 </button>
-      <button type="button"> Add to cart </button>
+      <button type="button" onClick={() => checkError()}> Add to cart </button>
       <button type="button"> 😀📓 </button>
       <button type="button"> 📸 </button>
       <button type="button"> 🐦 </button>
@@ -125,7 +155,7 @@ const StyleThumb = styled.img`
   margin: ${styleThumbMargin}px;
   object-fit: cover;
   border-radius: 50%;
-  cursor: ${({ selected }) => (selected ? 'auto;' : 'pointer;')}
+  cursor: ${({ selected }) => (selected ? 'auto;' : 'pointer;')};
 `;
 
 const StyledPrice = styled.p`
@@ -142,3 +172,8 @@ const StyledCheckmark = styled(IoIosCheckmarkCircle)`
   height: 30px;
   filter: drop-shadow(0 0 0.3rem black);
 `;
+
+const StyledError = styled.p`
+  color: red;
+  text-decoration: bold;
+`
