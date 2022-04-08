@@ -50,6 +50,7 @@ export const CardAssetContainer = styled.div`
   max-width: 300px;
 `;
 
+// ProductImg.jsx
 export const CardAssetImg = styled.img`
   width: 260px;
   height: 360px;
@@ -89,4 +90,56 @@ export const PreSalePrice = styled.p`
   color: rgb(10, 89, 81);
   text-decoration: line-through;
   font-size: 0.9em;
+`;
+
+// ThumbnailCarousel.jsx
+export const ThumbnailCardsWrapper = styled.div`
+  width: 260px;
+  height: 70px;
+  position: relative;
+  top: -80px;
+  /* background-color: rgba(10, 19, 10, .4); */
+  /* border: 1px solid red; */
+`;
+
+// --> might change to existing styles if these are not unique
+export const ThumbnailContentWrapper = styled.div`
+  overflow: hidden;
+  height: 100%;
+`;
+
+export const ThumbnailContent = styled.div`
+  display: flex;
+  transition: all 250ms linear;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+`;
+
+export const ThumbnailCardContainer = styled.div`
+  max-width: 65px;
+  flex-shrink: 0;
+  flex-grow: 1;
+`;
+
+export const ThumbnailAssetContainer = styled.div`
+  overflow: hidden;
+  max-width: 65px;
+`;
+
+export const ThumbnailImg = styled.img`
+  z-index: 3;
+  width: 65px;
+  height: 70px;
+  align-items: center;
+  object-fit: cover;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const NoThumbnailCarousel = styled.div`
+  color: transparent;
+  background-color: transparent;
+  cursor: default;
 `;

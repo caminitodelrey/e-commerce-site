@@ -31,8 +31,8 @@ export default function RelatedCarousel({
 
   const { display, clickedProduct } = modal;
 
-  // determines the initial number of product cards shown on page
-  const show = 4;
+  // determines the initial number of product cards maxDisplayCountn on page
+  const maxDisplayCount = 4;
 
   // determines the total number of cards
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function RelatedCarousel({
   };
 
   const next = () => {
-    if (currentIndex < length - show) {
+    if (currentIndex < length - maxDisplayCount) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
@@ -75,11 +75,11 @@ export default function RelatedCarousel({
         <ContentWrapper>
           <Content
             style={{
-              transform: `translateX(-${currentIndex * (100 / show)}%)`,
+              transform: `translateX(-${currentIndex * (100 / maxDisplayCount)}%)`,
             }}
           >
             <RelatedCard
-              show={show}
+              maxDisplayCount={maxDisplayCount}
               products={products}
               toggleModal={toggleModal}
               handleKeyDown={handleKeyDown}
@@ -89,7 +89,7 @@ export default function RelatedCarousel({
             />
           </Content>
         </ContentWrapper>
-        {currentIndex < length - show && (
+        {currentIndex < length - maxDisplayCount && (
           <RightChevron className="right-arrow" onClick={next}>
             <FaChevronRight />
           </RightChevron>

@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { FiHeart } from 'react-icons/fi';
+import { MdOutlineClose } from 'react-icons/md';
 
 // Carousel Chevrons
 const Chevron = styled.button`
@@ -74,7 +75,7 @@ export const CompareButtonContainer = styled.div`
 export const ActionButtonContainer = styled.div`
   position: absolute;
   top: 0%;
-  transform: translateX(623%);
+  transform: translateX(624%);
   padding: 10px 10px 7px 10px;
   border-radius: 0 6px;
   background: #fff;
@@ -85,10 +86,26 @@ export const ActionButtonContainer = styled.div`
   }
 `;
 
+// Remove Button
+const rotation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const AnimateRemoveButton = styled(MdOutlineClose)`
+  &:hover {
+    animation: ${rotation} 2s infinite linear;
+  }
+`
+
 // Wishlist Button
 const heartbeat = keyframes`
   0% {
-    transform: scale(1);
+    transform: rotate();
   }
   50% {
     transform: scale(1.25);

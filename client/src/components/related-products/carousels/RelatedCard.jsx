@@ -20,7 +20,7 @@ import {
 } from '../../../theme/buttonStyle.js';
 
 export default function RelatedCard({
-  show,
+  maxDisplayCount,
   products,
   toggleModal,
   handleKeyDown,
@@ -33,17 +33,14 @@ export default function RelatedCard({
       {products.map((product) => (
         <CardContainer
           key={product.id}
-          style={{ width: `calc(100% / ${show})` }}
+          style={{ width: `calc(100% / ${maxDisplayCount})` }}
         >
           <CardAssetContainer>
-            <div
-              className="product-card__img"
-              onClick={() => handleProductChange(product.id)}
-              onKeyDown={handleKeyDown}
-              role="button"
-              tabIndex="0"
-            >
-              <ProductImg product={product} />
+            <div className="product-card__img">
+              <ProductImg
+                product={product}
+                handleProductChange={handleProductChange}
+              />
             </div>
             <ActionButtonContainer>
               <WishlistButton
