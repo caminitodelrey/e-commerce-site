@@ -84,11 +84,14 @@ export default function ImageGallery({
 
   const renderGalleryThumbs = () => {
     let checkmark = null;
+    let selected = false;
     return photoList.map((photo, index) => {
       if (index === mainPhoto) {
         checkmark = <StyledIoIosCheckmarkCircle />;
+        selected = true;
       } else {
         checkmark = null;
+        selected = false;
       }
       return (
         <GalleryThumbDiv
@@ -97,7 +100,7 @@ export default function ImageGallery({
           pos={wrapperPos}
         >
           {checkmark}
-          <GalleryThumbImg alt="" src={photo.thumbnail_url} />
+          <GalleryThumbImg selected={selected} alt="" src={photo.thumbnail_url} />
         </GalleryThumbDiv>
       );
     });
@@ -306,7 +309,7 @@ const GalleryThumbImg = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: ${({ selected }) => (selected ? 'auto;' : 'pointer;')};
 `;
 
 const BigImageContainer = styled.div`

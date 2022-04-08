@@ -1,3 +1,4 @@
+import { IoIosCheckmarkCircle } from 'react-icons/io';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -65,13 +66,27 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
       {renderPrice()}
       <p>{`Select a style >  ${currentStyle.name}`}</p>
       <StyleSelectDiv>
-        {productStyles.map((style, index) => (
-          <StyleThumb
-            key={style.style_id}
-            src={style.photos[0].thumbnail_url}
-            onClick={() => handleStyleClick(index)}
-          />
-        ))}
+        {productStyles.map((style, index) => {
+          if (style.style_id === currentStyle.style_id) {
+            return (
+              <div key={style.style_id} style={{position: 'relative' }}>
+                <StyleThumb
+                  selected
+                  src={style.photos[0].thumbnail_url}
+                  onClick={() => handleStyleClick(index)}
+                />
+                <StyledCheckmark />
+              </div>
+            );
+          }
+          return (
+            <StyleThumb
+              key={style.style_id}
+              src={style.photos[0].thumbnail_url}
+              onClick={() => handleStyleClick(index)}
+            />
+          );
+        })}
       </StyleSelectDiv>
       <select onChange={changeSize}>
         <option value={-1}>Select a Size</option>
@@ -110,9 +125,20 @@ const StyleThumb = styled.img`
   margin: ${styleThumbMargin}px;
   object-fit: cover;
   border-radius: 50%;
+  cursor: ${({ selected }) => (selected ? 'auto;' : 'pointer;')}
 `;
 
 const StyledPrice = styled.p`
   color: red;
   text-decoration: line-through;
+`;
+
+const StyledCheckmark = styled(IoIosCheckmarkCircle)`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: white;
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0 0 0.3rem black);
 `;
