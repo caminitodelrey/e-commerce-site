@@ -13,7 +13,7 @@ export default function ReviewList({ reviews }) {
     <div>
       <div style={{
         padding: '1rem',
-        maxHeight: '550px',
+        maxHeight: '850px',
         overflow: 'auto',
       }}
       >

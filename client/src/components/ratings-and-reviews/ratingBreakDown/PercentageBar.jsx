@@ -5,7 +5,7 @@ export default function PercentageBar(props) {
 
   const containerStyles = {
     height: 15,
-    width: '30%',
+    width: '90%',
     backgroundColor: '#e0e0de',
     borderRadius: 50,
   };
@@ -13,7 +13,7 @@ export default function PercentageBar(props) {
   const fillerStyles = {
     height: '100%',
     width: `${percent}%`,
-    backgroundColor: 'green',
+    backgroundColor: 'black',
     borderRadius: 'inherit',
     textAlign: 'right',
   };
