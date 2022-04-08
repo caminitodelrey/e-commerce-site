@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 // import TestRenderer from 'react-test-renderer';
-// import axios from 'axios';
 // import moment from 'moment';
 
 import getData from '../../../helper.js';
@@ -45,6 +44,24 @@ export default function QA({ product }) {
       });
   }, [product.id]);
 
+  //     // axios({
+  //     //   method: 'get',
+  //     //   baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=38199',
+  //     //   headers: {
+  //     //     'User-Agent': 'request',
+  //     //     'Authorization': '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'
+  //     //   }
+  //     // }).then(data => console.log(data)) // Refactor
+  //     //   .catch(err => console.error(err));
+  //   }
+
+  const handleHelpfulQuestionSubmit = (q) => {
+    axios({
+      method: 'put',
+      baseURL: ''
+    });
+  };
+
   const handleMoreQuestions = () => {
     setQuestionsDisplayed(questionsDisplayed + 2);
   };
@@ -57,7 +74,6 @@ export default function QA({ product }) {
     const newFilteredQuestions = questions.filter((obj) =>
       obj.question_body.toLowerCase().includes(text.toLowerCase()),
     );
-    // console.log(newFilteredQuestions);
     setFilteredQuestions(newFilteredQuestions);
     if (text.length < 3) {
       setFiltered(false);
@@ -103,10 +119,6 @@ export default function QA({ product }) {
   // POST /qa/questions/:question_id/answers
   // Add an Answer
   // Adds an answer for the given question
-
-  // PUT /qa/questions/:question_id/helpful
-  // Mark Question as Helpful
-  // Updates a question to show it was found helpful.
 
   // PUT /qa/questions/:question_id/report
   // Report Question

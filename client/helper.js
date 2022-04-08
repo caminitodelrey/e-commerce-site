@@ -3,7 +3,7 @@ const config = require('../config.js');
 
 // http://example.com/page?parameter=value&also=another
 
-export default function getData(endpoint) {
+function getData(endpoint) {
   return axios({
     method: 'get',
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
@@ -13,3 +13,16 @@ export default function getData(endpoint) {
     },
   });
 }
+
+// export default function questionHelpful(question_id) {
+//   return axios({
+//     method: 'put',
+//     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+//     url: `/qa/questions/${question_id}/helpful`,
+//     headers: {
+//       Authorization: config.TOKEN,
+//     },
+//   });
+// }
+
+export default getData;

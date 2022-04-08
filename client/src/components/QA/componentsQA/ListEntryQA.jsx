@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AnswerListEntryQA from './AnswerListEntryQA.jsx';
 import AddAnswerQA from './AddAnswerQA.jsx';
 
-export default function ListEntryQA({
-  product,
-  question,
-}) {
+export default function ListEntryQA({ product, question }) {
   const [answersDisplayed, setAnswersDisplayed] = useState(2);
   const [hiddenAnswers, setHiddenAnswers] = useState(true);
   const [addAnswerModal, setAddAnswerModal] = useState(false);
@@ -30,18 +27,18 @@ export default function ListEntryQA({
             <strong>{`Q: ${x}`}</strong>
           </span>
           <div>
-            <span>
-              Helpful?
-              {' '}
-            </span>
-            <input type="submit" value="Yes" />
+            <span>Helpful? </span>
+            <button
+              type="submit"
+              onClick={() => console.log('Question helpful!!')}
+            >
+              Yes
+            </button>
             <span>
               {' '}
               {`(${question.question_helpfulness})`}
             </span>
-            <span>
-              {' | '}
-            </span>
+            <span>{' | '}</span>
             <input
               type="submit"
               value="Add Answer"
@@ -56,24 +53,27 @@ export default function ListEntryQA({
           toggleAddAnswerModal={toggleAddAnswerModal}
         />
         <div>
-          {Object.values(question.answers).sort(
-            (a, b) => b.helpfulness - a.helpfulness,
-          ).slice(0, answersDisplayed).map((a) => (
-            <AnswerListEntryQA
-              key={a.id}
-              product={product}
-              question={question}
-              answer={a}
-            />
-          ))}
+          {Object.values(question.answers)
+            .sort((a, b) => b.helpfulness - a.helpfulness)
+            .slice(0, answersDisplayed)
+            .map((a) => (
+              <AnswerListEntryQA
+                key={a.id}
+                product={product}
+                question={question}
+                answer={a}
+              />
+            ))}
         </div>
       </div>
       <div>
-        {Object.values(question.answers).length > 2
-          ? (hiddenAnswers ? (
+        {Object.values(question.answers).length > 2 ? (
+          hiddenAnswers ? (
             <input
               type="submit"
-              value={`\\/ See More Answers (${Object.values(question.answers).length - answersDisplayed})`}
+              value={`\\/ See More Answers (${
+                Object.values(question.answers).length - answersDisplayed
+              })`}
               onClick={handleMoreAnswers}
             />
           ) : (
@@ -83,7 +83,7 @@ export default function ListEntryQA({
               onClick={handleMoreAnswers}
             />
           )
-          ) : null}
+        ) : null}
       </div>
     </div>
   );
