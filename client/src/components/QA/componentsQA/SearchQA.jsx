@@ -5,8 +5,8 @@ class SearchQA extends React.Component {
     super(props);
     this.state = {
       product: this.props.product,
-      searchText: ''
-    }
+      searchText: '',
+    };
     this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
@@ -15,14 +15,13 @@ class SearchQA extends React.Component {
   }
 
   handleSearchSubmit(e) {
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       console.log(`Searching Questions for ${this.state.searchText}`);
     }
   }
 
-
   render() {
-    const {searchText} = this.state;
+    const { searchText } = this.state;
     return (
       <div>
         <input
@@ -32,11 +31,11 @@ class SearchQA extends React.Component {
           value={searchText}
           onChange={this.handleSearchChange}
           onKeyDown={(e) => this.handleSearchSubmit(e)}
-          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
+          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+        />
       </div>
-    )
+    );
   }
 }
-
 
 export default SearchQA;

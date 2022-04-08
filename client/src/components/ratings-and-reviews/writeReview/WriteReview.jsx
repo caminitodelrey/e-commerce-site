@@ -47,7 +47,16 @@ export default function WriteReview() {
     </button>
   ) : (
     <div>
-      <div>
+      <div
+        style={{
+          position: 'fixed',
+          left: '100px',
+          top: '200px',
+          zindex: 5,
+          background: 'wheat',
+          padding: '50px',
+        }}
+      >
         <form>
           <div>
             <span className="fa fa-star" />
@@ -66,23 +75,53 @@ export default function WriteReview() {
             <br />
             <label htmlFor="fit1">
               Runs tight
-              <input type="radio" id="fit1" name="fit" value="1" onClick={handleFit} />
+              <input
+                type="radio"
+                id="fit1"
+                name="fit"
+                value="1"
+                onClick={handleFit}
+              />
             </label>
             <label htmlFor="fit2">
               Runs slightly tight
-              <input type="radio" id="fit2" name="fit" value="2" onClick={handleFit} />
+              <input
+                type="radio"
+                id="fit2"
+                name="fit"
+                value="2"
+                onClick={handleFit}
+              />
             </label>
             <label htmlFor="fit3">
               Runs Perfect
-              <input type="radio" id="fit3" name="fit" value="3" onClick={handleFit} />
+              <input
+                type="radio"
+                id="fit3"
+                name="fit"
+                value="3"
+                onClick={handleFit}
+              />
             </label>
             <label htmlFor="fit4">
               Runs slightly large
-              <input type="radio" id="fit4" name="fit" value="4" onClick={handleFit} />
+              <input
+                type="radio"
+                id="fit4"
+                name="fit"
+                value="4"
+                onClick={handleFit}
+              />
             </label>
             <label htmlFor="fit5">
               Runs large
-              <input type="radio" id="fit5" name="fit" value="5" onClick={handleFit} />
+              <input
+                type="radio"
+                id="fit5"
+                name="fit"
+                value="5"
+                onClick={handleFit}
+              />
             </label>
           </div>
           <div>
@@ -90,23 +129,53 @@ export default function WriteReview() {
             <br />
             <label htmlFor="comfort1">
               Uncomfortable
-              <input type="radio" id="comfort1" name="comfort" value="1" onClick={handleComfort} />
+              <input
+                type="radio"
+                id="comfort1"
+                name="comfort"
+                value="1"
+                onClick={handleComfort}
+              />
             </label>
             <label htmlFor="comfort2">
               Runs slightly tight
-              <input type="radio" id="comfort2" name="comfort" value="2" onClick={handleComfort} />
+              <input
+                type="radio"
+                id="comfort2"
+                name="comfort"
+                value="2"
+                onClick={handleComfort}
+              />
             </label>
             <label htmlFor="comfort3">
               Runs Perfect
-              <input type="radio" id="comfort3" name="comfort" value="3" onClick={handleComfort} />
+              <input
+                type="radio"
+                id="comfort3"
+                name="comfort"
+                value="3"
+                onClick={handleComfort}
+              />
             </label>
             <label htmlFor="comfort4">
               Runs slightly large
-              <input type="radio" id="comfort4" name="comfort" value="4" onClick={handleComfort} />
+              <input
+                type="radio"
+                id="comfort4"
+                name="comfort"
+                value="4"
+                onClick={handleComfort}
+              />
             </label>
             <label htmlFor="comfort5">
               Runs large
-              <input type="radio" id="comfort5" name="comfort" value="5" onClick={handleComfort} />
+              <input
+                type="radio"
+                id="comfort5"
+                name="comfort"
+                value="5"
+                onClick={handleComfort}
+              />
             </label>
           </div>
           <div>
@@ -170,9 +239,5 @@ export default function WriteReview() {
     </div>
   );
 
-  return (
-    <div>
-      {writeReview2}
-    </div>
-  );
+  return <div>{writeReview2}</div>;
 }

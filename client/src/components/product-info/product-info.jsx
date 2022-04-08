@@ -5,6 +5,7 @@ import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
 
 export default function ({ product }) {
+  // const [product, setProductId] = useState(product);
   const [styles, setStyles] = useState(
     product.styles || [
       {
@@ -44,11 +45,15 @@ export default function ({ product }) {
 
   return (
     <ProductDiv>
-      <ImageGallery photoList={photoList} mainPhoto={photoList[0]} />
+      <ImageGallery photoList={photoList} />
       <p>Review</p>
       <p>{product.category}</p>
       <h1>{product.name}</h1>
-      <Selector productStyles={styles} currentStyle={selectedStyle} styleChange={styleChange} />
+      <Selector
+        productStyles={styles}
+        currentStyle={selectedStyle}
+        styleChange={styleChange}
+      />
       <h2>{product.slogan}</h2>
       <p>{product.description}</p>
       {product.features.map((obj) => (
@@ -59,6 +64,8 @@ export default function ({ product }) {
 }
 
 const ProductDiv = styled.div`
+  width: 50%;
+  position: relative;
+  margin: 20px auto;
   border: 3px solid black;
-  padding: 10px;
 `;
