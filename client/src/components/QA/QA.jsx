@@ -27,7 +27,7 @@ export default function QA({ product }) {
 
   useEffect(() => {
     // getData(`qa/questions?product_id=${product.id}`)
-    getData('qa/questions?product_id=38189') // for testing only
+    getData('qa/questions?product_id=38179') // for testing only
       .then((res) => {
         setQuestions(
           res.data.results.sort(

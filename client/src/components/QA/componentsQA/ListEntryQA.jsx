@@ -56,7 +56,9 @@ export default function ListEntryQA({
           toggleAddAnswerModal={toggleAddAnswerModal}
         />
         <div>
-          {Object.values(question.answers).slice(0, answersDisplayed).map((a) => (
+          {Object.values(question.answers).sort(
+            (a, b) => b.helpfulness - a.helpfulness,
+          ).slice(0, answersDisplayed).map((a) => (
             <AnswerListEntryQA
               key={a.id}
               product={product}
