@@ -20,7 +20,7 @@ export default function RatingsReviews({ product }) {
     getData(`reviews/meta?product_id=${product.id}`).then(({ data }) => {
       setMetaData(data);
     });
-  }, []);
+  }, [product.id]);
 
   const handleDropDown = (e) => {
     let dropDown = 'relevant';

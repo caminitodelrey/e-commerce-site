@@ -1,27 +1,26 @@
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 
 import React, { useState, useEffect } from 'react';
-import Ratings from '../subcomponents/Ratings.jsx';
-import ProductImg from '../subcomponents/ProductImg.jsx';
 import ComparisonModal from '../subcomponents/ComparisonModal.jsx';
-import WishlistActionButton from '../subcomponents/WishlistActionButton.jsx';
+import RelatedCard from './RelatedCard.jsx';
 
 import {
-  CardsContainer,
   CardsWrapper,
   ContentWrapper,
   Content,
-  LeftChevron,
-  RightChevron,
-  CardContainer,
-  CardAssetContainer,
-  ProductCategory,
-  ProductName,
-  ProductPrice,
 } from '../../../theme/carouselStyle.js';
 
+import {
+  LeftChevron,
+  RightChevron,
+} from '../../../theme/buttonStyle.js';
+
 export default function RelatedCarousel({
-  products, mainProduct, show, setSelectedProduct, selectedProducts,
+  products,
+  mainProduct,
+  handleProductChange,
+  setWishlistProducts,
+  wishlistProducts,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
@@ -32,7 +31,10 @@ export default function RelatedCarousel({
 
   const { display, clickedProduct } = modal;
 
-  // set the length to match current children from props
+  // determines the initial number of product cards maxDisplayCountn on page
+  const maxDisplayCount = 4;
+
+  // determines the total number of cards
   useEffect(() => {
     setLength(products.length);
   }, [products]);
@@ -45,7 +47,7 @@ export default function RelatedCarousel({
   };
 
   const next = () => {
-    if (currentIndex < length - (show - 1)) {
+    if (currentIndex < length - maxDisplayCount) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
@@ -62,43 +64,8 @@ export default function RelatedCarousel({
     }
   };
 
-  const Card = products.map((product) => (
-    <CardContainer id="card" key={product.name} style={{ width: `calc(100% / ${show})` }}>
-      <CardAssetContainer>
-        <div
-          className="product-card__img"
-          onClick={() => toggleModal(product)}
-          onKeyDown={handleKeyDown}
-          role="button"
-          tabIndex="0"
-        >
-          <ProductImg product={product} />
-        </div>
-        <WishlistActionButton
-          product={product}
-          selectedProducts={selectedProducts}
-          setSelectedProduct={setSelectedProduct}
-        />
-      </CardAssetContainer>
-
-      <div className="product-card__details">
-        <ProductCategory className="product-card__category">
-          {product.category.toUpperCase()}
-        </ProductCategory>
-        <ProductName className="product-card__name">{product.name}</ProductName>
-        <ProductPrice className="product-card__price">
-          $
-          {product.price.replace(/\.00$/, '')}
-        </ProductPrice>
-        <p className="product-card__rating">
-          <Ratings ratings={product.ratings} />
-        </p>
-      </div>
-    </CardContainer>
-  ));
-
   return (
-    <CardsContainer>
+    <div>
       <CardsWrapper>
         {currentIndex > 0 && (
           <LeftChevron className="left-arrow" onClick={prev}>
@@ -108,13 +75,21 @@ export default function RelatedCarousel({
         <ContentWrapper>
           <Content
             style={{
-              transform: `translateX(-${currentIndex * (100 / (show + 1))}%)`,
+              transform: `translateX(-${currentIndex * (100 / maxDisplayCount)}%)`,
             }}
           >
-            {Card}
+            <RelatedCard
+              maxDisplayCount={maxDisplayCount}
+              products={products}
+              toggleModal={toggleModal}
+              handleKeyDown={handleKeyDown}
+              handleProductChange={handleProductChange}
+              wishlistProducts={wishlistProducts}
+              setWishlistProducts={setWishlistProducts}
+            />
           </Content>
         </ContentWrapper>
-        {currentIndex < length - (show - 1) && (
+        {currentIndex < length - maxDisplayCount && (
           <RightChevron className="right-arrow" onClick={next}>
             <FaChevronRight />
           </RightChevron>
@@ -128,6 +103,6 @@ export default function RelatedCarousel({
           mainProduct={mainProduct}
         />
       )}
-    </CardsContainer>
+    </div>
   );
 }

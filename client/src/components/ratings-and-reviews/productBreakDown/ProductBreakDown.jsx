@@ -35,17 +35,22 @@ export default function ProductBreakDown({ metaData }) {
     },
   };
 
+  // return (
+  //   <div>
+  //     <br />
+  //     <br />
+  //     <div>
+  //       {`Size ${metaData.characteristics.Fit.value}`}
+  //       {/* <PercentageBar
+  //         percent={Math.floor((metaData.characteristics.Fit.value / 5) * 100)}
+  //       /> */}
+  //     </div>
+  //     <div>{`Comfort ${metaData.characteristics.Comfort.value}`}</div>
+  //   </div>
+  // );
   return (
     <div>
-      <br />
-      <br />
-      <div>
-        {`Size ${metaData.characteristics.Fit.value}`}
-        {/* <PercentageBar
-          percent={Math.floor((metaData.characteristics.Fit.value / 5) * 100)}
-        /> */}
-      </div>
-      <div>{`Comfort ${metaData.characteristics.Comfort.value}`}</div>
+      ERROR HERE
     </div>
   );
 }
