@@ -27,10 +27,18 @@ export default function QA({ product }) {
 
   useEffect(() => {
     // getData(`qa/questions?product_id=${product.id}`)
-    getData(`qa/questions?product_id=38189`)
+    getData('qa/questions?product_id=38189') // for testing only
       .then((res) => {
-        setQuestions(res.data.results);
-        setFilteredQuestions(res.data.results);
+        setQuestions(
+          res.data.results.sort(
+            (a, b) => b.question_helpfulness - a.question_helpfulness,
+          ),
+        );
+        setFilteredQuestions(
+          res.data.results.sort(
+            (a, b) => b.question_helpfulness - a.question_helpfulness,
+          ),
+        );
       })
       .catch((err) => {
         throw Error(err);
@@ -53,8 +61,7 @@ export default function QA({ product }) {
     setFilteredQuestions(newFilteredQuestions);
     if (text.length < 3) {
       setFiltered(false);
-    }
-    else if (text.length > 2) {
+    } else if (text.length > 2) {
       setFiltered(true);
     }
   };
@@ -125,9 +132,7 @@ export default function QA({ product }) {
         <h1>Questions & Answers</h1>
       </div>
 
-      <SearchQA
-        handleSearchFilter={handleSearchFilter}
-      />
+      <SearchQA handleSearchFilter={handleSearchFilter} />
       <ListQA
         product={product}
         questions={questionsList}
