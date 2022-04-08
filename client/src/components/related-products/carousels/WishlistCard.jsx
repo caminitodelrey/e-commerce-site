@@ -1,6 +1,6 @@
 import React from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
-import ProductImg from '../subcomponents/ProductImg.jsx';
+import ProductPreview from '../subcomponents/ProductPreview.jsx';
 import RemoveButton from '../subcomponents/RemoveButton.jsx';
 
 import {
@@ -38,7 +38,7 @@ export default function WishlistCard({
               role="button"
               tabIndex="0"
             >
-              <ProductImg product={product} />
+              <ProductPreview product={product} />
             </div>
             <ActionButtonContainer>
               <RemoveButton

@@ -21,8 +21,6 @@ export const WishlistCardsContainer = styled.div`
 
 // RelatedCarousel.jsx
 export const CardsWrapper = styled.div`
-  /* display: flex;
-  width: 100%; */
   position: relative;
 `;
 
@@ -45,7 +43,6 @@ export const CardContainer = styled.section`
 `;
 
 export const CardAssetContainer = styled.div`
-  // border: 1px solid green;
   overflow: hidden;
   max-width: 300px;
 `;
@@ -98,20 +95,11 @@ export const ThumbnailCardsWrapper = styled.div`
   height: 70px;
   position: relative;
   top: -80px;
-  /* border: 1px solid red; */
 `;
 
-// --> might change to existing styles if these are not unique
-export const ThumbnailContentWrapper = styled.div`
-  overflow: hidden;
-  height: 100%;
-`;
-
-export const ThumbnailContent = styled.div`
-  display: flex;
-  transition: all 250ms linear;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+export const ThumbnailContent = styled(Content)`
+  transition: 400ms linear;
+  // update this**
 `;
 
 export const ThumbnailCardContainer = styled.div`

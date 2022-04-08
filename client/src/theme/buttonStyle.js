@@ -69,18 +69,17 @@ export const SmRightChevron = styled(SmLeftChevron)`
 // Compare button
 export const CompareButton = styled.button`
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   text-align: center;
   text-decoration: none;
   padding: 8px;
   color: rgba(11, 191, 125, .9);
   background-color: #fff;
-  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 `;
 
 export const CompareButtonContainer = styled.div`
   position: absolute;
-  /* border: 1px solid red; */
   bottom: 75px;
   transform: translateX(180px);
   color: rgba(11, 191, 125);

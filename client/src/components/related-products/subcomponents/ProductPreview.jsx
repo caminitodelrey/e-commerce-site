@@ -5,7 +5,7 @@ import getData from '../../../../helper.js';
 import {
   CardAssetImg,
   ThumbnailCardsWrapper,
-  ThumbnailContentWrapper,
+  ContentWrapper,
   ThumbnailContent,
   ThumbnailCardContainer,
   ThumbnailAssetContainer,
@@ -18,9 +18,9 @@ import {
   SmRightChevron,
 } from '../../../theme/buttonStyle.js';
 
-export default function ProductImg({ product, handleProductChange }) {
+export default function ProductPreview({ product, handleProductChange }) {
   const [thumbnails, setThumbnails] = useState([]);
-  // const [lenght, setLength] = useState(null);
+  const [length, setLength] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [thumbnailIsClicked, setThumbnailIsClicked] = useState(false);
@@ -33,9 +33,7 @@ export default function ProductImg({ product, handleProductChange }) {
       .then(({ data }) => {
         data.results.forEach(({ photos }) => {
           setThumbnails(photos);
-          // setLength(photos.length);
-          const length = photos.length;
-          console.log(length)
+          setLength(photos.length);
         });
       })
       .catch((err) => {
@@ -45,24 +43,16 @@ export default function ProductImg({ product, handleProductChange }) {
 
   const renderCarousel = () => {
     setIsHovering(!isHovering);
-    if (thumbnailIsClicked === true) {
-      setIsHovering(true);
-    }
   };
 
   const handleMainPreviewChange = (imgURL) => {
     setThumbnailIsClicked(true);
     setCurrentPreviewURL(imgURL);
-    console.log('thumbnail clicked!')
   };
 
   useEffect(() => {
     getImages();
   }, [product]);
-
-  // length is not populated. Why?
-  // currentIndex = starts at 0, changes with next() and prev() functions
-  // length = set with useEffect. It's the length of an array of objects (thumbnails)
 
   const next = () => {
     if (currentIndex < length - maxDisplayCount) {
@@ -96,7 +86,6 @@ export default function ProductImg({ product, handleProductChange }) {
           src={currentPreviewURL}
           onClick={() => {
             handleProductChange(product.id);
-            renderCarousel;
           }}
         />
       )}
@@ -104,17 +93,13 @@ export default function ProductImg({ product, handleProductChange }) {
       {isHovering && (
         <ThumbnailCardsWrapper className='CardsWrapper'>
 
-          {/* <SmLeftChevron className="left-arrow" onClick={prev}>
-            <FaChevronLeft />
-          </SmLeftChevron> */}
-
           {currentIndex > 0 && (
             <SmLeftChevron className="left-arrow" onClick={prev}>
               <FaChevronLeft />
             </SmLeftChevron>
           )}
 
-          <ThumbnailContentWrapper className='ContentWrapper'>
+          <ContentWrapper className='ContentWrapper'>
             <ThumbnailContent
               style={{
                 transform: `translateX(-${currentIndex * (100 / maxDisplayCount)}%)`,
@@ -142,17 +127,13 @@ export default function ProductImg({ product, handleProductChange }) {
                 ))}
 
             </ThumbnailContent>
-          </ThumbnailContentWrapper>
+          </ContentWrapper>
 
           {currentIndex < length - maxDisplayCount && (
             <SmRightChevron className="right-arrow" onClick={next}>
               <FaChevronRight />
             </SmRightChevron>
           )}
-
-          {/* <SmRightChevron className="right-arrow" onClick={next}>
-            <FaChevronRight />
-          </SmRightChevron> */}
 
         </ThumbnailCardsWrapper>
       )}

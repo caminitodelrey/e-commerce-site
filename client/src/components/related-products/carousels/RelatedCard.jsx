@@ -1,6 +1,6 @@
 import React from 'react';
 import Ratings from '../subcomponents/Ratings.jsx';
-import ProductImg from '../subcomponents/ProductImg.jsx';
+import ProductPreview from '../subcomponents/ProductPreview.jsx';
 import WishlistButton from '../subcomponents/WishlistButton.jsx';
 
 import {
@@ -37,7 +37,7 @@ export default function RelatedCard({
         >
           <CardAssetContainer>
             <div className="product-card__img">
-              <ProductImg
+              <ProductPreview
                 product={product}
                 handleProductChange={handleProductChange}
               />
