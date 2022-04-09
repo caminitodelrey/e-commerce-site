@@ -1,6 +1,6 @@
 import React from 'react';
 import PercentageBar from './PercentageBar';
-import StarBreakDown from '../../StarBreakDown/StarBreakDown';
+import StarBreakDown from './StarBreakDown';
 
 export default function RatingBreakDown({ metaData }) {
   const metaData2 = metaData || {
@@ -68,7 +68,7 @@ export default function RatingBreakDown({ metaData }) {
     <div>
       <h4>RATINGS & REVIEWS</h4>
       <h1>{`${findRatings} / 5`}</h1>
-      <StarBreakDown averageRating={findRatings} height="50" width="50" />
+      <StarBreakDown averageRating={findRatings} height="30" width="30" />
       <div>
         <div>
           {recommendPercentage}

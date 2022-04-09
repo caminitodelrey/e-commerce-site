@@ -12,7 +12,7 @@ export default function RatingsReviews({ product }) {
 
   useEffect(() => {
     getData(
-      `reviews?page=2&count=10&sort=relevant&product_id=${product.id}`,
+      `reviews?page=1&count=1000&sort=relevant&product_id=${product.id}`,
     ).then(({ data }) => {
       setReviews(data.results);
     });
@@ -32,7 +32,7 @@ export default function RatingsReviews({ product }) {
       dropDown = 'relevant';
     }
     getData(
-      `reviews?page=2&count=20&sort=${dropDown}&product_id=${product.id}`,
+      `reviews?page=1&count=1000&sort=${dropDown}&product_id=${product.id}`,
     ).then(({ data }) => {
       setReviews(data.results);
     });
@@ -42,40 +42,46 @@ export default function RatingsReviews({ product }) {
 
   return (
     <div>
-      <div>
-        <RatingBreakDown metaData={metaData} />
-      </div>
-      <div>
-        <ProductBreakDown metaData={metaData} />
-      </div>
-      <div>
-        <h4>
-          {`${Number(reviewCount.true) + Number(reviewCount.false)} reviews, sorted by`}
-          <select onChange={handleDropDown}>
-            <option value="0">Relevant</option>
-            <option value="1">Helpful</option>
-            <option value="2">Recent</option>
-          </select>
-        </h4>
-      </div>
-      <div
-        className="reviewListGridBox"
-        style={{
-          borderStyle: 'solid',
-          borderColor: 'green',
-        }}
+      <div style={{
+        float: 'left',
+        width: '30%',
+      }}
       >
-        <ReviewList reviews={reviews} />
+        <div style={{ marginLeft: '40px' }}>
+          <RatingBreakDown metaData={metaData} />
+        </div>
+        <div style={{ marginLeft: '40px' }}>
+          <ProductBreakDown metaData={metaData} />
+        </div>
       </div>
-      <div
-        className="writeReviewGridBox"
-        style={{
-          borderStyle: 'solid',
-          borderColor: 'green',
-        }}
+
+      <div style={{
+        float: 'left',
+        width: '70%',
+      }}
       >
-        <WriteReview />
+        <div>
+          <h4>
+            {`${Number(reviewCount.true) + Number(reviewCount.false)} reviews, sorted by`}
+            <select onChange={handleDropDown}>
+              <option value="0">Relevant</option>
+              <option value="1">Helpful</option>
+              <option value="2">Recent</option>
+            </select>
+          </h4>
+        </div>
+        <div>
+          <ReviewList reviews={reviews} />
+        </div>
+        <div>
+          <WriteReview />
+        </div>
       </div>
+
+      <div style={{
+        clear: 'both',
+      }}
+      />
     </div>
   );
 }

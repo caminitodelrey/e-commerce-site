@@ -31,8 +31,9 @@ export default function ReivewListUnit({ review }) {
     <div
       className="ratings-flexbox-container"
       style={{
-        borderStyle: 'solid',
-        borderColor: 'Green',
+        borderBottom: '1px solid black',
+        paddingTop: '10px',
+        marginRight: '40px',
       }}
     >
       <div>
@@ -48,20 +49,24 @@ export default function ReivewListUnit({ review }) {
           {singleReview.rating >= 5
             ? <span className="rating-star"><TiStar /></span> : <TiStarOutline />}
         </span>
-        {' '}
-        <span>
-          {singleReview.reviewer_name}
-          ,
-        </span>
-        {' '}
-        <span>{moment(singleReview.date).format('MMMM Do YYYY')}</span>
+        <div style={{
+          float: 'right',
+        }}
+        >
+          <span>
+            {singleReview.reviewer_name}
+            ,
+          </span>
+          {' '}
+          <span>{moment(singleReview.date).format('MMMM Do YYYY')}</span>
+        </div>
+
       </div>
       <div>
         <h4>
           {singleReview.summary}
         </h4>
       </div>
-      <br />
       <div>
         {singleReview.body}
       </div>
@@ -80,7 +85,7 @@ export default function ReivewListUnit({ review }) {
         {singleReview.recommend ? '| I recommend this product' : null}
       </div>
       <br />
-      <div style={{}}>
+      <div style={{ paddingBottom: '10px' }}>
         Helpful?
         {' '}
         <u
@@ -104,7 +109,7 @@ export default function ReivewListUnit({ review }) {
           onClick={handleReport}
           style={{ cursor: 'pointer' }}
         >
-          Report
+          No
         </u>
       </div>
     </div>
