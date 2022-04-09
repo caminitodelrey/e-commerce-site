@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import getData from '../../helper.js';
+import { getData } from '../../helper.js';
 
 import { GlobalStyle } from '../theme/globalStyle.js';
 

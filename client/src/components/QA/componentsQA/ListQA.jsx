@@ -1,25 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ListEntryQA from './ListEntryQA.jsx';
 
-
-
-class ListQA extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      product: this.props.product,
-      questions: this.props.questions, // why not working?
-    };
-  }
-
-  render() {
-    const { product, questions } = this.state;
-    return (
-      <div id="list">
-        <ListEntryQA product={product} />
-      </div>
-    );
-  }
+export default function ListQA({
+  product,
+  questions,
+  questionsDisplayed,
+  handleAddAnswerSubmit,
+  handleHelpfulQuestionSubmit,
+  handleHelpfulAnswerSubmit,
+  handleReportQuestionSubmit,
+  handleReportAnswerSubmit,
+}) {
+  return (
+    <div id="list">
+      {questions.slice(0, questionsDisplayed).map((q) => (
+        <ListEntryQA
+          key={q.question_id}
+          product={product}
+          question={q}
+          handleAddAnswerSubmit={handleAddAnswerSubmit}
+          handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
+          handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
+          handleReportQuestionSubmit={handleReportQuestionSubmit}
+          handleReportAnswerSubmit={handleReportAnswerSubmit}
+        />
+      ))}
+    </div>
+  );
 }
-
-export default ListQA;

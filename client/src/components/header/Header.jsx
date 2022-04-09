@@ -19,7 +19,7 @@ import {
 } from '../../theme/headerStyle.js';
 
 const banner1 = (
-  <Slide>
+  <Slide key={Math.random()}>
     <BannerText>
       Free Shipping + Returns, Free Membership, Exclusive Products
     </BannerText>
@@ -28,7 +28,7 @@ const banner1 = (
 );
 
 const banner2 = (
-  <Slide>
+  <Slide key={Math.random()}>
     <BannerText>Save Up to 40%</BannerText>
     <BannerLink>Shop All Our New Markdowns</BannerLink>
   </Slide>

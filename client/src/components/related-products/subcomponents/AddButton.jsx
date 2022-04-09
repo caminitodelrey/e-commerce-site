@@ -1,7 +1,7 @@
 import { BsPlusLg } from 'react-icons/bs';
 
 import React, { useState, useEffect } from 'react';
-import getData from '../../../../helper.js';
+import { getData } from '../../../../helper.js';
 
 import {
   DefaultCardButton,
