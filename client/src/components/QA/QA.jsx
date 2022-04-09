@@ -8,6 +8,7 @@ import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
 import AddQuestionQA from './componentsQA/AddQuestionQA.jsx';
 
+// export default function QA() { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
 export default function QA({ product }) {
   const [questions, setQuestions] = useState([
     {
