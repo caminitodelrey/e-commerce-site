@@ -14,7 +14,7 @@ export default function ListQA({
   return (
     <div
       id="list"
-      style={{ 'padding-bottom': '40px' }}
+      style={{ 'paddingBottom': '40px' }}
     >
       {questions.slice(0, questionsDisplayed).map((q) => (
         <ListEntryQA

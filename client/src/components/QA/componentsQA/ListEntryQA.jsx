@@ -49,12 +49,12 @@ export default function ListEntryQA({
       <div>
         <div>
           <div
-            style={{ "float": "left", "padding-bottom": '10px' }}
+            style={{ "float": "left", "paddingBottom": '10px' }}
           >
             <strong>{`Q: ${question.question_body}`}</strong>
           </div>
           <div
-            style={{ "float": "right" , "padding-bottom": '10px'}}
+            style={{ "float": "right" , "paddingBottom": '10px'}}
           >
             <span>Helpful? </span>
             {helpfulClickedQ
