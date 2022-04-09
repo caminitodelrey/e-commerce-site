@@ -88,7 +88,7 @@ export const CompareButton = styled.button`
   border-radius: 15px;
   text-align: center;
   text-decoration: none;
-  padding: 8px;
+  padding: 8px 15px;
   color: rgba(11, 191, 125, .9);
   background-color: #fff;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
@@ -96,8 +96,8 @@ export const CompareButton = styled.button`
 
 export const CompareButtonContainer = styled.div`
   position: absolute;
-  bottom: 75px;
-  transform: translateX(180px);
+  bottom: 85px;
+  transform: translateX(160px);
   color: rgba(11, 191, 125);
 
   &:hover ${CompareButton} {

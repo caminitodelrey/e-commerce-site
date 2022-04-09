@@ -64,11 +64,12 @@ export const CardAssetImg = styled.img`
 export const ProductCategory = styled.p`
   color: rgb(128, 128, 128);
   font-size: 0.875em;
+  margin-top: 15x;
 `;
 
 export const ProductName = styled.p`
   font-weight: bold;
-  margin-top: -8px;
+  /* margin-top: -5px; */
 `;
 
 export const PriceContainer = styled.div`
