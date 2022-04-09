@@ -202,22 +202,22 @@ export const DefaultCardButton = styled.button`
   }
 `;
 
-export const DisabledNotification = styled.div`
-  z-index: 1;
-  position: absolute;
-  height: 45px;
-  width: 160px;
-  padding: 15px;
-  border: 1px solid black;
-  color: black;
-  background-color: #fff;
-  align-items: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+// export const DisabledNotification = styled.div`
+//   z-index: 1;
+//   position: absolute;
+//   height: 45px;
+//   width: 160px;
+//   padding: 15px;
+//   border: 1px solid black;
+//   color: black;
+//   background-color: #fff;
+//   align-items: center;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
 
-export const NotificationText = styled.p`
-  text-align: center;
-  font-size: 0.7em;
-`;
+// export const NotificationText = styled.p`
+//   text-align: center;
+//   font-size: 0.7em;
+// `;

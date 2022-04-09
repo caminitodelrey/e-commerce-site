@@ -98,7 +98,8 @@ export const ThumbnailCardsWrapper = styled.div`
 `;
 
 export const ThumbnailContent = styled(Content)`
-  transition: 400ms linear;
+  /* transition: 400ms linear; */
+  transition: ease 1000ms;
   // update this**
 `;
 
