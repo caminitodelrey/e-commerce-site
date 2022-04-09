@@ -69,7 +69,6 @@ export const ProductCategory = styled.p`
 
 export const ProductName = styled.p`
   font-weight: bold;
-  /* margin-top: -5px; */
 `;
 
 export const PriceContainer = styled.div`
