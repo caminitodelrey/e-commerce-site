@@ -1,4 +1,4 @@
-import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
+import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
 import React, { useState, useEffect } from 'react';
 import ComparisonModal from '../subcomponents/ComparisonModal.jsx';
@@ -13,6 +13,10 @@ import {
 import {
   LeftChevron,
   RightChevron,
+  ScaledLeftArrow,
+  ScaledRightArrow,
+  DeactivatedLeftChevron,
+  DeactivatedRightChevron,
 } from '../../../theme/buttonStyle.js';
 
 export default function RelatedCarousel({
@@ -67,11 +71,24 @@ export default function RelatedCarousel({
   return (
     <div>
       <CardsWrapper>
-        {currentIndex > 0 && (
+        {/* {currentIndex > 0 && (
           <LeftChevron className="left-arrow" onClick={prev}>
-            <FaChevronLeft />
+            <ScaledLeftArrow />
           </LeftChevron>
+        )} */}
+
+        { length <= maxDisplayCount
+          ? (<div></div>)
+          : currentIndex > 0 ? (
+          <LeftChevron className="left-arrow" onClick={prev}>
+            <ScaledLeftArrow />
+          </LeftChevron>
+        ) : (
+          <DeactivatedLeftChevron className="left-arrow">
+            <ScaledLeftArrow />
+          </DeactivatedLeftChevron>
         )}
+
         <ContentWrapper>
           <Content
             style={{
@@ -89,11 +106,25 @@ export default function RelatedCarousel({
             />
           </Content>
         </ContentWrapper>
-        {currentIndex < length - maxDisplayCount && (
+
+        {/* {currentIndex < length - maxDisplayCount && (
           <RightChevron className="right-arrow" onClick={next}>
-            <FaChevronRight />
+            <ScaledRightArrow />
           </RightChevron>
-        )}
+        )} */}
+
+          { length <= maxDisplayCount
+            ? (<div></div>)
+            : currentIndex < length - maxDisplayCount ? (
+            <RightChevron className="right-arrow" onClick={next}>
+              <ScaledRightArrow />
+            </RightChevron>
+          ) : (
+            <DeactivatedRightChevron className="right-arrow">
+              <ScaledRightArrow />
+            </DeactivatedRightChevron>
+          )}
+
       </CardsWrapper>
 
       {display && (

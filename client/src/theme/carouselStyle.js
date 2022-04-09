@@ -104,9 +104,6 @@ export const ThumbnailContent = styled(Content)`
 
 export const ThumbnailCardContainer = styled.div`
   max-width: 65px;
-  flex-shrink: 0;
-  flex-grow: 1;
-  background-color: rgba(10, 19, 10, .4);
 `;
 
 export const ThumbnailAssetContainer = styled.div`

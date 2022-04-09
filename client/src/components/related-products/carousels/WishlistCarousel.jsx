@@ -1,4 +1,4 @@
-import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
+import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
 import React, { useState, useEffect } from 'react';
 import WishlistCard from './WishlistCard.jsx';
@@ -13,6 +13,8 @@ import {
 } from '../../../theme/carouselStyle.js';
 
 import {
+  ScaledLeftArrow,
+  ScaledRightArrow,
   WishlistLeftChevron,
   RightChevron,
   DeactivatedLeftChevron,
@@ -31,7 +33,7 @@ export default function WishlistCarousel({
   const [length, setLength] = useState(products.length);
 
   // determines the initial number of product cards shown on page
-  const show = 3;
+  const maxDisplayCount = 3;
 
   // determines the total number of cards
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function WishlistCarousel({
   }, [products]);
 
   const next = () => {
-    if (currentIndex < length - (show - 1)) {
+    if (currentIndex < length - (maxDisplayCount - 1)) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
@@ -65,26 +67,26 @@ export default function WishlistCarousel({
       <WishlistCardsContainer>
         <CardsWrapper>
 
-          { length <= show
+          { length <= maxDisplayCount
             ? (<div></div>)
             : currentIndex > 0 ? (
             <WishlistLeftChevron className="left-arrow" onClick={prev}>
-              <FaChevronLeft />
+              <ScaledLeftArrow />
             </WishlistLeftChevron>
           ) : (
             <DeactivatedLeftChevron className="left-arrow">
-              <FaChevronLeft />
+              <ScaledLeftArrow />
             </DeactivatedLeftChevron>
           )}
 
           <ContentWrapper>
             <Content
               style={{
-                transform: `translateX(-${currentIndex * (100 / show)}%)`,
+                transform: `translateX(-${currentIndex * (100 / maxDisplayCount)}%)`,
               }}
             >
               <WishlistCard
-                show={show}
+                maxDisplayCount={maxDisplayCount}
                 products={products}
                 handleProductChange={handleProductChange}
                 wishlistProducts={wishlistProducts}
@@ -93,15 +95,15 @@ export default function WishlistCarousel({
             </Content>
           </ContentWrapper>
 
-          { length <= show
+          { length <= maxDisplayCount
             ? (<div></div>)
-            : currentIndex < length - show ? (
+            : currentIndex < length - maxDisplayCount ? (
             <RightChevron className="right-arrow" onClick={next}>
-              <FaChevronRight />
+              <ScaledRightArrow />
             </RightChevron>
           ) : (
             <DeactivatedRightChevron className="right-arrow">
-              <FaChevronRight />
+              <ScaledRightArrow />
             </DeactivatedRightChevron>
           )}
 
