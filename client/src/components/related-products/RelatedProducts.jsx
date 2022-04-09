@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import getData from '../../../helper.js';
+import { getData } from '../../../helper.js';
 import { Carousels } from '../../theme/carouselStyle.js';
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
 import WishlistCarousel from './carousels/WishlistCarousel.jsx';

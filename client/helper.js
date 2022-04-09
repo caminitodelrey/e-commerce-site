@@ -14,21 +14,21 @@ function getData(endpoint) {
   });
 }
 
-// // Q&A
-// // PUT /qa/questions/:question_id/helpful
-// // Mark Question as Helpful
-// // Updates a question to show it was found helpful.
-// export const handleHelpfulQuestionSubmit = (qId) => {
-//   axios({
-//     method: 'put',
-//     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
-//     url: `/qa/questions/${qId}/helpful`,
-//     headers: {
-//       Authorization: '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',
-//     },
-//   }).then((res) => console.log(res)) // refactor???
-//     .catch((err) => { throw Error(err); });
-// };
+// Q&A
+// PUT /qa/questions/:question_id/helpful
+// Mark Question as Helpful
+// Updates a question to show it was found helpful.
+const handleHelpfulQuestionSubmit = (qId) => {
+  axios({
+    method: 'put',
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: `/qa/questions/${qId}/helpful`,
+    headers: {
+      Authorization: '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',
+    },
+  }).then((res) => console.log(res)) // refactor???
+    .catch((err) => { throw Error(err); });
+};
 
 // // Q&A
 // // PUT /qa/answers/:answer_id/helpful
@@ -116,4 +116,7 @@ function getData(endpoint) {
 //     .catch((err) => { throw Error(err); });
 // };
 
-export default getData;
+export {
+  getData,
+  handleHelpfulQuestionSubmit,
+};

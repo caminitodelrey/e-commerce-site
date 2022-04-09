@@ -3,7 +3,7 @@ import axios from 'axios'; // remove after moving axios functions to helper.js
 // import TestRenderer from 'react-test-renderer';
 // import moment from 'moment';
 
-import getData from '../../../helper.js';
+import { getData } from '../../../helper.js';
 import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
 import AddQuestionQA from './componentsQA/AddQuestionQA.jsx';

@@ -8,7 +8,7 @@ import {
   ModalBody,
   TableRow,
 } from '../../../theme/modalStyle.js';
-import getData from '../../../../helper.js';
+import { getData } from '../../../../helper.js';
 
 export default function ComparisonModal({ toggleModal, product, mainProduct }) {
   const [features, setFeatures] = useState([]);
