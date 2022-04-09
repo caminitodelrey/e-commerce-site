@@ -25,12 +25,16 @@ export default function QA({ product }) {
   const [addQuestionModal, setAddQuestionModal] = useState(false);
   const [filtered, setFiltered] = useState(false);
 
-  // GET /qa/questions/:question_id/answers
-  // Answers List
-  // Returns answers for a given question. This list does not include any reported answers.
+  // // for Testing only, put { product } back on line 11. ~~~~~~~~~~~~~~~~~~~~~~~~
+  // const [product, setProduct] = useState({ id: 37484 }); // type product id here
+  // useEffect(() => {
+  //   getData(`/products/${product.id}`)
+  //     .then((res) => setProduct(res.data))
+  //     .catch((err) => { throw Error(err); });
+  // }, [product.id]);
+
   useEffect(() => {
-    // getData(`qa/questions?product_id=${product.id}`)
-    getData('qa/questions?product_id=38179') // for testing only
+    getData(`qa/questions?product_id=${product.id}`)
       .then((res) => {
         setQuestions(
           res.data.results.sort(
@@ -44,6 +48,12 @@ export default function QA({ product }) {
         );
       }).catch((err) => { throw Error(err); });
   }, [product.id]);
+
+  // GET /qa/questions/:question_id/answers
+  // Answers List
+  // Returns answers for a given question. This list does not include any reported answers.
+
+  // ^^^^^DO I NEED THIS API CALL????????
 
   // PUT /qa/questions/:question_id/helpful
   // Mark Question as Helpful

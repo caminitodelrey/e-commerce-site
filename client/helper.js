@@ -18,7 +18,7 @@ function getData(endpoint) {
 // // PUT /qa/questions/:question_id/helpful
 // // Mark Question as Helpful
 // // Updates a question to show it was found helpful.
-// const handleHelpfulQuestionSubmit = (qId) => {
+// export const handleHelpfulQuestionSubmit = (qId) => {
 //   axios({
 //     method: 'put',
 //     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
@@ -34,7 +34,7 @@ function getData(endpoint) {
 // // PUT /qa/answers/:answer_id/helpful
 // // Mark Answer as Helpful
 // // Updates an answer to show it was found helpful.
-// const handleHelpfulAnswerSubmit = (aId) => {
+// export const handleHelpfulAnswerSubmit = (aId) => {
 //   axios({
 //     method: 'put',
 //     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
@@ -52,7 +52,7 @@ function getData(endpoint) {
 // // Updates a question to show it was reported.
 // // Note, this action does not delete the question,
 // // but the question will not be returned in the above GET request.
-// const handleReportQuestionSubmit = (questionId) => {
+// export const handleReportQuestionSubmit = (questionId) => {
 //   axios({
 //     method: 'put',
 //     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
@@ -70,7 +70,7 @@ function getData(endpoint) {
 // // Updates an answer to show it has been reported.
 // // Note, this action does not delete the answer,
 // // but the answer will not be returned in the above GET request.
-// const handleReportAnswerSubmit = (answerId) => {
+// export const handleReportAnswerSubmit = (answerId) => {
 //   axios({
 //     method: 'put',
 //     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
@@ -86,7 +86,7 @@ function getData(endpoint) {
 // // POST /qa/questions
 // // Add a Question
 // // Adds a question for the given product
-// const handleAddQuestionSubmit = (data) => {
+// export const handleAddQuestionSubmit = (data) => {
 //   axios({
 //     method: 'post',
 //     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
@@ -103,7 +103,7 @@ function getData(endpoint) {
 // // POST /qa/questions/:question_id/answers
 // // Add an Answer
 // // Adds an answer for the given question
-// const handleAddAnswerSubmit = (data, qId) => {
+// export const handleAddAnswerSubmit = (data, qId) => {
 //   axios({
 //     method: 'post',
 //     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
