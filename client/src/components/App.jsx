@@ -42,16 +42,18 @@ export default function App() {
   };
 
   return (
-    <>
+    <div>
       <GlobalStyle />
       <Header />
-      <ProductInfo product={selectedProduct} />
-      <RelatedProducts
-        product={selectedProduct}
-        handleProductChange={handleProductChange}
-      />
-      <QA product={selectedProduct} />
-      <RatingsReviews product={selectedProduct} />
-    </>
+      <div style={{ 'padding': '0 10rem' }}>
+        <ProductInfo product={selectedProduct} />
+        <RelatedProducts
+          product={selectedProduct}
+          handleProductChange={handleProductChange}
+        />
+        <QA product={selectedProduct} />
+        <RatingsReviews product={selectedProduct} />
+      </div>
+    </div>
   );
 }

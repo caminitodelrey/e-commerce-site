@@ -12,7 +12,7 @@ export default function PercentageBar(props) {
 
   const fillerStyles = {
     height: '100%',
-    width: `${percent}%`,
+    width: `${percent || 0}%`,
     backgroundColor: 'black',
     borderRadius: 'inherit',
     textAlign: 'right',
@@ -29,7 +29,7 @@ export default function PercentageBar(props) {
       {`${star} stars`}
       <div style={containerStyles}>
         <div style={fillerStyles}>
-          <span style={labelStyles}>{`${percent}%`}</span>
+          <span style={labelStyles}>{`${percent || 0}%`}</span>
         </div>
       </div>
     </div>

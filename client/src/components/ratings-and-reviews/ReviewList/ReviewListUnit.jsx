@@ -33,7 +33,6 @@ export default function ReivewListUnit({ review }) {
       style={{
         borderBottom: '1px solid black',
         paddingTop: '10px',
-        marginRight: '40px',
       }}
     >
       <div>
