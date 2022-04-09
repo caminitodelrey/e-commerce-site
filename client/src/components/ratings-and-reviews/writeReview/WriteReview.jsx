@@ -88,7 +88,7 @@ export default function WriteReview() {
         <h1>Submit Your Review</h1>
       </ModalTitle>
       <ModalBody>
-        <form>
+        <form style={{height: '400px'}}>
           <div style={{ margin: '10px 0'}}>
             <p>Would you recommend this product?</p>
             <WriteReviewButtons type="button">Yes</WriteReviewButtons>
