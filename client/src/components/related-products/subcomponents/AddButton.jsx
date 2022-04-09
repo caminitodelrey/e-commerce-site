@@ -12,6 +12,7 @@ export default function AddButton({
   wishlistProducts,
   setWishlistProducts,
 }) {
+  // console.log('add button', product)
   const [disable, setDisable] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
 

@@ -1,8 +1,22 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { FiHeart } from 'react-icons/fi';
 import { MdOutlineClose } from 'react-icons/md';
+import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
 // Carousel Chevrons
+const ScaledArrow = css`
+  width: 20px;
+  height: 20px;
+`;
+
+export const ScaledLeftArrow = styled(BsArrowRight)`
+  ${ScaledArrow}
+`;
+
+export const ScaledRightArrow = styled(BsArrowLeft)`
+  ${ScaledArrow}
+`;
+
 const Chevron = styled.button`
   z-index: 1;
   position: absolute;
@@ -11,18 +25,20 @@ const Chevron = styled.button`
   height: 45px;
   transform: translate(-50%);
   border: 1px solid black;
+  border-radius: 2px;
   background-color: white;
-  color: rgba(10, 89, 51);
   cursor: pointer;
 `;
 
 export const LeftChevron = styled(Chevron)`
-  left: -80px;
-  `;
+  /* Alternative => left: -80px; */
+  top: 40%;
+  right: -80px;
+`;
 
 export const RightChevron = styled(Chevron)`
   right: -80px;
-  `;
+`;
 
 // Wishlist Carousel Chevrons
 export const WishlistLeftChevron = styled(Chevron)`
@@ -33,7 +49,7 @@ export const WishlistLeftChevron = styled(Chevron)`
 export const DeactivatedRightChevron = styled(Chevron)`
   right: -80px;
   color: rgba(128, 128, 128, 0.5);
-  border: 1px solid rgba(128, 128, 128, 0.5);
+  border: 2px solid rgba(128, 128, 128, 0.2);
 
   &:hover {
     cursor: default;
@@ -185,3 +201,23 @@ export const DefaultCardButton = styled.button`
     box-shadow: inset 6px 6px 5px 1px rgba(37, 167, 115, 0.7);
   }
 `;
+
+// export const DisabledNotification = styled.div`
+//   z-index: 1;
+//   position: absolute;
+//   height: 45px;
+//   width: 160px;
+//   padding: 15px;
+//   border: 1px solid black;
+//   color: black;
+//   background-color: #fff;
+//   align-items: center;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
+
+// export const NotificationText = styled.p`
+//   text-align: center;
+//   font-size: 0.7em;
+// `;

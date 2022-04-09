@@ -16,7 +16,7 @@ import {
 import { ActionButtonContainer } from '../../../theme/buttonStyle.js';
 
 export default function WishlistCard({
-  show,
+  maxDisplayCount,
   products,
   handleKeyDown,
   handleProductChange,
@@ -28,7 +28,7 @@ export default function WishlistCard({
       {products.map((product) => (
         <CardContainer
           key={product.id}
-          style={{ width: `calc(100% / ${show})` }}
+          style={{ width: `calc(100% / ${maxDisplayCount})` }}
         >
           <CardAssetContainer>
             <div

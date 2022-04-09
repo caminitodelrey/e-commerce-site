@@ -26,6 +26,7 @@ export const ModalProductName = styled.th`
   border-bottom: 3px solid rgba(3, 115, 83, 0.3);
   width: 150px;
   position: sticky;
+  line-height: 1.25;
 `;
 
 export const ModalContent = styled.div`
@@ -46,9 +47,11 @@ export const TableRow = styled.tr`
   height: 40px;
   text-align: left;
   color: rgba(128, 128, 128, 0.8);
+  line-height: 1.25;
 `;
 
 export const TableRowFeature = styled.td`
   text-align: center;
   color: rgb(50, 78, 89);
+  line-height: 1.25;
 `;

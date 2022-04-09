@@ -3,6 +3,7 @@ import getData from '../../helper.js';
 
 import { GlobalStyle } from '../theme/globalStyle.js';
 
+import Header from './header/Header.jsx';
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
 import QA from './QA/QA.jsx';
@@ -43,6 +44,7 @@ export default function App() {
   return (
     <>
       <GlobalStyle />
+      <Header />
       <ProductInfo product={selectedProduct} />
       <RelatedProducts
         product={selectedProduct}
