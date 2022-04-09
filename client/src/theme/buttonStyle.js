@@ -70,10 +70,8 @@ export const SmLeftChevron = styled.button`
   display: flex;
   align-items: center;
   border: unset;
-  /* background-color: white;
-  color: rgba(10, 89, 51); */
-  border-radius: 50%;
-  background-color: #fff;
+  border-radius: 2px;
+  background-color: rgba(225, 225, 225, .8);
   color: rgb(11, 191, 125);
   cursor: pointer;
 `;
