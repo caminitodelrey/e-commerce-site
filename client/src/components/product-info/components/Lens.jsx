@@ -49,7 +49,7 @@ export default function Lens({ photo, photoContainer, exitZoom }) {
     );
 
     // console.log(lensElement.current.clientWidth, photoContainerState.clientWidth)
-    console.log(lensElement.current);
+    console.log(lensElement.current.tagName);
     lensElement.current.style.backgroundPosition = `-${backgroundX/2}px -${backgroundY/2}px`;
     lensElement.current.style.cursor = 'zoom-out';
   };
