@@ -45,11 +45,11 @@ export default function QA({ product }) {
   // PUT /qa/questions/:question_id/helpful
   // Mark Question as Helpful
   // Updates a question to show it was found helpful.
-  const handleHelpfulQuestionSubmit = (qId) => {
+  const handleHelpfulQuestionSubmit = (questionId) => {
     axios({
       method: 'put',
       baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
-      url: `/qa/questions/${qId}/helpful`,
+      url: `/qa/questions/${questionId}/helpful`,
       headers: {
         Authorization: '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',
       },
@@ -60,13 +60,84 @@ export default function QA({ product }) {
   // PUT /qa/answers/:answer_id/helpful
   // Mark Answer as Helpful
   // Updates an answer to show it was found helpful.
-  const handleHelpfulAnswerSubmit = (aId) => {
+  const handleHelpfulAnswerSubmit = (answerId) => {
     axios({
       method: 'put',
       baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
-      url: `/qa/answers/${aId}/helpful`,
+      url: `/qa/answers/${answerId}/helpful`,
       headers: {
         Authorization: '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',
+      },
+    }).then((res) => console.log(res)) // refactor???
+      .catch((err) => { throw Error(err); });
+  };
+
+  // PUT /qa/questions/:question_id/report
+  // Report Question
+  // Updates a question to show it was reported.
+  // Note, this action does not delete the question,
+  // but the question will not be returned in the above GET request.
+  const handleReportQuestionSubmit = (questionId) => {
+    axios({
+      method: 'put',
+      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+      url: `/qa/answers/${questionId}/report`,
+      headers: {
+        Authorization: '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',
+      },
+    }).then((res) => console.log(res)) // refactor???
+      .catch((err) => { throw Error(err); });
+  };
+
+  // PUT /qa/answers/:answer_id/report
+  // Report Answer
+  // Updates an answer to show it has been reported.
+  // Note, this action does not delete the answer,
+  // but the answer will not be returned in the above GET request.
+  const handleReportAnswerSubmit = (answerId) => {
+    axios({
+      method: 'put',
+      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+      url: `/qa/answers/${answerId}/report`,
+      headers: {
+        Authorization: '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',
+      },
+    }).then((res) => console.log(res)) // refactor???
+      .catch((err) => { throw Error(err); });
+  };
+
+  // POST /qa/questions
+  // Add a Question
+  // Adds a question for the given product
+  const handleAddQuestionSubmit = (data) => {
+    axios({
+      method: 'post',
+      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+      url: '/qa/questions/',
+      headers: {
+        Authorization: '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',
+      },
+      data,
+    }).then((res) => console.log(res)) // refactor???
+      .catch((err) => { throw Error(err); });
+  };
+
+  // POST /qa/questions/:question_id/answers
+  // Add an Answer
+  // Adds an answer for the given question
+  const handleAddAnswerSubmit = (data) => {
+    axios({
+      method: 'post',
+      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+      url: `/qa/questions/${qId}/answers`,
+      headers: {
+        Authorization: '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',
+      },
+      data: {
+        body: body(text), // updata
+        name: username(text), // update
+        email: email(text), // update
+        product_id: product_id(integer), // update
       },
     }).then((res) => console.log(res)) // refactor???
       .catch((err) => { throw Error(err); });
@@ -94,57 +165,9 @@ export default function QA({ product }) {
 
   const questionsList = filtered ? filteredQuestions : questions;
 
-  //   componentDidMount() {
-  //     // GET /qa/questions
-  //     // List Questions
-  //     // Retrieves a list of questions for a particular product.
-  //     // This list does not include any reported questions.
-
-  //     const url = `qa/questions?product_id=${this.state.product.id}`;
-  //     getData(url)
-  //       .then((res) => this.setState({
-  //         questions: res.data.results,
-  //       }))
-  //       .catch((err) => console.error(err));
-
-  //     // axios({
-  //     //   method: 'get',
-  //     //   baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=38199',
-  //     //   headers: {
-  //     //     'User-Agent': 'request',
-  //     //     'Authorization': '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'
-  //     //   }
-  //     // }).then(data => console.log(data)) // Refactor
-  //     //   .catch(err => console.error(err));
-  //   }
-
   // GET /qa/questions/:question_id/answers
   // Answers List
   // Returns answers for a given question. This list does not include any reported answers.
-
-  // POST /qa/questions
-  // Add a Question
-  // Adds a question for the given product
-
-  // POST /qa/questions/:question_id/answers
-  // Add an Answer
-  // Adds an answer for the given question
-
-  // PUT /qa/questions/:question_id/report
-  // Report Question
-  // Updates a question to show it was reported.
-  // Note, this action does not delete the question,
-  // but the question will not be returned in the above GET request.
-
-  // PUT /qa/answers/:answer_id/helpful
-  // Mark Answer as Helpful
-  // Updates an answer to show it was found helpful.
-
-  // PUT /qa/answers/:answer_id/report
-  // Report Answer
-  // Updates an answer to show it has been reported.
-  // Note, this action does not delete the answer,
-  // but the answer will not be returned in the above GET request.
 
   // const { product, questions } = this.state;
   // console.log(questions);
@@ -153,7 +176,6 @@ export default function QA({ product }) {
       <div>
         <h1>Questions & Answers</h1>
       </div>
-
       <SearchQA handleSearchFilter={handleSearchFilter} />
       <ListQA
         product={product}
@@ -161,8 +183,9 @@ export default function QA({ product }) {
         questionsDisplayed={questionsDisplayed}
         handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
         handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
+        handleReportQuestionSubmit={handleReportQuestionSubmit}
+        handleReportAnswerSubmit={handleReportAnswerSubmit}
       />
-
       <div className="BottomButtonsQA">
         <div>
           {questionsList.length - questionsDisplayed > 0 ? (
@@ -186,6 +209,7 @@ export default function QA({ product }) {
           product={product}
           addQuestionModal={addQuestionModal}
           toggleAddQuestionModal={toggleAddQuestionModal}
+          handleAddQuestionSubmit={handleAddQuestionSubmit}
         />
       </div>
     </div>

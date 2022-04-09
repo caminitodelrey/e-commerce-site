@@ -7,11 +7,14 @@ export default function ListEntryQA({
   question,
   handleHelpfulQuestionSubmit,
   handleHelpfulAnswerSubmit,
+  handleReportQuestionSubmit,
+  handleReportAnswerSubmit,
 }) {
   const [answersDisplayed, setAnswersDisplayed] = useState(2);
   const [hiddenAnswers, setHiddenAnswers] = useState(true);
   const [addAnswerModal, setAddAnswerModal] = useState(false);
   const [helpfulClickedQ, setHelpfulClickedQ] = useState(false);
+  const [reportClickedQ, setReportClickedQ] = useState(false);
 
   const handleMoreAnswers = () => {
     answersDisplayed === 2
@@ -31,13 +34,21 @@ export default function ListEntryQA({
     }
   };
 
-  const x = question.question_body;
+  const handleReportClickQ = () => {
+    if (!reportClickedQ) {
+      handleReportQuestionSubmit(question.question_id);
+      setReportClickedQ(true);
+    }
+  };
+
+  // const { question_body, question_helpfulness, answers } = question;
+  // const x = question.question_body;
   return (
     <div>
       <div>
         <div>
           <span>
-            <strong>{`Q: ${x}`}</strong>
+            <strong>{`Q: ${question.question_body}`}</strong>
           </span>
           <div>
             <span>Helpful? </span>
@@ -60,6 +71,17 @@ export default function ListEntryQA({
                   </button>
                   <span>{` (${question.question_helpfulness})`}</span>
                 </>
+              )}
+            <span>{' | '}</span>
+            {reportClickedQ
+              ? <button type="submit">Reported</button>
+              : (
+                <button
+                  type="submit"
+                  onClick={handleReportClickQ}
+                >
+                  Report
+                </button>
               )}
             <span>{' | '}</span>
             <input
@@ -86,6 +108,7 @@ export default function ListEntryQA({
                 question={question}
                 answer={a}
                 handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
+                handleReportAnswerSubmit={handleReportAnswerSubmit}
               />
             ))}
         </div>

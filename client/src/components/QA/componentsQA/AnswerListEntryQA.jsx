@@ -1,17 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 
 export default function AnswerListEntryQA({
   answer,
   handleHelpfulAnswerSubmit,
+  handleReportAnswerSubmit,
 }) {
   const [helpfulClickedA, setHelpfulClickedA] = useState(false);
+  const [reportClickedA, setReportClickedA] = useState(false);
+
   const handleHelpfulnessClickA = () => {
     if (!helpfulClickedA) {
       handleHelpfulAnswerSubmit(answer.id);
       setHelpfulClickedA(true);
     }
   };
+
+  const handleReportClickA = () => {
+    if (!reportClickedA) {
+      handleReportAnswerSubmit(answer.id);
+      setReportClickedA(true);
+    }
+  };
+
   return (
     <>
       <div className="answer-body">
@@ -57,13 +68,16 @@ export default function AnswerListEntryQA({
             </>
           )}
         <span>{' | '}</span>
-        <input
-          type="submit"
-          value="Report"
-          onKeyPress={null}
-          tabIndex={0}
-          // onClick={handleReport}
-        />
+        {reportClickedA
+          ? <button type="submit">Reported</button>
+          : (
+            <button
+              type="submit"
+              onClick={handleReportClickA}
+            >
+              Report
+            </button>
+          )}
       </div>
     </>
   );

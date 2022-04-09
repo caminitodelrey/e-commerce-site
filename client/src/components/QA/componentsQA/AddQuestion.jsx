@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-export default function AddQuestion({ product, addQuestionModal, toggleAddQuestionModal }) {
+export default function AddQuestion({
+  product,
+  addQuestionModal,
+  toggleAddQuestionModal,
+  handleAddQuestionSubmit,
+}) {
   const [questionBody, setQuestionBody] = useState('');
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
@@ -15,6 +20,14 @@ export default function AddQuestion({ product, addQuestionModal, toggleAddQuesti
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+
+  const handleAddQuestionClick = (data) => {
+    handleAddQuestionSubmit(data);
+    setQuestionBody('');
+    setNickName('');
+    setEmail('');
+    toggleAddQuestionModal();
   };
 
   if (addQuestionModal) {
@@ -72,7 +85,17 @@ export default function AddQuestion({ product, addQuestionModal, toggleAddQuesti
             />
             <span>For authentication reasons, you will not be emailed</span>
             <div>
-              <button type="button">Submit Question</button>
+              <button
+                type="button"
+                onClick={() => handleAddQuestionClick({
+                  body: questionBody,
+                  name: nickName,
+                  email,
+                  product_id: product.id,
+                })}
+              >
+                Submit question
+              </button>
               <button type="button" onClick={toggleAddQuestionModal}>Cancel</button>
             </div>
           </div>
