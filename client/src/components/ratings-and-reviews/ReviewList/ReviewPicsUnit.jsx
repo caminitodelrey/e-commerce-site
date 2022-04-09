@@ -8,27 +8,28 @@ export default function ReviewPicsUnit({ src }) {
   };
 
   const stylePic = !showPic
-    ? { height: '150px', width: '150px' }
+    ? { height: '150px', width: '150px'}
     : {
       position: 'fixed',
       height: '100%',
       width: '100%',
       top: '0',
       left: '0',
-      'z-index': '10',
+      zIndex: '10',
       background: 'rgba(255,255,255,.7)',
     };
 
   const stylePic2 = !showPic
-    ? { height: '150px', width: '150px' }
+    ? { height: '150px', width: '150px', paddingRight: '10px', cursor: 'pointer' }
     : {
       height: '400px',
       width: '400px',
       position: 'absolute',
       left: '50%',
       top: '50%',
-      'margin-top': '-200px',
-      'margin-left': '-200px',
+      marginTop: '-200px',
+      marginLeft: '-200px',
+      borderRadius: '20px'
     };
 
   return (
@@ -39,10 +40,10 @@ export default function ReviewPicsUnit({ src }) {
             position: 'absolute',
             left: '50%',
             top: '50%',
-            'z-index': '11',
-            'margin-left': '180px',
-            'margin-top': '-195px',
-            'font-size': ' 20px',
+            zIndex: '11',
+            marginLeft: '180px',
+            marginTop: '-195px',
+            fontSize: ' 20px',
             cursor: 'pointer',
           }}
           onClick={handleShowPic}

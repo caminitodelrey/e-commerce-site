@@ -8,7 +8,7 @@ import {
   Logo,
   Nav,
   ThirdInnerContainer,
-  Search,
+  HeaderSearch,
   WishlistButton,
   ShopButton,
   Slideshow,
@@ -67,9 +67,9 @@ export default function Header() {
           </div>
 
           <ThirdInnerContainer>
-            <Search>
+            <HeaderSearch>
               <input type="text" placeholder="Search" />
-            </Search>
+            </HeaderSearch>
 
             <div>
               <WishlistButton />

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { QASearch } from '../../../theme/headerStyle.js';;
 
 export default function SearchQA({ product, handleSearchFilter }) {
-  const [searchText, setSearchText] = useState(''); // move to QA? -> conditional render questions | filteredQuestions
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     handleSearchFilter(searchText);
@@ -9,7 +10,7 @@ export default function SearchQA({ product, handleSearchFilter }) {
 
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
-  }; // move to QA?
+  };
 
   const handleSearchSubmit = (e) => {
     if (e.keyCode === 13) {
@@ -19,7 +20,7 @@ export default function SearchQA({ product, handleSearchFilter }) {
   };
 
   return (
-    <div>
+    <QASearch>
       <input
         id="search"
         type="search"
@@ -35,6 +36,6 @@ export default function SearchQA({ product, handleSearchFilter }) {
         placeholder={`Have a question about the ${product.name}? Search for answers...`}
       />
       <i role="presentation" />
-    </div>
+    </QASearch>
   );
 }

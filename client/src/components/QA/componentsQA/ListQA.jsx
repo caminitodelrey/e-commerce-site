@@ -12,7 +12,10 @@ export default function ListQA({
   handleReportAnswerSubmit,
 }) {
   return (
-    <div id="list">
+    <div
+      id="list"
+      style={{ 'paddingBottom': '40px' }}
+    >
       {questions.slice(0, questionsDisplayed).map((q) => (
         <ListEntryQA
           key={q.question_id}
