@@ -76,8 +76,8 @@ export default function RatingBreakDown({ metaData }) {
         </div>
         <br />
         <div>
-          {starPercentageArray.map((item, i) => (
-            <div key={item.i}>
+          {starPercentageArray.map((item) => (
+            <div key={Math.random()}>
               <PercentageBar star={item.star} percent={item.percent} />
             </div>
           ))}

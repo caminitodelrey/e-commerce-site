@@ -1,6 +1,6 @@
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import React, { useState, useEffect } from 'react';
-import getData from '../../../../helper.js';
+import { getData } from '../../../../helper.js';
 
 import {
   CardAssetImg,

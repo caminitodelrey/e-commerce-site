@@ -43,7 +43,6 @@ export default function RelatedProducts({ product, handleProductChange }) {
   useEffect(() => {
     setRelatedProducts([]);
     getRelatedProducts();
-    console.log('Loaded Related Products')
   }, [product]);
 
   useEffect(() => {
