@@ -1,10 +1,12 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   html, body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    /* background-color: black; */
   }
 
   h1, h2, h3, h4 {
@@ -17,9 +19,4 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Lato', sans-serif;
     font-weight: 400;
   }
-`;
-
-export const Carouselszzz = styled.div`
-  // border: 1px solid red;
-  padding: 50px 150px;
 `;

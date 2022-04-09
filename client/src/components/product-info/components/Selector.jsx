@@ -33,14 +33,7 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
       const newPrice = currentStyle.original_price - currentStyle.sale_price;
       return (
         <div>
-          <p
-            style={{
-              color: 'red',
-              'text-decoration': 'line-through',
-            }}
-          >
-            {`$${currentStyle.original_price}`}
-          </p>
+          <StyledPrice>{`$${currentStyle.original_price}`}</StyledPrice>
           <p>{`$${newPrice}`}</p>
         </div>
       );
@@ -52,8 +45,8 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
     if (currSize > -1) {
       return (
         <select>
-          {quantities.map((quantity, index) => (
-            <option key={quantity} value={quantity}>
+          {quantities.map((quantity) => (
+            <option key={Math.random()} value={quantity}>
               {quantity}
             </option>
           ))}
@@ -100,16 +93,26 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
   );
 }
 
+const styleThumbSize = 100;
+const styleThumbMargin = 5;
+
 const StyleSelectDiv = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
+  width: ${(styleThumbSize + styleThumbMargin * 2) * 4}px;
 `;
 
 const StyleThumb = styled.img`
   display: block;
-  width: 100px;
-  height: 100px;
+  width: ${styleThumbSize}px;
+  height: ${styleThumbSize}px;
+  margin: ${styleThumbMargin}px;
+  object-fit: cover;
   border-radius: 50%;
+`;
+
+const StyledPrice = styled.p`
+  color: red;
+  text-decoration: line-through;
 `;

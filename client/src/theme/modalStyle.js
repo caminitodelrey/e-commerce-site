@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const ModalContainer = styled.div`
-  z-index: 1;
+  z-index: 4;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,6 +24,9 @@ export const ModalProductName = styled.th`
   font-size: 1em;
   padding-bottom: 10px;
   border-bottom: 3px solid rgba(3, 115, 83, 0.3);
+  width: 150px;
+  position: sticky;
+  line-height: 1.25;
 `;
 
 export const ModalContent = styled.div`
@@ -31,13 +34,24 @@ export const ModalContent = styled.div`
   padding: 20px;
   background-color: white;
   border-radius: 20px;
+  font-size: .9em;
 `;
 
 export const ModalBody = styled.div`
   padding: 10px;
+  overflow-y: auto;
 `;
 
 export const TableRow = styled.tr`
+  border: 1px solid red;
   height: 40px;
+  text-align: left;
+  color: rgba(128, 128, 128, 0.8);
+  line-height: 1.25;
+`;
+
+export const TableRowFeature = styled.td`
   text-align: center;
+  color: rgb(50, 78, 89);
+  line-height: 1.25;
 `;

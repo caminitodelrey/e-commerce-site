@@ -2,95 +2,77 @@ import styled from 'styled-components';
 
 // RelatedProducts.jsx
 export const Carousels = styled.div`
-  // border: 1px solid red;
   padding: 50px 150px;
+  width: 1200px;
+  position: relative;
+  margin: auto;
 `;
 
-// Cards.jsx
-export const CardsContainer = styled.div`
-  // border: 1px solid blue;
-  width: 100%;
+// WishlistCarousel.jsx
+export const WishlistContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  min-height: 500px;
 `;
 
+export const WishlistCardsContainer = styled.div`
+  width: 900px;
+`;
+
+// RelatedCarousel.jsx
 export const CardsWrapper = styled.div`
-  display: flex;
-  width: 100%;
   position: relative;
 `;
 
 export const ContentWrapper = styled.div`
   overflow: hidden;
-  width: 100%;
   height: 100%;
 `;
 
 export const Content = styled.div`
-  display: flex;
+  display: flex; // important!
   transition: all 250ms linear;
   -ms-overflow-style: none;
   scrollbar-width: none;
 `;
 
-const Chevron = styled.button`
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  transform: translate(-50%);
-  width: 47px;
-  height: 45px;
-  border: 1px solid black;
-  background-color: white;
-  color: rgba(10, 89, 51);
-  cursor: pointer;
-`;
-
-// Carousel Chevrons
-export const LeftChevron = styled(Chevron)`
-  left: -30px;
-`;
-
-export const RightChevron = styled(Chevron)`
-  right: -80px;
-`;
-
-// Card in Cards.jsx
 export const CardContainer = styled.section`
-  // border: 1px solid green;
-  width: 100%;
+  max-width: 300px;
   flex-shrink: 0;
   flex-grow: 1;
 `;
 
 export const CardAssetContainer = styled.div`
-  // border: 1px solid orange;
   overflow: hidden;
-  width: 260px;
-  height: 360px;
-
-  &:hover {
-    cursor: pointer;
-  }
+  max-width: 300px;
 `;
 
+// ProductImg.jsx
 export const CardAssetImg = styled.img`
   width: 260px;
   height: 360px;
   border-radius: 10px;
   align-items: center;
   object-fit: cover;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 // Product Card Details
 export const ProductCategory = styled.p`
   color: rgb(128, 128, 128);
   font-size: 0.875em;
+  margin-top: 15x;
 `;
 
 export const ProductName = styled.p`
   font-weight: bold;
-  margin-top: -8px;
+`;
+
+export const PriceContainer = styled.div`
+  display: flex;
 `;
 
 export const ProductPrice = styled.p`
@@ -99,17 +81,51 @@ export const ProductPrice = styled.p`
   font-size: 0.9em;
 `;
 
-// Action Button
-export const ActionButtonContainer = styled.div`
-  position: absolute;
-  top: 0%;
-  transform: translateX(630%);
-  padding: 10px 10px 7px 10px;
-  border-radius: 0 6px ;
-  background: #fff;
-  color: rgba(11, 191, 125);
+export const PreSalePrice = styled.p`
+  margin-top: -8px;
+  padding-left: 10px;
+  color: rgb(10, 89, 81);
+  text-decoration: line-through;
+  font-size: 0.9em;
+`;
+
+// ThumbnailCarousel.jsx
+export const ThumbnailCardsWrapper = styled.div`
+  width: 260px;
+  height: 70px;
+  position: relative;
+  top: -80px;
+`;
+
+export const ThumbnailContent = styled(Content)`
+  /* transition: 400ms linear; */
+  transition: ease 1000ms;
+  // update this**
+`;
+
+export const ThumbnailCardContainer = styled.div`
+  max-width: 65px;
+`;
+
+export const ThumbnailAssetContainer = styled.div`
+  overflow: hidden;
+  max-width: 65px;
+`;
+
+export const ThumbnailImg = styled.img`
+  z-index: 2;
+  width: 65px;
+  height: 70px;
+  align-items: center;
+  object-fit: cover;
 
   &:hover {
     cursor: pointer;
   }
+`;
+
+export const NoThumbnailCarousel = styled.div`
+  color: transparent;
+  background-color: transparent;
+  cursor: default;
 `;

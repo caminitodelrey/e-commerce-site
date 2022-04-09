@@ -1,35 +1,47 @@
-import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
-// import { MdOutlineClose } from 'react-icons/md';
+import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
 import React, { useState, useEffect } from 'react';
-import Ratings from '../subcomponents/Ratings.jsx';
-import ProductImg from '../subcomponents/ProductImg.jsx';
-// import ActionButton from '../subcomponents/ActionButton.jsx';
+import WishlistCard from './WishlistCard.jsx';
+import AddButton from '../subcomponents/AddButton.jsx';
 
 import {
-  CardsContainer,
+  WishlistCardsContainer,
   CardsWrapper,
   ContentWrapper,
   Content,
-  LeftChevron,
-  RightChevron,
-  CardContainer,
-  CardAssetContainer,
-  ProductCategory,
-  ProductName,
-  ProductPrice,
+  WishlistContainer,
 } from '../../../theme/carouselStyle.js';
 
-export default function WishlistCarousel({ products, show }) {
+import {
+  ScaledLeftArrow,
+  ScaledRightArrow,
+  WishlistLeftChevron,
+  RightChevron,
+  DeactivatedLeftChevron,
+  DeactivatedRightChevron,
+  DefaultCard,
+} from '../../../theme/buttonStyle.js';
+
+export default function WishlistCarousel({
+  currentProduct,
+  products,
+  handleProductChange,
+  setWishlistProducts,
+  wishlistProducts,
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
 
+  // determines the initial number of product cards shown on page
+  const maxDisplayCount = 3;
+
+  // determines the total number of cards
   useEffect(() => {
     setLength(products.length);
   }, [products]);
 
   const next = () => {
-    if (currentIndex < length - (show - 1)) {
+    if (currentIndex < length - (maxDisplayCount - 1)) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
@@ -40,60 +52,64 @@ export default function WishlistCarousel({ products, show }) {
     }
   };
 
-  const Card = products.map((product) => (
-    <CardContainer key={product.name} style={{ width: `calc(100% / ${show})` }}>
-      <CardAssetContainer>
-        <div
-          className="product-card__img"
-        >
-          <ProductImg product={product} />
-        </div>
-        {/* <ActionButton
-          products={products}
-          product={product}
-        /> */}
-      </CardAssetContainer>
-
-      <div className="product-card__details">
-        <ProductCategory className="product-card__category">
-          {product.category.toUpperCase()}
-        </ProductCategory>
-        <ProductName className="product-card__name">{product.name}</ProductName>
-        <ProductPrice className="product-card__price">
-          $
-          {product.price.replace(/\.00$/, '')}
-        </ProductPrice>
-        <p className="product-card__rating">
-          <Ratings ratings={product.ratings} />
-        </p>
-      </div>
-    </CardContainer>
-  ));
 
   return (
-    <CardsContainer>
-      <CardsWrapper>
-        {currentIndex > 0 && (
-          <LeftChevron className="left-arrow" onClick={prev}>
-            <FaChevronLeft />
-          </LeftChevron>
-        )}
-        <ContentWrapper>
-          <Content
-            style={{
-              transform: `translateX(-${currentIndex * (100 / (show + 1))}%)`,
-            }}
-          >
-            {Card}
-          </Content>
-        </ContentWrapper>
-        {currentIndex < length - (show - 1) && (
-          <RightChevron className="right-arrow" onClick={next}>
-            <FaChevronRight />
-          </RightChevron>
-        )}
-      </CardsWrapper>
+    <WishlistContainer>
 
-    </CardsContainer>
+      <DefaultCard>
+        <AddButton
+          product={currentProduct}
+          wishlistProducts={wishlistProducts}
+          setWishlistProducts={setWishlistProducts}
+        />
+      </DefaultCard>
+
+      <WishlistCardsContainer>
+        <CardsWrapper>
+
+          { length <= maxDisplayCount
+            ? (<div></div>)
+            : currentIndex > 0 ? (
+            <WishlistLeftChevron className="left-arrow" onClick={prev}>
+              <ScaledLeftArrow />
+            </WishlistLeftChevron>
+          ) : (
+            <DeactivatedLeftChevron className="left-arrow">
+              <ScaledLeftArrow />
+            </DeactivatedLeftChevron>
+          )}
+
+          <ContentWrapper>
+            <Content
+              style={{
+                transform: `translateX(-${currentIndex * (100 / maxDisplayCount)}%)`,
+              }}
+            >
+              <WishlistCard
+                maxDisplayCount={maxDisplayCount}
+                products={products}
+                handleProductChange={handleProductChange}
+                wishlistProducts={wishlistProducts}
+                setWishlistProducts={setWishlistProducts}
+              />
+            </Content>
+          </ContentWrapper>
+
+          { length <= maxDisplayCount
+            ? (<div></div>)
+            : currentIndex < length - maxDisplayCount ? (
+            <RightChevron className="right-arrow" onClick={next}>
+              <ScaledRightArrow />
+            </RightChevron>
+          ) : (
+            <DeactivatedRightChevron className="right-arrow">
+              <ScaledRightArrow />
+            </DeactivatedRightChevron>
+          )}
+
+        </CardsWrapper>
+      </WishlistCardsContainer>
+
+    </WishlistContainer>
   );
 }
