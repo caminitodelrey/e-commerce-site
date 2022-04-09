@@ -219,3 +219,48 @@ export const DefaultCardButton = styled.button`
 //   text-align: center;
 //   font-size: 0.7em;
 // `;
+
+// Ratings & Reviews
+export const ReviewButtons = styled.button`
+  float: left;
+  margin-right: 30px;
+  height: 50px;
+  width: 120px;
+  text-align: center;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 30px;
+  border: 2px solid rgba(11, 191, 125, .9);
+  color: rgba(11, 191, 125, .9);
+  background-color: #fff;
+
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(11, 191, 125, .9);
+    box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
+  }
+
+  &:active {
+    box-shadow: inset 6px 6px 5px 1px rgba(37, 167, 115, 0.7);
+  }
+`;
+
+export const WriteReviewButtons = styled.button`
+  border: none;
+  border-radius: 15px;
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 15px;
+  color: rgba(11, 191, 125, .9);
+  background-color: #fff;
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(11, 191, 125, .9);
+    box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
+  }
+`;

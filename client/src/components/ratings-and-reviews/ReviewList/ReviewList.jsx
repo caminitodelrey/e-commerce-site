@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import ReviewListUnit from './ReviewListUnit.jsx';
 
+import {
+  ReviewButtons,
+} from '../../../theme/buttonStyle.js';
+
 export default function ReviewList({ reviews }) {
   // const reviews = ReviewsExampleData.results;
   const [reviewsCount, setReviewsCount] = useState(2);
@@ -24,19 +28,19 @@ export default function ReviewList({ reviews }) {
         ))}
       </div>
       <div>
-        <button
-          style={{
-            float: 'left',
-            padding: '10px',
-            textTransform: 'uppercase',
-            fontSize: '15px',
-          }}
+        <ReviewButtons
+          // style={{
+          //   float: 'left',
+          //   padding: '10px',
+          //   textTransform: 'uppercase',
+          //   fontSize: '15px',
+          // }}
           type="button"
           onClick={handleMoreReviews}
         >
           More Reviews
 
-        </button>
+        </ReviewButtons>
       </div>
     </div>
   );

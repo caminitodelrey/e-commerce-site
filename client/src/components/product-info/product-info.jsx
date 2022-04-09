@@ -95,7 +95,7 @@ const ProductDiv = styled.div`
   height:1000px;
   position: relative;
   margin: 20px auto;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   display: flex;
   flex-direction: row;
 `;

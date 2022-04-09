@@ -7,6 +7,10 @@ import {
   ModalBody,
   TableRow,
 } from '../../../theme/modalStyle.js';
+import {
+  ReviewButtons,
+  WriteReviewButtons,
+} from '../../../theme/buttonStyle.js';
 
 export default function AddQuestionQA({
   product,
@@ -58,7 +62,7 @@ export default function AddQuestionQA({
                   placeholder="Type your question here..."
                   style={{
                     height: '100px',
-                    width: '600px',
+                    width: '500px',
                   }}
                   onChange={handleBodyChange}
                 />
@@ -73,7 +77,7 @@ export default function AddQuestionQA({
                   placeholder="Example: jackson11!"
                   style={{
                     height: '25px',
-                    width: '600px',
+                    width: '500px',
                   }}
                   onChange={handleNameChange}
                 />
@@ -91,13 +95,13 @@ export default function AddQuestionQA({
                   placeholder="Example: jack@email.com"
                   style={{
                     height: '25px',
-                    width: '600px',
+                    width: '500px',
                   }}
                   onChange={handleEmailChange}
                 />
                 <span>For authentication reasons, you will not be emailed</span>
                 <div>
-                  <button
+                  <WriteReviewButtons
                     type="button"
                     onClick={() => handleAddQuestionClick({
                       body: questionBody,
@@ -106,9 +110,11 @@ export default function AddQuestionQA({
                       product_id: product.id,
                     })}
                   >
-                    Submit question
-                  </button>
-                  <button type="button" onClick={toggleAddQuestionModal}>Cancel</button>
+                    Submit Question
+                  </WriteReviewButtons>
+                  <WriteReviewButtons type="button" onClick={toggleAddQuestionModal}>
+                    Cancel
+                  </WriteReviewButtons>
                 </div>
               </div>
             </div>

@@ -26,10 +26,10 @@ export default function AnswerListEntryQA({
   return (
     <>
       <div className="answer-body">
-        <span>
+        <div style={{ "dispay": "flex" }}>
           <strong>A:</strong>
           {` ${answer.body}`}
-        </span>
+        </div>
       </div>
       {answer.photos.length ? (
         <div className="pictures">
@@ -37,14 +37,18 @@ export default function AnswerListEntryQA({
             <img
               key={pic}
               src={pic}
-              style={{ height: '100px' }}
+              style={{
+                height: '100px',
+                'border-radius': '5px',
+              }}
               alt={`${answer.answerer_name}'s data failed to load`}
               className="answer-pic"
             />
           ))}
         </div>
       ) : null}
-      <div className="">
+      <div className="bottom of answer"
+      >
         <span>{`by: ${answer.answerer_name}, `}</span>
         <span>{moment(answer.date).format('MMMM D, YYYY')}</span>
         <span>{' | '}</span>

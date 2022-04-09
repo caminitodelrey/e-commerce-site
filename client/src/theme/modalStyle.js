@@ -13,6 +13,19 @@ export const ModalContainer = styled.div`
   justify-content: center;
 `;
 
+export const ModalFormContainer = styled.form`
+  z-index: 4;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const ModalTitle = styled.div`
   padding-left: 10px;
   font-size: 0.875em;
@@ -43,7 +56,6 @@ export const ModalBody = styled.div`
 `;
 
 export const TableRow = styled.tr`
-  border: 1px solid red;
   height: 40px;
   text-align: left;
   color: rgba(128, 128, 128, 0.8);
@@ -54,4 +66,18 @@ export const TableRowFeature = styled.td`
   text-align: center;
   color: rgb(50, 78, 89);
   line-height: 1.25;
+`;
+
+// Ratings & Reviews
+export const RatingsTableRow = styled.tr`
+  height: 20px;
+  text-align: left;
+  line-height: 1.25;
+`;
+
+export const RatingsTD = styled.td`
+  width: 20%;
+  align-items: center;
+  padding-bottom: 10px;
+  font-size: .9em;
 `;
