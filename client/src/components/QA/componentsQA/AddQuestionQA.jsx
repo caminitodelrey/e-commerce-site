@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function AddQuestion({
+export default function AddQuestionQA({
   product,
   addQuestionModal,
   toggleAddQuestionModal,

@@ -82,3 +82,16 @@ export default function AnswerListEntryQA({
     </>
   );
 }
+
+// const handleAddAnswerSubmit = (data, qId) => {
+//   axios({
+//     method: 'post',
+//     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+//     url: `/qa/questions/${qId}/answers`,
+//     headers: {
+//       Authorization: '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',
+//     },
+//     data,
+//   }).then((res) => console.log(res)) // refactor???
+//     .catch((err) => { throw Error(err); });
+// };

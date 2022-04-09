@@ -5,6 +5,7 @@ import AddAnswerQA from './AddAnswerQA.jsx';
 export default function ListEntryQA({
   product,
   question,
+  handleAddAnswerSubmit,
   handleHelpfulQuestionSubmit,
   handleHelpfulAnswerSubmit,
   handleReportQuestionSubmit,
@@ -96,6 +97,7 @@ export default function ListEntryQA({
           question={question}
           addAnswerModal={addAnswerModal}
           toggleAddAnswerModal={toggleAddAnswerModal}
+          handleAddAnswerSubmit={handleAddAnswerSubmit}
         />
         <div>
           {Object.values(question.answers)

@@ -5,10 +5,12 @@ export default function AddAnswerQA({
   question,
   addAnswerModal,
   toggleAddAnswerModal,
+  handleAddAnswerSubmit,
 }) {
   const [answerBody, setAnswerBody] = useState('');
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
+  const [photos, setPhotos] = useState([]);
 
   const handleBodyChange = (e) => {
     setAnswerBody(e.target.value);
@@ -20,6 +22,14 @@ export default function AddAnswerQA({
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+
+  const handleAddAnswerClick = (data) => {
+    handleAddAnswerSubmit(data, question.question_id);
+    setAnswerBody('');
+    setNickName('');
+    setEmail('');
+    toggleAddAnswerModal();
   };
 
   if (addAnswerModal) {
@@ -57,9 +67,7 @@ export default function AddAnswerQA({
               }}
               onChange={handleNameChange}
             />
-            <span>
-              For privacy reasons, do not use your full name or email address
-            </span>
+            <span>For privacy reasons, do not use your full name or email address</span>
           </div>
           <div className="add-answer-email">
             <span>Email*</span>
@@ -78,7 +86,17 @@ export default function AddAnswerQA({
             <span>For authentication reasons, you will not be emailed</span>
             <button type="button">Upload your photos</button>
             <div>
-              <button type="button">Submit Answer</button>
+              <button
+                type="button"
+                onClick={() => handleAddAnswerClick({
+                  body: answerBody,
+                  name: nickName,
+                  email,
+                  photos: [],
+                })}
+              >
+                Submit Answer
+              </button>
               <button type="button" onClick={toggleAddAnswerModal}>Cancel</button>
             </div>
           </div>

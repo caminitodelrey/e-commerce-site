@@ -6,7 +6,7 @@ import axios from 'axios'; // remove after moving axios functions to helper.js
 import getData from '../../../helper.js';
 import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
-import AddQuestion from './componentsQA/AddQuestion.jsx';
+import AddQuestionQA from './componentsQA/AddQuestionQA.jsx';
 
 export default function QA({ product }) {
   const [questions, setQuestions] = useState([
@@ -25,6 +25,9 @@ export default function QA({ product }) {
   const [addQuestionModal, setAddQuestionModal] = useState(false);
   const [filtered, setFiltered] = useState(false);
 
+  // GET /qa/questions/:question_id/answers
+  // Answers List
+  // Returns answers for a given question. This list does not include any reported answers.
   useEffect(() => {
     // getData(`qa/questions?product_id=${product.id}`)
     getData('qa/questions?product_id=38179') // for testing only
@@ -125,7 +128,7 @@ export default function QA({ product }) {
   // POST /qa/questions/:question_id/answers
   // Add an Answer
   // Adds an answer for the given question
-  const handleAddAnswerSubmit = (data) => {
+  const handleAddAnswerSubmit = (data, qId) => {
     axios({
       method: 'post',
       baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
@@ -133,12 +136,7 @@ export default function QA({ product }) {
       headers: {
         Authorization: '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',
       },
-      data: {
-        body: body(text), // updata
-        name: username(text), // update
-        email: email(text), // update
-        product_id: product_id(integer), // update
-      },
+      data,
     }).then((res) => console.log(res)) // refactor???
       .catch((err) => { throw Error(err); });
   };
@@ -165,10 +163,6 @@ export default function QA({ product }) {
 
   const questionsList = filtered ? filteredQuestions : questions;
 
-  // GET /qa/questions/:question_id/answers
-  // Answers List
-  // Returns answers for a given question. This list does not include any reported answers.
-
   // const { product, questions } = this.state;
   // console.log(questions);
   return (
@@ -181,6 +175,7 @@ export default function QA({ product }) {
         product={product}
         questions={questionsList}
         questionsDisplayed={questionsDisplayed}
+        handleAddAnswerSubmit={handleAddAnswerSubmit}
         handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
         handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
         handleReportQuestionSubmit={handleReportQuestionSubmit}
@@ -205,7 +200,7 @@ export default function QA({ product }) {
             onClick={toggleAddQuestionModal}
           />
         </div>
-        <AddQuestion
+        <AddQuestionQA
           product={product}
           addQuestionModal={addQuestionModal}
           toggleAddQuestionModal={toggleAddQuestionModal}
