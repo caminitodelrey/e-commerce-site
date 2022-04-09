@@ -10,6 +10,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import Lens from './Lens.jsx';
 
+const galleryContainerSize = '100%';
 const height = 1000;
 const galleryThumbSize = 100;
 const gallerySize = 2;
@@ -36,6 +37,7 @@ export default function ImageGallery({
   const [currThumbPage, setCurrThumbPage] = useState(calculatePage);
   const moveLimit = Math.ceil(photoList.length / gallerySize) - 1;
   const bigImageNavRef = useRef(null);
+  const bigImageContainerRef = useRef(null);
 
   const handleClick = (index) => {
     setMainPhoto(index);
@@ -52,6 +54,15 @@ export default function ImageGallery({
     }
   };
 
+  useEffect(() => {
+    // if (expanded) {
+    //   bigImageContainerRef.current.style.width = '100%';
+    //   bigImageContainerRef.current.style.height = '100%';
+    // } else {
+    //   bigImageContainerRef.current.style.width = 'auto';
+    // }
+  }, [expanded]);
+
   const exitZoom = () => {
     setZoomed(false);
   };
@@ -65,13 +76,15 @@ export default function ImageGallery({
     const leftArrowVal = (
       <LeftArrow value={-1} onClick={() => setMainPhoto(mainPhoto - 1)} />
     );
-    if (mainPhoto === 0) {
-      rightArrow = rightArrowVal;
-    } else if (mainPhoto === photoList.length - 1) {
-      leftArrow = leftArrowVal;
-    } else {
-      leftArrow = leftArrowVal;
-      rightArrow = rightArrowVal;
+    if (!zoomed) {
+      if (mainPhoto === 0) {
+        rightArrow = rightArrowVal;
+      } else if (mainPhoto === photoList.length - 1) {
+        leftArrow = leftArrowVal;
+      } else {
+        leftArrow = leftArrowVal;
+        rightArrow = rightArrowVal;
+      }
     }
     return (
       <BigImageNav ref={bigImageNavRef}>
@@ -136,15 +149,15 @@ export default function ImageGallery({
     }
   }, [currThumbPage]);
 
-  useEffect(() => {
-    if (zoomed) {
-      document.getElementById('bigImage').style.display = 'none';
-      bigImageNavRef.current.style.display = 'none';
-    } else {
-      document.getElementById('bigImage').style.display = 'block';
-      bigImageNavRef.current.style.display = 'block';
-    }
-  }, [zoomed]);
+  // useEffect(() => {
+  //   if (zoomed) {
+  //     document.getElementById('bigImage').style.display = 'none';
+  //     bigImageNavRef.current.style.display = 'none';
+  //   } else {
+  //     document.getElementById('bigImage').style.display = 'block';
+  //     bigImageNavRef.current.style.display = 'block';
+  //   }
+  // }, [zoomed]);
 
   const renderGalleryThumbNav = () => {
     if (!expanded) {
@@ -251,6 +264,7 @@ export default function ImageGallery({
         {renderLens()}
         <BigImage
           id="bigImage"
+          ref={bigImageContainerRef}
           style={{ width: JSON.stringify(imgSize) }}
           src={photoList[mainPhoto].url}
           alt=""
@@ -310,20 +324,9 @@ const RightArrow = styled(FaChevronRight)`
 
 const GalleryWrapper = styled.div`
   position: relative;
+  max-width: 100%;
+  height: 100%;
   margin: auto;
-  width: 100%;
-  max-width: ${(props) => {
-    if (props.galleryType === 'default') {
-      return '800px';
-    }
-    return '100%';
-  }};
-  height: ${(props) => {
-    if (props.galleryType === 'default') {
-      return `${height}px`;
-    }
-    return '100vh';
-  }};
 `;
 
 const GalleryThumbNav = styled.div`
@@ -369,10 +372,10 @@ const BigImageContainer = styled.div`
 `;
 
 const BigImage = styled.img`
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
-  height: 100%;
-  width: 100%;
+  width:auto;
+  height:100%;
   cursor: ${({ expanded }) => (expanded ? 'zoom-in;' : 'pointer;')}
   border-radius: 10px;
 `;

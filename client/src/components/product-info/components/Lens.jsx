@@ -37,7 +37,7 @@ export default function Lens({ photo, photoContainer, exitZoom }) {
       0,
       lensElement.current.clientWidth,
       0,
-      photoContainerState.clientWidth * ratio,
+      lensElement.current.clientWidth * ratio,
     );
 
     const backgroundY = numberMap(
@@ -45,14 +45,12 @@ export default function Lens({ photo, photoContainer, exitZoom }) {
       0,
       lensElement.current.clientHeight,
       0,
-      photo.height * ratio,
+      lensElement.current.clientHeight * ratio,
     );
 
     // console.log(lensElement.current.clientWidth, photoContainerState.clientWidth)
-    console.log(backgroundX - lensElement.current.clientWidth);
-    lensElement.current.style.backgroundPosition = `-${
-      backgroundX - (lensElement.current.clientWidth)
-    }px -${backgroundY - (lensElement.current.clientHeight)}px`;
+    console.log(backgroundX, backgroundY);
+    lensElement.current.style.backgroundPosition = `-${backgroundX/2}px -${backgroundY/2}px`;
     lensElement.current.style.cursor = 'zoom-out';
   };
 
@@ -61,10 +59,10 @@ export default function Lens({ photo, photoContainer, exitZoom }) {
       id="lensElement"
       ref={lensElement}
       photoUrl={photoState.src}
-      imgSize={{
-        width: photoContainerState.clientWidth * ratio,
-        height: photo.clientHeight * ratio,
-      }}
+      // imgSize={{
+      //   width: lensElement.current.clientWidth * ratio,
+      //   height: lensElement.current.clientHeight * ratio,
+      // }}
       onMouseMove={(event) => handleMouseMove(event)}
       onClick={() => exitZoom()}
     />
@@ -72,13 +70,12 @@ export default function Lens({ photo, photoContainer, exitZoom }) {
 }
 
 const LensDiv = styled.div`
-  width: 100%;
-  height: 100%;
   position: absolute;
+  width:100%;;
+  height:100%;
   transform-origin: center center;
   background-image: ${({ photoUrl }) => css`url(${photoUrl});`}
-  background-size: ${ratio * 100}%;
-
+  background-size:${ratio * 100}%;
   z-index: 3;
   background-repeat: no-repeat;
 `;
