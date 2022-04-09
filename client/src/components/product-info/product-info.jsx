@@ -46,7 +46,7 @@ export default function ({ product }) {
 
   const changeGallery = (galleryType) => {
     setGalleryType(galleryType);
-  }
+  };
 
   const renderDetails = () => {
     if (galleryType === 'default') {

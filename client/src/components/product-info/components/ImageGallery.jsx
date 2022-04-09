@@ -5,14 +5,14 @@ import {
   FaChevronCircleDown,
 } from 'react-icons/fa';
 import { GoPrimitiveDot } from 'react-icons/go';
-import { IoIosCheckmarkCircle } from 'react-icons/io';
-import React, { useState, useEffect } from 'react';
+import { IoIosCheckmarkCircle, IoIosCloseCircle } from 'react-icons/io';
+import React, { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import Lens from './Lens.jsx';
 
 const height = 1000;
 const galleryThumbSize = 100;
-const gallerySize = 7;
-// let wrapperSize = (galleryThumbSize + 2) * gallerySize;
+const gallerySize = 2;
 let moveCounter = 0;
 
 export default function ImageGallery({
@@ -21,7 +21,8 @@ export default function ImageGallery({
   galleryType,
 }) {
   const [mainPhoto, setMainPhoto] = useState(0);
-  const [zoomed, setZoom] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [zoomed, setZoomed] = useState(false);
   const [imgSize, setImgSize] = useState(100);
   const [wrapperPos, setWrapperPos] = useState(0);
   const [wrapperSize, setWrapperSize] = useState(
@@ -34,13 +35,7 @@ export default function ImageGallery({
   );
   const [currThumbPage, setCurrThumbPage] = useState(calculatePage);
   const moveLimit = Math.ceil(photoList.length / gallerySize) - 1;
-  // moveCounter 0
-  // moveLimit 3
-  // photoList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-  // photoList.slice(moveCounter * gallerySize, (moveCounter * gallerySize) + gallerySize)
-  // photoList.slice(0, 3) => [0, 1, 2]
-  // photoList.slice(3, 6) => [3, 4, 5]
-  //
+  const bigImageNavRef = useRef(null);
 
   const handleClick = (index) => {
     setMainPhoto(index);
@@ -50,32 +45,36 @@ export default function ImageGallery({
     if (galleryType === 'default') {
       changeGallery('expanded');
     }
-    if (!zoomed) {
-      setZoom(true);
+    if (!expanded) {
+      setExpanded(true);
+    } else {
+      setZoomed(true);
     }
+  };
+
+  const exitZoom = () => {
+    setZoomed(false);
   };
 
   const renderImageNav = () => {
     let leftArrow = null;
     let rightArrow = null;
+    const rightArrowVal = (
+      <RightArrow value={1} onClick={() => setMainPhoto(mainPhoto + 1)} />
+    );
+    const leftArrowVal = (
+      <LeftArrow value={-1} onClick={() => setMainPhoto(mainPhoto - 1)} />
+    );
     if (mainPhoto === 0) {
-      rightArrow = (
-        <RightArrow value={1} onClick={() => setMainPhoto(mainPhoto + 1)} />
-      );
+      rightArrow = rightArrowVal;
     } else if (mainPhoto === photoList.length - 1) {
-      leftArrow = (
-        <LeftArrow value={-1} onClick={() => setMainPhoto(mainPhoto - 1)} />
-      );
+      leftArrow = leftArrowVal;
     } else {
-      leftArrow = (
-        <LeftArrow value={-1} onClick={() => setMainPhoto(mainPhoto - 1)} />
-      );
-      rightArrow = (
-        <RightArrow value={1} onClick={() => setMainPhoto(mainPhoto + 1)} />
-      );
+      leftArrow = leftArrowVal;
+      rightArrow = rightArrowVal;
     }
     return (
-      <BigImageNav>
+      <BigImageNav ref={bigImageNavRef}>
         {leftArrow}
         {rightArrow}
       </BigImageNav>
@@ -100,7 +99,11 @@ export default function ImageGallery({
           pos={wrapperPos}
         >
           {checkmark}
-          <GalleryThumbImg selected={selected} alt="" src={photo.thumbnail_url} />
+          <GalleryThumbImg
+            selected={selected}
+            alt=""
+            src={photo.thumbnail_url}
+          />
         </GalleryThumbDiv>
       );
     });
@@ -133,8 +136,18 @@ export default function ImageGallery({
     }
   }, [currThumbPage]);
 
+  useEffect(() => {
+    if (zoomed) {
+      document.getElementById('bigImage').style.display = 'none';
+      bigImageNavRef.current.style.display = 'none';
+    } else {
+      document.getElementById('bigImage').style.display = 'block';
+      bigImageNavRef.current.style.display = 'block';
+    }
+  }, [zoomed]);
+
   const renderGalleryThumbNav = () => {
-    if (!zoomed) {
+    if (!expanded) {
       return (
         <GalleryThumbNav>
           <StyledFaChevronCircleUp
@@ -158,16 +171,33 @@ export default function ImageGallery({
         </GalleryThumbNav>
       );
     }
-    return (
-      <GalleryThumbNav style={{ display: 'flex', flexDirection: 'column' }}>
-        {photoList.map((photoDot, index) => {
-          if (index === mainPhoto) {
+    if (!zoomed) {
+      return (
+        <GalleryThumbNav style={{ display: 'flex', flexDirection: 'column' }}>
+          {photoList.map((photoDot, index) => {
+            if (index === mainPhoto) {
+              return (
+                <GoPrimitiveDot
+                  key={Math.random()}
+                  style={{
+                    cursor: 'pointer',
+                    color: 'white',
+                    width: '50px',
+                    height: '50px',
+                    filter: 'drop-shadow(0 0 0.3rem black)',
+                  }}
+                  onClick={() => {
+                    setMainPhoto(index);
+                  }}
+                />
+              );
+            }
             return (
               <GoPrimitiveDot
                 key={Math.random()}
                 style={{
                   cursor: 'pointer',
-                  color: 'white',
+                  color: 'rgba(255,255,255,.5)',
                   width: '50px',
                   height: '50px',
                   filter: 'drop-shadow(0 0 0.3rem black)',
@@ -177,37 +207,54 @@ export default function ImageGallery({
                 }}
               />
             );
-          }
-          return (
-            <GoPrimitiveDot
-              key={Math.random()}
-              style={{
-                cursor: 'pointer',
-                color: 'rgba(255,255,255,.5)',
-                width: '50px',
-                height: '50px',
-                filter: 'drop-shadow(0 0 0.3rem black)',
-              }}
-              onClick={() => {
-                setMainPhoto(index);
-              }}
-            />
-          );
-        })}
-      </GalleryThumbNav>
-    );
+          })}
+        </GalleryThumbNav>
+      );
+    }
+  };
+
+  const renderLens = () => {
+    if (zoomed) {
+      const photoContainer = document.getElementById('bigImageContainer');
+      const photo = document.getElementById('bigImage');
+      return (
+        <Lens
+          photo={photo}
+          photoContainer={photoContainer}
+          exitZoom={exitZoom}
+        />
+      );
+    }
+    return null;
+  };
+
+  const renderExit = () => {
+    if (expanded && !zoomed) {
+      return (
+        <StyledIoIosCloseCircle
+          onClick={() => {
+            setExpanded(false);
+            changeGallery('default');
+          }}
+        />
+      );
+    }
+    return null;
   };
 
   return (
     <GalleryWrapper galleryType={galleryType}>
       {renderGalleryThumbNav()}
       {renderImageNav()}
-      <BigImageContainer>
+      <BigImageContainer id="bigImageContainer">
+        {renderExit()}
+        {renderLens()}
         <BigImage
+          id="bigImage"
           style={{ width: JSON.stringify(imgSize) }}
           src={photoList[mainPhoto].url}
           alt=""
-          zoomed={zoomed}
+          expanded={expanded}
           onClick={() => bigImageClick()}
         />
       </BigImageContainer>
@@ -313,6 +360,7 @@ const GalleryThumbImg = styled.img`
 `;
 
 const BigImageContainer = styled.div`
+  position: relative;
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -325,7 +373,7 @@ const BigImage = styled.img`
   object-position: center;
   height: 100%;
   width: 100%;
-  cursor: ${({ zoomed }) => (zoomed ? 'crosshair;' : 'zoom-in;')}
+  cursor: ${({ expanded }) => (expanded ? 'zoom-in;' : 'pointer;')}
   border-radius: 10px;
 `;
 
@@ -334,4 +382,15 @@ const BigImageNav = styled.div`
   right: 10px;
   bottom: 10px;
   z-index: 2;
+`;
+
+const StyledIoIosCloseCircle = styled(IoIosCloseCircle)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 0 0.3rem black);
+  cursor: pointer;
 `;
