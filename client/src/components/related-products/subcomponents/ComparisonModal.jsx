@@ -92,7 +92,10 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
                     <td>
                       {feature.main !== null ? (
                         <div>
+                          &nbsp;
+                          &nbsp;
                           <FcCheckmark />
+                          &nbsp;
                           &nbsp;
                           {feature.main}
                         </div>
@@ -106,7 +109,10 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
                     <td>
                       {feature.related !== null ? (
                         <div>
+                          &nbsp;
+                          &nbsp;
                           <FcCheckmark />
+                          &nbsp;
                           &nbsp;
                           {feature.related}
                         </div>

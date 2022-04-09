@@ -34,7 +34,7 @@ export const ModalContent = styled.div`
   padding: 20px;
   background-color: white;
   border-radius: 20px;
-  /* box-shadow: -1px 3px 35px 15px rgba(11, 191, 125, .6) */
+  font-size: .9em;
 `;
 
 export const ModalBody = styled.div`
