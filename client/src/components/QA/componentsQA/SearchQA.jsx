@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function SearchQA({ handleSearchFilter }) {
+export default function SearchQA({ product, handleSearchFilter }) {
   const [searchText, setSearchText] = useState(''); // move to QA? -> conditional render questions | filteredQuestions
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function SearchQA({ handleSearchFilter }) {
         value={searchText}
         onChange={handleSearchChange}
         onKeyDown={(e) => handleSearchSubmit(e)}
-        placeholder="Have a question? Search for answers..."
+        placeholder={`Have a question about the ${product.name}? Search for answers...`}
       />
       <i role="presentation" />
     </div>

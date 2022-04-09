@@ -26,8 +26,8 @@ export default function QA({ product }) {
   const [addQuestionModal, setAddQuestionModal] = useState(false);
   const [filtered, setFiltered] = useState(false);
 
-  // // for Testing only, put { product } back on line 11. ~~~~~~~~~~~~~~~~~~~~~~~~
-  // const [product, setProduct] = useState({ id: 37484 }); // type product id here
+  // // for Testing only, also go to line 11. ~~~~~~~~~~~~~~~~~~~~~~~~
+  // const [product, setProduct] = useState({ id: 37494 }); // type product id here
   // useEffect(() => {
   //   getData(`/products/${product.id}`)
   //     .then((res) => setProduct(res.data))
@@ -181,7 +181,10 @@ export default function QA({ product }) {
       <div>
         <h1>Questions & Answers</h1>
       </div>
-      <SearchQA handleSearchFilter={handleSearchFilter} />
+      <SearchQA
+        product={product}
+        handleSearchFilter={handleSearchFilter}
+      />
       <ListQA
         product={product}
         questions={questionsList}
