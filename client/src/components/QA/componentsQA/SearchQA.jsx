@@ -1,41 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-class SearchQA extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      product: this.props.product,
-      searchText: '',
-    };
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-  }
+export default function SearchQA({ product, handleSearchFilter }) {
+  const [searchText, setSearchText] = useState(''); // move to QA? -> conditional render questions | filteredQuestions
 
-  handleSearchChange(e) {
-    this.setState({ searchText: e.target.value });
-  }
+  useEffect(() => {
+    handleSearchFilter(searchText);
+  }, [searchText]);
 
-  handleSearchSubmit(e) {
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+  }; // move to QA?
+
+  const handleSearchSubmit = (e) => {
     if (e.keyCode === 13) {
-      console.log(`Searching Questions for ${this.state.searchText}`);
+      // console.log(`Searching Questions for ${searchText}`); // delete later
+      handleSearchFilter(searchText);
     }
-  }
+  };
 
-  render() {
-    const { searchText } = this.state;
-    return (
-      <div>
-        <input
-          id="search"
-          type="text"
-          autoComplete="off"
-          value={searchText}
-          onChange={this.handleSearchChange}
-          onKeyDown={(e) => this.handleSearchSubmit(e)}
-          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-        />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <input
+        id="search"
+        type="search"
+        autoComplete="off"
+        maxLength="150"
+        style={{
+          height: '30px',
+          width: '700px',
+        }}
+        value={searchText}
+        onChange={handleSearchChange}
+        onKeyDown={(e) => handleSearchSubmit(e)}
+        placeholder={`Have a question about the ${product.name}? Search for answers...`}
+      />
+      <i role="presentation" />
+    </div>
+  );
 }
-
-export default SearchQA;
