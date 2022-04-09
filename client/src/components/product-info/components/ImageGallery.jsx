@@ -38,6 +38,7 @@ export default function ImageGallery({
   const moveLimit = Math.ceil(photoList.length / gallerySize) - 1;
   const bigImageNavRef = useRef(null);
   const bigImageContainerRef = useRef(null);
+  const galleryWrapperRef = useRef(null);
 
   const handleClick = (index) => {
     setMainPhoto(index);
@@ -55,12 +56,11 @@ export default function ImageGallery({
   };
 
   useEffect(() => {
-    // if (expanded) {
-    //   bigImageContainerRef.current.style.width = '100%';
-    //   bigImageContainerRef.current.style.height = '100%';
-    // } else {
-    //   bigImageContainerRef.current.style.width = 'auto';
-    // }
+    if (!expanded) {
+      galleryWrapperRef.current.style.height = '80%';
+    } else {
+      galleryWrapperRef.current.style.height = '100%';
+    }
   }, [expanded]);
 
   const exitZoom = () => {
@@ -256,7 +256,7 @@ export default function ImageGallery({
   };
 
   return (
-    <GalleryWrapper galleryType={galleryType}>
+    <GalleryWrapper galleryType={galleryType} ref={galleryWrapperRef}>
       {renderGalleryThumbNav()}
       {renderImageNav()}
       <BigImageContainer id="bigImageContainer">
@@ -325,7 +325,7 @@ const RightArrow = styled(FaChevronRight)`
 const GalleryWrapper = styled.div`
   position: relative;
   max-width: 100%;
-  height: 100%;
+  height: 80%;
   margin: auto;
 `;
 
