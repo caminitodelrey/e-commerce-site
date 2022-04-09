@@ -10,7 +10,7 @@ export const HeaderOuter = styled.div`
   height: 100px;
   width: 100%;
   background-color: #fff;
-  color: rgb(25, 46, 64);
+  /* color: rgb(25, 46, 64); */
 `;
 
 export const HeaderInner = styled(HeaderOuter)`
@@ -21,6 +21,9 @@ export const HeaderInner = styled(HeaderOuter)`
 `;
 
 export const Logo = styled.div`
+  > h1 {
+    color: black;
+  }
 `;
 
 export const Nav = styled.p`
