@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import PercentageBar from '../ratingBreakDown/PercentageBar.jsx';
+import React from 'react';
+// import PercentageBar from '../ratingBreakDown/PercentageBar.jsx';
+import ProductBarBreakDown from './ProductBarBreakDown';
 
 export default function ProductBreakDown({ metaData }) {
-  metaData = metaData || {
+  const metaDataProduct = metaData || {
     product_id: '37311',
     ratings: {
       1: '10',
@@ -34,18 +35,56 @@ export default function ProductBreakDown({ metaData }) {
       },
     },
   };
+  const percentFit = Math.floor(
+    !metaDataProduct.characteristics.Fit ? 0
+      : (metaDataProduct.characteristics.Fit.value / 5) * 100,
+  );
 
+  const percentLength = Math.floor(
+    !metaDataProduct.characteristics.Length ? 0
+      : (metaDataProduct.characteristics.Length.value / 5) * 100,
+  );
+
+  const percentComfort = Math.floor(
+    !metaDataProduct.characteristics.Comfort ? 0
+      : (metaDataProduct.characteristics.Comfort.value / 5) * 100,
+  );
+
+  const percentQuality = Math.floor(
+    !metaDataProduct.characteristics.Quality ? 0
+      : (metaDataProduct.characteristics.Quality.value / 5) * 100,
+  );
+
+  const percentCharArr = [
+    { percent: percentFit, characteristic: 'Fit', fit: ['Poor', 'Perfect'] },
+    { percent: percentLength, characteristic: 'Length', fit: ['Too short', 'Too long'] },
+    { percent: percentComfort, characteristic: 'Comfort', fit: ['Poor', 'Perfect'] },
+    { percent: percentQuality, characteristic: 'Quality', fit: ['Poor', 'Perfect'] },
+  ];
+
+  // return (
+  //   <div>
+  //     <br />
+  //     <br />
+  //     <div>
+  //       {`Size ${metaData.characteristics.Fit.value}`}
+  //       {/* <PercentageBar
+  //         percent={Math.floor((metaData.characteristics.Fit.value / 5) * 100)}
+  //       /> */}
+  //     </div>
+  //     <div>{`Comfort ${metaData.characteristics.Comfort.value}`}</div>
+  //   </div>
+  // );
   return (
-    <div>
-      <br />
-      <br />
-      <div>
-        {`Size ${metaData.characteristics.Fit.value}`}
-        {/* <PercentageBar
-          percent={Math.floor((metaData.characteristics.Fit.value / 5) * 100)}
-        /> */}
-      </div>
-      <div>{`Comfort ${metaData.characteristics.Comfort.value}`}</div>
+    <div style={{
+      paddingTop: '20px',
+    }}
+    >
+      {percentCharArr.map((product) => (
+        <div key={Math.random()}>
+          <ProductBarBreakDown product={product} />
+        </div>
+      ))}
     </div>
   );
 }

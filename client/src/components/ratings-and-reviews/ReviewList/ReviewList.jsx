@@ -13,7 +13,7 @@ export default function ReviewList({ reviews }) {
     <div>
       <div style={{
         padding: '1rem',
-        maxHeight: '550px',
+        maxHeight: '850px',
         overflow: 'auto',
       }}
       >
@@ -24,7 +24,19 @@ export default function ReviewList({ reviews }) {
         ))}
       </div>
       <div>
-        <button type="button" onClick={handleMoreReviews}>More Reviews</button>
+        <button
+          style={{
+            float: 'left',
+            padding: '10px',
+            textTransform: 'uppercase',
+            fontSize: '15px',
+          }}
+          type="button"
+          onClick={handleMoreReviews}
+        >
+          More Reviews
+
+        </button>
       </div>
     </div>
   );

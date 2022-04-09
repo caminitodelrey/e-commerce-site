@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import getData from '../../../helper';
+import { getData } from '../../../helper';
 import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
 
