@@ -32,7 +32,7 @@ export default function RatingsReviews({ product }) {
       dropDown = 'relevant';
     }
     getData(
-      `reviews?page=2&count=20&sort=${dropDown}&product_id=${product.id}`,
+      `reviews?page=1&count=1000&sort=${dropDown}&product_id=${product.id}`,
     ).then(({ data }) => {
       setReviews(data.results);
     });
