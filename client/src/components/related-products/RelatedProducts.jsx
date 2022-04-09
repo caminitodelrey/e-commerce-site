@@ -7,10 +7,10 @@ import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 // products/37311/related
 // product_id: 37311 - 38199
 
-export default function RelatedProducts({ product }) {
+export default function RelatedProducts({ product, handleProductChange }) {
   const [status, setStatus] = useState('pending');
+  const [wishlistProducts, setWishlistProducts] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [selectedProducts, setSelectedProduct] = useState([]);
 
   const getRelatedProducts = () => {
     getData(`products/${product.id}/related`)
@@ -41,11 +41,13 @@ export default function RelatedProducts({ product }) {
   };
 
   useEffect(() => {
+    setRelatedProducts([]);
     getRelatedProducts();
-  }, []);
+    console.log('Loaded Related Products')
+  }, [product]);
 
   useEffect(() => {
-    setSelectedProduct(JSON.parse(window.localStorage.getItem('wishlist')) || []);
+    setWishlistProducts(JSON.parse(window.localStorage.getItem('wishlist')) || []);
   }, []);
 
   if (status === 'pending') {
@@ -56,22 +58,25 @@ export default function RelatedProducts({ product }) {
     return (
       <Carousels className="carousel">
         <div className="related-header">
-          <h2>COMPLETE THE LOOK</h2>
+          <h2>OTHERS ALSO BOUGHT</h2>
         </div>
         <RelatedCarousel
           products={relatedProducts}
           mainProduct={product}
-          show={4}
-          selectedProducts={selectedProducts}
-          setSelectedProduct={setSelectedProduct}
+          handleProductChange={handleProductChange}
+          wishlistProducts={wishlistProducts}
+          setWishlistProducts={setWishlistProducts}
         />
 
-        <div className="selected-header">
+        <div className="wishlist-header" style={{ 'paddingTop': '50px' }}>
           <h2>WISHLIST</h2>
         </div>
         <WishlistCarousel
-          products={selectedProducts}
-          show={4}
+          currentProduct={product}
+          products={wishlistProducts}
+          handleProductChange={handleProductChange}
+          wishlistProducts={wishlistProducts}
+          setWishlistProducts={setWishlistProducts}
         />
       </Carousels>
     );
