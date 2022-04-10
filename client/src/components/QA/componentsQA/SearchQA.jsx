@@ -20,7 +20,8 @@ export default function SearchQA({ product, handleSearchFilter }) {
   };
 
   return (
-    <QASearch>
+    // <QASearch>
+    <div>
       <input
         id="search"
         type="search"
@@ -36,6 +37,7 @@ export default function SearchQA({ product, handleSearchFilter }) {
         placeholder={`Have a question about the ${product.name}? Search for answers...`}
       />
       <i role="presentation" />
-    </QASearch>
+    </div>
+    // </QASearch>
   );
 }

@@ -182,7 +182,7 @@ export default function QA({ product }) {
   return (
     <div
       className="QA"
-      style={{ paddingBottom: '100px' }}
+      style={{ paddingBottom: '60px' }}
     >
       <div>
         <h1>Questions & Answers</h1>

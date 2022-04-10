@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 
+import {
+  WriteReviewButtons
+} from '../../../theme/buttonStyle.js';
+
 export default function AnswerListEntryQA({
   answer,
   handleHelpfulAnswerSubmit,
@@ -25,6 +29,7 @@ export default function AnswerListEntryQA({
 
   return (
     <>
+      <br/>
       <div className="answer-body">
         <div style={{ "dispay": "flex" }}>
           <strong>A:</strong>
@@ -40,6 +45,7 @@ export default function AnswerListEntryQA({
               style={{
                 height: '100px',
                 'border-radius': '5px',
+                paddingRight: '10px',
               }}
               alt={`${answer.answerer_name}'s data failed to load`}
               className="answer-pic"
@@ -56,46 +62,33 @@ export default function AnswerListEntryQA({
         {helpfulClickedA
           ? (
             <>
-              <button type="submit">Answer Helpful!</button>
+              <WriteReviewButtons type="submit">Answer Helpful!</WriteReviewButtons>
               <span>{` (${answer.helpfulness + 1})`}</span>
             </>
           )
           : (
             <>
-              <button
+              <WriteReviewButtons
                 type="submit"
                 onClick={handleHelpfulnessClickA}
               >
                 Yes
-              </button>
+              </WriteReviewButtons>
               <span>{` (${answer.helpfulness})`}</span>
             </>
           )}
         <span>{' | '}</span>
         {reportClickedA
-          ? <button type="submit">Reported</button>
+          ? <WriteReviewButtons type="submit">Reported</WriteReviewButtons>
           : (
-            <button
+            <WriteReviewButtons
               type="submit"
               onClick={handleReportClickA}
             >
               Report
-            </button>
+            </WriteReviewButtons>
           )}
       </div>
     </>
   );
 }
-
-// const handleAddAnswerSubmit = (data, qId) => {
-//   axios({
-//     method: 'post',
-//     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
-//     url: `/qa/questions/${qId}/answers`,
-//     headers: {
-//       Authorization: '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',
-//     },
-//     data,
-//   }).then((res) => console.log(res)) // refactor???
-//     .catch((err) => { throw Error(err); });
-// };
