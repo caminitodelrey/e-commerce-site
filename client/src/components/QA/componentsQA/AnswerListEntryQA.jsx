@@ -43,9 +43,9 @@ export default function AnswerListEntryQA({
               key={pic}
               src={pic}
               style={{
-                height: '100px',
-                'border-radius': '5px',
-                paddingRight: '10px',
+                height: '150px',
+                borderRadius: '5px',
+                marginRight: '10px',
               }}
               alt={`${answer.answerer_name}'s data failed to load`}
               className="answer-pic"

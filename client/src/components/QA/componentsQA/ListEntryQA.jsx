@@ -65,7 +65,7 @@ export default function ListEntryQA({
             {helpfulClickedQ
               ? (
                 <>
-                  <button type="submit">Question Helpful!</button>
+                  <WriteReviewButtons type="submit">Question Helpful!</WriteReviewButtons>
                   <span>
                     {` (${question.question_helpfulness + 1})`}
                   </span>

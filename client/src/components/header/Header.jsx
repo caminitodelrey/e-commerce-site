@@ -68,7 +68,7 @@ export default function Header() {
 
           <ThirdInnerContainer>
             <HeaderSearch>
-              <input type="text" placeholder="Search" />
+              <input data-testid="search" type="text" placeholder="Search" />
             </HeaderSearch>
 
             <div>

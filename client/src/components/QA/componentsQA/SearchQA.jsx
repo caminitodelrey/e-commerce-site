@@ -12,7 +12,7 @@ export default function SearchQA({ product, handleSearchFilter }) {
     setSearchText(e.target.value);
   };
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = (e) => { // Refactor to work with enter key and search
     if (e.keyCode === 13) {
       // console.log(`Searching Questions for ${searchText}`); // delete later
       handleSearchFilter(searchText);
@@ -28,8 +28,12 @@ export default function SearchQA({ product, handleSearchFilter }) {
         autoComplete="off"
         maxLength="150"
         style={{
-          height: '30px',
-          width: '700px',
+          height: '50px',
+          width: '800px',
+          borderRadius: '25px',
+          padding: '12px',
+          backgroundColor: 'rgb(245,245,245)',
+          borderColor: 'rgb(245,245,245)'
         }}
         value={searchText}
         onChange={handleSearchChange}

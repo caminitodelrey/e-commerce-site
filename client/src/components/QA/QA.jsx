@@ -11,8 +11,8 @@ import {
   ReviewButtons,
 } from '../../theme/buttonStyle.js';
 
-// export default function QA() { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
-export default function QA({ product }) {
+export default function QA() { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
+// export default function QA({ product }) {
   const [questions, setQuestions] = useState([
     {
       question_id: 573538,
@@ -29,13 +29,13 @@ export default function QA({ product }) {
   const [addQuestionModal, setAddQuestionModal] = useState(false);
   const [filtered, setFiltered] = useState(false);
 
-  // // for Testing only, also go to line 11. ~~~~~~~~~~~~~~~~~~~~~~~~
-  // const [product, setProduct] = useState({ id: 37494 }); // type product id here
-  // useEffect(() => {
-  //   getData(`/products/${product.id}`)
-  //     .then((res) => setProduct(res.data))
-  //     .catch((err) => { throw Error(err); });
-  // }, [product.id]);
+  // for Testing only, also go to line 11. ~~~~~~~~~~~~~~~~~~~~~~~~
+  const [product, setProduct] = useState({ id: 37494 }); // type product id here
+  useEffect(() => {
+    getData(`/products/${product.id}`)
+      .then((res) => setProduct(res.data))
+      .catch((err) => { throw Error(err); });
+  }, [product.id]);
 
   useEffect(() => {
     getData(`qa/questions?product_id=${product.id}`)
