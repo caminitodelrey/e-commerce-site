@@ -57,9 +57,11 @@ export default function ImageGallery({
 
   useEffect(() => {
     if (!expanded) {
-      galleryWrapperRef.current.style.width = '800px';
+      galleryWrapperRef.current.style.height = '100%';
+      galleryWrapperRef.current.style.margin='none';
     } else {
-      galleryWrapperRef.current.style.width = '60%';
+      galleryWrapperRef.current.style.height = '80vh';
+      galleryWrapperRef.current.style.margin='auto';
     }
   }, [expanded]);
 
@@ -256,7 +258,7 @@ export default function ImageGallery({
   };
 
   return (
-    <GalleryWrapper galleryType={galleryType} ref={galleryWrapperRef}>
+    <GalleryWrapper id={'Gallery Wrapper'} galleryType={galleryType} ref={galleryWrapperRef} wrapperSize={wrapperSize}>
 
       <BigImageContainer id="bigImageContainer">
       {renderGalleryThumbNav()}
@@ -279,10 +281,10 @@ export default function ImageGallery({
 
 const GalleryWrapper = styled.div`
   position: relative;
-  display:inline-block;
-  max-height: 800px;
+  height:auto;
   width:800px;
   min-width: 800px;
+  margin:none;
 `;
 
 const GalleryThumbNav = styled.div`
