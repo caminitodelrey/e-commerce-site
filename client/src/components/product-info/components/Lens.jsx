@@ -7,8 +7,8 @@ export default function Lens({ photo, photoContainer, exitZoom }) {
   const [photoContainerState, setPhotoContainerState] =
     useState(photoContainer);
   const lensElement = useRef(null);
-  let imgObj = new Image();
-  imgObj.src = photo.src;
+  // let imgObj = new Image();
+  // imgObj.src = photo.src;
 
   const numberMap = (val, inMin, inMax, outMin, outMax) =>
     ((val - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
@@ -49,7 +49,7 @@ export default function Lens({ photo, photoContainer, exitZoom }) {
     );
 
     // console.log(lensElement.current.clientWidth, photoContainerState.clientWidth)
-    console.log(backgroundX, backgroundY);
+    console.log(lensElement.current.tagName);
     lensElement.current.style.backgroundPosition = `-${backgroundX/2}px -${backgroundY/2}px`;
     lensElement.current.style.cursor = 'zoom-out';
   };

@@ -34,7 +34,7 @@ const banner2 = (
   </Slide>
 );
 
-export default function Header() {
+export default function Header(props) {
   const banners = [banner1, banner2];
   const delay = 2500;
 
@@ -52,7 +52,7 @@ export default function Header() {
   }, [index]);
 
   return (
-    <>
+    <div onClick={props.onClick}>
       <HeaderOuter>
         <HeaderInner>
           <Logo>
@@ -87,6 +87,6 @@ export default function Header() {
           {banners.map((banner) => banner)}
         </BannerSlider>
       </Slideshow>
-    </>
+    </div>
   );
 }
