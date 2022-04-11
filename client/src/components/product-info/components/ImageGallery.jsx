@@ -12,8 +12,8 @@ import Lens from './Lens.jsx';
 
 const galleryContainerSize = '100%';
 const height = 1000;
-const galleryThumbSize = 100;
-const gallerySize = 2;
+const galleryThumbSize = 80;
+const gallerySize = 7;
 let moveCounter = 0;
 
 export default function ImageGallery({
@@ -57,9 +57,9 @@ export default function ImageGallery({
 
   useEffect(() => {
     if (!expanded) {
-      galleryWrapperRef.current.style.height = '80%';
+      galleryWrapperRef.current.style.width = '800px';
     } else {
-      galleryWrapperRef.current.style.height = '100%';
+      galleryWrapperRef.current.style.width = '60%';
     }
   }, [expanded]);
 
@@ -257,9 +257,10 @@ export default function ImageGallery({
 
   return (
     <GalleryWrapper galleryType={galleryType} ref={galleryWrapperRef}>
+
+      <BigImageContainer id="bigImageContainer">
       {renderGalleryThumbNav()}
       {renderImageNav()}
-      <BigImageContainer id="bigImageContainer">
         {renderExit()}
         {renderLens()}
         <BigImage
@@ -276,9 +277,76 @@ export default function ImageGallery({
   );
 }
 
+const GalleryWrapper = styled.div`
+  position: relative;
+  display:inline-block;
+  max-height: 800px;
+  width:800px;
+  min-width: 800px;
+`;
+
+const GalleryThumbNav = styled.div`
+  position: absolute;
+  z-index: 2;
+  padding-left:20px;
+`;
+
+const GalleryThumbWrapper = styled.div`
+  height: ${(props) => props.height}px;
+  transform-origin: top center;
+  overflow: hidden;
+`;
+
+const GalleryThumbDiv = styled.div`
+  position: relative;
+  display: block;
+  width: ${galleryThumbSize}px;
+  height: ${galleryThumbSize}px;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transform: translateY(${(props) => props.pos}px);
+  border-radius: 10px;
+  transition: transform 1s;
+`;
+
+const GalleryThumbImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: ${({ selected }) => (selected ? 'auto;' : 'pointer;')};
+`;
+
+const BigImageContainer = styled.div`
+  position: relative;
+  margin:auto;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+`;
+
+const BigImage = styled.img`
+  object-fit: cover;
+  object-position: center;
+  width:100%;
+  height:100%;
+  cursor: ${({ expanded }) => (expanded ? 'zoom-in;' : 'pointer;')}
+  border-radius: 10px;
+`;
+
+const BigImageNav = styled.div`
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+`;
+
+
 const StyledCircleArrow = css`
   color: rgba(255, 255, 255, 1);
-  width: 50px;
+  width: 25px;
   height: auto;
   margin: 10px auto;
   position: relative;
@@ -322,70 +390,6 @@ const RightArrow = styled(FaChevronRight)`
   cursor: pointer;
 `;
 
-const GalleryWrapper = styled.div`
-  position: relative;
-  max-width: 100%;
-  height: 80%;
-  margin: auto;
-`;
-
-const GalleryThumbNav = styled.div`
-  position: absolute;
-  z-index: 2;
-  width: 180px;
-`;
-
-const GalleryThumbWrapper = styled.div`
-  margin: 5px 0;
-  height: ${(props) => props.height}px;
-  transform-origin: top center;
-  overflow: hidden;
-`;
-
-const GalleryThumbDiv = styled.div`
-  position: relative;
-  display: block;
-  width: ${galleryThumbSize}px;
-  height: ${galleryThumbSize}px;
-  margin: 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  transform: translateY(${(props) => props.pos}px);
-  border-radius: 10px;
-  transition: transform 1s;
-`;
-
-const GalleryThumbImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: ${({ selected }) => (selected ? 'auto;' : 'pointer;')};
-`;
-
-const BigImageContainer = styled.div`
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 10px;
-`;
-
-const BigImage = styled.img`
-  object-fit: contain;
-  object-position: center;
-  width:auto;
-  height:100%;
-  cursor: ${({ expanded }) => (expanded ? 'zoom-in;' : 'pointer;')}
-  border-radius: 10px;
-`;
-
-const BigImageNav = styled.div`
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  z-index: 2;
-`;
 
 const StyledIoIosCloseCircle = styled(IoIosCloseCircle)`
   position: absolute;
