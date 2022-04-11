@@ -8,6 +8,7 @@ import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
 import QA from './QA/QA.jsx';
 import RatingsReviews from './ratings-and-reviews/ratings-and-reviews.jsx';
+import ClickTracker from './ClickTracker.jsx';
 
 // main eg --> id: 37311
 // an example with 6 related products --> id: 37318
@@ -63,20 +64,19 @@ export default function App() {
   // };
 
   return (
-    <div>
-      <GlobalStyle />
-      <Header
-        handleProductChange={handleProductChange}
-      />
-      <div style={{ 'padding': '0 15rem 10rem 15rem' }}>
-        <ProductInfo product={selectedProduct} />
+    <ClickTracker render={(recordClick) => (
+      <>
+        <GlobalStyle />
+        <Header onClick={(event) => recordClick(event, 'Header')} />
+        <ProductInfo onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct} />
         <RelatedProducts
           product={selectedProduct}
           handleProductChange={handleProductChange}
+          onClick={(event) => recordClick(event, 'Related Products')}
         />
-        <QA product={selectedProduct} />
-        <RatingsReviews product={selectedProduct} />
-      </div>
-    </div>
+        <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
+        <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
+      </>
+    )} />
   );
 }
