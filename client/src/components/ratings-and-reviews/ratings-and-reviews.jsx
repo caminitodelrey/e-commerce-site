@@ -41,16 +41,17 @@ export default function RatingsReviews({ product, onClick }) {
   const reviewCount = metaData.recommended || { true: 0, false: 0 };
 
   return (
-    <div onClick={onClick}>
-      <div style={{
+    <div className='ratings-reviews' onClick={onClick} style={{paddingBottom: '30px',}}>
+      <div
+        style={{
         float: 'left',
         width: '30%',
-      }}
+        }}
       >
-        <div style={{ marginLeft: '40px' }}>
+        <div>
           <RatingBreakDown metaData={metaData} />
         </div>
-        <div style={{ marginLeft: '40px' }}>
+        <div>
           <ProductBreakDown metaData={metaData} />
         </div>
       </div>

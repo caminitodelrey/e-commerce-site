@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 // RelatedProducts.jsx
 export const Carousels = styled.div`
-  padding: 50px 150px;
+  /* padding: 50px 150px; */
+  padding: 50px 0;
   width: 1200px;
   position: relative;
-  margin: auto;
+  /* margin: auto; */
 `;
 
 // WishlistCarousel.jsx

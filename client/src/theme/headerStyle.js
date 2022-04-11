@@ -46,11 +46,7 @@ export const ThirdInnerContainer = styled.div`
 `;
 
 export const Search = styled.div`
-  position: absolute;
-  right: 120px;
-
   > input {
-    padding: 12px;
     outline: none;
     border: none;
     border-radius: 20px;
@@ -70,6 +66,27 @@ export const Search = styled.div`
     }
   }
 `;
+
+export const HeaderSearch = styled(Search)`
+  position: absolute;
+  right: 120px;
+
+  > input {
+    padding: 12px;
+  }
+`;
+
+export const QASearch = styled(Search)`
+  position: relative;
+  margin: 30px 0;
+  width: 100vw;
+  /* right: 120px; */
+
+  > input {
+    padding: 20px;
+  }
+`;
+
 
 export const WishlistButton = styled(FiHeart)`
   color: rgb(25, 46, 64);

@@ -8,7 +8,7 @@ export default function ReviewPicsUnit({ src }) {
   };
 
   const stylePic = !showPic
-    ? { height: '150px', width: '150px' }
+    ? { height: '150px', width: '150px'}
     : {
       position: 'fixed',
       height: '100%',
@@ -20,7 +20,7 @@ export default function ReviewPicsUnit({ src }) {
     };
 
   const stylePic2 = !showPic
-    ? { height: '150px', width: '150px' }
+    ? { height: '150px', width: '150px', paddingRight: '10px', cursor: 'pointer' }
     : {
       height: '400px',
       width: '400px',
@@ -29,6 +29,7 @@ export default function ReviewPicsUnit({ src }) {
       top: '50%',
       marginTop: '-200px',
       marginLeft: '-200px',
+      borderRadius: '20px'
     };
 
   return (

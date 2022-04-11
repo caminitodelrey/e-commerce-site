@@ -7,6 +7,9 @@ import { getData } from '../../../helper.js';
 import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
 import AddQuestionQA from './componentsQA/AddQuestionQA.jsx';
+import {
+  ReviewButtons,
+} from '../../theme/buttonStyle.js';
 
 // export default function QA() { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
 export default function QA({ product, onClick }) {
@@ -198,21 +201,25 @@ export default function QA({ product, onClick }) {
       <div className="BottomButtonsQA">
         <div>
           {questionsList.length - questionsDisplayed > 0 ? (
-            <input
+            <ReviewButtons
+              style={{ 'width': 'auto' }}
               type="submit"
-              value={`More Answered Questions (${
+              onClick={handleMoreQuestions}
+            >
+              {`More Answered Questions (${
                 questionsList.length - questionsDisplayed
               })`}
-              onClick={handleMoreQuestions}
-            />
+            </ReviewButtons>
           ) : null}
         </div>
         <div>
-          <input
+        <ReviewButtons
             type="submit"
-            value="Add a Question +"
             onClick={toggleAddQuestionModal}
-          />
+            style={{ 'width': 'auto' }}
+        >
+          Add a Question +
+        </ReviewButtons>
         </div>
         <AddQuestionQA
           product={product}

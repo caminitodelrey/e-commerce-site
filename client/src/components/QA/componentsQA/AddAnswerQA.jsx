@@ -7,6 +7,10 @@ import {
   ModalBody,
   TableRow,
 } from '../../../theme/modalStyle.js';
+import {
+  ReviewButtons,
+  WriteReviewButtons,
+} from '../../../theme/buttonStyle.js';
 
 export default function AddAnswerQA({
   product,

@@ -1,4 +1,20 @@
 import React, { useState } from 'react';
+import {
+  ModalContainer,
+  ModalTitle,
+  ModalProductName,
+  ModalContent,
+  ModalBody,
+  TableRow,
+  TableRowFeature,
+  RatingsTableRow,
+  RatingsTD,
+} from '../../../theme/modalStyle.js';
+
+import {
+  ReviewButtons,
+  WriteReviewButtons,
+} from '../../../theme/buttonStyle.js';
 
 export default function WriteReview() {
   const [writeReview, setWriteReview] = useState(false);
@@ -54,55 +70,37 @@ export default function WriteReview() {
   };
 
   const writeReview2 = !writeReview ? (
-    <button
-      style={{
-        float: 'left',
-        padding: '10px',
-        textTransform: 'uppercase',
-        fontSize: '15px',
-      }}
+    <ReviewButtons
       type="button"
       onClick={HandleWriteReview}
     >
       Write Review
-    </button>
+    </ReviewButtons>
   ) : (
-    <div>
-      <div
+    <ModalContainer>
+      <ModalContent
         style={{
-          position: 'fixed',
-          left: '0',
-          top: '0',
-          zindex: 5,
-          background: 'rgba(255, 255, 255, 0.7)',
           padding: '50px',
-          width: '100%',
-          height: '100%',
+          width: '800px'
         }}
       >
-        <form
-          style={{
-            background: 'lightskyblue',
-            padding: '50px',
-            width: '650px',
-            position: 'absolute',
-            left: '50%',
-            marginLeft: '-425px',
-            fontFamily: 'sans-serif',
-          }}
-        >
-          <div>
-            Would you recommend this product?
-            <button type="button">Yes</button>
-            <button type="button">No</button>
+      <ModalTitle>
+        <h1>Submit Your Review</h1>
+      </ModalTitle>
+      <ModalBody>
+        <form>
+          <div style={{ margin: '10px 0'}}>
+            <p>Would you recommend this product?</p>
+            <WriteReviewButtons type="button">Yes</WriteReviewButtons>
+            <WriteReviewButtons type="button">No</WriteReviewButtons>
           </div>
 
           <table>
-            <tr>
-              <td style={{ fontWeight: 'bold' }}>Rating</td>
-            </tr>
-            <tr>
-              <td>
+            <RatingsTableRow>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Rating</RatingsTD>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <RatingsTD>
                 1 Star
                 <input
                   type="radio"
@@ -111,8 +109,8 @@ export default function WriteReview() {
                   value="1"
                   onClick={handleRating}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 2 Star
                 <input
                   type="radio"
@@ -121,8 +119,8 @@ export default function WriteReview() {
                   value="2"
                   onClick={handleRating}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 3 Star
                 <input
                   type="radio"
@@ -131,8 +129,8 @@ export default function WriteReview() {
                   value="3"
                   onClick={handleRating}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 4 Star
                 <input
                   type="radio"
@@ -141,8 +139,8 @@ export default function WriteReview() {
                   value="4"
                   onClick={handleRating}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 5 Star
                 <input
                   type="radio"
@@ -151,13 +149,13 @@ export default function WriteReview() {
                   value="5"
                   onClick={handleRating}
                 />
-              </td>
-            </tr>
-            <tr>
-              <td style={{ fontWeight: 'bold' }}>Fit</td>
-            </tr>
-            <tr>
-              <td>
+              </RatingsTD>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Fit</RatingsTD>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <RatingsTD>
                 Too tight
                 <input
                   type="radio"
@@ -166,8 +164,8 @@ export default function WriteReview() {
                   value="1"
                   onClick={handleFit}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Slightly tight
                 <input
                   type="radio"
@@ -176,8 +174,8 @@ export default function WriteReview() {
                   value="2"
                   onClick={handleFit}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Perfect
                 <input
                   type="radio"
@@ -186,8 +184,8 @@ export default function WriteReview() {
                   value="3"
                   onClick={handleFit}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Slightly Large
                 <input
                   type="radio"
@@ -196,8 +194,8 @@ export default function WriteReview() {
                   value="4"
                   onClick={handleFit}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Too Large
                 <input
                   type="radio"
@@ -206,13 +204,13 @@ export default function WriteReview() {
                   value="5"
                   onClick={handleFit}
                 />
-              </td>
-            </tr>
-            <tr>
-              <td style={{ fontWeight: 'bold' }}>Comfort</td>
-            </tr>
-            <tr>
-              <td>
+              </RatingsTD>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Comfort</RatingsTD>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <RatingsTD>
                 Uncomfortable
                 <input
                   type="radio"
@@ -221,8 +219,8 @@ export default function WriteReview() {
                   value="1"
                   onClick={handleComfort}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Slightly Uncomfortable
                 <input
                   type="radio"
@@ -231,8 +229,8 @@ export default function WriteReview() {
                   value="2"
                   onClick={handleComfort}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Medium
                 <input
                   type="radio"
@@ -241,8 +239,8 @@ export default function WriteReview() {
                   value="3"
                   onClick={handleComfort}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Comfortable
                 <input
                   type="radio"
@@ -251,8 +249,8 @@ export default function WriteReview() {
                   value="4"
                   onClick={handleComfort}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Perfect
                 <input
                   type="radio"
@@ -261,13 +259,13 @@ export default function WriteReview() {
                   value="5"
                   onClick={handleComfort}
                 />
-              </td>
-            </tr>
-            <tr>
-              <td style={{ fontWeight: 'bold' }}>Length</td>
-            </tr>
-            <tr>
-              <td>
+              </RatingsTD>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Length</RatingsTD>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <RatingsTD>
                 Too Short
                 <input
                   type="radio"
@@ -276,8 +274,8 @@ export default function WriteReview() {
                   value="1"
                   onClick={handleLength}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Slightly Short
                 <input
                   type="radio"
@@ -286,8 +284,8 @@ export default function WriteReview() {
                   value="2"
                   onClick={handleLength}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Perfect
                 <input
                   type="radio"
@@ -296,8 +294,8 @@ export default function WriteReview() {
                   value="3"
                   onClick={handleLength}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Slightly Long
                 <input
                   type="radio"
@@ -306,25 +304,26 @@ export default function WriteReview() {
                   value="4"
                   onClick={handleLength}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Too Long
                 <input
+                  style={{display: 'inline-block'}}
                   type="radio"
                   id="length5"
                   name="length"
                   value="5"
                   onClick={handleLength}
                 />
-              </td>
-            </tr>
-            <tr>
-              <td style={{ fontWeight: 'bold' }}>
+              </RatingsTD>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <RatingsTD style={{ fontWeight: 'bold' }}>
                 quality
-              </td>
-            </tr>
-            <tr>
-              <td>
+              </RatingsTD>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <RatingsTD>
                 Low Quality
                 <input
                   type="radio"
@@ -333,8 +332,8 @@ export default function WriteReview() {
                   value="1"
                   onClick={handleQuality}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Slightly Low Quality
                 <input
                   type="radio"
@@ -343,8 +342,8 @@ export default function WriteReview() {
                   value="2"
                   onClick={handleQuality}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Medium
                 <input
                   type="radio"
@@ -353,8 +352,8 @@ export default function WriteReview() {
                   value="3"
                   onClick={handleQuality}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 High Quality
                 <input
                   type="radio"
@@ -363,8 +362,8 @@ export default function WriteReview() {
                   value="4"
                   onClick={handleQuality}
                 />
-              </td>
-              <td>
+              </RatingsTD>
+              <RatingsTD>
                 Perfect
                 <input
                   type="radio"
@@ -373,11 +372,11 @@ export default function WriteReview() {
                   value="5"
                   onClick={handleQuality}
                 />
-              </td>
-            </tr>
+              </RatingsTD>
+            </RatingsTableRow>
           </table>
 
-          <div>
+          <div style={{ margin: '10px 0'}}>
             <label htmlFor="reviewSummary">
               Review Summary (optional):
               <br />
@@ -389,7 +388,7 @@ export default function WriteReview() {
               />
             </label>
           </div>
-          <div>
+          <div style={{ margin: '10px 0'}}>
             <label htmlFor="reviewBody">
               Review Body:
               <br />
@@ -401,16 +400,16 @@ export default function WriteReview() {
               />
             </label>
           </div>
-          <div>
-            Upload photos (optional)
-            <button type="button" onClick={(e) => e.preventDefault}>
+          <div style={{ margin: '10px 0'}}>
+            <p>Upload photos (optional)</p>
+            <WriteReviewButtons type="button" onClick={(e) => e.preventDefault}>
               Add photos
-            </button>
+            </WriteReviewButtons>
           </div>
 
           <table>
-            <tr>
-              <td>Nickname:</td>
+            <RatingsTableRow>
+              <td style={{ paddingRight: '10px' }}>Nickname:</td>
               <td>
                 <input
                   type="text"
@@ -419,9 +418,9 @@ export default function WriteReview() {
                   onChange={nickNameInputChange}
                 />
               </td>
-            </tr>
-            <tr>
-              <td>
+            </RatingsTableRow>
+            <RatingsTableRow>
+              <td style={{ paddingRight: '10px' }}>
                 Email:
               </td>
               <td>
@@ -433,16 +432,17 @@ export default function WriteReview() {
                 />
 
               </td>
-            </tr>
+            </RatingsTableRow>
           </table>
 
-          <button type="button">Submit Review</button>
-          <button type="button" onClick={HandleWriteReview}>
+          <WriteReviewButtons type="button">Submit Review</WriteReviewButtons>
+          <WriteReviewButtons type="button" onClick={HandleWriteReview}>
             Close
-          </button>
+          </WriteReviewButtons>
         </form>
-      </div>
-    </div>
+        </ModalBody>
+      </ModalContent>
+    </ModalContainer>
   );
 
   return <div>{writeReview2}</div>;

@@ -43,6 +43,7 @@ export default function App() {
   };
 
   return (
+<<<<<<< HEAD
     <ClickTracker render={(recordClick) => (
       <>
         <GlobalStyle />
@@ -57,5 +58,20 @@ export default function App() {
         <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
       </>
     )} />
+=======
+    <div>
+      <GlobalStyle />
+      <Header />
+      <div style={{ 'padding': '0 10rem' }}>
+        <ProductInfo product={selectedProduct} />
+        <RelatedProducts
+          product={selectedProduct}
+          handleProductChange={handleProductChange}
+        />
+        <QA product={selectedProduct} />
+        <RatingsReviews product={selectedProduct} />
+      </div>
+    </div>
+>>>>>>> main
   );
 }
