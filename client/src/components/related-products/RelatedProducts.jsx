@@ -63,7 +63,7 @@ export default function RelatedProducts({ product, handleProductChange }) {
       return (
         <Carousels className="carousel">
           <div className="related-header">
-            <h2>OTHERS ALSO BOUGHT</h2>
+            <h2>COMPLETE THE LOOK</h2>
           </div>
           <RelatedCarousel
             products={relatedProducts}
@@ -76,9 +76,9 @@ export default function RelatedProducts({ product, handleProductChange }) {
           <WishlistAccordion
             onClick={() => setDisplayWishlist(!displayWishlist)}
           >
-            <h2>CHECK YOUR WISHLIST {displayWishlist ? '—' :'+'}</h2>
+            <h2>WISHLIST {!displayWishlist ? '—' :'+'}</h2>
           </WishlistAccordion>
-          { displayWishlist && (
+          { !displayWishlist && (
             <WishlistCarousel
             currentProduct={product}
             products={wishlistProducts}
