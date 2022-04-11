@@ -180,14 +180,7 @@ export default function QA({ product, onClick }) {
   // const { product, questions } = this.state;
   // console.log(questions);
   return (
-<<<<<<< HEAD
-    <div
-      className="QA"
-      style={{ paddingBottom: '60px' }}
-    >
-=======
     <div className="QA" onClick={onClick}>
->>>>>>> main
       <div>
         <h1>Questions & Answers</h1>
       </div>
