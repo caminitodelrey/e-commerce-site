@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { getData } from '../../../helper.js';
-import { Carousels } from '../../theme/carouselStyle.js';
+import { Carousels, WishlistAccordion } from '../../theme/carouselStyle.js';
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
 import WishlistCarousel from './carousels/WishlistCarousel.jsx';
-
-// products/37311/related
-// product_id: 37311 - 38199
 
 export default function RelatedProducts({ product, handleProductChange }) {
   const [status, setStatus] = useState('pending');
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
+
+  const [displayWishlist, setDisplayWishlist] = useState(false);
 
   const getRelatedProducts = () => {
     getData(`products/${product.id}/related`)
@@ -49,45 +48,45 @@ export default function RelatedProducts({ product, handleProductChange }) {
     setWishlistProducts(JSON.parse(window.localStorage.getItem('wishlist')) || []);
   }, []);
 
-  if (status === 'pending') {
-    return <div>Loading...</div>;
-  }
-
-  if (status === 'resolved') {
-    return (
-      <Carousels className="carousel">
-        <div className="related-header">
-          <h2>OTHERS ALSO BOUGHT</h2>
-        </div>
-        <RelatedCarousel
-          products={relatedProducts}
-          mainProduct={product}
-          handleProductChange={handleProductChange}
-          wishlistProducts={wishlistProducts}
-          setWishlistProducts={setWishlistProducts}
-        />
-
-        <div className="wishlist-header" style={{ 'paddingTop': '50px' }}>
-          <h2>WISHLIST</h2>
-        </div>
-        <WishlistCarousel
-          currentProduct={product}
-          products={wishlistProducts}
-          handleProductChange={handleProductChange}
-          wishlistProducts={wishlistProducts}
-          setWishlistProducts={setWishlistProducts}
-        />
-      </Carousels>
-    );
-  }
-
-  if (status === 'rejected') {
-    return (
-      <div>
+  switch(status) {
+    case 'pending':
+      return <div>Loading...</div>
+    case 'rejected':
+      return (
         <div>
-          We are sorry. There was a problem loading recommended products and your wishlist.
+          <div>
+            We are sorry. There was a problem loading recommended products and your wishlist.
+          </div>
         </div>
-      </div>
-    );
+      )
+    case 'resolved':
+      return (
+        <Carousels className="carousel">
+          <div className="related-header">
+            <h2>OTHERS ALSO BOUGHT</h2>
+          </div>
+          <RelatedCarousel
+            products={relatedProducts}
+            mainProduct={product}
+            handleProductChange={handleProductChange}
+            wishlistProducts={wishlistProducts}
+            setWishlistProducts={setWishlistProducts}
+          />
+
+          <WishlistAccordion
+            onClick={() => setDisplayWishlist(!displayWishlist)}
+          >
+            <h2>CHECK YOUR WISHLIST {displayWishlist ? '—' :'+'}</h2>
+          </WishlistAccordion>
+          { displayWishlist && (
+            <WishlistCarousel
+            currentProduct={product}
+            products={wishlistProducts}
+            handleProductChange={handleProductChange}
+            wishlistProducts={wishlistProducts}
+            setWishlistProducts={setWishlistProducts}
+          />)}
+        </Carousels>
+      )
   }
 }

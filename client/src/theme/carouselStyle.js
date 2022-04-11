@@ -2,14 +2,19 @@ import styled from 'styled-components';
 
 // RelatedProducts.jsx
 export const Carousels = styled.div`
-  /* padding: 50px 150px; */
   padding: 50px 0;
+  /* min-width: 1200px;
+  width: 100%; */
   width: 1200px;
   position: relative;
-  /* margin: auto; */
 `;
 
 // WishlistCarousel.jsx
+export const WishlistAccordion = styled.div`
+  padding-top: 50px;
+  cursor: pointer;
+`;
+
 export const WishlistContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -17,7 +22,8 @@ export const WishlistContainer = styled.div`
 `;
 
 export const WishlistCardsContainer = styled.div`
-  width: 900px;
+  min-width: 900px;
+  width: 100%;
 `;
 
 // RelatedCarousel.jsx

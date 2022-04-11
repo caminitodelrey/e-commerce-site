@@ -2,13 +2,14 @@ import { MdLocalShipping } from 'react-icons/md';
 import { FiHeart, FiShoppingBag } from 'react-icons/fi';
 
 import React, { useState, useEffect } from 'react';
+import HeaderSearch from './HeaderSearch.jsx';
+
 import {
   HeaderOuter,
   HeaderInner,
   Logo,
   Nav,
   ThirdInnerContainer,
-  HeaderSearch,
   WishlistButton,
   ShopButton,
   Slideshow,
@@ -34,7 +35,7 @@ const banner2 = (
   </Slide>
 );
 
-export default function Header() {
+export default function Header({ handleProductChange }) {
   const banners = [banner1, banner2];
   const delay = 2500;
 
@@ -67,10 +68,7 @@ export default function Header() {
           </div>
 
           <ThirdInnerContainer>
-            <HeaderSearch>
-              <input type="text" placeholder="Search" />
-            </HeaderSearch>
-
+            <HeaderSearch handleProductChange={handleProductChange} />
             <div>
               <WishlistButton />
               <ShopButton />
