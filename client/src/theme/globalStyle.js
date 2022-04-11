@@ -6,7 +6,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* background-color: black; */
   }
 
   h1, h2, h3, h4 {
@@ -15,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     color: rgb(50, 78, 89);
   }
 
-  & p, th, td {
+  & p, th, td, span, div {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
   }
