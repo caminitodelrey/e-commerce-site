@@ -7,7 +7,7 @@ import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 // products/37311/related
 // product_id: 37311 - 38199
 
-export default function RelatedProducts({ product, handleProductChange }) {
+export default function RelatedProducts({ product, handleProductChange, onClick }) {
   const [status, setStatus] = useState('pending');
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -50,12 +50,12 @@ export default function RelatedProducts({ product, handleProductChange }) {
   }, []);
 
   if (status === 'pending') {
-    return <div>Loading...</div>;
+    return <div onClick={onClick}>Loading...</div>;
   }
 
   if (status === 'resolved') {
     return (
-      <Carousels className="carousel">
+      <Carousels className="carousel" onClick={onClick}>
         <div className="related-header">
           <h2>OTHERS ALSO BOUGHT</h2>
         </div>
@@ -83,7 +83,7 @@ export default function RelatedProducts({ product, handleProductChange }) {
 
   if (status === 'rejected') {
     return (
-      <div>
+      <div onClick={onClick}>
         <div>
           We are sorry. There was a problem loading recommended products and your wishlist.
         </div>

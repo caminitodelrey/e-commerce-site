@@ -6,7 +6,7 @@ import WriteReview from './writeReview/WriteReview.jsx';
 // import Sort from './sort/Sort.jsx';
 import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx';
 
-export default function RatingsReviews({ product }) {
+export default function RatingsReviews({ product, onClick }) {
   const [reviews, setReviews] = useState([]);
   const [metaData, setMetaData] = useState('');
 
@@ -41,7 +41,7 @@ export default function RatingsReviews({ product }) {
   const reviewCount = metaData.recommended || { true: 0, false: 0 };
 
   return (
-    <div>
+    <div onClick={onClick}>
       <div style={{
         float: 'left',
         width: '30%',

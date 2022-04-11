@@ -4,7 +4,8 @@ import { getData } from '../../../helper';
 import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
 
-export default function ({ product }) {
+
+export default function ({ product, onClick }) {
   // const [product, setProductId] = useState(product);
   const [styles, setStyles] = useState(
     product.styles || [
@@ -81,8 +82,12 @@ export default function ({ product }) {
   };
 
   return (
-    <ProductDiv ref={productDivRef}>
-      <ImageGallery photoList={photoList} changeGallery={changeGallery} galleryType={galleryType} />
+    <ProductDiv ref={productDivRef} onClick={onClick}>
+      <ImageGallery
+        photoList={photoList}
+        changeGallery={changeGallery}
+        galleryType={galleryType}
+      />
       {renderDetails()}
     </ProductDiv>
   );
@@ -91,8 +96,8 @@ export default function ({ product }) {
 const ProductDiv = styled.div`
   padding: 10px;
   max-width: 100%;
-  min-width:500px;
-  height:1000px;
+  min-width: 500px;
+  height: 1000px;
   position: relative;
   margin: 20px auto;
   border: 3px solid black;

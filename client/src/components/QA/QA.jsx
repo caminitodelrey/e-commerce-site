@@ -9,7 +9,7 @@ import ListQA from './componentsQA/ListQA.jsx';
 import AddQuestionQA from './componentsQA/AddQuestionQA.jsx';
 
 // export default function QA() { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
-export default function QA({ product }) {
+export default function QA({ product, onClick }) {
   const [questions, setQuestions] = useState([
     {
       question_id: 573538,
@@ -177,7 +177,7 @@ export default function QA({ product }) {
   // const { product, questions } = this.state;
   // console.log(questions);
   return (
-    <div className="QA">
+    <div className="QA" onClick={onClick}>
       <div>
         <h1>Questions & Answers</h1>
       </div>
