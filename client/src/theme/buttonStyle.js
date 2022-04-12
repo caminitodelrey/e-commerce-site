@@ -222,7 +222,6 @@ export const DefaultCardButton = styled.button`
 
 // Ratings & Reviews
 export const ReviewButtons = styled.button`
-  float: left;
   margin-right: 30px;
   height: 50px;
   width: 120px;

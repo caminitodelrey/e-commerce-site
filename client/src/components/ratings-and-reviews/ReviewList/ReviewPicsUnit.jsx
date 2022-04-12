@@ -13,6 +13,7 @@ export default function ReviewPicsUnit({ src }) {
       position: 'fixed',
       height: '100%',
       width: '100%',
+      borderRadius: '5px',
       top: '0',
       left: '0',
       zIndex: '10',
@@ -25,6 +26,7 @@ export default function ReviewPicsUnit({ src }) {
       height: '400px',
       width: '400px',
       position: 'absolute',
+      borderRadius: '5px',
       left: '50%',
       top: '50%',
       marginTop: '-200px',
@@ -38,6 +40,7 @@ export default function ReviewPicsUnit({ src }) {
         <p
           style={{
             position: 'absolute',
+            borderRadius: '5px',
             left: '50%',
             top: '50%',
             zIndex: '11',
