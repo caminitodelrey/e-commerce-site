@@ -10,30 +10,11 @@ import QA from './QA/QA.jsx';
 import RatingsReviews from './ratings-and-reviews/ratings-and-reviews.jsx';
 import ClickTracker from './ClickTracker.jsx';
 
-// main eg --> id: 37311
+// main eg --> id: 37327
 // an example with 6 related products --> id: 37318
 // an example with sale price --> id: 37325
 export default function App() {
   const [selectedProduct, setSelectedProduct] = useState({
-    // "id": 37311,
-    // "campus": "hr-rfe",
-    // "name": "Camo Onesie",
-    // "slogan": "Blend in to your crowd",
-    // "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-    // "category": "Jackets",
-    // "default_price": "140.00",
-    // "created_at": "2021-08-13T14:37:33.145Z",
-    // "updated_at": "2021-08-13T14:37:33.145Z",
-    // "features": [
-    //   {
-    //     "feature": "Fabric",
-    //     "value": "Canvas"
-    //   },
-    //   {
-    //     "feature": "Buttons",
-    //     "value": "Brass"
-    //   }
-    // ],
     "id": 37327,
     "campus": "hr-rfe",
     "name": "Dorris 400 Tank Top",
@@ -44,12 +25,12 @@ export default function App() {
     "created_at": "2021-08-13T14:37:33.285Z",
     "updated_at": "2021-08-13T14:37:33.285Z",
     "features": [
-      {
-        "feature": "Buttons",
-        "value": "\"Blue Resin\""
-      }
+        {
+            "feature": "Buttons",
+            "value": "\"Blue Resin\""
+        }
     ]
-  });
+});
 
   const handleProductChange = (productId) => {
     getData(`products/${productId}`).then(({ data }) => {

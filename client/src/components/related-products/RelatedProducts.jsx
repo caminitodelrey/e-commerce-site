@@ -90,3 +90,4 @@ export default function RelatedProducts({ product, handleProductChange, onClick 
       )
   }
 }
+
