@@ -1,34 +1,43 @@
 import styled from 'styled-components';
 
-// RelatedProducts.jsx
 export const Carousels = styled.div`
-  width: 1200px;
-  max-width: 80%;
   position: relative;
-  /* margin: auto; */
-  padding: 10px;
+  padding: 50px 0 50px 50px;
 `;
 
 // WishlistCarousel.jsx
+export const WishlistCarouselWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  min-width: 1100px;
+  max-width: 95%;
+`;
+
 export const WishlistAccordion = styled.div`
   padding-top: 50px;
   cursor: pointer;
 `;
 
 export const WishlistContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  min-height: 500px;
+  justify-content: space-evenly;
+  width: 90%;
+  min-width: 810px;
 `;
 
 export const WishlistCardsContainer = styled.div`
-  width: 900px;
-  /* margin: auto; */
+  position: relative;
+`;
+
+export const WishlistCardsWrapper = styled.div`
+  position: relative;
 `;
 
 // RelatedCarousel.jsx
 export const CardsWrapper = styled.div`
   position: relative;
+  min-width: 1100px;
+  // update this to 100% after repositioning the chevrons
+  max-width: 95%;
 `;
 
 export const ContentWrapper = styled.div`
