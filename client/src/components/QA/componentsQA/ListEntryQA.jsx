@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import AnswerListEntryQA from './AnswerListEntryQA.jsx';
 import AddAnswerQA from './AddAnswerQA.jsx';
 
+import {
+  WriteReviewButtons
+} from '../../../theme/buttonStyle.js';
+
 export default function ListEntryQA({
   product,
   question,
@@ -48,6 +52,7 @@ export default function ListEntryQA({
     <div>
       <div>
         <div>
+          <br/>
           <div
             style={{ "float": "left", "paddingBottom": '10px' }}
           >
@@ -56,44 +61,36 @@ export default function ListEntryQA({
           <div
             style={{ "float": "right" , "paddingBottom": '10px'}}
           >
-            <span>Helpful? </span>
             {helpfulClickedQ
               ? (
-                <>
-                  <button type="submit">Question Helpful!</button>
-                  <span>
-                    {` (${question.question_helpfulness + 1})`}
-                  </span>
-                </>
+                <WriteReviewButtons type="submit">
+                  {`Question Helpful! ${question.question_helpfulness + 1})`}
+                </WriteReviewButtons>
               )
               : (
-                <>
-                  <button
-                    type="submit"
-                    onClick={handleHelpfulnessClickQ}
-                  >
-                    Yes
-                  </button>
-                  <span>{` (${question.question_helpfulness})`}</span>
-                </>
+                <WriteReviewButtons
+                  type="submit"
+                  onClick={handleHelpfulnessClickQ}
+                >
+                  {`Yes (${question.question_helpfulness})`}
+                </WriteReviewButtons>
               )}
-            <span>{' | '}</span>
             {reportClickedQ
-              ? <button type="submit">Reported</button>
+              ? <WriteReviewButtons type="submit">Reported</WriteReviewButtons>
               : (
-                <button
+                <WriteReviewButtons
                   type="submit"
                   onClick={handleReportClickQ}
                 >
                   Report
-                </button>
+                </WriteReviewButtons>
               )}
-            <span>{' | '}</span>
-            <input
+            <WriteReviewButtons
               type="submit"
-              value="Add Answer"
               onClick={toggleAddAnswerModal}
-            />
+            >
+              Add Answer
+            </WriteReviewButtons>
           </div>
         </div>
         <AddAnswerQA
@@ -122,19 +119,21 @@ export default function ListEntryQA({
       <div>
         {Object.values(question.answers).length > 2 ? (
           hiddenAnswers ? (
-            <input
+            <WriteReviewButtons
               type="submit"
-              value={`\\/ See More Answers (${
+              onClick={handleMoreAnswers}
+            >
+              {`See More Answers (${
                 Object.values(question.answers).length - answersDisplayed
               })`}
-              onClick={handleMoreAnswers}
-            />
+            </WriteReviewButtons>
           ) : (
-            <input
+            <WriteReviewButtons
               type="submit"
-              value="Collapse Answers"
               onClick={handleMoreAnswers}
-            />
+            >
+              Collapse Answers
+            </WriteReviewButtons>
           )
         ) : null}
       </div>

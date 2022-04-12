@@ -64,7 +64,7 @@ export default function AddAnswerQA({
                   placeholder="Type your answer here..."
                   style={{
                     height: '100px',
-                    width: '600px',
+                    width: '550px',
                   }}
                   onChange={handleBodyChange}
                 />
@@ -79,10 +79,11 @@ export default function AddAnswerQA({
                   placeholder="Example: jack543!"
                   style={{
                     height: '25px',
-                    width: '600px',
+                    width: '550px',
                   }}
                   onChange={handleNameChange}
                 />
+                <br/>
                 <span>For privacy reasons, do not use your full name or email address</span>
               </div>
               <div className="add-answer-email">
@@ -95,14 +96,16 @@ export default function AddAnswerQA({
                   placeholder="Example: jack@email.com"
                   style={{
                     height: '25px',
-                    width: '600px',
+                    width: '550px',
                   }}
                   onChange={handleEmailChange}
                 />
+                <br/>
                 <span>For authentication reasons, you will not be emailed</span>
-                <button type="button">Upload your photos</button>
+                <br/>
+                <WriteReviewButtons type="button">Upload your photos</WriteReviewButtons>
                 <div>
-                  <button
+                  <WriteReviewButtons
                     type="button"
                     onClick={() => handleAddAnswerClick({
                       body: answerBody,
@@ -112,8 +115,8 @@ export default function AddAnswerQA({
                     })}
                   >
                     Submit Answer
-                  </button>
-                  <button type="button" onClick={toggleAddAnswerModal}>Cancel</button>
+                  </WriteReviewButtons>
+                  <WriteReviewButtons type="button" onClick={toggleAddAnswerModal}>Cancel</WriteReviewButtons>
                 </div>
               </div>
             </div>

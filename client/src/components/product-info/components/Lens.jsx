@@ -32,25 +32,29 @@ export default function Lens({ photo, photoContainer, exitZoom }) {
 
     // console.log(numberMap(5, -20, 0, -100, 100));
     // console.log(xPos , lensElement.current.clientWidth)
+
     const backgroundX = numberMap(
       xPos,
       0,
       lensElement.current.clientWidth,
       0,
-      lensElement.current.clientWidth * ratio,
+      lensElement.current.clientWidth * ratio - lensElement.current.clientWidth,
     );
 
+    let imgHeight = lensElement.current.clientWidth * (photo.width/photo.height);
+    imgHeight *= ratio;
     const backgroundY = numberMap(
       yPos,
       0,
       lensElement.current.clientHeight,
       0,
-      lensElement.current.clientHeight * ratio,
+      lensElement.current.clientHeight + (imgHeight - lensElement.current.clientHeight) ,
     );
 
     // console.log(lensElement.current.clientWidth, photoContainerState.clientWidth)
-    console.log(lensElement.current.tagName);
-    lensElement.current.style.backgroundPosition = `-${backgroundX/2}px -${backgroundY/2}px`;
+    console.log(backgroundX, backgroundY);
+    console.log(photo.width/photo.height);
+    lensElement.current.style.backgroundPosition = `-${backgroundX}px -${backgroundY}px`;
     lensElement.current.style.cursor = 'zoom-out';
   };
 
