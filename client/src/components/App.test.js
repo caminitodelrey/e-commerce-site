@@ -13,39 +13,47 @@ import QA from './QA/QA.jsx';
 import RatingsReviews from './ratings-and-reviews/ratings-and-reviews.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
 
-beforeEach(() => {
-  let app = render(<App />)
-});
+
 
 afterEach(cleanup);
 
 // Unit Test for App
-describe("App", () => {
-  it("App renders without crashing", () => {
-    const div = document.createElement("div");
-    ReactDOM.render(<App />, div)
-    expect(app).toBe
-    ReactDOM.unmountComponentAtNode(div);
-  })
-})
+// describe("App", () => {
+//   beforeEach(() => {
+//     let app = render(<App />)
+//   });
+//   it("App renders without crashing", () => {
+//     const div = document.createElement("div");
+//     ReactDOM.render(<App />, div)
+//     expect(app).toBe()
+//     ReactDOM.unmountComponentAtNode(div);
+//   })
+// })
 
-describe("Header:", () => {
-  it("Header renders without crashing", () => {
-    const div = document.createElement("div");
-    ReactDOM.render(<Header />, div)
-    ReactDOM.unmountComponentAtNode(div);
-  })
+describe('App component', () => {
+  test('it renders', () => {
+    render(<App />);
+    expect(screen.getByText('TEST')).toBeInTheDocument();
+  });
+ })
 
-  it("renders search bar", () => {
-    const { queryByPlaceholderText } = render(<input placeholder="Search" />)
-    expect(queryByPlaceholderText("search").toBeInTheDocument())
-  })
+// describe("Header:", () => {
+//   it("Header renders without crashing", () => {
+//     const div = document.createElement("div");
+//     ReactDOM.render(<Header />, div)
+//     ReactDOM.unmountComponentAtNode(div);
+//   })
+
+//   it("renders search bar", () => {
+//     const { queryByPlaceholderText } = render(<input placeholder="Search" />)
+//     expect(queryByPlaceholderText("search").toBeInTheDocument())
+//   })
 
   // it("renders nav bar", () => {
   //   const NewReleases = screen.getByText('New Releases')
   //   expect(NewReleases.toBeInTheDocument())
   // })
-})
+// })
 
 
 // describe("Product Info:", () => {

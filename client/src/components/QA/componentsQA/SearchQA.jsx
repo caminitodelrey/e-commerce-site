@@ -14,7 +14,6 @@ export default function SearchQA({ product, handleSearchFilter }) {
 
   const handleSearchSubmit = (e) => { // Refactor to work with enter key and search
     if (e.keyCode === 13) {
-      // console.log(`Searching Questions for ${searchText}`); // delete later
       handleSearchFilter(searchText);
     }
   };
