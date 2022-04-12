@@ -39,6 +39,14 @@ export default function ({ product, onClick }) {
   }, [styles]);
 
   useEffect(() => {
+    selectedStyle.photos.forEach((photo) => {
+      if (!photo.url) {
+        photo.url = 'image_not_found.png';
+      }
+      if (!photo.thumbnail_url) {
+        photo.thumbnail_url = 'image_not_found.png';
+      }
+    })
     setPhotoList(selectedStyle.photos);
   }, [selectedStyle]);
 
