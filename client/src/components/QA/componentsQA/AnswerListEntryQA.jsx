@@ -57,27 +57,20 @@ export default function AnswerListEntryQA({
       >
         <span>{`by: ${answer.answerer_name}, `}</span>
         <span>{moment(answer.date).format('MMMM D, YYYY')}</span>
-        <span>{' | '}</span>
-        <span>Helpful? </span>
         {helpfulClickedA
           ? (
-            <>
-              <WriteReviewButtons type="submit">Answer Helpful!</WriteReviewButtons>
-              <span>{` (${answer.helpfulness + 1})`}</span>
-            </>
+            <WriteReviewButtons type="submit">
+              {`Answer Helpful! (${answer.helpfulness + 1})`}
+            </WriteReviewButtons>
           )
           : (
-            <>
-              <WriteReviewButtons
-                type="submit"
-                onClick={handleHelpfulnessClickA}
-              >
-                Yes
-              </WriteReviewButtons>
-              <span>{` (${answer.helpfulness})`}</span>
-            </>
+            <WriteReviewButtons
+              type="submit"
+              onClick={handleHelpfulnessClickA}
+            >
+              {`Yes (${answer.helpfulness})`}
+            </WriteReviewButtons>
           )}
-        <span>{' | '}</span>
         {reportClickedA
           ? <WriteReviewButtons type="submit">Reported</WriteReviewButtons>
           : (

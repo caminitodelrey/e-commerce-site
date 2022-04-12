@@ -61,28 +61,20 @@ export default function ListEntryQA({
           <div
             style={{ "float": "right" , "paddingBottom": '10px'}}
           >
-            <span>Helpful? </span>
             {helpfulClickedQ
               ? (
-                <>
-                  <WriteReviewButtons type="submit">Question Helpful!</WriteReviewButtons>
-                  <span>
-                    {` (${question.question_helpfulness + 1})`}
-                  </span>
-                </>
+                <WriteReviewButtons type="submit">
+                  {`Question Helpful! ${question.question_helpfulness + 1})`}
+                </WriteReviewButtons>
               )
               : (
-                <>
-                  <WriteReviewButtons
-                    type="submit"
-                    onClick={handleHelpfulnessClickQ}
-                  >
-                    Yes
-                  </WriteReviewButtons>
-                  <span>{` (${question.question_helpfulness})`}</span>
-                </>
+                <WriteReviewButtons
+                  type="submit"
+                  onClick={handleHelpfulnessClickQ}
+                >
+                  {`Yes (${question.question_helpfulness})`}
+                </WriteReviewButtons>
               )}
-            <span>{' | '}</span>
             {reportClickedQ
               ? <WriteReviewButtons type="submit">Reported</WriteReviewButtons>
               : (
@@ -93,7 +85,6 @@ export default function ListEntryQA({
                   Report
                 </WriteReviewButtons>
               )}
-            <span>{' | '}</span>
             <WriteReviewButtons
               type="submit"
               onClick={toggleAddAnswerModal}
@@ -128,25 +119,21 @@ export default function ListEntryQA({
       <div>
         {Object.values(question.answers).length > 2 ? (
           hiddenAnswers ? (
-            <>
-              <WriteReviewButtons
-                type="submit"
-                onClick={handleMoreAnswers}
-              >
-                {`\\/ See More Answers (${
-                  Object.values(question.answers).length - answersDisplayed
-                })`}
-              </WriteReviewButtons>
-            </>
+            <WriteReviewButtons
+              type="submit"
+              onClick={handleMoreAnswers}
+            >
+              {`See More Answers (${
+                Object.values(question.answers).length - answersDisplayed
+              })`}
+            </WriteReviewButtons>
           ) : (
-            <>
-              <WriteReviewButtons
-                type="submit"
-                onClick={handleMoreAnswers}
-              >
-                Collapse Answers
-              </WriteReviewButtons>
-            </>
+            <WriteReviewButtons
+              type="submit"
+              onClick={handleMoreAnswers}
+            >
+              Collapse Answers
+            </WriteReviewButtons>
           )
         ) : null}
       </div>
