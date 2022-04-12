@@ -40,18 +40,17 @@ export default function WishlistCarousel({
     setLength(products.length);
   }, [products]);
 
-  const next = () => {
-    if (currentIndex < length - (maxDisplayCount - 1)) {
+  const prev = () => {
+    if (currentIndex < length - maxDisplayCount) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
 
-  const prev = () => {
+  const next = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prevState) => prevState - 1);
     }
   };
-
 
   return (
     <WishlistContainer>
@@ -69,7 +68,7 @@ export default function WishlistCarousel({
 
           { length <= maxDisplayCount
             ? (<div></div>)
-            : currentIndex > 0 ? (
+            : currentIndex < length - maxDisplayCount ? (
             <WishlistLeftChevron className="left-arrow" onClick={prev}>
               <ScaledLeftArrow />
             </WishlistLeftChevron>
@@ -97,7 +96,7 @@ export default function WishlistCarousel({
 
           { length <= maxDisplayCount
             ? (<div></div>)
-            : currentIndex < length - maxDisplayCount ? (
+            : currentIndex > 0 ? (
             <RightChevron className="right-arrow" onClick={next}>
               <ScaledRightArrow />
             </RightChevron>

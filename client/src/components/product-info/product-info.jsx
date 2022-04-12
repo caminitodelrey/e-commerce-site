@@ -43,11 +43,11 @@ export default function ({ product, onClick }) {
   }, [selectedStyle]);
 
   useEffect(() => {
-    // if (galleryType === 'default' && productDivRef) {
-    //   productDivRef.current.style.gridTemplateColumns = '1fr 1fr';
-    // } else {
-    //   productDivRef.current.style.gridTemplateColumns = '1fr';
-    // }
+    if (galleryType === 'default' && productDivRef) {
+      productDivRef.current.style.height = '800px';
+    } else {
+      productDivRef.current.style.height = 'auto';
+    }
   }, [galleryType]);
 
   const styleChange = (index) => {
@@ -96,6 +96,15 @@ export default function ({ product, onClick }) {
 const ProductDiv = styled.div`
   padding: 10px;
   max-width: 100%;
+<<<<<<< HEAD
+  min-width:500px;
+  height:800px;
+  position: relative;
+  margin: 20px auto;
+  border: 3px solid black;
+  display:flex;
+  flex-direction:row;
+=======
   min-width: 500px;
   height: 1000px;
   position: relative;
@@ -103,8 +112,10 @@ const ProductDiv = styled.div`
   /* border: 3px solid black; */
   display: flex;
   flex-direction: row;
+>>>>>>> main
 `;
 
 const DetailsDiv = styled.div`
-  padding: 50px;
+  padding: 0 50px;
+  display:inline-block;
 `;

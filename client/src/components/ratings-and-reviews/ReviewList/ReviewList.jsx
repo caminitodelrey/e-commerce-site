@@ -37,6 +37,7 @@ export default function ReviewList({ reviews }) {
           // }}
           type="button"
           onClick={handleMoreReviews}
+          style= {{ float: 'left' }}
         >
           More Reviews
 

@@ -73,6 +73,7 @@ export default function WriteReview() {
     <ReviewButtons
       type="button"
       onClick={HandleWriteReview}
+      // style={{ float:"right", marginLeft: "40px"}}
     >
       Write Review
     </ReviewButtons>

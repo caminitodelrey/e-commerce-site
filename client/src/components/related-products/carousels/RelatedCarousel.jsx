@@ -50,13 +50,13 @@ export default function RelatedCarousel({
     });
   };
 
-  const next = () => {
+  const prev = () => {
     if (currentIndex < length - maxDisplayCount) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
 
-  const prev = () => {
+  const next = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prevState) => prevState - 1);
     }
@@ -71,15 +71,10 @@ export default function RelatedCarousel({
   return (
     <div>
       <CardsWrapper>
-        {/* {currentIndex > 0 && (
-          <LeftChevron className="left-arrow" onClick={prev}>
-            <ScaledLeftArrow />
-          </LeftChevron>
-        )} */}
 
         { length <= maxDisplayCount
           ? (<div></div>)
-          : currentIndex > 0 ? (
+          : currentIndex < length - maxDisplayCount ? (
           <LeftChevron className="left-arrow" onClick={prev}>
             <ScaledLeftArrow />
           </LeftChevron>
@@ -107,23 +102,17 @@ export default function RelatedCarousel({
           </Content>
         </ContentWrapper>
 
-        {/* {currentIndex < length - maxDisplayCount && (
+        { length <= maxDisplayCount
+          ? (<div></div>)
+          : currentIndex > 0 ? (
           <RightChevron className="right-arrow" onClick={next}>
             <ScaledRightArrow />
           </RightChevron>
-        )} */}
-
-          { length <= maxDisplayCount
-            ? (<div></div>)
-            : currentIndex < length - maxDisplayCount ? (
-            <RightChevron className="right-arrow" onClick={next}>
-              <ScaledRightArrow />
-            </RightChevron>
-          ) : (
-            <DeactivatedRightChevron className="right-arrow">
-              <ScaledRightArrow />
-            </DeactivatedRightChevron>
-          )}
+        ) : (
+          <DeactivatedRightChevron className="right-arrow">
+            <ScaledRightArrow />
+          </DeactivatedRightChevron>
+        )}
 
       </CardsWrapper>
 

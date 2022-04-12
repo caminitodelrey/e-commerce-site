@@ -62,7 +62,7 @@ export default function AddQuestionQA({
                   placeholder="Type your question here..."
                   style={{
                     height: '100px',
-                    width: '500px',
+                    width: '550px',
                   }}
                   onChange={handleBodyChange}
                 />
@@ -77,10 +77,11 @@ export default function AddQuestionQA({
                   placeholder="Example: jackson11!"
                   style={{
                     height: '25px',
-                    width: '500px',
+                    width: '550px',
                   }}
                   onChange={handleNameChange}
                 />
+                <br/>
                 <span>
                   For privacy reasons, do not use your full name or email address
                 </span>
@@ -95,10 +96,11 @@ export default function AddQuestionQA({
                   placeholder="Example: jack@email.com"
                   style={{
                     height: '25px',
-                    width: '500px',
+                    width: '550px',
                   }}
                   onChange={handleEmailChange}
                 />
+                <br/>
                 <span>For authentication reasons, you will not be emailed</span>
                 <div>
                   <WriteReviewButtons
@@ -124,3 +126,4 @@ export default function AddQuestionQA({
     );
   }
 }
+
