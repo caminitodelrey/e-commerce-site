@@ -4,9 +4,6 @@ import { Carousels, WishlistAccordion } from '../../theme/carouselStyle.js';
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
 import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 
-// products/37311/related
-// product_id: 37311 - 38199
-
 export default function RelatedProducts({ product, handleProductChange, onClick }) {
   const [status, setStatus] = useState('pending');
   const [wishlistProducts, setWishlistProducts] = useState([]);

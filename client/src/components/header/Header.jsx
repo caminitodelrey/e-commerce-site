@@ -68,7 +68,7 @@ export default function Header(props) {
           </div>
 
           <ThirdInnerContainer>
-            <HeaderSearch handleProductChange={handleProductChange} />
+            <HeaderSearch />
             <div>
               <WishlistButton />
               <ShopButton />
