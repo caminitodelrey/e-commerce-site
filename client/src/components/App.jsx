@@ -38,6 +38,12 @@ export default function App() {
     });
   };
 
+  // const wishlistRef = useRef();
+
+  // const executeScroll = () => {
+  //   wishlistRef.current.scrollIntoView();
+  // };
+
   return (
     <ClickTracker render={(recordClick) => (
       <>
