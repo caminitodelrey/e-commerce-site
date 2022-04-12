@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-const config = require('../../../../config.js');
+import axios from 'axios';
 
 import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
@@ -7,15 +7,15 @@ import AddQuestionQA from './componentsQA/AddQuestionQA.jsx';
 import {
   ButtonDefaultLG,
 } from '../../theme/buttonStyle.js';
-import {
-  getData,
-  handleHelpfulQuestionSubmit,
-  handleHelpfulAnswerSubmit,
-  handleReportQuestionSubmit,
-  handleReportAnswerSubmit,
-  handleAddQuestionSubmit,
-  handleAddAnswerSubmit,
-} from '../../../helper.js';
+// import {
+//   getData,
+//   handleHelpfulQuestionSubmit,
+//   handleHelpfulAnswerSubmit,
+//   handleReportQuestionSubmit,
+//   handleReportAnswerSubmit,
+//   handleAddQuestionSubmit,
+//   handleAddAnswerSubmit,
+// } from '../../../helper.js';
 
 // export default function QA() { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
 export default function QA({ product, onClick }) {
@@ -43,8 +43,29 @@ export default function QA({ product, onClick }) {
   //     .catch((err) => { throw Error(err); });
   // }, [product.id]);
 
+  const handleProductChange =(productId) => {
+    axios({
+      method: 'get',
+      url: '/product',
+      data: {
+        productId: productId
+      }
+    })
+    .then(({ data }) => {
+      setSelectedProduct(data);
+    })
+    .catch((err) => {
+      throw Error(err);
+    });
+  }
+
   useEffect(() => {
-    getData(`qa/questions?product_id=${product.id}`)
+    // getData(`qa/questions?product_id=${product.id}`)
+    axios({
+      method: 'get',
+      url: '/',
+
+    })
       .then((res) => {
         setQuestions(
           res.data.results.sort(

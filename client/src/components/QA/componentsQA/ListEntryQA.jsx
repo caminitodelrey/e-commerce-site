@@ -3,7 +3,8 @@ import AnswerListEntryQA from './AnswerListEntryQA.jsx';
 import AddAnswerQA from './AddAnswerQA.jsx';
 
 import {
-  ButtonDefaultSM
+  ButtonDefaultSM,
+  ReportClicked,
 } from '../../../theme/buttonStyle.js';
 
 export default function ListEntryQA({
@@ -76,14 +77,7 @@ export default function ListEntryQA({
                 </ButtonDefaultSM>
               )}
             {reportClickedQ
-              ? <ButtonDefaultSM
-                  type="submit"
-                  style={{
-                    color: 'red',
-                  }}
-                >
-                    Reported
-                </ButtonDefaultSM>
+              ? <ReportClicked>Reported</ReportClicked>
               : (
                 <ButtonDefaultSM
                   type="submit"

@@ -306,3 +306,15 @@ export const ButtonDefaultSM = styled.button`
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
 `;
+
+export const ReportClicked = styled.button`
+  border: none;
+  border-radius: 15px;
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 15px;
+  color: red;
+  background-color: #fff;
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
+`;

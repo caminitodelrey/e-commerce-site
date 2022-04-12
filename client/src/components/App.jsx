@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { getData } from '../../helper.js';
 
 import { GlobalStyle } from '../theme/globalStyle.js';
@@ -32,32 +33,55 @@ export default function App() {
     ]
 });
 
-  const handleProductChange = (productId) => {
-    getData(`products/${productId}`).then(({ data }) => {
-      setSelectedProduct(data);
-    });
-  };
-
-  // const wishlistRef = useRef();
-
-  // const executeScroll = () => {
-  //   wishlistRef.current.scrollIntoView();
+  // const handleProductChange = (productId) => {
+  //   getData(`products/${productId}`)
+  //     .then(({ data }) => {
+  //       setSelectedProduct(data);
+  //     })
+  //     .catch((err) => {
+  //       throw Error(err);
+  //     })
   // };
 
+  const handleProductChange =(productId) => {
+    // axios.get('/product', { params: { productId: productId }})
+    axios({
+      method: 'get',
+      url: '/product',
+      params: { productId: productId }
+    })
+    .then(({ data }) => {
+      setSelectedProduct(data);
+    })
+    .catch((err) => {
+      console.log('error on client side')
+    });
+  }
+
+  useEffect(() => {
+    console.log(selectedProduct);
+  }, [selectedProduct]);
+
+
+
   return (
-    <ClickTracker render={(recordClick) => (
-      <div data-testid="main">
-        <GlobalStyle />
-        <Header onClick={(event) => recordClick(event, 'Header')} />
-        <ProductInfo onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct} />
-        <RelatedProducts
-          product={selectedProduct}
-          handleProductChange={handleProductChange}
-          onClick={(event) => recordClick(event, 'Related Products')}
-        />
-        <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
-        <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
-      </div>
-    )} />
+    <>
+    <button onClick={() => handleProductChange(37328)}>Click Me!</button>
+    </>
+
+    // <ClickTracker render={(recordClick) => (
+    //   <div data-testid="main">
+    //     <GlobalStyle />
+    //     <Header onClick={(event) => recordClick(event, 'Header')} />
+    //     <ProductInfo onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct} />
+    //     <RelatedProducts
+    //       product={selectedProduct}
+    //       handleProductChange={handleProductChange}
+    //       onClick={(event) => recordClick(event, 'Related Products')}
+    //     />
+    //     <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
+    //     <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
+    //   </div>
+    // )} />
   );
 }

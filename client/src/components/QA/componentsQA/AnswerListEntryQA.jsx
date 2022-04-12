@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import moment from 'moment';
 
 import {
-  ButtonDefaultSM
+  ButtonDefaultSM,
+  ReportClicked,
 } from '../../../theme/buttonStyle.js';
 
 export default function AnswerListEntryQA({
@@ -72,14 +73,7 @@ export default function AnswerListEntryQA({
             </ButtonDefaultSM>
           )}
         {reportClickedA
-          ? <ButtonDefaultSM
-              type="submit"
-              style={{
-                color: 'red',
-              }}
-            >
-              Reported
-            </ButtonDefaultSM>
+          ? <ReportClicked>Reported</ReportClicked>
           : (
             <ButtonDefaultSM
               type="submit"

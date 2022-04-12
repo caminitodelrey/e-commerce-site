@@ -1,24 +1,14 @@
-const axios = require('axios');
-const config = require('../config.js');
-
-// http://example.com/page?parameter=value&also=another
-
-const handleProductChange = (productId) => {
-  getData(`products/${productId}`)
-    .then(({ data }) => {
-      setSelectedProduct(data);
-    })
-    .catch((err) => {
-      throw Error(err);
-    })
-};
-
 function getData(endpoint) {
-  if (endpoint.contains('products/')) {
-    return axios.get('/')
-    .then((res) => console.log(res))
-    .catch((err) => { throw Error(err) })
-  }
+  return axios({
+    method: 'get',
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: endpoint,
+    headers: {
+      'Content-Type': 'application/json',
+      'Retry-After': 3600,
+      Authorization: config.TOKEN,
+    },
+  });
 }
 
 // Q&A
@@ -28,6 +18,11 @@ function getData(endpoint) {
 const handleHelpfulQuestionSubmit = (qId) => {
   axios({
     method: 'put',
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: `/qa/questions/${qId}/helpful`,
+    headers: {
+      Authorization: config.TOKEN,
+    },
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
 };
@@ -39,7 +34,11 @@ const handleHelpfulQuestionSubmit = (qId) => {
 const handleHelpfulAnswerSubmit = (aId) => {
   axios({
     method: 'put',
-
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: `/qa/answers/${aId}/helpful`,
+    headers: {
+      Authorization: config.TOKEN,
+    },
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
 };
@@ -53,7 +52,11 @@ const handleHelpfulAnswerSubmit = (aId) => {
 const handleReportQuestionSubmit = (questionId) => {
   axios({
     method: 'put',
-
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: `/qa/answers/${questionId}/report`,
+    headers: {
+      Authorization: config.TOKEN,
+    },
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
 };
@@ -67,7 +70,11 @@ const handleReportQuestionSubmit = (questionId) => {
 const handleReportAnswerSubmit = (answerId) => {
   axios({
     method: 'put',
-
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: `/qa/answers/${answerId}/report`,
+    headers: {
+      Authorization: config.TOKEN,
+    },
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
 };
@@ -79,7 +86,11 @@ const handleReportAnswerSubmit = (answerId) => {
 const handleAddQuestionSubmit = (data) => {
   axios({
     method: 'post',
-
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: '/qa/questions/',
+    headers: {
+      Authorization: config.TOKEN,
+    },
     data,
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
@@ -92,7 +103,11 @@ const handleAddQuestionSubmit = (data) => {
 const handleAddAnswerSubmit = (data, qId) => {
   axios({
     method: 'post',
-
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: `/qa/questions/${qId}/answers`,
+    headers: {
+      Authorization: config.TOKEN,
+    },
     data,
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
@@ -102,7 +117,11 @@ const handleAddAnswerSubmit = (data, qId) => {
 const reviewsHelpful = (endpoint) => {
   axios({
     method: 'put',
-
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: endpoint,
+    headers: {
+      Authorization: config.TOKEN,
+    },
   }).then((res) => console.log('Reveiw helpful submitted!'))
     .catch((err) => { throw Error(err); });
 };
@@ -110,7 +129,11 @@ const reviewsHelpful = (endpoint) => {
 const reviewsReport = (endpoint) => {
   axios({
     method: 'put',
-
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: endpoint,
+    headers: {
+      Authorization: config.TOKEN,
+    },
   }).then((res) => console.log('Reveiw report submitted!'))
     .catch((err) => { throw Error(err); });
 };
@@ -120,6 +143,11 @@ const reviewsReport = (endpoint) => {
 const handleClickTracker = (endpoint, element, widget, time) => {
   axios({
     method: 'post',
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: endpoint,
+    headers: {
+      Authorization: config.TOKEN,
+    },
     data: {
       "element": element,
       "widget": widget,
@@ -127,17 +155,4 @@ const handleClickTracker = (endpoint, element, widget, time) => {
     }
   }).then((res) => console.log(res))
     .catch((err) => { throw Error(err); });
-};
-
-export {
-  getData,
-  handleHelpfulQuestionSubmit,
-  handleHelpfulAnswerSubmit,
-  handleReportQuestionSubmit,
-  handleReportAnswerSubmit,
-  handleAddQuestionSubmit,
-  handleAddAnswerSubmit,
-  reviewsHelpful,
-  reviewsReport,
-  handleClickTracker,
 };

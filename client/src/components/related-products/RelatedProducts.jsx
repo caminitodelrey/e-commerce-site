@@ -3,12 +3,12 @@ import { getData } from '../../../helper.js';
 import { Carousels, WishlistAccordion } from '../../theme/carouselStyle.js';
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
 import WishlistCarousel from './carousels/WishlistCarousel.jsx';
+import axios from 'axios';
 
 export default function RelatedProducts({ product, handleProductChange, onClick }) {
   const [status, setStatus] = useState('pending');
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
-
   const [displayWishlist, setDisplayWishlist] = useState(false);
 
   const getRelatedProducts = () => {
@@ -37,6 +37,17 @@ export default function RelatedProducts({ product, handleProductChange, onClick 
         setStatus('rejected');
         throw Error(err);
       });
+  };
+
+  const getRelatedProducts = () => {
+    axios({
+      method: 'get',
+      url: '/product/related',
+      data: {
+        productId: product.id,
+      }
+    })
+    .
   };
 
   useEffect(() => {

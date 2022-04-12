@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { getData } from '../../../helper';
 import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
+import axios from 'axios';
 
 
 export default function ({ product, onClick }) {
@@ -25,13 +26,28 @@ export default function ({ product, onClick }) {
   const [galleryType, setGalleryType] = useState('default');
   const productDivRef = useRef();
 
+  // useEffect(() => {
+  //   getData(`products/${product.id}/styles`)
+  //     .then((res) => {
+  //       setStyles(res.data.results);
+  //       selectStyle(res.data.results[0]);
+  //     })
+  //     .catch((err) => console.log('getData catch: ', err));
+  // }, [product]);
+
   useEffect(() => {
-    getData(`products/${product.id}/styles`)
-      .then((res) => {
-        setStyles(res.data.results);
-        selectStyle(res.data.results[0]);
-      })
-      .catch((err) => console.log('getData catch: ', err));
+    axios({
+      method: 'get',
+      url: '/product/styles',
+      data: {
+        productId: product.id,
+      }
+    })
+    .then((res) => {
+      setStyles(res.data.results);
+      selectStyle(res.data.results[0]);
+    })
+    .catch((err) => console.log('getData catch: ', err));
   }, [product]);
 
   useEffect(() => {
