@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import moment from 'moment';
 
 import {
-  WriteReviewButtons
+  ButtonDefaultSM
 } from '../../../theme/buttonStyle.js';
 
 export default function AnswerListEntryQA({
@@ -59,27 +59,34 @@ export default function AnswerListEntryQA({
         <span>{moment(answer.date).format('MMMM D, YYYY')}</span>
         {helpfulClickedA
           ? (
-            <WriteReviewButtons type="submit">
+            <ButtonDefaultSM type="submit">
               {`Answer Helpful! (${answer.helpfulness + 1})`}
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           )
           : (
-            <WriteReviewButtons
+            <ButtonDefaultSM
               type="submit"
               onClick={handleHelpfulnessClickA}
             >
               {`Yes (${answer.helpfulness})`}
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           )}
         {reportClickedA
-          ? <WriteReviewButtons type="submit">Reported</WriteReviewButtons>
+          ? <ButtonDefaultSM
+              type="submit"
+              style={{
+                color: 'red',
+              }}
+            >
+              Reported
+            </ButtonDefaultSM>
           : (
-            <WriteReviewButtons
+            <ButtonDefaultSM
               type="submit"
               onClick={handleReportClickA}
             >
               Report
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           )}
       </div>
     </>

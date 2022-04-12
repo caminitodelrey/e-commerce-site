@@ -221,7 +221,7 @@ export const DefaultCardButton = styled.button`
 // `;
 
 // Ratings & Reviews
-export const ReviewButtons = styled.button`
+export const ButtonDefaultLG = styled.button`
   margin-right: 30px;
   height: 50px;
   width: 120px;
@@ -245,7 +245,7 @@ export const ReviewButtons = styled.button`
   }
 `;
 
-export const WriteReviewButtons = styled.button`
+export const ButtonDefaultSM = styled.button`
   border: none;
   border-radius: 15px;
   margin-right: 10px;

@@ -3,6 +3,9 @@ import { AiOutlineCheck } from 'react-icons/ai';
 import { TiStar, TiStarOutline } from 'react-icons/ti';
 import moment from 'moment';
 import ReviewPicsUnit from './ReviewPicsUnit';
+import {
+  ButtonDefaultSM
+} from '../../../theme/buttonStyle.js';
 
 export default function ReivewListUnit({ review }) {
   const review2 = review || {
@@ -85,31 +88,24 @@ export default function ReivewListUnit({ review }) {
       </div>
       <br />
       <div style={{ paddingBottom: '10px' }}>
-        Helpful?
-        {' '}
-        <u
+        <ButtonDefaultSM
           className="helpful"
-          role="button"
           onKeyPress={null}
           tabIndex={0}
           onClick={handleHelpful}
           style={{ cursor: 'pointer' }}
         >
-          Yes
-        </u>
-        <span>
-          {`(${singleReview.helpfulness}) | `}
-        </span>
-        <u
+          {`Yes (${singleReview.helpfulness})`}
+        </ButtonDefaultSM>
+        <ButtonDefaultSM
           className="helpful"
-          role="button"
           onKeyPress={null}
           tabIndex={0}
           onClick={handleReport}
           style={{ cursor: 'pointer' }}
         >
           No
-        </u>
+        </ButtonDefaultSM>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
 import AddQuestionQA from './componentsQA/AddQuestionQA.jsx';
 import {
-  ReviewButtons,
+  ButtonDefaultLG,
 } from '../../theme/buttonStyle.js';
 import {
   getData,
@@ -102,7 +102,7 @@ export default function QA({ product, onClick }) {
       />
       <div className="BottomButtonsQA">
           {questionsList.length - questionsDisplayed > 0 ? (
-            <ReviewButtons
+            <ButtonDefaultLG
               style={{ 'width': 'auto', 'display': 'inline-block' }}
               type="submit"
               onClick={handleMoreQuestions}
@@ -110,15 +110,15 @@ export default function QA({ product, onClick }) {
               {`More Answered Questions (${
                 questionsList.length - questionsDisplayed
               })`}
-            </ReviewButtons>
+            </ButtonDefaultLG>
           ) : null}
-        <ReviewButtons
+        <ButtonDefaultLG
             type="submit"
             onClick={toggleAddQuestionModal}
             style={{ 'width': 'auto', 'display': 'inline-block' }}
         >
           Add a Question +
-        </ReviewButtons>
+        </ButtonDefaultLG>
         <AddQuestionQA
           product={product}
           addQuestionModal={addQuestionModal}

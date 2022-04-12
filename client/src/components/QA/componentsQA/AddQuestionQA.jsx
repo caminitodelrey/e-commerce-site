@@ -8,8 +8,7 @@ import {
   TableRow,
 } from '../../../theme/modalStyle.js';
 import {
-  ReviewButtons,
-  WriteReviewButtons,
+  ButtonDefaultSM,
 } from '../../../theme/buttonStyle.js';
 
 export default function AddQuestionQA({
@@ -103,7 +102,7 @@ export default function AddQuestionQA({
                 <br/>
                 <span>For authentication reasons, you will not be emailed</span>
                 <div>
-                  <WriteReviewButtons
+                  <ButtonDefaultSM
                     type="button"
                     onClick={() => handleAddQuestionClick({
                       body: questionBody,
@@ -113,10 +112,10 @@ export default function AddQuestionQA({
                     })}
                   >
                     Submit Question
-                  </WriteReviewButtons>
-                  <WriteReviewButtons type="button" onClick={toggleAddQuestionModal}>
+                  </ButtonDefaultSM>
+                  <ButtonDefaultSM type="button" onClick={toggleAddQuestionModal}>
                     Cancel
-                  </WriteReviewButtons>
+                  </ButtonDefaultSM>
                 </div>
               </div>
             </div>

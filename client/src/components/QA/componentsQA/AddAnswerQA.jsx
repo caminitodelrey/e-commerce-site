@@ -8,8 +8,7 @@ import {
   TableRow,
 } from '../../../theme/modalStyle.js';
 import {
-  ReviewButtons,
-  WriteReviewButtons,
+  ButtonDefaultSM,
 } from '../../../theme/buttonStyle.js';
 
 export default function AddAnswerQA({
@@ -103,9 +102,9 @@ export default function AddAnswerQA({
                 <br/>
                 <span>For authentication reasons, you will not be emailed</span>
                 <br/>
-                <WriteReviewButtons type="button">Upload your photos</WriteReviewButtons>
+                <ButtonDefaultSM type="button">Upload your photos</ButtonDefaultSM>
                 <div>
-                  <WriteReviewButtons
+                  <ButtonDefaultSM
                     type="button"
                     onClick={() => handleAddAnswerClick({
                       body: answerBody,
@@ -115,8 +114,8 @@ export default function AddAnswerQA({
                     })}
                   >
                     Submit Answer
-                  </WriteReviewButtons>
-                  <WriteReviewButtons type="button" onClick={toggleAddAnswerModal}>Cancel</WriteReviewButtons>
+                  </ButtonDefaultSM>
+                  <ButtonDefaultSM type="button" onClick={toggleAddAnswerModal}>Cancel</ButtonDefaultSM>
                 </div>
               </div>
             </div>

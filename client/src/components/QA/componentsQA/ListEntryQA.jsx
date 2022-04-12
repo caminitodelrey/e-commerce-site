@@ -3,7 +3,7 @@ import AnswerListEntryQA from './AnswerListEntryQA.jsx';
 import AddAnswerQA from './AddAnswerQA.jsx';
 
 import {
-  WriteReviewButtons
+  ButtonDefaultSM
 } from '../../../theme/buttonStyle.js';
 
 export default function ListEntryQA({
@@ -63,34 +63,41 @@ export default function ListEntryQA({
           >
             {helpfulClickedQ
               ? (
-                <WriteReviewButtons type="submit">
-                  {`Question Helpful! ${question.question_helpfulness + 1})`}
-                </WriteReviewButtons>
+                <ButtonDefaultSM type="submit">
+                  {`Question Helpful! (${question.question_helpfulness + 1})`}
+                </ButtonDefaultSM>
               )
               : (
-                <WriteReviewButtons
+                <ButtonDefaultSM
                   type="submit"
                   onClick={handleHelpfulnessClickQ}
                 >
                   {`Yes (${question.question_helpfulness})`}
-                </WriteReviewButtons>
+                </ButtonDefaultSM>
               )}
             {reportClickedQ
-              ? <WriteReviewButtons type="submit">Reported</WriteReviewButtons>
+              ? <ButtonDefaultSM
+                  type="submit"
+                  style={{
+                    color: 'red',
+                  }}
+                >
+                    Reported
+                </ButtonDefaultSM>
               : (
-                <WriteReviewButtons
+                <ButtonDefaultSM
                   type="submit"
                   onClick={handleReportClickQ}
                 >
                   Report
-                </WriteReviewButtons>
+                </ButtonDefaultSM>
               )}
-            <WriteReviewButtons
+            <ButtonDefaultSM
               type="submit"
               onClick={toggleAddAnswerModal}
             >
               Add Answer
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           </div>
         </div>
         <AddAnswerQA
@@ -119,21 +126,21 @@ export default function ListEntryQA({
       <div>
         {Object.values(question.answers).length > 2 ? (
           hiddenAnswers ? (
-            <WriteReviewButtons
+            <ButtonDefaultSM
               type="submit"
               onClick={handleMoreAnswers}
             >
               {`See More Answers (${
                 Object.values(question.answers).length - answersDisplayed
               })`}
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           ) : (
-            <WriteReviewButtons
+            <ButtonDefaultSM
               type="submit"
               onClick={handleMoreAnswers}
             >
               Collapse Answers
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           )
         ) : null}
       </div>
