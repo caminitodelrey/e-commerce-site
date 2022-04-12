@@ -80,7 +80,7 @@ export default function ImageGallery({
     const leftArrowVal = (
       <LeftArrow value={-1} onClick={() => setMainPhoto(mainPhoto - 1)} />
     );
-    if (!zoomed) {
+    if (!zoomed && photoList.length > 1) {
       if (mainPhoto === 0) {
         rightArrow = rightArrowVal;
       } else if (mainPhoto === photoList.length - 1) {
