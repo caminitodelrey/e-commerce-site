@@ -68,14 +68,10 @@ export default function Header(props) {
           </div>
 
           <ThirdInnerContainer>
-<<<<<<< HEAD
             <HeaderSearch>
               <input data-testid="search" type="text" placeholder="Search" />
             </HeaderSearch>
 
-=======
-            <HeaderSearch />
->>>>>>> main
             <div>
               <WishlistButton />
               <ShopButton />
