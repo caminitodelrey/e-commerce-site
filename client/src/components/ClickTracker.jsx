@@ -1,4 +1,5 @@
 import React from 'react';
+import { handleClickTracker } from '../../helper.js';
 
 export default function ClickTracker(props) {
 
@@ -11,6 +12,12 @@ export default function ClickTracker(props) {
       element: element,
       module: module
     })
+    // handleClickTracker(
+    //   'interactions',
+    //   JSON.stringify(element.nodeName),
+    //   JSON.stringify(module),
+    //   JSON.stringify(date)
+    // );
   }
 
   return(
