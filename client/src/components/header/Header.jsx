@@ -2,13 +2,14 @@ import { MdLocalShipping } from 'react-icons/md';
 import { FiHeart, FiShoppingBag } from 'react-icons/fi';
 
 import React, { useState, useEffect } from 'react';
+import HeaderSearch from './HeaderSearch.jsx';
+
 import {
   HeaderOuter,
   HeaderInner,
   Logo,
   Nav,
   ThirdInnerContainer,
-  HeaderSearch,
   WishlistButton,
   ShopButton,
   Slideshow,
@@ -67,10 +68,14 @@ export default function Header(props) {
           </div>
 
           <ThirdInnerContainer>
+<<<<<<< HEAD
             <HeaderSearch>
               <input data-testid="search" type="text" placeholder="Search" />
             </HeaderSearch>
 
+=======
+            <HeaderSearch />
+>>>>>>> main
             <div>
               <WishlistButton />
               <ShopButton />

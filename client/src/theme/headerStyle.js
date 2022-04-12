@@ -87,7 +87,6 @@ export const QASearch = styled(Search)`
   }
 `;
 
-
 export const WishlistButton = styled(FiHeart)`
   color: rgb(25, 46, 64);
   width: 20px;

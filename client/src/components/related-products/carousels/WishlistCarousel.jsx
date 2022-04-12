@@ -5,8 +5,9 @@ import WishlistCard from './WishlistCard.jsx';
 import AddButton from '../subcomponents/AddButton.jsx';
 
 import {
+  WishlistCarouselWrapper,
   WishlistCardsContainer,
-  CardsWrapper,
+  WishlistCardsWrapper,
   ContentWrapper,
   Content,
   WishlistContainer,
@@ -53,8 +54,7 @@ export default function WishlistCarousel({
   };
 
   return (
-    <WishlistContainer>
-
+    <WishlistCarouselWrapper>
       <DefaultCard>
         <AddButton
           product={currentProduct}
@@ -62,53 +62,55 @@ export default function WishlistCarousel({
           setWishlistProducts={setWishlistProducts}
         />
       </DefaultCard>
+      <WishlistContainer className='wishlist-container'>
 
-      <WishlistCardsContainer>
-        <CardsWrapper>
+        <WishlistCardsContainer className='wishlist-cards-container'>
+          <WishlistCardsWrapper className='wishlist-cards-wrapper'>
 
-          { length <= maxDisplayCount
-            ? (<div></div>)
-            : currentIndex < length - maxDisplayCount ? (
-            <WishlistLeftChevron className="left-arrow" onClick={prev}>
-              <ScaledLeftArrow />
-            </WishlistLeftChevron>
-          ) : (
-            <DeactivatedLeftChevron className="left-arrow">
-              <ScaledLeftArrow />
-            </DeactivatedLeftChevron>
-          )}
+            { length <= maxDisplayCount
+              ? (<div></div>)
+              : currentIndex < length - maxDisplayCount ? (
+              <WishlistLeftChevron className="left-arrow" onClick={prev}>
+                <ScaledLeftArrow />
+              </WishlistLeftChevron>
+            ) : (
+              <DeactivatedLeftChevron className="left-arrow">
+                <ScaledLeftArrow />
+              </DeactivatedLeftChevron>
+            )}
 
-          <ContentWrapper>
-            <Content
-              style={{
-                transform: `translateX(-${currentIndex * (100 / maxDisplayCount)}%)`,
-              }}
-            >
-              <WishlistCard
-                maxDisplayCount={maxDisplayCount}
-                products={products}
-                handleProductChange={handleProductChange}
-                wishlistProducts={wishlistProducts}
-                setWishlistProducts={setWishlistProducts}
-              />
-            </Content>
-          </ContentWrapper>
+            <ContentWrapper>
+              <Content
+                style={{
+                  transform: `translateX(-${currentIndex * (100 / maxDisplayCount)}%)`,
+                }}
+              >
+                <WishlistCard
+                  maxDisplayCount={maxDisplayCount}
+                  products={products}
+                  handleProductChange={handleProductChange}
+                  wishlistProducts={wishlistProducts}
+                  setWishlistProducts={setWishlistProducts}
+                />
+              </Content>
+            </ContentWrapper>
 
-          { length <= maxDisplayCount
-            ? (<div></div>)
-            : currentIndex > 0 ? (
-            <RightChevron className="right-arrow" onClick={next}>
-              <ScaledRightArrow />
-            </RightChevron>
-          ) : (
-            <DeactivatedRightChevron className="right-arrow">
-              <ScaledRightArrow />
-            </DeactivatedRightChevron>
-          )}
+            { length <= maxDisplayCount
+              ? (<div></div>)
+              : currentIndex > 0 ? (
+              <RightChevron className="right-arrow" onClick={next}>
+                <ScaledRightArrow />
+              </RightChevron>
+            ) : (
+              <DeactivatedRightChevron className="right-arrow">
+                <ScaledRightArrow />
+              </DeactivatedRightChevron>
+            )}
 
-        </CardsWrapper>
-      </WishlistCardsContainer>
+          </WishlistCardsWrapper>
+        </WishlistCardsContainer>
 
-    </WishlistContainer>
+      </WishlistContainer>
+    </WishlistCarouselWrapper>
   );
 }
