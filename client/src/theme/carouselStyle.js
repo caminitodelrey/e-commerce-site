@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 // RelatedProducts.jsx
 export const Carousels = styled.div`
+  /* padding: 50px 150px; */
+  padding: 50px 0;
   width: 1200px;
-  max-width: 80%;
   position: relative;
-  margin: auto;
-  padding: 10px;
+  /* margin: auto; */
 `;
 
 // WishlistCarousel.jsx
@@ -23,7 +23,6 @@ export const WishlistContainer = styled.div`
 
 export const WishlistCardsContainer = styled.div`
   width: 900px;
-  margin: auto;
 `;
 
 // RelatedCarousel.jsx

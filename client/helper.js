@@ -118,6 +118,50 @@ const handleAddAnswerSubmit = (data, qId) => {
     .catch((err) => { throw Error(err); });
 };
 
+//ratingReview helper funcs
+const reviewsHelpful = (endpoint) => {
+  axios({
+    method: 'put',
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: endpoint,
+    headers: {
+      Authorization: config.TOKEN,
+    },
+  }).then((res) => console.log('Reveiw helpful submitted!'))
+    .catch((err) => { throw Error(err); });
+};
+
+const reviewsReport = (endpoint) => {
+  axios({
+    method: 'put',
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: endpoint,
+    headers: {
+      Authorization: config.TOKEN,
+    },
+  }).then((res) => console.log('Reveiw report submitted!'))
+    .catch((err) => { throw Error(err); });
+};
+
+//clicktracker
+//HandleClickTracker
+const handleClickTracker = (endpoint, element, widget, time) => {
+  axios({
+    method: 'post',
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+    url: endpoint,
+    headers: {
+      Authorization: config.TOKEN,
+    },
+    data: {
+      "element": element,
+      "widget": widget,
+      "time": time
+    }
+  }).then((res) => console.log(res))
+    .catch((err) => { throw Error(err); });
+};
+
 export {
   getData,
   handleHelpfulQuestionSubmit,
@@ -126,4 +170,7 @@ export {
   handleReportAnswerSubmit,
   handleAddQuestionSubmit,
   handleAddAnswerSubmit,
+  reviewsHelpful,
+  reviewsReport,
+  handleClickTracker,
 };

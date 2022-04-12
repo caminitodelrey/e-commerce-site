@@ -59,9 +59,11 @@ export default function ImageGallery({
     if (!expanded) {
       galleryWrapperRef.current.style.height = '100%';
       galleryWrapperRef.current.style.margin='none';
+      galleryWrapperRef.current.style.width='800px';
     } else {
       galleryWrapperRef.current.style.height = '80vh';
       galleryWrapperRef.current.style.margin='auto';
+      galleryWrapperRef.current.style.width='auto';
     }
   }, [expanded]);
 

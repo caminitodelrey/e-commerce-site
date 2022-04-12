@@ -1,6 +1,6 @@
 import React from 'react';
 // import PercentageBar from '../ratingBreakDown/PercentageBar.jsx';
-import ProductBarBreakDown from './ProductBarBreakDown';
+import ProductBarBreakDown from './ProductBarBreakDown.jsx';
 
 export default function ProductBreakDown({ metaData }) {
   const metaDataProduct = metaData || {

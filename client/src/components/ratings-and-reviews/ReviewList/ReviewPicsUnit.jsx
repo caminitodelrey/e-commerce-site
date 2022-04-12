@@ -23,7 +23,7 @@ export default function ReviewPicsUnit({ src }) {
   const stylePic2 = !showPic
     ? { height: '150px', width: '150px', paddingRight: '10px', cursor: 'pointer' }
     : {
-      height: '400px',
+      height: '450px',
       width: '400px',
       position: 'absolute',
       borderRadius: '5px',

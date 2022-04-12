@@ -3,12 +3,11 @@ import { AiOutlineCheck } from 'react-icons/ai';
 import { TiStar, TiStarOutline } from 'react-icons/ti';
 import moment from 'moment';
 import ReviewPicsUnit from './ReviewPicsUnit';
-import {
-  ButtonDefaultSM
-} from '../../../theme/buttonStyle.js';
+import { reviewsHelpful, reviewsReport } from '../../../../helper.js';
 
 export default function ReivewListUnit({ review }) {
   const review2 = review || {
+    review_id: 0,
     summary: '',
     rating: '',
     body: '',
@@ -21,12 +20,17 @@ export default function ReivewListUnit({ review }) {
   };
 
   const [singleReview, setSingleReview] = useState(review2);
+  const [helpfulButton, setHelpfulButton] = useState(true);
 
   const handleHelpful = () => {
+    reviewsHelpful(`reviews/${review.review_id}/helpful`)
+    setHelpfulButton(!helpfulButton);
     setSingleReview({ ...review2, helpfulness: review2.helpfulness + 1 });
   };
 
   const handleReport = () => {
+    reviewsReport(`reviews/${review.review_id}/report`)
+    setHelpfulButton(!helpfulButton);
     setSingleReview({ ...review2, helpfulness: review2.helpfulness - 1 });
   };
 
@@ -87,26 +91,44 @@ export default function ReivewListUnit({ review }) {
         {singleReview.recommend ? '| I recommend this product' : null}
       </div>
       <br />
-      <div style={{ paddingBottom: '10px' }}>
-        <ButtonDefaultSM
-          className="helpful"
-          onKeyPress={null}
-          tabIndex={0}
-          onClick={handleHelpful}
-          style={{ cursor: 'pointer' }}
-        >
-          {`Yes (${singleReview.helpfulness})`}
-        </ButtonDefaultSM>
-        <ButtonDefaultSM
-          className="helpful"
-          onKeyPress={null}
-          tabIndex={0}
-          onClick={handleReport}
-          style={{ cursor: 'pointer' }}
-        >
-          No
-        </ButtonDefaultSM>
-      </div>
+      { helpfulButton ?
+          <div style={{ paddingBottom: '10px' }}>
+            Helpful?
+            {' '}
+            <u
+              className="helpful"
+              role="button"
+              onKeyPress={null}
+              tabIndex={0}
+              onClick={handleHelpful}
+              style={{ cursor: 'pointer' }}
+            >
+              Yes
+            </u>
+            <span>
+              {`(${singleReview.helpfulness}) | `}
+            </span>
+            <u
+              className="helpful"
+              role="button"
+              onKeyPress={null}
+              tabIndex={0}
+              onClick={handleReport}
+              style={{ cursor: 'pointer' }}
+            >
+              No
+            </u>
+          </div>
+        :
+        <div style={{ display: 'flex', textIndent: '5px' }}>
+          <span>Helpful?</span>
+          <span>
+              {`(${singleReview.helpfulness})`}
+          </span>
+          <div style={{ paddingBottom: '10px' }}>Thank You For the Feedback!</div>
+        </div>
+
+      }
     </div>
   );
 }
