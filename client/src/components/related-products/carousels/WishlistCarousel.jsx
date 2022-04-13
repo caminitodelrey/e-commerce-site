@@ -1,4 +1,4 @@
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 import React, { forwardRef, useState, useEffect } from 'react';
 import WishlistCard from './WishlistCard.jsx';
@@ -37,7 +37,7 @@ const WishlistCarousel = forwardRef(
     const [displayWishlist, setDisplayWishlist] = useState(false);
 
     // determines the initial number of product cards shown on page
-    const maxDisplayCount = 4;
+    const maxDisplayCount = 3;
 
     // determines the total number of cards
     useEffect(() => {
@@ -69,7 +69,7 @@ const WishlistCarousel = forwardRef(
             style={{ 'cursor': 'pointer' }}
             onClick={() => setDisplayWishlist(!displayWishlist)}
           >
-            WISHLIST {!displayWishlist ? '—' : '+'}
+            WISHLIST {!displayWishlist ? <FaChevronUp /> : <FaChevronDown />}
           </h2>
           <ChevronsContainer>
             {length <= maxDisplayCount ? (

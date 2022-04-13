@@ -7,7 +7,10 @@ import {
   ModalBody,
   TableRow,
 } from '../../../theme/modalStyle.js';
-import { ButtonDefaultSM } from '../../../theme/buttonStyle.js';
+import {
+  ButtonDefaultSM,
+  ButtonDefaultLG,
+} from '../../../theme/buttonStyle.js';
 
 export default function AddAnswerQA({
   product,
@@ -85,7 +88,13 @@ export default function AddAnswerQA({
                   onChange={handleNameChange}
                 />
                 <br />
-                <span>
+                <span
+                  style={{
+                    fontWeight: 'lighter',
+                    fontStyle: 'italic',
+                    fontSize: '80%',
+                  }}
+                >
                   For privacy reasons, do not use your full name or email
                   address
                 </span>
@@ -111,7 +120,7 @@ export default function AddAnswerQA({
                   Upload your photos
                 </ButtonDefaultSM>
                 <div>
-                  <ButtonDefaultSM
+                  <ButtonDefaultLG
                     type="button"
                     onClick={() =>
                       handleAddAnswerClick({
@@ -123,10 +132,10 @@ export default function AddAnswerQA({
                     }
                   >
                     Submit Answer
-                  </ButtonDefaultSM>
-                  <ButtonDefaultSM type="button" onClick={toggleAddAnswerModal}>
+                  </ButtonDefaultLG>
+                  <ButtonDefaultLG type="button" onClick={toggleAddAnswerModal}>
                     Cancel
-                  </ButtonDefaultSM>
+                  </ButtonDefaultLG>
                 </div>
               </div>
             </div>

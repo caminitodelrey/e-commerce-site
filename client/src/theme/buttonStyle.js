@@ -6,7 +6,6 @@ import { MdOutlineClose } from 'react-icons/md';
 export const ChevronsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-right: 20px;
 `;
 
 export const Chevron = styled.button`
