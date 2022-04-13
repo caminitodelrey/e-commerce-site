@@ -26,6 +26,7 @@ export const CarouselHeader = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding-top: 50px;
 `;
 
 export const Carousels = styled.div`
