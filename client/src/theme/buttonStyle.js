@@ -4,8 +4,9 @@ import { MdOutlineClose } from 'react-icons/md';
 
 // Carousel Chevrons
 export const ChevronsContainer = styled.div`
-  margin-right: 30px;
+  /* margin-right: 30px; */
   display: flex;
+  justify-content: flex-end;
 `;
 
 export const Chevron = styled.button`
@@ -56,14 +57,6 @@ export const CompareButtonContainer = styled.div`
   position: absolute;
   bottom: 85px;
   transform: translateX(160px);
-  color: rgba(11, 191, 125);
-
-  &:hover ${CompareButton} {
-    cursor: pointer;
-    color: #fff;
-    background-color: rgba(11, 191, 125, .9);
-    box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
-  }
 `;
 
 export const CompareButton = styled.button`
@@ -75,6 +68,13 @@ export const CompareButton = styled.button`
   color: rgba(11, 191, 125, .9);
   background-color: #fff;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(11, 191, 125, .9);
+    box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
+  }
 `;
 
 // Wishlist and Remove buttons container
@@ -140,8 +140,8 @@ export const DefaultCard = styled.div`
   flex-direction: column;
   height: 355px;
   min-width: 255px;
-  align-items: center;
   margin-right: 30px;
+  align-items: center;
   border-radius: 10px;
   border: 3px solid rgba(128, 128, 128, 0.2);
 `;
@@ -170,26 +170,6 @@ export const DefaultCardButton = styled.button`
     box-shadow: inset 6px 6px 5px 1px rgba(37, 167, 115, 0.7);
   }
 `;
-
-// export const DisabledNotification = styled.div`
-//   z-index: 1;
-//   position: absolute;
-//   height: 45px;
-//   width: 160px;
-//   padding: 15px;
-//   border: 1px solid black;
-//   color: black;
-//   background-color: #fff;
-//   align-items: center;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
-
-// export const NotificationText = styled.p`
-//   text-align: center;
-//   font-size: 0.7em;
-// `;
 
 // Ratings & Reviews
 export const ReviewButtons = styled.button`
