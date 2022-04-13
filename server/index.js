@@ -13,6 +13,9 @@ app.use(morgan('dev'));
 
 const PORT = 3000;
 
+// GET uses query or params
+// POST and PUT uses body
+
 // // Gets a single product
 app.get('/product', (req, res) => {
   let endpoint = `products/${req.query.productId}/`;
@@ -20,67 +23,69 @@ app.get('/product', (req, res) => {
   apiRequest('get', endpoint)
     // .then((response) => res.send(response.data))
     .then((response) => console.log(response.data))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log('catch on server side - product info'));
 })
 
 // Gets a list of styles from a product
 app.get('/product/styles', (req, res) => {
-  console.log(`GET request received to ${req.path}`)
-  const endpoint = `products/${req.body.productId}/styles`
+  console.log(`GET request received toooo(o ${req.path})`);
+  // console.log('style query:', req);
+  const endpoint = `products/${req.query.productId}/styles`;
   apiRequest('get', endpoint)
     .then(({ data }) => res.status(200).send(data))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log('catch on server side - styles'));
 });
 
-// Gets a single product
-// app.get('/product', (req, res) => {
-//   let endpoint = `products/${req.query.productId}/`;
-//   console.log('endpoint is ', endpoint);
-//   axios({
-//     method: 'get',
-//     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
-//     url: endpoint,
-//     headers: {
-//       // 'Content-Type': 'application/json',
-//       // 'Retry-After': 3600,
-//       Authorization: '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',
-//     },
-//   })
-//     .then((response) => res.send(response.data))
-//     .catch((err) => console.log(err));
-// })
+app.get('/product/related', (req, res) => {
+  console.log('THIS', req.query.productId)
+  const endpoint = `products/${req.query.productId}/related`;
+  apiRequest('get', endpoint)
+    .then(({ data }) => res.status(200).send(data))
+    .catch((err) => console.log('catch on server side - related'));
+});
 
-// app.get('/product', (req, res) => {
-//   let endpoint = `products/${req.query.productId}/`;
-//   // console.log('params is ', req.query);
-//   apiRequest('get', endpoint)
-//     .then((data) => res.send(data))
-//     .catch((err) => console.log(err));
-// })
+// Question & Answers
+// /qa
+app.get('/qa', (req, res) => {
+  // console.log(`in /qa - GET - req.query.productId: (${req.body})`);
+  // console.log(req.body);
+  const endpoint = `qa/questions?product_id=${req.query.productId}`
+  apiRequest('get', endpoint)
+    .then(({ data }) => res.status(200).send(data))
+    .catch((err) => console.log('ERROR in /qa GET'));
+});
 
-// Gets a list of styles from a product
-// app.get('/product/styles', (req, res) => {
-//   console.log(`GET request received to ${req.path}`)
-//   const endpoint = `products/${req.body.productId}/styles`
-//   apiRequest('get', endpoint)
-//     .then((data) => res.status(200).send(data))
-// });
+// /qa/q/report
+app.put('/qa/q/report', (req, res) => {
+  console.log(`GET request received to ${req.path}`)
+  const endpoint = `/qa/answers/${req.query.questionId}/report`;
+  apiRequest('put', endpoint)
+    .then(({ data }) => res.status(200).send(data))
+    .catch((err) => console.error(err));
+});
 
-// // Get a list of related products and their data
-// app.get('/product/related', (req, res) => {
-//   const endpoint = `products/`
-// });
+// /qa/a/report
+app.put('/qa/q/report', (req, res) => {
+  console.log(`GET request received to ${req.path}`)
+  const endpoint = `/qa/answers/${req.query.questionId}/report`;
+  apiRequest('put', endpoint)
+    .then(({ data }) => res.status(200).send(data))
+    .catch((err) => console.error(err));
+});
+// /qa/q/helpful
+// /qa/a/helpful
+// /qa/q/add
+// /qa/a/add
 
-// app.post('/qa/questions', (req, res) => {
+// getData(`qa/questions?product_id=${product.id}`)
 
-// });
+app.get('/product/reviews', (req, res) => {
+  // const endpoint = `reviews/meta?product_id=${req.query.productId}`;
+  apiRequest('get', endpoint)
+    .then(({ data }) => res.status(200).send(data))
+    .catch((err) => console.log('ERROR in /product/reviewss GET'));
+});
 
-// app.put('/name', (req, res) => {
-//   apiRequest('put', req.body.endpoint)
-//     .then(() => res.status(200).send('SUCCESS!!'))
-//     .catch((err) => res.status(400).send('FAIL')
-//     )
-// })
 
 app.listen(PORT, () => {
   console.log(`To get started, visit: http://localhost:${PORT}`);

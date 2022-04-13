@@ -1,7 +1,7 @@
 import { BsPlusLg } from 'react-icons/bs';
 
 import React, { useState, useEffect } from 'react';
-import { getData } from '../../../../helper.js';
+// import { getData } from '../../../../helper.js';
 
 import {
   DefaultCardButton,
@@ -12,16 +12,24 @@ export default function AddButton({
   wishlistProducts,
   setWishlistProducts,
 }) {
-  // console.log('add button', product)
   const [disable, setDisable] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
 
-  // product data being passed down is a raw data, so refactor it
+  const handleServerRoutes = (url, id) => (
+    axios({
+      method: 'get',
+      url: url,
+      params: {
+        productId: id,
+      }
+    })
+  );
+
   const getCurrentProduct = () => {
     Promise.all([
-      getData(`products/${product.id}`),
-      getData(`products/${product.id}/styles`),
-      getData(`reviews/meta?product_id=${product.id}`),
+      handleServerRoutes('/product', product.id),
+      handleServerRoutes('/product/styles', product.id),
+      handleServerRoutes('/product/reviews', product.id),
     ]).then((productArr) => {
       setCurrentProduct({
         id: productArr[0].data.id,
@@ -33,10 +41,34 @@ export default function AddButton({
         rating: productArr[2].data.ratings,
       });
     })
-      .catch((err) => {
-        throw Error(err);
-      });
+    .catch((err) => {
+      console.log('err in add button');
+    });
   };
+
+  /////
+  // product data being passed down is a raw data, so refactor it
+  // const getCurrentProduct = () => {
+  //   Promise.all([
+  //     getData(`products/${product.id}`),
+  //     getData(`products/${product.id}/styles`),
+  //     getData(`reviews/meta?product_id=${product.id}`),
+  //   ]).then((productArr) => {
+  //     setCurrentProduct({
+  //       id: productArr[0].data.id,
+  //       image: productArr[1].data.results[0].photos[0].url,
+  //       category: productArr[0].data.category,
+  //       name: productArr[0].data.name,
+  //       price: productArr[1].data.results[0].original_price,
+  //       sale: productArr[1].data.results[0].sale_price,
+  //       rating: productArr[2].data.ratings,
+  //     });
+  //   })
+  //     .catch((err) => {
+  //       throw Error(err);
+  //     });
+  // };
+  /////
 
   useEffect(() => {
     setCurrentProduct([]);

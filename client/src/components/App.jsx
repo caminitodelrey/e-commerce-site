@@ -62,26 +62,24 @@ export default function App() {
     console.log(selectedProduct);
   }, [selectedProduct]);
 
-
-
   return (
-    <>
-    <button onClick={() => handleProductChange(37328)}>Click Me!</button>
-    </>
+    // <>
+    // <button onClick={() => handleProductChange(37328)}>Click Me!</button>
+    // </>
 
-    // <ClickTracker render={(recordClick) => (
-    //   <div data-testid="main">
-    //     <GlobalStyle />
-    //     <Header onClick={(event) => recordClick(event, 'Header')} />
-    //     <ProductInfo onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct} />
-    //     <RelatedProducts
-    //       product={selectedProduct}
-    //       handleProductChange={handleProductChange}
-    //       onClick={(event) => recordClick(event, 'Related Products')}
-    //     />
-    //     <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
-    //     <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
-    //   </div>
-    // )} />
+    <ClickTracker render={(recordClick) => (
+      <div data-testid="main">
+        <GlobalStyle />
+        <Header onClick={(event) => recordClick(event, 'Header')} />
+        <ProductInfo onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct} />
+        <RelatedProducts
+          product={selectedProduct}
+          handleProductChange={handleProductChange}
+          onClick={(event) => recordClick(event, 'Related Products')}
+        />
+        <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
+        <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
+      </div>
+    )} />
   );
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { getData } from '../../../helper';
 import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
 import axios from 'axios';
@@ -39,7 +38,7 @@ export default function ({ product, onClick }) {
     axios({
       method: 'get',
       url: '/product/styles',
-      data: {
+      params: {
         productId: product.id,
       }
     })
