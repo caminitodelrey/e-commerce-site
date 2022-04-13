@@ -143,6 +143,7 @@ export default function ListEntryQA({
             <ButtonDefaultSM
               type="submit"
               onClick={handleMoreAnswers}
+              style={{ margin: '10px 0' }}
             >
               {`See More Answers (${
                 Object.values(question.answers).length - answersDisplayed
@@ -152,6 +153,7 @@ export default function ListEntryQA({
             <ButtonDefaultSM
               type="submit"
               onClick={handleMoreAnswers}
+              style={{ margin: '10px 0' }}
             >
               Collapse Answers
             </ButtonDefaultSM>

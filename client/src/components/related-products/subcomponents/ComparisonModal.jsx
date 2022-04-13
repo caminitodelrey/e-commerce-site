@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FcCheckmark } from 'react-icons/fc';
+import { GrClose } from 'react-icons/gr';
 import {
   ModalContainer,
-  ModalTitle,
+  CompareModalTitle,
   ModalProductName,
   ModalContent,
   ModalBody,
@@ -82,11 +83,17 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
 
   if (isLoaded) {
     return (
-      <ModalContainer onClick={toggleModal}>
-        <ModalContent onClick={toggleModal}>
-          <ModalTitle>
+      <ModalContainer>
+        <ModalContent>
+          <CompareModalTitle>
             <p>COMPARING</p>
-          </ModalTitle>
+            <p
+              onClick={toggleModal}
+              style={{ cursor: 'pointer' }}
+            >
+              <GrClose />
+            </p>
+          </CompareModalTitle>
           <ModalBody>
             <table>
               <thead>

@@ -1,6 +1,13 @@
 import { IoIosCheckmarkCircle } from 'react-icons/io';
+import { FiHeart } from 'react-icons/fi';
+import { TiSocialFacebook, TiSocialPinterest, TiSocialTwitter } from 'react-icons/ti';
+
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import {
+  ButtonDefaultLG,
+  AnimatedWishlistButton,
+} from '../../../theme/buttonStyle.js';
 
 export default function Selector({ productStyles, currentStyle, styleChange }) {
   const skuKeys = Object.keys(currentStyle.skus);
@@ -60,15 +67,30 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
 
   const renderPrice = () => {
     if (currentStyle.sale_price) {
-      const newPrice = currentStyle.original_price - currentStyle.sale_price;
+      const newPrice = JSON.stringify(
+        currentStyle.original_price - currentStyle.sale_price,
+      );
       return (
         <div>
-          <StyledPrice>{`$${currentStyle.original_price}`}</StyledPrice>
-          <p>{`$${newPrice}`}</p>
+          <StyledPrice
+            style={{ marginTop: '5px' }}
+          >{`$${currentStyle.original_price.replace(
+            /\.00$/,
+            '',
+          )}`}</StyledPrice>
+          <p style={{ marginTop: '5px' }}>{`$${newPrice.replace(
+            /\.00$/,
+            '',
+          )}`}</p>
         </div>
       );
     }
-    return <p>{`$${currentStyle.original_price}`}</p>;
+    return (
+      <p style={{ marginTop: '5px' }}>{`$${currentStyle.original_price.replace(
+        /\.00$/,
+        '',
+      )}`}</p>
+    );
   };
 
   const renderQuantity = () => {
@@ -92,10 +114,18 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
 
   return (
     <div>
-      {renderPrice()}
+      <div style={{ fontSize: '1.5em', color: 'rgb(120,120,120)' }}>
+        {renderPrice()}
+      </div>
       <StyledError>{error.display}</StyledError>
-      <p>{`Select a style >  ${currentStyle.name}`}</p>
-      <StyleSelectDiv>
+      <p style={{ display: 'inline-block', fontWeight: '900' }}>
+        {'Select a style >'}
+      </p>
+      <p style={{ display: 'inline-block', paddingLeft: '5px' }}>
+        {' '}
+        {currentStyle.name}
+      </p>
+      <StyleSelectDiv id="StyleSelect">
         {productStyles.map((style, index) => {
           if (style.style_id === currentStyle.style_id) {
             return (
@@ -118,22 +148,37 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
           );
         })}
       </StyleSelectDiv>
-      <select onChange={changeSize}>
-        <option value={-1}>Select a Size</option>
-        {skuVals.map((skuVal, index) => (
-          <option key={skuKeys[index]} value={index}>
-            {skuVal.size}
-          </option>
-        ))}
-      </select>
+      <StyleDropdowns id="StyleDropdowns">
+        <select onChange={changeSize}>
+          <option value={-1}>Select a Size</option>
+          {skuVals.map((skuVal, index) => (
+            <option key={skuKeys[index]} value={index}>
+              {skuVal.size}
+            </option>
+          ))}
+        </select>
 
-      {renderQuantity()}
+        {renderQuantity()}
+      </StyleDropdowns>
 
-      <button type="button"> 🌟 </button>
-      <button type="button" onClick={() => checkError()}> Add to cart </button>
-      <button type="button"> 😀📓 </button>
-      <button type="button"> 📸 </button>
-      <button type="button"> 🐦 </button>
+
+      <ButtonWrapper id="ButtonWrapper">
+        <StyledWishListButton>
+          <AnimatedWishlistButton style={{height:'100%', width:'auto', strokeWidth:'1px'}} />
+        </StyledWishListButton>
+        <ButtonDefaultLG
+          style={{ verticalAlign: 'middle', display:'inline-block', fontSize: '1.2em', width: 'auto', height: 'auto' }}
+          onClick={() => checkError()}
+        >
+          {' '}
+          Add to cart{' '}
+        </ButtonDefaultLG>
+        {/* import { TiSocialFacebook, TiSocialPinterest, TiSocialTwitter } from 'react-icons/ti'; */}
+
+        <StyledFacebook />
+        <StyledPinterest />
+        <StyledTwitter />
+      </ButtonWrapper>
     </div>
   );
 }
@@ -146,6 +191,17 @@ const StyleSelectDiv = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   width: ${(styleThumbSize + styleThumbMargin * 2) * 4}px;
+`;
+
+const StyleDropdowns = styled.div`
+  margin: 10px 0;
+  > * {
+    background-color: white;
+    height: 30px;
+    border-radius:20px;
+    padding: 0 5px;
+    margin: 0 5px;
+  }
 `;
 
 const StyleThumb = styled.img`
@@ -176,4 +232,51 @@ const StyledCheckmark = styled(IoIosCheckmarkCircle)`
 const StyledError = styled.p`
   color: red;
   text-decoration: bold;
-`
+`;
+
+const StyledWishListButton = styled.div`
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align:center;
+  border-radius: 50%;
+  vertical-align:middle;
+`;
+
+const StyleSocialButtons = css`
+  width: 40px;
+  height: auto;
+`;
+
+const StyledFacebook = styled(TiSocialFacebook)`
+  color: #3b5998;
+  ${StyleSocialButtons}
+  &:hover {
+    filter: drop-shadow(0 0 0.3rem #3b5998);
+  }
+`;
+
+const StyledPinterest = styled(TiSocialPinterest)`
+  color: #c8232c;
+  ${StyleSocialButtons}
+  &:hover {
+    filter: drop-shadow(0 0 0.3rem #c8232c);
+  }
+`;
+
+const StyledTwitter = styled(TiSocialTwitter)`
+  color: #00acee;
+  ${StyleSocialButtons}
+  &:hover {
+    filter: drop-shadow(0 0 0.3rem #00acee);
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  margin-top: 10px;
+  > * {
+    vertical-align:middle;
+    margin: 0 5px;
+
+  }
+`;

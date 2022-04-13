@@ -31,7 +31,6 @@ export const CarouselHeader = styled.div`
 
 export const Carousels = styled.div`
   position: relative;
-  padding-left: 50px;
   scroll-snap-type: y mandatory;
 `;
 
@@ -39,7 +38,7 @@ export const Carousels = styled.div`
 export const WishlistCarouselWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  overflow: visible;
+  overflow: hidden;
 `;
 
 export const WishlistAccordion = styled.div`
@@ -50,7 +49,8 @@ export const WishlistAccordion = styled.div`
 export const WishlistContainer = styled.div`
   justify-content: space-evenly;
   width: 90%;
-  min-width: 1066px;
+  // min-width: 1066px;
+  min-width: 870px;
 `;
 
 export const WishlistCardsContainer = styled.div`
@@ -64,7 +64,8 @@ export const WishlistCardsWrapper = styled.div`
 // Carousel Cards
 export const CardsWrapper = styled.div`
   position: relative;
-  min-width: 1352px;
+  // min-width: 1352px;
+  min-width: 1160px;
 `;
 
 export const ContentWrapper = styled.div`

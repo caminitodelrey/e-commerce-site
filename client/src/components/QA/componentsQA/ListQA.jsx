@@ -15,8 +15,7 @@ export default function ListQA({
     <div
       id="list"
       style={{
-        'paddingBottom': '40px',
-        'maxWidth': '1200px',
+        maxWidth: '1200px',
         maxHeight: '550px',
         overflow: 'auto',
         margin: '15px 0px'

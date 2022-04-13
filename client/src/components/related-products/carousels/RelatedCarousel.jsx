@@ -40,7 +40,7 @@ export default function RelatedCarousel({
   const { display, clickedProduct } = modal;
 
   // determines the initial number of product cards maxDisplayCountn on page
-  const maxDisplayCount = 5;
+  const maxDisplayCount = 4;
 
   useEffect(() => {
     setLength(products.length);

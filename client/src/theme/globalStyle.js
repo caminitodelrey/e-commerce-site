@@ -19,3 +19,10 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 `;
+
+export const WidgetsContainer = styled.div`
+  max-width: 80%;
+  position: relative;
+  margin: auto;
+  padding-bottom: 50px;
+`;
