@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { getData } from '../../helper.js';
-
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import { GlobalStyle } from '../theme/globalStyle.js';
-
 import Header from './header/Header.jsx';
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
@@ -14,6 +12,7 @@ import ClickTracker from './ClickTracker.jsx';
 // an example with 6 related products --> id: 37318
 // an example with sale price --> id: 37325
 export default function App() {
+  const wishlistRef = useRef(null);
   const [selectedProduct, setSelectedProduct] = useState({
     "id": 37327,
     "campus": "hr-rfe",
@@ -30,34 +29,51 @@ export default function App() {
             "value": "\"Blue Resin\""
         }
     ]
-});
+  });
 
-  const handleProductChange = (productId) => {
-    getData(`products/${productId}`).then(({ data }) => {
-      setSelectedProduct(data);
-    });
+  const executeScroll = () => {
+    wishlistRef.current.scrollIntoView();
   };
 
-  // const wishlistRef = useRef();
+  const handleProductChange =(productId) => {
+    // axios.get('/product', { params: { productId: productId }})
+    axios({
+      method: 'get',
+      url: '/product',
+      params: { productId: productId }
+    })
+    .then(({ data }) => {
+      setSelectedProduct(data);
+    })
+    .catch((err) => {
+      console.log('error on client side')
+    });
+  }
 
-  // const executeScroll = () => {
-  //   wishlistRef.current.scrollIntoView();
-  // };
+  useEffect(() => {
+    // console.log(selectedProduct);
+  }, [selectedProduct]);
 
   return (
     <ClickTracker render={(recordClick) => (
-      <>
+      <div data-testid="main">
         <GlobalStyle />
-        <Header onClick={(event) => recordClick(event, 'Header')} />
-        <ProductInfo onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct} />
+        <Header
+          onClick={(event) => recordClick(event, 'Header')}
+          executeScroll={executeScroll}
+        />
+        <ProductInfo
+          onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct}
+        />
         <RelatedProducts
+          ref={wishlistRef}
           product={selectedProduct}
           handleProductChange={handleProductChange}
           onClick={(event) => recordClick(event, 'Related Products')}
         />
         <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
         <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
-      </>
+      </div>
     )} />
   );
 }

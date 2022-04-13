@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { getData } from '../../../helper';
 import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
-
+import axios from 'axios';
 
 export default function ({ product, onClick }) {
-  // const [product, setProductId] = useState(product);
   const [styles, setStyles] = useState(
     product.styles || [
       {
@@ -26,12 +24,18 @@ export default function ({ product, onClick }) {
   const productDivRef = useRef();
 
   useEffect(() => {
-    getData(`products/${product.id}/styles`)
-      .then((res) => {
-        setStyles(res.data.results);
-        selectStyle(res.data.results[0]);
-      })
-      .catch((err) => console.log('getData catch: ', err));
+    axios({
+      method: 'get',
+      url: '/product/styles',
+      params: {
+        productId: product.id,
+      }
+    })
+    .then((res) => {
+      setStyles(res.data.results);
+      selectStyle(res.data.results[0]);
+    })
+    .catch((err) => console.log('catch in product info'));
   }, [product]);
 
   useEffect(() => {
@@ -108,7 +112,6 @@ const ProductDiv = styled.div`
   height:800px;
   position: relative;
   margin: 20px auto;
-  border: 3px solid black;
   display:flex;
   flex-direction:row;
 `;

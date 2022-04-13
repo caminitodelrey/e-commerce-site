@@ -10,6 +10,7 @@ import {
   Logo,
   Nav,
   ThirdInnerContainer,
+  WishlistIndicator,
   WishlistButton,
   ShopButton,
   Slideshow,
@@ -38,8 +39,13 @@ const banner2 = (
 export default function Header(props) {
   const banners = [banner1, banner2];
   const delay = 2500;
-
   const [index, setIndex] = useState(0);
+  // const [hasWishlist, setHasWishlist] = useState(false);
+
+  const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
+  // if (storedItems.length > 0) {
+  //   setHasWishlist(true);
+  // };
 
   useEffect(() => {
     setTimeout(
@@ -53,7 +59,7 @@ export default function Header(props) {
   }, [index]);
 
   return (
-    <div onClick={props.onClick}>
+    <div onClick={props.onClick} data-testid="header">
       <HeaderOuter>
         <HeaderInner>
           <Logo>
@@ -69,10 +75,18 @@ export default function Header(props) {
 
           <ThirdInnerContainer>
             <HeaderSearch />
-            <div>
-              <WishlistButton />
-              <ShopButton />
-            </div>
+            { storedItems.length > 0 ? (
+              <div>
+                <WishlistIndicator />
+                <WishlistButton onClick={props.executeScroll}/>
+                <ShopButton />
+              </div>
+            ) : (
+              <div>
+                <WishlistButton onClick={props.executeScroll}/>
+                <ShopButton />
+              </div>
+            )}
           </ThirdInnerContainer>
 
         </HeaderInner>

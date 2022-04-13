@@ -32,7 +32,7 @@ export default function SearchQA({ product, handleSearchFilter }) {
           borderRadius: '25px',
           padding: '12px',
           backgroundColor: 'rgb(245,245,245)',
-          borderColor: 'rgb(245,245,245)'
+          border: '2px solid rgb(169,169,169)'
         }}
         value={searchText}
         onChange={handleSearchChange}

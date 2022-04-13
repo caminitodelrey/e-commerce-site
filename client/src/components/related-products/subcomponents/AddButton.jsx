@@ -1,7 +1,6 @@
 import { BsPlusLg } from 'react-icons/bs';
-
 import React, { useState, useEffect } from 'react';
-import { getData } from '../../../../helper.js';
+import axios from 'axios';
 
 import {
   DefaultCardButton,
@@ -12,16 +11,24 @@ export default function AddButton({
   wishlistProducts,
   setWishlistProducts,
 }) {
-  // console.log('add button', product)
   const [disable, setDisable] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
 
-  // product data being passed down is a raw data, so refactor it
+  const handleServerRoutes = (url, id) => (
+    axios({
+      method: 'get',
+      url: url,
+      params: {
+        productId: id,
+      }
+    })
+  );
+
   const getCurrentProduct = () => {
     Promise.all([
-      getData(`products/${product.id}`),
-      getData(`products/${product.id}/styles`),
-      getData(`reviews/meta?product_id=${product.id}`),
+      handleServerRoutes('/product', product.id),
+      handleServerRoutes('/product/styles', product.id),
+      handleServerRoutes('/product/reviews', product.id),
     ]).then((productArr) => {
       setCurrentProduct({
         id: productArr[0].data.id,
@@ -33,9 +40,9 @@ export default function AddButton({
         rating: productArr[2].data.ratings,
       });
     })
-      .catch((err) => {
-        throw Error(err);
-      });
+    .catch((err) => {
+      console.log('err in add button');
+    });
   };
 
   useEffect(() => {

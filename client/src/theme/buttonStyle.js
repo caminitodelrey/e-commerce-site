@@ -1,106 +1,36 @@
 import styled, { keyframes, css } from 'styled-components';
 import { FiHeart } from 'react-icons/fi';
 import { MdOutlineClose } from 'react-icons/md';
-import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
 // Carousel Chevrons
-const ScaledArrow = css`
-  width: 20px;
-  height: 20px;
+export const ChevronsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
 `;
 
-export const ScaledLeftArrow = styled(BsArrowRight)`
-  ${ScaledArrow}
-`;
-
-export const ScaledRightArrow = styled(BsArrowLeft)`
-  ${ScaledArrow}
-`;
-
-// const Chevron = styled.button`
-//   z-index: 1;
-//   position: absolute;
-//   top: 50%;
-//   width: 47px;
-//   height: 45px;
-//   transform: translate(-50%);
-//   border: 1px solid black;
-//   border-radius: 2px;
-//   background-color: white;
-//   cursor: pointer;
-// `;
-
-// export const LeftChevron = styled(Chevron)`
-//   /* Alternative => left: -80px; */
-//   top: 40%;
-//   right: -80px;
-// `;
-
-// export const RightChevron = styled(Chevron)`
-//   right: -80px;
-// `;
-
-// // Wishlist Carousel Chevrons
-// export const WishlistLeftChevron = styled(Chevron)`
-//   top: 40%;
-//   right: -80px;
-// `;
-
-// export const DeactivatedRightChevron = styled(Chevron)`
-//   right: -80px;
-//   color: rgba(128, 128, 128, 0.5);
-//   border: 2px solid rgba(128, 128, 128, 0.2);
-
-//   &:hover {
-//     cursor: default;
-//   }
-// `;
-
-// export const DeactivatedLeftChevron = styled(DeactivatedRightChevron)`
-//   top: 40%;
-// `;
-
-const Chevron = styled.button`
+export const Chevron = styled.button`
   z-index: 1;
-  position: absolute;
-  top: 50%;
-  width: 47px;
-  height: 45px;
-  transform: translate(-50%);
-  border: 1px solid black;
-  border-radius: 2px;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgb(50, 78, 89);
+  color: color: rgb(50, 78, 89);
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 `;
 
-export const LeftChevron = styled(Chevron)`
-  /* Alternative => left: -80px; */
-  top: 40%;
-  right: -80px;
-`;
-
-export const RightChevron = styled(Chevron)`
-  right: -80px;
-`;
-
-// Wishlist Carousel Chevrons
-export const WishlistLeftChevron = styled(Chevron)`
-  top: 40%;
-  right: -80px;
-`;
-
-export const DeactivatedRightChevron = styled(Chevron)`
-  right: -80px;
+export const DeactivatedChevron = styled(Chevron)`
   color: rgba(128, 128, 128, 0.5);
   border: 2px solid rgba(128, 128, 128, 0.2);
 
   &:hover {
     cursor: default;
   }
-`;
-
-export const DeactivatedLeftChevron = styled(DeactivatedRightChevron)`
-  top: 40%;
 `;
 
 // Thumbnail Carousel Chevrons
@@ -114,7 +44,7 @@ export const SmLeftChevron = styled.button`
   align-items: center;
   border: unset;
   border-radius: 2px;
-  background-color: rgba(225, 225, 225, .8);
+  background-color: rgba(225, 225, 225, 0.8);
   color: rgb(11, 191, 125);
   cursor: pointer;
 `;
@@ -124,27 +54,26 @@ export const SmRightChevron = styled(SmLeftChevron)`
 `;
 
 // Compare button
+export const CompareButtonContainer = styled.div`
+  position: absolute;
+  bottom: 83px;
+  transform: translateX(160px);
+`;
+
 export const CompareButton = styled.button`
   border: none;
   border-radius: 15px;
   text-align: center;
   text-decoration: none;
   padding: 8px 15px;
-  color: rgba(11, 191, 125, .9);
+  color: rgba(11, 191, 125, 0.9);
   background-color: #fff;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
-`;
 
-export const CompareButtonContainer = styled.div`
-  position: absolute;
-  bottom: 85px;
-  transform: translateX(160px);
-  color: rgba(11, 191, 125);
-
-  &:hover ${CompareButton} {
+  &:hover {
     cursor: pointer;
     color: #fff;
-    background-color: rgba(11, 191, 125, .9);
+    background-color: rgba(11, 191, 125, 0.9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
 `;
@@ -178,7 +107,7 @@ export const AnimateRemoveButton = styled(MdOutlineClose)`
   &:hover {
     animation: ${rotation} 2s infinite linear;
   }
-`
+`;
 
 // Wishlist Button
 const heartbeat = keyframes`
@@ -194,13 +123,13 @@ const heartbeat = keyframes`
 `;
 
 export const AnimatedWishlistButton = styled(FiHeart)`
-  color: rgba(11, 191, 125, .9);
+  color: rgba(11, 191, 125, 0.9);
   cursor: pointer;
 
   &:hover {
     animation: ${heartbeat} 1s infinite;
-    fill: rgba(11, 191, 125, .9);
-    color: rgba(11, 191, 125, .9);
+    fill: rgba(11, 191, 125, 0.9);
+    color: rgba(11, 191, 125, 0.9);
     opacity: 1;
     transition: opacity 500mx;
   }
@@ -212,8 +141,8 @@ export const DefaultCard = styled.div`
   flex-direction: column;
   height: 355px;
   min-width: 255px;
+  margin-right: 30px;
   align-items: center;
-  margin-right: 40px;
   border-radius: 10px;
   border: 3px solid rgba(128, 128, 128, 0.2);
 `;
@@ -227,14 +156,14 @@ export const DefaultCardButton = styled.button`
   text-decoration: none;
   padding: 15px;
   border-radius: 30px;
-  border: 2px solid rgba(11, 191, 125, .9);
-  color: rgba(11, 191, 125, .9);
+  border: 2px solid rgba(11, 191, 125, 0.9);
+  color: rgba(11, 191, 125, 0.9);
   background-color: #fff;
 
   &:hover {
     cursor: pointer;
     color: #fff;
-    background-color: rgba(11, 191, 125, .9);
+    background-color: rgba(11, 191, 125, 0.9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
 
@@ -243,28 +172,8 @@ export const DefaultCardButton = styled.button`
   }
 `;
 
-// export const DisabledNotification = styled.div`
-//   z-index: 1;
-//   position: absolute;
-//   height: 45px;
-//   width: 160px;
-//   padding: 15px;
-//   border: 1px solid black;
-//   color: black;
-//   background-color: #fff;
-//   align-items: center;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
-
-// export const NotificationText = styled.p`
-//   text-align: center;
-//   font-size: 0.7em;
-// `;
-
 // Ratings & Reviews
-export const ReviewButtons = styled.button`
+export const ButtonDefaultLG = styled.button`
   margin-right: 30px;
   height: 50px;
   width: 120px;
@@ -272,14 +181,14 @@ export const ReviewButtons = styled.button`
   text-decoration: none;
   padding: 15px;
   border-radius: 30px;
-  border: 2px solid rgba(11, 191, 125, .9);
-  color: rgba(11, 191, 125, .9);
+  border: 2px solid rgba(11, 191, 125, 0.9);
+  color: rgba(11, 191, 125, 0.9);
   background-color: #fff;
 
   &:hover {
     cursor: pointer;
     color: #fff;
-    background-color: rgba(11, 191, 125, .9);
+    background-color: rgba(11, 191, 125, 0.9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
 
@@ -288,21 +197,33 @@ export const ReviewButtons = styled.button`
   }
 `;
 
-export const WriteReviewButtons = styled.button`
+export const ButtonDefaultSM = styled.button`
   border: none;
   border-radius: 15px;
   margin-right: 10px;
   text-align: center;
   text-decoration: none;
   padding: 8px 15px;
-  color: rgba(11, 191, 125, .9);
+  color: rgba(11, 191, 125, 0.9);
   background-color: #fff;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 
   &:hover {
     cursor: pointer;
     color: #fff;
-    background-color: rgba(11, 191, 125, .9);
+    background-color: rgba(11, 191, 125, 0.9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
+`;
+
+export const ReportClicked = styled.button`
+  border: none;
+  border-radius: 15px;
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 15px;
+  color: red;
+  background-color: #fff;
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 `;

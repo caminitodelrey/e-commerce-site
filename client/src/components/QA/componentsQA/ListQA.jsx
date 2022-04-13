@@ -14,7 +14,13 @@ export default function ListQA({
   return (
     <div
       id="list"
-      style={{ 'paddingBottom': '40px' }}
+      style={{
+        'paddingBottom': '40px',
+        'maxWidth': '1200px',
+        maxHeight: '550px',
+        overflow: 'auto',
+        margin: '15px 0px'
+      }}
     >
       {questions.slice(0, questionsDisplayed).map((q) => (
         <ListEntryQA

@@ -1,6 +1,6 @@
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import React, { useState, useEffect } from 'react';
-import { getData } from '../../../../helper.js';
+import axios from 'axios';
 
 import {
   CardAssetImg,
@@ -28,8 +28,18 @@ export default function ProductPreview({ product, handleProductChange }) {
 
   const maxDisplayCount = 4;
 
+  const handleServerRoutes = (url, id) => (
+    axios({
+      method: 'get',
+      url: url,
+      params: {
+        productId: id,
+      }
+    })
+  );
+
   const getImages = () => {
-    getData(`products/${product.id}/styles`)
+    handleServerRoutes('/product/styles', product.id)
       .then(({ data }) => {
         data.results.forEach(({ photos }) => {
           setThumbnails(photos);
@@ -37,7 +47,7 @@ export default function ProductPreview({ product, handleProductChange }) {
         });
       })
       .catch((err) => {
-        throw Error(err);
+        console.log('err in ProductPreview');
       });
   };
 

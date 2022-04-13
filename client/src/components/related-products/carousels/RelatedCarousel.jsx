@@ -1,16 +1,20 @@
-import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import React, { useState, useEffect } from 'react';
 import ComparisonModal from '../subcomponents/ComparisonModal.jsx';
 import RelatedCard from './RelatedCard.jsx';
 
 import {
+  CarouselHeader,
   CardsWrapper,
   ContentWrapper,
   Content,
 } from '../../../theme/carouselStyle.js';
 
 import {
+  ChevronsContainer,
+  Chevron,
+  DeactivatedChevron,
   LeftChevron,
   RightChevron,
   ScaledLeftArrow,
@@ -36,9 +40,8 @@ export default function RelatedCarousel({
   const { display, clickedProduct } = modal;
 
   // determines the initial number of product cards maxDisplayCountn on page
-  const maxDisplayCount = 4;
+  const maxDisplayCount = 5;
 
-  // determines the total number of cards
   useEffect(() => {
     setLength(products.length);
   }, [products]);
@@ -50,13 +53,13 @@ export default function RelatedCarousel({
     });
   };
 
-  const prev = () => {
+  const next = () => {
     if (currentIndex < length - maxDisplayCount) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
 
-  const next = () => {
+  const prev = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prevState) => prevState - 1);
     }
@@ -70,24 +73,43 @@ export default function RelatedCarousel({
 
   return (
     <div>
-      <CardsWrapper>
+      <CarouselHeader>
+        <h2>COMPLETE THE LOOK</h2>
+        <ChevronsContainer>
+          {length <= maxDisplayCount ? (
+            <div></div>
+          ) : currentIndex > 0 ? (
+            <Chevron className="left-arrow" onClick={prev}>
+              <FaChevronLeft />
+            </Chevron>
+          ) : (
+            <DeactivatedChevron className="left-arrow">
+              <FaChevronLeft />
+            </DeactivatedChevron>
+          )}
 
-        { length <= maxDisplayCount
-          ? (<div></div>)
-          : currentIndex < length - maxDisplayCount ? (
-          <LeftChevron className="left-arrow" onClick={prev}>
-            <ScaledLeftArrow />
-          </LeftChevron>
-        ) : (
-          <DeactivatedLeftChevron className="left-arrow">
-            <ScaledLeftArrow />
-          </DeactivatedLeftChevron>
-        )}
+          {length <= maxDisplayCount ? (
+            <div></div>
+          ) : currentIndex < length - maxDisplayCount ? (
+            <Chevron className="right-arrow" onClick={next}>
+              <FaChevronRight />
+            </Chevron>
+          ) : (
+            <DeactivatedChevron className="right-arrow">
+              <FaChevronRight />
+            </DeactivatedChevron>
+          )}
+        </ChevronsContainer>
+      </CarouselHeader>
 
-        <ContentWrapper>
+      <CardsWrapper className="cards-wrapper">
+        <ContentWrapper className="content-wrapper">
           <Content
+            className="content"
             style={{
-              transform: `translateX(-${currentIndex * (100 / maxDisplayCount)}%)`,
+              transform: `translateX(-${
+                currentIndex * (100 / maxDisplayCount)
+              }%)`,
             }}
           >
             <RelatedCard
@@ -101,19 +123,6 @@ export default function RelatedCarousel({
             />
           </Content>
         </ContentWrapper>
-
-        { length <= maxDisplayCount
-          ? (<div></div>)
-          : currentIndex > 0 ? (
-          <RightChevron className="right-arrow" onClick={next}>
-            <ScaledRightArrow />
-          </RightChevron>
-        ) : (
-          <DeactivatedRightChevron className="right-arrow">
-            <ScaledRightArrow />
-          </DeactivatedRightChevron>
-        )}
-
       </CardsWrapper>
 
       {display && (
