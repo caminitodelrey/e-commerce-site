@@ -4,7 +4,6 @@ import { MdOutlineClose } from 'react-icons/md';
 
 // Carousel Chevrons
 export const ChevronsContainer = styled.div`
-  /* margin-right: 30px; */
   display: flex;
   justify-content: flex-end;
 `;
@@ -43,7 +42,7 @@ export const SmLeftChevron = styled.button`
   align-items: center;
   border: unset;
   border-radius: 2px;
-  background-color: rgba(225, 225, 225, .8);
+  background-color: rgba(225, 225, 225, 0.8);
   color: rgb(11, 191, 125);
   cursor: pointer;
 `;
@@ -55,7 +54,7 @@ export const SmRightChevron = styled(SmLeftChevron)`
 // Compare button
 export const CompareButtonContainer = styled.div`
   position: absolute;
-  bottom: 85px;
+  bottom: 83px;
   transform: translateX(160px);
 `;
 
@@ -65,14 +64,14 @@ export const CompareButton = styled.button`
   text-align: center;
   text-decoration: none;
   padding: 8px 15px;
-  color: rgba(11, 191, 125, .9);
+  color: rgba(11, 191, 125, 0.9);
   background-color: #fff;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 
   &:hover {
     cursor: pointer;
     color: #fff;
-    background-color: rgba(11, 191, 125, .9);
+    background-color: rgba(11, 191, 125, 0.9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
 `;
@@ -106,7 +105,7 @@ export const AnimateRemoveButton = styled(MdOutlineClose)`
   &:hover {
     animation: ${rotation} 2s infinite linear;
   }
-`
+`;
 
 // Wishlist Button
 const heartbeat = keyframes`
@@ -122,13 +121,13 @@ const heartbeat = keyframes`
 `;
 
 export const AnimatedWishlistButton = styled(FiHeart)`
-  color: rgba(11, 191, 125, .9);
+  color: rgba(11, 191, 125, 0.9);
   cursor: pointer;
 
   &:hover {
     animation: ${heartbeat} 1s infinite;
-    fill: rgba(11, 191, 125, .9);
-    color: rgba(11, 191, 125, .9);
+    fill: rgba(11, 191, 125, 0.9);
+    color: rgba(11, 191, 125, 0.9);
     opacity: 1;
     transition: opacity 500mx;
   }
@@ -155,14 +154,14 @@ export const DefaultCardButton = styled.button`
   text-decoration: none;
   padding: 15px;
   border-radius: 30px;
-  border: 2px solid rgba(11, 191, 125, .9);
-  color: rgba(11, 191, 125, .9);
+  border: 2px solid rgba(11, 191, 125, 0.9);
+  color: rgba(11, 191, 125, 0.9);
   background-color: #fff;
 
   &:hover {
     cursor: pointer;
     color: #fff;
-    background-color: rgba(11, 191, 125, .9);
+    background-color: rgba(11, 191, 125, 0.9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
 
@@ -180,14 +179,14 @@ export const ReviewButtons = styled.button`
   text-decoration: none;
   padding: 15px;
   border-radius: 30px;
-  border: 2px solid rgba(11, 191, 125, .9);
-  color: rgba(11, 191, 125, .9);
+  border: 2px solid rgba(11, 191, 125, 0.9);
+  color: rgba(11, 191, 125, 0.9);
   background-color: #fff;
 
   &:hover {
     cursor: pointer;
     color: #fff;
-    background-color: rgba(11, 191, 125, .9);
+    background-color: rgba(11, 191, 125, 0.9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
 
@@ -203,14 +202,14 @@ export const WriteReviewButtons = styled.button`
   text-align: center;
   text-decoration: none;
   padding: 8px 15px;
-  color: rgba(11, 191, 125, .9);
+  color: rgba(11, 191, 125, 0.9);
   background-color: #fff;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 
   &:hover {
     cursor: pointer;
     color: #fff;
-    background-color: rgba(11, 191, 125, .9);
+    background-color: rgba(11, 191, 125, 0.9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
 `;
