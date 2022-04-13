@@ -13,7 +13,7 @@ import Lens from './Lens.jsx';
 const galleryContainerSize = '100%';
 const height = 1000;
 const galleryThumbSize = 80;
-const gallerySize = 7;
+const gallerySize = 3;
 let moveCounter = 0;
 
 export default function ImageGallery({
@@ -57,13 +57,14 @@ export default function ImageGallery({
 
   useEffect(() => {
     if (!expanded) {
-      galleryWrapperRef.current.style.height = '100%';
-      galleryWrapperRef.current.style.margin='none';
-      galleryWrapperRef.current.style.width='800px';
+      // galleryWrapperRef.current.style.height = 'auto';
+      galleryWrapperRef.current.style.width='60%';
+      // galleryWrapperRef.current.style.maxHeight='100%';
+
     } else {
-      galleryWrapperRef.current.style.height = '80vh';
-      galleryWrapperRef.current.style.margin='auto';
-      galleryWrapperRef.current.style.width='auto';
+      // galleryWrapperRef.current.style.height = '80vh';
+      galleryWrapperRef.current.style.width='80%';
+      // galleryWrapperRef.current.style.maxHeight='auto';
     }
   }, [expanded]);
 
@@ -283,10 +284,12 @@ export default function ImageGallery({
 
 const GalleryWrapper = styled.div`
   position: relative;
+  display:inline-block;
+  vertical-align:middle;
   height:auto;
-  width:800px;
-  min-width: 800px;
+  width:50%;
   margin:none;
+  max-height:100vh;
 `;
 
 const GalleryThumbNav = styled.div`

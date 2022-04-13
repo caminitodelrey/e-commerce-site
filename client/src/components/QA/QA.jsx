@@ -99,7 +99,7 @@ export default function QA({ product, onClick }) {
   // const { product, questions } = this.state;
   // console.log(questions);
   return (
-    <div className="QA" onClick={onClick} style={{ padding: '50px' }}>
+    <div className="QA" onClick={onClick} style={{ margin: '100px 0'}}>
       <h1
         style={{
           marginBottom: '10px',

@@ -7,7 +7,10 @@ import {
   ModalBody,
   TableRow,
 } from '../../../theme/modalStyle.js';
-import { ButtonDefaultSM } from '../../../theme/buttonStyle.js';
+import {
+  ButtonDefaultSM,
+  ButtonDefaultLG,
+} from '../../../theme/buttonStyle.js';
 
 export default function AddQuestionQA({
   product,
