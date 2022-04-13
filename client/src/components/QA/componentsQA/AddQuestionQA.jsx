@@ -7,10 +7,7 @@ import {
   ModalBody,
   TableRow,
 } from '../../../theme/modalStyle.js';
-import {
-  ReviewButtons,
-  WriteReviewButtons,
-} from '../../../theme/buttonStyle.js';
+import { ButtonDefaultSM } from '../../../theme/buttonStyle.js';
 
 export default function AddQuestionQA({
   product,
@@ -47,8 +44,12 @@ export default function AddQuestionQA({
       <ModalContainer>
         <ModalContent>
           <ModalTitle>
-            <h3>Ask your question</h3>
-            <h3>{`about the ${product.name}`}</h3>
+            <h1>Ask your question</h1>
+            <h3
+              style={{
+                color: 'rgb(10, 89, 81)',
+              }}
+            >{`about the ${product.name}`}</h3>
           </ModalTitle>
           <ModalBody>
             <div className="add-question">
@@ -81,9 +82,10 @@ export default function AddQuestionQA({
                   }}
                   onChange={handleNameChange}
                 />
-                <br/>
+                <br />
                 <span>
-                  For privacy reasons, do not use your full name or email address
+                  For privacy reasons, do not use your full name or email
+                  address
                 </span>
               </div>
               <div className="add-question-email">
@@ -100,23 +102,28 @@ export default function AddQuestionQA({
                   }}
                   onChange={handleEmailChange}
                 />
-                <br/>
+                <br />
                 <span>For authentication reasons, you will not be emailed</span>
                 <div>
-                  <WriteReviewButtons
+                  <ButtonDefaultSM
                     type="button"
-                    onClick={() => handleAddQuestionClick({
-                      body: questionBody,
-                      name: nickName,
-                      email,
-                      product_id: product.id,
-                    })}
+                    onClick={() =>
+                      handleAddQuestionClick({
+                        body: questionBody,
+                        name: nickName,
+                        email,
+                        product_id: product.id,
+                      })
+                    }
                   >
                     Submit Question
-                  </WriteReviewButtons>
-                  <WriteReviewButtons type="button" onClick={toggleAddQuestionModal}>
+                  </ButtonDefaultSM>
+                  <ButtonDefaultSM
+                    type="button"
+                    onClick={toggleAddQuestionModal}
+                  >
                     Cancel
-                  </WriteReviewButtons>
+                  </ButtonDefaultSM>
                 </div>
               </div>
             </div>
@@ -126,4 +133,3 @@ export default function AddQuestionQA({
     );
   }
 }
-

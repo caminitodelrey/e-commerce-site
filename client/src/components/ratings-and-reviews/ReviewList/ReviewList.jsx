@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReviewListUnit from './ReviewListUnit.jsx';
 
 import {
-  ReviewButtons,
+  ButtonDefaultLG,
 } from '../../../theme/buttonStyle.js';
 
 export default function ReviewList({ reviews }) {
@@ -28,7 +28,7 @@ export default function ReviewList({ reviews }) {
         ))}
       </div>
       <div>
-        <ReviewButtons
+        <ButtonDefaultLG
           // style={{
           //   float: 'left',
           //   padding: '10px',
@@ -41,7 +41,7 @@ export default function ReviewList({ reviews }) {
         >
           More Reviews
 
-        </ReviewButtons>
+        </ButtonDefaultLG>
       </div>
     </div>
   );

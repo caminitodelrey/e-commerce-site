@@ -7,10 +7,7 @@ import {
   ModalBody,
   TableRow,
 } from '../../../theme/modalStyle.js';
-import {
-  ReviewButtons,
-  WriteReviewButtons,
-} from '../../../theme/buttonStyle.js';
+import { ButtonDefaultSM } from '../../../theme/buttonStyle.js';
 
 export default function AddAnswerQA({
   product,
@@ -49,8 +46,12 @@ export default function AddAnswerQA({
       <ModalContainer>
         <ModalContent>
           <ModalTitle>
-            <h3>Submit your answer</h3>
-            <h3>{`${product.name}: "${question.question_body}"`}</h3>
+            <h1>Submit your answer</h1>
+            <h3
+              style={{
+                color: 'rgb(10, 89, 81)',
+              }}
+            >{`${product.name}: "${question.question_body}"`}</h3>
           </ModalTitle>
           <ModalBody>
             <div className="add-answer">
@@ -83,8 +84,11 @@ export default function AddAnswerQA({
                   }}
                   onChange={handleNameChange}
                 />
-                <br/>
-                <span>For privacy reasons, do not use your full name or email address</span>
+                <br />
+                <span>
+                  For privacy reasons, do not use your full name or email
+                  address
+                </span>
               </div>
               <div className="add-answer-email">
                 <span>Email*</span>
@@ -100,23 +104,29 @@ export default function AddAnswerQA({
                   }}
                   onChange={handleEmailChange}
                 />
-                <br/>
+                <br />
                 <span>For authentication reasons, you will not be emailed</span>
-                <br/>
-                <WriteReviewButtons type="button">Upload your photos</WriteReviewButtons>
+                <br />
+                <ButtonDefaultSM type="button">
+                  Upload your photos
+                </ButtonDefaultSM>
                 <div>
-                  <WriteReviewButtons
+                  <ButtonDefaultSM
                     type="button"
-                    onClick={() => handleAddAnswerClick({
-                      body: answerBody,
-                      name: nickName,
-                      email,
-                      photos,
-                    })}
+                    onClick={() =>
+                      handleAddAnswerClick({
+                        body: answerBody,
+                        name: nickName,
+                        email,
+                        photos,
+                      })
+                    }
                   >
                     Submit Answer
-                  </WriteReviewButtons>
-                  <WriteReviewButtons type="button" onClick={toggleAddAnswerModal}>Cancel</WriteReviewButtons>
+                  </ButtonDefaultSM>
+                  <ButtonDefaultSM type="button" onClick={toggleAddAnswerModal}>
+                    Cancel
+                  </ButtonDefaultSM>
                 </div>
               </div>
             </div>

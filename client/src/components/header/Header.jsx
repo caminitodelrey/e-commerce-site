@@ -53,7 +53,7 @@ export default function Header(props) {
   }, [index]);
 
   return (
-    <div onClick={props.onClick}>
+    <div onClick={props.onClick} data-testid="header">
       <HeaderOuter>
         <HeaderInner>
           <Logo>
@@ -68,7 +68,10 @@ export default function Header(props) {
           </div>
 
           <ThirdInnerContainer>
-            <HeaderSearch />
+            <HeaderSearch>
+              <input data-testid="search" type="text" placeholder="Search" />
+            </HeaderSearch>
+
             <div>
               <WishlistButton />
               <ShopButton />
