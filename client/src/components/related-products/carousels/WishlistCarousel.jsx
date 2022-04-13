@@ -64,11 +64,13 @@ const WishlistCarousel = forwardRef(
 
     return (
       <div>
-        <CarouselHeader
-          ref={ref}
-          onClick={() => setDisplayWishlist(!displayWishlist)}
-        >
-          <h2>WISHLIST {!displayWishlist ? '—' : '+'}</h2>
+        <CarouselHeader ref={ref}>
+          <h2
+            style={{ 'cursor': 'pointer' }}
+            onClick={() => setDisplayWishlist(!displayWishlist)}
+          >
+            WISHLIST {!displayWishlist ? '—' : '+'}
+          </h2>
           <ChevronsContainer>
             {length <= maxDisplayCount ? (
               <div></div>

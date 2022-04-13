@@ -1,7 +1,7 @@
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RemoveButton from './RemoveButton.jsx';
 
 import {
@@ -35,14 +35,9 @@ export default function WishlistButton({
     setDisable(!disable);
   };
 
-  // heart render
-  // initial state => AnimatedWishlistButton
-  // once clicked => FaHeart
-  // item removed from localStorage => AnimatedWishlistButton
-  // --> if change is detected in localStorage
-  // --> check if the items with hearts are still in the storage
-  // --> if not, change the heart to the default state
-
+  useEffect(() => {
+    addToWishlist()
+  }, [storedItems])
 
   switch (isInLocalStorage) {
     case true:
