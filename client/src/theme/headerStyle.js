@@ -87,6 +87,15 @@ export const QASearch = styled(Search)`
   }
 `;
 
+export const WishlistIndicator = styled.div`
+  position: absolute;
+  right: 68px;
+  width: 7px;
+  height: 7px;
+  background-color: red;
+  border-radius: 50%;
+`;
+
 export const WishlistButton = styled(FiHeart)`
   color: rgb(25, 46, 64);
   width: 20px;

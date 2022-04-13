@@ -12,11 +12,9 @@ export default function AddButton({
   wishlistProducts,
   setWishlistProducts,
 }) {
-  // console.log('add button', product)
   const [disable, setDisable] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
 
-  // product data being passed down is a raw data, so refactor it
   const getCurrentProduct = () => {
     Promise.all([
       getData(`products/${product.id}`),
