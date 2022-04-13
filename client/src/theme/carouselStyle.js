@@ -1,16 +1,45 @@
 import styled from 'styled-components';
 
+// const size = {
+//   mobileS: '320px',
+//   mobileM: '375px',
+//   mobileL: '425px',
+//   tablet: '768px',
+//   laptop: '1024px',
+//   laptopL: '1440px',
+//   desktop: '2560px'
+// }
+
+// const device = {
+//   mobileS: `(min-width: ${size.mobileS})`,
+//   mobileM: `(min-width: ${size.mobileM})`,
+//   mobileL: `(min-width: ${size.mobileL})`,
+//   tablet: `(min-width: ${size.tablet})`,
+//   laptop: `(min-width: ${size.laptop})`,
+//   laptopL: `(min-width: ${size.laptopL})`,
+//   desktop: `(min-width: ${size.desktop})`,
+//   desktopL: `(min-width: ${size.desktop})`
+// };
+
+export const CarouselHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const Carousels = styled.div`
   position: relative;
-  padding: 50px 0 50px 50px;
+  padding-left: 50px;
+  scroll-snap-type: y mandatory;
 `;
 
 // WishlistCarousel.jsx
 export const WishlistCarouselWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  min-width: 1100px;
-  max-width: 95%;
+  /* min-width: 1100px; */
+  overflow: visible;
 `;
 
 export const WishlistAccordion = styled.div`
@@ -36,8 +65,6 @@ export const WishlistCardsWrapper = styled.div`
 export const CardsWrapper = styled.div`
   position: relative;
   min-width: 1100px;
-  // update this to 100% after repositioning the chevrons
-  max-width: 95%;
 `;
 
 export const ContentWrapper = styled.div`

@@ -67,7 +67,7 @@ export default function WishlistCarousel({
         <WishlistCardsContainer className='wishlist-cards-container'>
           <WishlistCardsWrapper className='wishlist-cards-wrapper'>
 
-            { length <= maxDisplayCount
+            {/* { length <= maxDisplayCount
               ? (<div></div>)
               : currentIndex < length - maxDisplayCount ? (
               <WishlistLeftChevron className="left-arrow" onClick={prev}>
@@ -77,7 +77,7 @@ export default function WishlistCarousel({
               <DeactivatedLeftChevron className="left-arrow">
                 <ScaledLeftArrow />
               </DeactivatedLeftChevron>
-            )}
+            )} */}
 
             <ContentWrapper>
               <Content
@@ -95,7 +95,7 @@ export default function WishlistCarousel({
               </Content>
             </ContentWrapper>
 
-            { length <= maxDisplayCount
+            {/* { length <= maxDisplayCount
               ? (<div></div>)
               : currentIndex > 0 ? (
               <RightChevron className="right-arrow" onClick={next}>
@@ -105,7 +105,7 @@ export default function WishlistCarousel({
               <DeactivatedRightChevron className="right-arrow">
                 <ScaledRightArrow />
               </DeactivatedRightChevron>
-            )}
+            )} */}
 
           </WishlistCardsWrapper>
         </WishlistCardsContainer>

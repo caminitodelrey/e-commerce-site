@@ -62,9 +62,7 @@ const RelatedProducts = forwardRef(({ product, handleProductChange, onClick }, r
     case 'resolved':
       return (
         <Carousels className="carousel">
-          <div className="related-header">
-            <h2>COMPLETE THE LOOK</h2>
-          </div>
+
           <RelatedCarousel
             products={relatedProducts}
             mainProduct={product}

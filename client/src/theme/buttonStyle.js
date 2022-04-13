@@ -9,11 +9,11 @@ const ScaledArrow = css`
   height: 20px;
 `;
 
-export const ScaledLeftArrow = styled(BsArrowRight)`
+export const ScaledLeftArrow = styled(BsArrowLeft)`
   ${ScaledArrow}
 `;
 
-export const ScaledRightArrow = styled(BsArrowLeft)`
+export const ScaledRightArrow = styled(BsArrowRight)`
   ${ScaledArrow}
 `;
 
@@ -60,37 +60,26 @@ export const ScaledRightArrow = styled(BsArrowLeft)`
 //   top: 40%;
 // `;
 
-const Chevron = styled.button`
+export const ChevronsContainer = styled.div`
+  margin-right: 30px;
+  display: flex;
+`;
+
+export const Chevron = styled.button`
   z-index: 1;
-  position: absolute;
-  top: 50%;
-  width: 47px;
-  height: 45px;
-  transform: translate(-50%);
-  border: 1px solid black;
-  border-radius: 2px;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 50%;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 `;
 
-export const LeftChevron = styled(Chevron)`
-  /* Alternative => left: -80px; */
-  top: 40%;
-  right: -80px;
-`;
-
-export const RightChevron = styled(Chevron)`
-  right: -80px;
-`;
-
-// Wishlist Carousel Chevrons
-export const WishlistLeftChevron = styled(Chevron)`
-  top: 40%;
-  right: -80px;
-`;
-
-export const DeactivatedRightChevron = styled(Chevron)`
-  right: -80px;
+export const DeactivatedChevron = styled(Chevron)`
   color: rgba(128, 128, 128, 0.5);
   border: 2px solid rgba(128, 128, 128, 0.2);
 
@@ -99,9 +88,25 @@ export const DeactivatedRightChevron = styled(Chevron)`
   }
 `;
 
-export const DeactivatedLeftChevron = styled(DeactivatedRightChevron)`
+// Wishlist Carousel Chevrons
+export const WishlistLeftChevron = styled(Chevron)`
   top: 40%;
+  right: -80px;
 `;
+
+// export const DeactivatedRightChevron = styled(Chevron)`
+//   right: -80px;
+//   color: rgba(128, 128, 128, 0.5);
+//   border: 2px solid rgba(128, 128, 128, 0.2);
+
+//   &:hover {
+//     cursor: default;
+//   }
+// `;
+
+// export const DeactivatedLeftChevron = styled(DeactivatedRightChevron)`
+//   top: 40%;
+// `;
 
 // Thumbnail Carousel Chevrons
 export const SmLeftChevron = styled.button`
