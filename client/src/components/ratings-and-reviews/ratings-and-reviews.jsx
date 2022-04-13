@@ -79,15 +79,7 @@ export default function RatingsReviews({ product, onClick }) {
   const reviewCount = metaData.recommended || { true: 0, false: 0 };
 
   return (
-<<<<<<< HEAD
-    <div
-      className="ratings-reviews"
-      onClick={onClick}
-      style={{ padding: '50px' }}
-    >
-=======
     <div className='ratings-reviews' onClick={onClick}>
->>>>>>> main
       <div
         style={{
           float: 'left',
