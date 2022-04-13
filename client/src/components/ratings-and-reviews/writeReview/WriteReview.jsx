@@ -325,7 +325,7 @@ export default function WriteReview({ name }) {
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD style={{ fontWeight: 'bold' }}>
-                quality*
+                Quality*
               </RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
