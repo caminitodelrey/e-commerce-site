@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import ReviewListUnit from './ReviewListUnit.jsx';
+//import ReviewsExampleData from '../../ReviewsExampleData.jsx'
 
 import {
   ButtonDefaultLG,
 } from '../../../theme/buttonStyle.js';
 
 export default function ReviewList({ reviews }) {
-  // const reviews = ReviewsExampleData.results;
+  reviews = reviews || []
   const [reviewsCount, setReviewsCount] = useState(2);
 
   const handleMoreReviews = () => {

@@ -4,6 +4,7 @@ import ReviewList from './ReviewList/ReviewList.jsx';
 import RatingBreakDown from './ratingBreakDown/RatingBreakDown.jsx';
 import WriteReview from './writeReview/WriteReview.jsx';
 import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx';
+import axios from 'axios';
 
 export default function RatingsReviews({ product, onClick }) {
   const [reviews, setReviews] = useState([]);
@@ -11,16 +12,35 @@ export default function RatingsReviews({ product, onClick }) {
   const [metaData, setMetaData] = useState('');
 
   useEffect(() => {
-    getData(
-      `reviews?page=1&count=1000&sort=relevant&product_id=${product.id}`,
-    ).then(({ data }) => {
+    // getData(
+    //   `reviews?page=1&count=1000&sort=relevant&product_id=${product.id}`,
+    // ).then(({ data }) => {
+    //   setReviews(data.results);
+    //   setReviews2(data.results);
+    // });
+    axios({
+      method: 'get',
+      url: '/ratingsReviews/reviews',
+      params: {
+        productId: product.id,
+      }
+    }).then(({ data }) => {
       setReviews(data.results);
       setReviews2(data.results);
-    });
+    })
 
-    getData(`reviews/meta?product_id=${product.id}`).then(({ data }) => {
+    // getData(`reviews/meta?product_id=${product.id}`).then(({ data }) => {
+    //   setMetaData(data);
+    // });
+    axios({
+      method: 'get',
+      url: '/ratingsReviews/meta',
+      params: {
+        productId: product.id,
+      }
+    }).then(({ data }) => {
       setMetaData(data);
-    });
+    })
   }, [product.id]);
 
   const handleDropDown = (e) => {
@@ -32,11 +52,22 @@ export default function RatingsReviews({ product, onClick }) {
     } else if (e.target.value === '0') {
       dropDown = 'relevant';
     }
-    getData(
-      `reviews?page=1&count=1000&sort=${dropDown}&product_id=${product.id}`,
-    ).then(({ data }) => {
+    // getData(
+    //   `reviews?page=1&count=1000&sort=${dropDown}&product_id=${product.id}`,
+    // ).then(({ data }) => {
+    //   setReviews(data.results);
+    // });
+
+    axios({
+      method: 'get',
+      url: '/ratingsReviews/sort',
+      params: {
+        productId: product.id,
+        dropDown: dropDown
+      }
+    }).then(({ data }) => {
       setReviews(data.results);
-    });
+    })
   };
 
   const starFilter = (e) => {
@@ -76,7 +107,7 @@ export default function RatingsReviews({ product, onClick }) {
           <h4>
             {`${
               Number(reviewCount.true || 0) + Number(reviewCount.false || 0)
-            } reviews, sorted by`}
+            } reviews, sorted by `}
             <select onChange={handleDropDown}>
               <option value="0">Relevant</option>
               <option value="1">Helpful</option>
