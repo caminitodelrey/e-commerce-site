@@ -101,13 +101,9 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
                   <TableRow key={feature.feature}>
                     <td>
                       {feature.main !== null ? (
-                        <div>
-                          &nbsp;
-                          &nbsp;
-                          <FcCheckmark />
-                          &nbsp;
-                          &nbsp;
-                          {feature.main}
+                        <div style={{ 'display': 'flex', 'flexDirection': 'row'}}>
+                          <div style={{ 'marginRight': '5px'}}><FcCheckmark /></div>
+                          <div>{feature.main}</div>
                         </div>
                       ) : (
                         ''
@@ -118,14 +114,10 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
                     </TableRowFeature>
                     <td>
                       {feature.related !== null ? (
-                        <div>
-                          &nbsp;
-                          &nbsp;
-                          <FcCheckmark />
-                          &nbsp;
-                          &nbsp;
-                          {feature.related}
-                        </div>
+                        <div style={{ 'display': 'flex', 'flexDirection': 'row'}}>
+                        <div style={{ 'marginRight': '5px'}}><FcCheckmark /></div>
+                        <div>{feature.related}</div>
+                      </div>
                       ) : (
                         ''
                       )}
