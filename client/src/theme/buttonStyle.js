@@ -173,7 +173,7 @@ export const DefaultCardButton = styled.button`
 `;
 
 // Ratings & Reviews
-export const ReviewButtons = styled.button`
+export const ButtonDefaultLG = styled.button`
   margin-right: 30px;
   height: 50px;
   width: 120px;
@@ -197,7 +197,7 @@ export const ReviewButtons = styled.button`
   }
 `;
 
-export const WriteReviewButtons = styled.button`
+export const ButtonDefaultSM = styled.button`
   border: none;
   border-radius: 15px;
   margin-right: 10px;
@@ -214,4 +214,16 @@ export const WriteReviewButtons = styled.button`
     background-color: rgba(11, 191, 125, 0.9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
+`;
+
+export const ReportClicked = styled.button`
+  border: none;
+  border-radius: 15px;
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 15px;
+  color: red;
+  background-color: #fff;
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 `;

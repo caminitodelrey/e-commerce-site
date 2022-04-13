@@ -42,7 +42,6 @@ export default function RelatedCarousel({
   // determines the initial number of product cards maxDisplayCountn on page
   const maxDisplayCount = 5;
 
-  // determines the total number of cards
   useEffect(() => {
     setLength(products.length);
   }, [products]);

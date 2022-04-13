@@ -3,6 +3,7 @@ import { getData } from '../../../helper.js';
 import { Carousels, WishlistAccordion } from '../../theme/carouselStyle.js';
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
 import WishlistCarousel from './carousels/WishlistCarousel.jsx';
+import axios from 'axios';
 
 const RelatedProducts = forwardRef(
   ({ product, handleProductChange, onClick }, ref) => {

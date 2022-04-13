@@ -59,7 +59,7 @@ export default function Header(props) {
   }, [index]);
 
   return (
-    <div onClick={props.onClick}>
+    <div onClick={props.onClick} data-testid="header">
       <HeaderOuter>
         <HeaderInner>
           <Logo>

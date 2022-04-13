@@ -9,61 +9,71 @@ import {
   TableRow,
   TableRowFeature,
 } from '../../../theme/modalStyle.js';
-import { getData } from '../../../../helper.js';
+
+import axios from 'axios';
 
 export default function ComparisonModal({ toggleModal, product, mainProduct }) {
   const [features, setFeatures] = useState([]);
   const [isLoaded, setisLoading] = useState(false);
 
+  const handleServerRoutes = (url, id) => (
+    axios({
+      method: 'get',
+      url: url,
+      params: {
+        productId: id,
+      }
+    })
+  );
+
   const getFeatures = () => {
     Promise.all([
-      getData(`products/${mainProduct.id}`),
-      getData(`products/${product.id}`),
-    ])
-      .then((data) => {
-        const mainFeatures = data[0].data.features;
-        const relatedFeatures = data[1].data.features;
-        const map = new Map();
+      handleServerRoutes('/product', mainProduct.id),
+      handleServerRoutes('/product', product.id),
+    ]).then((data) => {
+      const mainFeatures = data[0].data.features;
+      const relatedFeatures = data[1].data.features;
+      const map = new Map();
 
-        mainFeatures.forEach((main) => {
-          const sorted = {
-            feature: main.feature,
-            main: main.value,
-            related: null,
-          };
-          map.set(main.feature, sorted);
-        });
-
-        relatedFeatures.forEach((related) => {
-          const relatedSorted = {
-            feature: related.feature,
-            main: null,
-            related: related.value,
-          };
-          map.set(related.feature, relatedSorted);
-        });
-
-        mainFeatures.forEach((main) => {
-          relatedFeatures.forEach((related) => {
-            if (main.feature.includes(related.feature)) {
-              const combined = {
-                feature: main.feature,
-                main: main.value,
-                related: related.value,
-              };
-              map.set(main.feature, combined);
-            }
-          });
-        });
-
-        const mergedArr = Array.from(map.values());
-
-        setFeatures(mergedArr);
-        setisLoading(true);
-      })
-      .catch((err) => {
-        throw Error(err);
+      mainFeatures.forEach((main) => {
+        const sorted = {
+          feature: main.feature,
+          main: main.value,
+          related: null,
+        };
+        map.set(main.feature, sorted);
       });
+
+      relatedFeatures.forEach((related) => {
+        const relatedSorted = {
+          feature: related.feature,
+          main: null,
+          related: related.value,
+        };
+        map.set(related.feature, relatedSorted);
+      });
+
+      mainFeatures.forEach((main) => {
+        relatedFeatures.forEach((related) => {
+          if (main.feature.includes(related.feature)) {
+            const combined = {
+              feature: main.feature,
+              main: main.value,
+              related: related.value,
+            };
+            map.set(main.feature, combined);
+          }
+        });
+      });
+
+      const mergedArr = Array.from(map.values());
+
+      setFeatures(mergedArr);
+      setisLoading(true);
+    })
+    .catch((err) => {
+      console.log('err in ComparisonModal');
+    });
   };
 
   useEffect(() => {

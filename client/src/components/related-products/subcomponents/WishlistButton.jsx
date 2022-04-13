@@ -35,9 +35,9 @@ export default function WishlistButton({
     setDisable(!disable);
   };
 
-  useEffect(() => {
-    addToWishlist()
-  }, [storedItems])
+  // useEffect(() => {
+  //   addToWishlist()
+  // }, [storedItems])
 
   switch (isInLocalStorage) {
     case true:
