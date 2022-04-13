@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-
 import { GlobalStyle } from '../theme/globalStyle.js';
-import { ThemeProvider } from 'styled-components';
-
-import Splash from './header/Splash.jsx';
 import Header from './header/Header.jsx';
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
@@ -55,31 +51,10 @@ export default function App() {
     });
   }
 
-  const LightTheme = {
-    pageBackground: 'white',
-    titleColor: 'black',
-    tagLineColor: 'black'
-  };
-
-  const DarkTheme = {
-    pageBackground: 'black',
-    titleColor: 'white',
-    tagLineColor: 'white'
-  };
-
-  const themes = {
-    light: LightTheme,
-    dark: DarkTheme,
-  };
-
   return (
     <ClickTracker render={(recordClick) => (
-      <ThemeProvider theme={themes[theme]}>
       <div data-testid="main" >
         <GlobalStyle />
-
-          <Splash theme={theme} setTheme={setTheme} />
-
         <Header
           onClick={(event) => recordClick(event, 'Header')}
           executeScroll={executeScroll}
@@ -96,7 +71,6 @@ export default function App() {
         <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
         <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
       </div>
-      </ThemeProvider>
     )} />
   );
 }
