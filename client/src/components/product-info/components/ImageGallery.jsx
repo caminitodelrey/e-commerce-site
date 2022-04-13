@@ -13,7 +13,7 @@ import Lens from './Lens.jsx';
 const galleryContainerSize = '100%';
 const height = 1000;
 const galleryThumbSize = 80;
-const gallerySize = 7;
+const gallerySize = 3;
 let moveCounter = 0;
 
 export default function ImageGallery({
