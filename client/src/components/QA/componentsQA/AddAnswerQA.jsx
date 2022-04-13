@@ -92,7 +92,7 @@ export default function AddAnswerQA({
                   style={{
                     fontWeight: 'lighter',
                     fontStyle: 'italic',
-                    fontSize: '80%'
+                    fontSize: '80%',
                   }}
                 >
                   For privacy reasons, do not use your full name or email
