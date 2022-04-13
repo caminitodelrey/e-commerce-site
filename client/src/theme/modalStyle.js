@@ -29,7 +29,16 @@ export const ModalFormContainer = styled.form`
 export const ModalTitle = styled.div`
   padding-left: 10px;
   font-size: 0.875em;
-  color: rgba(128, 128, 128, 0.8)
+  color: rgba(128, 128, 128, 0.8);
+`;
+
+export const CompareModalTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+  padding-left: 10px;
+  font-size: 0.875em;
+  color: rgba(128, 128, 128, 0.8);
 `;
 
 export const ModalProductName = styled.th`

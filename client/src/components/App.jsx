@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+
 import { GlobalStyle } from '../theme/globalStyle.js';
+import { ThemeProvider } from 'styled-components';
+
+import Splash from './header/Splash.jsx';
 import Header from './header/Header.jsx';
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
@@ -13,6 +17,7 @@ import ClickTracker from './ClickTracker.jsx';
 // an example with sale price --> id: 37325
 export default function App() {
   const wishlistRef = useRef(null);
+  const [theme, setTheme] = useState('light');
   const [selectedProduct, setSelectedProduct] = useState({
     "id": 37327,
     "campus": "hr-rfe",
@@ -50,14 +55,31 @@ export default function App() {
     });
   }
 
-  useEffect(() => {
-    // console.log(selectedProduct);
-  }, [selectedProduct]);
+  const LightTheme = {
+    pageBackground: 'white',
+    titleColor: 'black',
+    tagLineColor: 'black'
+  };
+
+  const DarkTheme = {
+    pageBackground: 'black',
+    titleColor: 'white',
+    tagLineColor: 'white'
+  };
+
+  const themes = {
+    light: LightTheme,
+    dark: DarkTheme,
+  };
 
   return (
     <ClickTracker render={(recordClick) => (
-      <div data-testid="main">
+      <ThemeProvider theme={themes[theme]}>
+      <div data-testid="main" >
         <GlobalStyle />
+
+          <Splash theme={theme} setTheme={setTheme} />
+
         <Header
           onClick={(event) => recordClick(event, 'Header')}
           executeScroll={executeScroll}
@@ -74,6 +96,7 @@ export default function App() {
         <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
         <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
       </div>
+      </ThemeProvider>
     )} />
   );
 }

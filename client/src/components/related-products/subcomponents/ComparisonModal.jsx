@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Ratings from './Ratings.jsx';
 import { FcCheckmark } from 'react-icons/fc';
+import { GrClose } from 'react-icons/gr';
 import {
   ModalContainer,
-  ModalTitle,
+  CompareModalTitle,
   ModalProductName,
   ModalContent,
   ModalBody,
@@ -15,6 +17,8 @@ import axios from 'axios';
 export default function ComparisonModal({ toggleModal, product, mainProduct }) {
   const [features, setFeatures] = useState([]);
   const [isLoaded, setisLoading] = useState(false);
+
+  console.log(product)
 
   const handleServerRoutes = (url, id) => (
     axios({
@@ -82,18 +86,29 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
 
   if (isLoaded) {
     return (
-      <ModalContainer onClick={toggleModal}>
-        <ModalContent onClick={toggleModal}>
-          <ModalTitle>
+      <ModalContainer>
+        <ModalContent>
+          <CompareModalTitle>
             <p>COMPARING</p>
-          </ModalTitle>
+            <p
+              onClick={toggleModal}
+              style={{ cursor: 'pointer' }}
+            >
+              <GrClose />
+            </p>
+          </CompareModalTitle>
           <ModalBody>
             <table>
               <thead>
                 <tr>
-                  <ModalProductName>{mainProduct.name}</ModalProductName>
+                  <ModalProductName>
+                    {mainProduct.name}
+                  </ModalProductName>
+
                   <th width="300px"> </th>
-                  <ModalProductName>{product.name}</ModalProductName>
+                  <ModalProductName>
+                    {product.name}
+                  </ModalProductName>
                 </tr>
               </thead>
               <tbody>
