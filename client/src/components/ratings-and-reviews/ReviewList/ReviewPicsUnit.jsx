@@ -34,6 +34,10 @@ export default function ReviewPicsUnit({ src }) {
       borderRadius: '20px'
     };
 
+    const addDefaultSrc = (ev) => {
+      ev.target.src = 'https://http.cat/404';
+    }
+
   return (
     <span style={stylePic}>
       {!showPic ? null : (
@@ -57,6 +61,7 @@ export default function ReviewPicsUnit({ src }) {
       )}
       <img
         style={stylePic2}
+        onError={addDefaultSrc}
         src={src}
         alt=""
         onClick={handleShowPic}

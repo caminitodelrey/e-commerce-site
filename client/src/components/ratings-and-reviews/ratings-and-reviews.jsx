@@ -8,6 +8,7 @@ import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx';
 
 export default function RatingsReviews({ product, onClick }) {
   const [reviews, setReviews] = useState([]);
+  const [reviews2, setReviews2] =useState([]);
   const [metaData, setMetaData] = useState('');
 
   useEffect(() => {
@@ -15,6 +16,7 @@ export default function RatingsReviews({ product, onClick }) {
       `reviews?page=1&count=1000&sort=relevant&product_id=${product.id}`,
     ).then(({ data }) => {
       setReviews(data.results);
+      setReviews2(data.results);
     });
 
     getData(`reviews/meta?product_id=${product.id}`).then(({ data }) => {
@@ -38,6 +40,12 @@ export default function RatingsReviews({ product, onClick }) {
     });
   };
 
+  const starFilter = (e) => {
+    let starFilterReview = reviews2.filter((review) =>
+    review.rating == e);
+    setReviews(starFilterReview);
+  }
+
   const reviewCount = metaData.recommended || { true: 0, false: 0 };
 
   return (
@@ -49,7 +57,7 @@ export default function RatingsReviews({ product, onClick }) {
         }}
       >
         <div>
-          <RatingBreakDown metaData={metaData} />
+          <RatingBreakDown metaData={metaData} starFilter={starFilter}/>
         </div>
         <div>
           <ProductBreakDown metaData={metaData} />
@@ -63,7 +71,7 @@ export default function RatingsReviews({ product, onClick }) {
       >
         <div>
           <h4>
-            {`${Number(reviewCount.true) + Number(reviewCount.false)} reviews, sorted by`}
+            {`${Number(reviewCount.true || 0) + Number(reviewCount.false || 0)} reviews, sorted by`}
             <select onChange={handleDropDown}>
               <option value="0">Relevant</option>
               <option value="1">Helpful</option>
