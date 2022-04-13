@@ -1,7 +1,7 @@
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RemoveButton from './RemoveButton.jsx';
 
 import {
@@ -34,6 +34,10 @@ export default function WishlistButton({
     setIsInLocalStorage(true);
     setDisable(!disable);
   };
+
+  // useEffect(() => {
+  //   addToWishlist()
+  // }, [storedItems])
 
   switch (isInLocalStorage) {
     case true:

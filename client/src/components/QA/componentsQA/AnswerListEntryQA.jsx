@@ -67,7 +67,6 @@ export default function AnswerListEntryQA({
               src={pic}
               style={{
                 height: '150px',
-                borderRadius: '5px',
                 marginRight: '10px',
               }}
               alt={`${answer.answerer_name}'s data failed to load`}

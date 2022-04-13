@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
 import axios from 'axios';
+import { ProductCategory } from '../../theme/carouselStyle.js';
 
 export default function ({ product, onClick }) {
   const [styles, setStyles] = useState(
@@ -29,13 +30,13 @@ export default function ({ product, onClick }) {
       url: '/product/styles',
       params: {
         productId: product.id,
-      }
+      },
     })
-    .then((res) => {
-      setStyles(res.data.results);
-      selectStyle(res.data.results[0]);
-    })
-    .catch((err) => console.log('catch in product info'));
+      .then((res) => {
+        setStyles(res.data.results);
+        selectStyle(res.data.results[0]);
+      })
+      .catch((err) => console.log('catch in product info'));
   }, [product]);
 
   useEffect(() => {
@@ -50,13 +51,13 @@ export default function ({ product, onClick }) {
       if (!photo.thumbnail_url) {
         photo.thumbnail_url = 'image_not_found.png';
       }
-    })
+    });
     setPhotoList(selectedStyle.photos);
   }, [selectedStyle]);
 
   useEffect(() => {
     if (galleryType === 'default' && productDivRef) {
-      productDivRef.current.style.height = '800px';
+      // productDivRef.current.style.height = '800px';
     } else {
       productDivRef.current.style.height = 'auto';
     }
@@ -73,19 +74,22 @@ export default function ({ product, onClick }) {
   const renderDetails = () => {
     if (galleryType === 'default') {
       return (
-        <DetailsDiv>
+        <DetailsDiv id="ProductDetails">
           <p>Review</p>
-          <p>{product.category}</p>
-          <h1>{product.name}</h1>
+          <ProductCategory style={{margin:'0', fontSize:'.9em'}}>{product.category.toUpperCase()}</ProductCategory>
+          <h1 style={{marginBottom:'5px'}}>{product.name}</h1>
           <Selector
             productStyles={styles}
             currentStyle={selectedStyle}
             styleChange={styleChange}
           />
           <h2>{product.slogan}</h2>
-          <p>{product.description}</p>
+          <p style={{borderBottom: '2px solid rgba(169,169,169, .5)', paddingBottom: '10px', marginBottom:'0'}}>{product.description}</p>
           {product.features.map((obj) => (
-            <p key={JSON.stringify(obj)}>{`${obj.feature}: ${obj.value}`}</p>
+            <div key={JSON.stringify(obj)}>
+              <p style={{display:'inline-block', fontWeight:'900'}}>{obj.feature}:</p>
+              <p style={{paddingLeft:'5px', display:'inline-block'}}>{obj.value}</p>
+            </div>
           ))}
         </DetailsDiv>
       );
@@ -94,7 +98,7 @@ export default function ({ product, onClick }) {
   };
 
   return (
-    <ProductDiv ref={productDivRef} onClick={onClick}>
+    <ProductDiv id="Product Div" ref={productDivRef} onClick={onClick}>
       <ImageGallery
         photoList={photoList}
         changeGallery={changeGallery}
@@ -106,17 +110,20 @@ export default function ({ product, onClick }) {
 }
 
 const ProductDiv = styled.div`
-  padding: 10px;
-  max-width: 100%;
-  min-width:500px;
-  height:800px;
+  width: 100%;
   position: relative;
   margin: 20px auto;
-  display:flex;
-  flex-direction:row;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  height:100vh;
 `;
 
 const DetailsDiv = styled.div`
-  padding: 0 50px;
-  display:inline-block;
+  display: inline-block;
+  padding-left: 30px;
+  width: 40%;
+  vertical-align: middle;
+  height:100%;
+  overflow: 'auto';
 `;

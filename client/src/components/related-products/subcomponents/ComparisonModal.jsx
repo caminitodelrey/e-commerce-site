@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FcCheckmark } from 'react-icons/fc';
+import { GrClose } from 'react-icons/gr';
 import {
   ModalContainer,
-  ModalTitle,
+  CompareModalTitle,
   ModalProductName,
   ModalContent,
   ModalBody,
@@ -82,11 +83,17 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
 
   if (isLoaded) {
     return (
-      <ModalContainer onClick={toggleModal}>
-        <ModalContent onClick={toggleModal}>
-          <ModalTitle>
+      <ModalContainer>
+        <ModalContent>
+          <CompareModalTitle>
             <p>COMPARING</p>
-          </ModalTitle>
+            <p
+              onClick={toggleModal}
+              style={{ cursor: 'pointer' }}
+            >
+              <GrClose />
+            </p>
+          </CompareModalTitle>
           <ModalBody>
             <table>
               <thead>
@@ -101,13 +108,9 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
                   <TableRow key={feature.feature}>
                     <td>
                       {feature.main !== null ? (
-                        <div>
-                          &nbsp;
-                          &nbsp;
-                          <FcCheckmark />
-                          &nbsp;
-                          &nbsp;
-                          {feature.main}
+                        <div style={{ 'display': 'flex', 'flexDirection': 'row'}}>
+                          <div style={{ 'marginRight': '5px'}}><FcCheckmark /></div>
+                          <div>{feature.main}</div>
                         </div>
                       ) : (
                         ''
@@ -118,14 +121,10 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
                     </TableRowFeature>
                     <td>
                       {feature.related !== null ? (
-                        <div>
-                          &nbsp;
-                          &nbsp;
-                          <FcCheckmark />
-                          &nbsp;
-                          &nbsp;
-                          {feature.related}
-                        </div>
+                        <div style={{ 'display': 'flex', 'flexDirection': 'row'}}>
+                        <div style={{ 'marginRight': '5px'}}><FcCheckmark /></div>
+                        <div>{feature.related}</div>
+                      </div>
                       ) : (
                         ''
                       )}
