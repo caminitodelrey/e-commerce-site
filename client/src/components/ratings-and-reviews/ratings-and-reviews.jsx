@@ -3,12 +3,11 @@ import { getData } from '../../../helper.js';
 import ReviewList from './ReviewList/ReviewList.jsx';
 import RatingBreakDown from './ratingBreakDown/RatingBreakDown.jsx';
 import WriteReview from './writeReview/WriteReview.jsx';
-// import Sort from './sort/Sort.jsx';
 import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx';
 
 export default function RatingsReviews({ product, onClick }) {
   const [reviews, setReviews] = useState([]);
-  const [reviews2, setReviews2] =useState([]);
+  const [reviews2, setReviews2] = useState([]);
   const [metaData, setMetaData] = useState('');
 
   useEffect(() => {
@@ -41,37 +40,43 @@ export default function RatingsReviews({ product, onClick }) {
   };
 
   const starFilter = (e) => {
-    let starFilterReview = reviews2.filter((review) =>
-    review.rating == e);
+    let starFilterReview = reviews2.filter((review) => review.rating == e);
     setReviews(starFilterReview);
-  }
+  };
 
   const reviewCount = metaData.recommended || { true: 0, false: 0 };
 
   return (
-    <div className='ratings-reviews' onClick={onClick} style={{'padding': '50px'}}>
+    <div
+      className="ratings-reviews"
+      onClick={onClick}
+      style={{ padding: '50px' }}
+    >
       <div
         style={{
-        float: 'left',
-        width: '30%',
+          float: 'left',
+          width: '30%',
         }}
       >
         <div>
-          <RatingBreakDown metaData={metaData} starFilter={starFilter}/>
+          <RatingBreakDown metaData={metaData} starFilter={starFilter} />
         </div>
         <div>
           <ProductBreakDown metaData={metaData} />
         </div>
       </div>
 
-      <div style={{
-        float: 'left',
-        width: '70%',
-      }}
+      <div
+        style={{
+          float: 'left',
+          width: '70%',
+        }}
       >
         <div>
           <h4>
-            {`${Number(reviewCount.true || 0) + Number(reviewCount.false || 0)} reviews, sorted by`}
+            {`${
+              Number(reviewCount.true || 0) + Number(reviewCount.false || 0)
+            } reviews, sorted by`}
             <select onChange={handleDropDown}>
               <option value="0">Relevant</option>
               <option value="1">Helpful</option>
@@ -83,13 +88,14 @@ export default function RatingsReviews({ product, onClick }) {
           <ReviewList reviews={reviews} />
         </div>
         <div>
-          <WriteReview />
+          <WriteReview name={product.name} />
         </div>
       </div>
 
-      <div style={{
-        clear: 'both',
-      }}
+      <div
+        style={{
+          clear: 'both',
+        }}
       />
     </div>
   );

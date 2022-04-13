@@ -16,7 +16,9 @@ import {
   WriteReviewButtons,
 } from '../../../theme/buttonStyle.js';
 
-export default function WriteReview() {
+//import AiOutlineCloseCircle from 'react-icons/ai';
+
+export default function WriteReview({ name }) {
   const [writeReview, setWriteReview] = useState(false);
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBoday] = useState('');
@@ -86,19 +88,22 @@ export default function WriteReview() {
         }}
       >
       <ModalTitle>
-        <h1>Submit Your Review</h1>
+        <div style={{display: 'flex'}}>
+          <h1>Submit Your Review</h1>
+          <h2 onClick={HandleWriteReview} style={{marginLeft: '60%', cursor: 'pointer'}}>X</h2>
+        </div>
+        <h4>{`About the ${name}`}</h4>
       </ModalTitle>
       <ModalBody>
         <form style={{height: '400px'}}>
           <div style={{ margin: '10px 0'}}>
-            <p>Would you recommend this product?</p>
+            <p>Would you recommend this product?*</p>
             <WriteReviewButtons type="button">Yes</WriteReviewButtons>
             <WriteReviewButtons type="button">No</WriteReviewButtons>
           </div>
-
           <table>
             <RatingsTableRow>
-              <RatingsTD style={{ fontWeight: 'bold' }}>Rating</RatingsTD>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Overall Rating*</RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD>
@@ -112,7 +117,7 @@ export default function WriteReview() {
                 />
               </RatingsTD>
               <RatingsTD>
-                2 Star
+                2 Stars
                 <input
                   type="radio"
                   id="star2"
@@ -122,7 +127,7 @@ export default function WriteReview() {
                 />
               </RatingsTD>
               <RatingsTD>
-                3 Star
+                3 Stars
                 <input
                   type="radio"
                   id="star3"
@@ -132,7 +137,7 @@ export default function WriteReview() {
                 />
               </RatingsTD>
               <RatingsTD>
-                4 Star
+                4 Stars
                 <input
                   type="radio"
                   id="star1"
@@ -142,7 +147,7 @@ export default function WriteReview() {
                 />
               </RatingsTD>
               <RatingsTD>
-                5 Star
+                5 Stars
                 <input
                   type="radio"
                   id="star1"
@@ -153,7 +158,7 @@ export default function WriteReview() {
               </RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
-              <RatingsTD style={{ fontWeight: 'bold' }}>Fit</RatingsTD>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Fit*</RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD>
@@ -208,7 +213,7 @@ export default function WriteReview() {
               </RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
-              <RatingsTD style={{ fontWeight: 'bold' }}>Comfort</RatingsTD>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Comfort*</RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD>
@@ -263,7 +268,7 @@ export default function WriteReview() {
               </RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
-              <RatingsTD style={{ fontWeight: 'bold' }}>Length</RatingsTD>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Length*</RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD>
@@ -320,7 +325,7 @@ export default function WriteReview() {
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD style={{ fontWeight: 'bold' }}>
-                quality
+                quality*
               </RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
@@ -386,18 +391,20 @@ export default function WriteReview() {
                 value={reviewSummary}
                 name="reviewSummary"
                 onChange={summaryInputChange}
+                placeholder="Best purchase ever!"
               />
             </label>
           </div>
           <div style={{ margin: '10px 0'}}>
             <label htmlFor="reviewBody">
-              Review Body:
+              Review Body*:
               <br />
               <textarea
                 type="text"
                 value={reviewBody}
                 name="reviewBody"
                 onChange={reviewInputChange}
+                placeholder="Why did you like the product or not?"
               />
             </label>
           </div>
@@ -410,19 +417,20 @@ export default function WriteReview() {
 
           <table>
             <RatingsTableRow>
-              <td style={{ paddingRight: '10px' }}>Nickname:</td>
+              <td style={{ paddingRight: '10px' }}>Nickname*:</td>
               <td>
                 <input
                   type="text"
                   name="nickname"
                   value={nickName}
                   onChange={nickNameInputChange}
+                  placeholder="jackson11!"
                 />
               </td>
             </RatingsTableRow>
             <RatingsTableRow>
               <td style={{ paddingRight: '10px' }}>
-                Email:
+                Email*:
               </td>
               <td>
                 <input
@@ -430,6 +438,7 @@ export default function WriteReview() {
                   name="email"
                   value={email}
                   onChange={emailInputChange}
+                  placeholder="jackson11@email.com"
                 />
 
               </td>
