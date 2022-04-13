@@ -38,7 +38,6 @@ export const Carousels = styled.div`
 export const WishlistCarouselWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  /* min-width: 1100px; */
   overflow: visible;
 `;
 
@@ -50,7 +49,7 @@ export const WishlistAccordion = styled.div`
 export const WishlistContainer = styled.div`
   justify-content: space-evenly;
   width: 90%;
-  min-width: 810px;
+  min-width: 1066px;
 `;
 
 export const WishlistCardsContainer = styled.div`
@@ -64,7 +63,7 @@ export const WishlistCardsWrapper = styled.div`
 // Carousel Cards
 export const CardsWrapper = styled.div`
   position: relative;
-  min-width: 1100px;
+  min-width: 1352px;
 `;
 
 export const ContentWrapper = styled.div`
