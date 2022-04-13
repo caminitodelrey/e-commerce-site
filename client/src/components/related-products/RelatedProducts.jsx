@@ -71,7 +71,7 @@ const RelatedProducts = forwardRef(({ product, handleProductChange, onClick }, r
             setWishlistProducts={setWishlistProducts}
           />
 
-          <WishlistAccordion
+          {/* <WishlistAccordion
             ref={ref}
             onClick={() => setDisplayWishlist(!displayWishlist)}
           >
@@ -84,7 +84,15 @@ const RelatedProducts = forwardRef(({ product, handleProductChange, onClick }, r
             handleProductChange={handleProductChange}
             wishlistProducts={wishlistProducts}
             setWishlistProducts={setWishlistProducts}
-          />)}
+          />)} */}
+
+          <WishlistCarousel
+            currentProduct={product}
+            products={wishlistProducts}
+            handleProductChange={handleProductChange}
+            wishlistProducts={wishlistProducts}
+            setWishlistProducts={setWishlistProducts}
+          />
         </Carousels>
       )
   }

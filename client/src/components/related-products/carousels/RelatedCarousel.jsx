@@ -1,8 +1,4 @@
-import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
-import {
-  FaChevronLeft,
-  FaChevronRight,
-} from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import React, { useState, useEffect } from 'react';
 import ComparisonModal from '../subcomponents/ComparisonModal.jsx';
@@ -44,7 +40,7 @@ export default function RelatedCarousel({
   const { display, clickedProduct } = modal;
 
   // determines the initial number of product cards maxDisplayCountn on page
-  const maxDisplayCount = 4;
+  const maxDisplayCount = 5;
 
   // determines the total number of cards
   useEffect(() => {
@@ -81,11 +77,10 @@ export default function RelatedCarousel({
       <CarouselHeader>
         <h2>COMPLETE THE LOOK</h2>
         <ChevronsContainer>
-
-          { length <= maxDisplayCount
-            ? (<div></div>)
-            : currentIndex > 0 ? (
-              <Chevron className="left-arrow" onClick={prev}>
+          {length <= maxDisplayCount ? (
+            <div></div>
+          ) : currentIndex > 0 ? (
+            <Chevron className="left-arrow" onClick={prev}>
               <FaChevronLeft />
             </Chevron>
           ) : (
@@ -94,9 +89,9 @@ export default function RelatedCarousel({
             </DeactivatedChevron>
           )}
 
-          { length <= maxDisplayCount
-            ? (<div></div>)
-            : currentIndex < length - maxDisplayCount ? (
+          {length <= maxDisplayCount ? (
+            <div></div>
+          ) : currentIndex < length - maxDisplayCount ? (
             <Chevron className="right-arrow" onClick={next}>
               <FaChevronRight />
             </Chevron>
@@ -105,16 +100,17 @@ export default function RelatedCarousel({
               <FaChevronRight />
             </DeactivatedChevron>
           )}
-
         </ChevronsContainer>
       </CarouselHeader>
 
-      <CardsWrapper className='cards-wrapper'>
-        <ContentWrapper className='content-wrapper'>
+      <CardsWrapper className="cards-wrapper">
+        <ContentWrapper className="content-wrapper">
           <Content
-            className='content'
+            className="content"
             style={{
-              transform: `translateX(-${currentIndex * (100 / maxDisplayCount)}%)`,
+              transform: `translateX(-${
+                currentIndex * (100 / maxDisplayCount)
+              }%)`,
             }}
           >
             <RelatedCard

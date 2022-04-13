@@ -1,65 +1,8 @@
 import styled, { keyframes, css } from 'styled-components';
 import { FiHeart } from 'react-icons/fi';
 import { MdOutlineClose } from 'react-icons/md';
-import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
 // Carousel Chevrons
-const ScaledArrow = css`
-  width: 20px;
-  height: 20px;
-`;
-
-export const ScaledLeftArrow = styled(BsArrowLeft)`
-  ${ScaledArrow}
-`;
-
-export const ScaledRightArrow = styled(BsArrowRight)`
-  ${ScaledArrow}
-`;
-
-// const Chevron = styled.button`
-//   z-index: 1;
-//   position: absolute;
-//   top: 50%;
-//   width: 47px;
-//   height: 45px;
-//   transform: translate(-50%);
-//   border: 1px solid black;
-//   border-radius: 2px;
-//   background-color: white;
-//   cursor: pointer;
-// `;
-
-// export const LeftChevron = styled(Chevron)`
-//   /* Alternative => left: -80px; */
-//   top: 40%;
-//   right: -80px;
-// `;
-
-// export const RightChevron = styled(Chevron)`
-//   right: -80px;
-// `;
-
-// // Wishlist Carousel Chevrons
-// export const WishlistLeftChevron = styled(Chevron)`
-//   top: 40%;
-//   right: -80px;
-// `;
-
-// export const DeactivatedRightChevron = styled(Chevron)`
-//   right: -80px;
-//   color: rgba(128, 128, 128, 0.5);
-//   border: 2px solid rgba(128, 128, 128, 0.2);
-
-//   &:hover {
-//     cursor: default;
-//   }
-// `;
-
-// export const DeactivatedLeftChevron = styled(DeactivatedRightChevron)`
-//   top: 40%;
-// `;
-
 export const ChevronsContainer = styled.div`
   margin-right: 30px;
   display: flex;
@@ -88,26 +31,6 @@ export const DeactivatedChevron = styled(Chevron)`
   }
 `;
 
-// Wishlist Carousel Chevrons
-export const WishlistLeftChevron = styled(Chevron)`
-  top: 40%;
-  right: -80px;
-`;
-
-// export const DeactivatedRightChevron = styled(Chevron)`
-//   right: -80px;
-//   color: rgba(128, 128, 128, 0.5);
-//   border: 2px solid rgba(128, 128, 128, 0.2);
-
-//   &:hover {
-//     cursor: default;
-//   }
-// `;
-
-// export const DeactivatedLeftChevron = styled(DeactivatedRightChevron)`
-//   top: 40%;
-// `;
-
 // Thumbnail Carousel Chevrons
 export const SmLeftChevron = styled.button`
   z-index: 3;
@@ -129,17 +52,6 @@ export const SmRightChevron = styled(SmLeftChevron)`
 `;
 
 // Compare button
-export const CompareButton = styled.button`
-  border: none;
-  border-radius: 15px;
-  text-align: center;
-  text-decoration: none;
-  padding: 8px 15px;
-  color: rgba(11, 191, 125, .9);
-  background-color: #fff;
-  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
-`;
-
 export const CompareButtonContainer = styled.div`
   position: absolute;
   bottom: 85px;
@@ -152,6 +64,17 @@ export const CompareButtonContainer = styled.div`
     background-color: rgba(11, 191, 125, .9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
+`;
+
+export const CompareButton = styled.button`
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 15px;
+  color: rgba(11, 191, 125, .9);
+  background-color: #fff;
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 `;
 
 // Wishlist and Remove buttons container
@@ -218,7 +141,7 @@ export const DefaultCard = styled.div`
   height: 355px;
   min-width: 255px;
   align-items: center;
-  margin-right: 40px;
+  margin-right: 30px;
   border-radius: 10px;
   border: 3px solid rgba(128, 128, 128, 0.2);
 `;

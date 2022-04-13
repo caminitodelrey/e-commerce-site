@@ -61,7 +61,7 @@ export const WishlistCardsWrapper = styled.div`
   position: relative;
 `;
 
-// RelatedCarousel.jsx
+// Carousel Cards
 export const CardsWrapper = styled.div`
   position: relative;
   min-width: 1100px;
@@ -73,7 +73,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  display: flex; // important!
+  display: flex;
   transition: all 250ms linear;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -141,9 +141,7 @@ export const ThumbnailCardsWrapper = styled.div`
 `;
 
 export const ThumbnailContent = styled(Content)`
-  /* transition: 400ms linear; */
   transition: ease 1000ms;
-  // update this**
 `;
 
 export const ThumbnailCardContainer = styled.div`
