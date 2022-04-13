@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import { getData } from '../../../helper.js';
 import { Carousels, WishlistAccordion } from '../../theme/carouselStyle.js';
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
 import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 
-export default function RelatedProducts({ product, handleProductChange, onClick }) {
+const RelatedProducts = forwardRef(({ product, handleProductChange, onClick }, ref) => {
   const [status, setStatus] = useState('pending');
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -74,6 +74,7 @@ export default function RelatedProducts({ product, handleProductChange, onClick 
           />
 
           <WishlistAccordion
+            ref={ref}
             onClick={() => setDisplayWishlist(!displayWishlist)}
           >
             <h2>WISHLIST {!displayWishlist ? '—' :'+'}</h2>
@@ -89,5 +90,7 @@ export default function RelatedProducts({ product, handleProductChange, onClick 
         </Carousels>
       )
   }
-}
+});
+
+export default RelatedProducts;
 

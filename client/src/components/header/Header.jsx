@@ -70,7 +70,7 @@ export default function Header(props) {
           <ThirdInnerContainer>
             <HeaderSearch />
             <div>
-              <WishlistButton />
+              <WishlistButton onClick={props.executeScroll}/>
               <ShopButton />
             </div>
           </ThirdInnerContainer>
