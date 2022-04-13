@@ -9,11 +9,12 @@ import {
   TableRowFeature,
   RatingsTableRow,
   RatingsTD,
+  WriteReviewButtons
 } from '../../../theme/modalStyle.js';
 
 import {
-  ReviewButtons,
-  WriteReviewButtons,
+  ButtonDefaultLG,
+  ButtonDefaultSM,
 } from '../../../theme/buttonStyle.js';
 
 //import AiOutlineCloseCircle from 'react-icons/ai';
@@ -72,13 +73,12 @@ export default function WriteReview({ name }) {
   };
 
   const writeReview2 = !writeReview ? (
-    <ReviewButtons
-      type="button"
+    <ButtonDefaultLG
       onClick={HandleWriteReview}
       // style={{ float:"right", marginLeft: "40px"}}
     >
       Write Review
-    </ReviewButtons>
+    </ButtonDefaultLG>
   ) : (
     <ModalContainer>
       <ModalContent
@@ -98,8 +98,8 @@ export default function WriteReview({ name }) {
         <form style={{height: '400px'}}>
           <div style={{ margin: '10px 0'}}>
             <p>Would you recommend this product?*</p>
-            <WriteReviewButtons type="button">Yes</WriteReviewButtons>
-            <WriteReviewButtons type="button">No</WriteReviewButtons>
+            <WriteReviewButtons >Yes</WriteReviewButtons>
+            <WriteReviewButtons >No</WriteReviewButtons>
           </div>
           <table>
             <RatingsTableRow>
@@ -410,9 +410,9 @@ export default function WriteReview({ name }) {
           </div>
           <div style={{ margin: '10px 0'}}>
             <p>Upload photos (optional)</p>
-            <WriteReviewButtons type="button" onClick={(e) => e.preventDefault}>
+            <ButtonDefaultSM onClick={(e) => e.preventDefault}>
               Add photos
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           </div>
 
           <table>
@@ -445,10 +445,10 @@ export default function WriteReview({ name }) {
             </RatingsTableRow>
           </table>
 
-          <WriteReviewButtons type="button">Submit Review</WriteReviewButtons>
-          <WriteReviewButtons type="button" onClick={HandleWriteReview}>
+          <ButtonDefaultSM>Submit Review</ButtonDefaultSM>
+          <ButtonDefaultSM onClick={HandleWriteReview}>
             Close
-          </WriteReviewButtons>
+          </ButtonDefaultSM>
         </form>
         </ModalBody>
       </ModalContent>

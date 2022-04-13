@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AnswerListEntryQA from './AnswerListEntryQA.jsx';
 import AddAnswerQA from './AddAnswerQA.jsx';
 
 import {
-  WriteReviewButtons
+  ButtonDefaultSM,
+  ReportClicked,
 } from '../../../theme/buttonStyle.js';
 
 export default function ListEntryQA({
@@ -34,14 +36,29 @@ export default function ListEntryQA({
 
   const handleHelpfulnessClickQ = () => {
     if (!helpfulClickedQ) {
-      handleHelpfulQuestionSubmit(question.question_id);
+      // handleHelpfulQuestionSubmit(question.question_id);
+      axios({
+        method: 'put',
+        url: '/qa/q/helpful',
+        data: {
+          questionId: question.question_id,
+        }
+      }).then((response) => console.log(response))
+      .catch((err) => console.log('ERROR in List Entry QA Axios request to server (PUT to qa/q/helpful)'));
       setHelpfulClickedQ(true);
     }
   };
 
   const handleReportClickQ = () => {
     if (!reportClickedQ) {
-      handleReportQuestionSubmit(question.question_id);
+      axios({
+        method: 'put',
+        url: '/qa/q/report',
+        data: {
+          questionId: question.question_id,
+        }
+      }).then((response) => console.log(response))
+      .catch((err) => console.log('ERROR in List Entry QA Axios request to server (PUT to qa/q/report)'));
       setReportClickedQ(true);
     }
   };
@@ -49,7 +66,11 @@ export default function ListEntryQA({
   // const { question_body, question_helpfulness, answers } = question;
   // const x = question.question_body;
   return (
-    <div>
+    <div
+      style={{
+        borderBottom: '1px solid rgba(169, 169, 169, 0.5)'
+      }}
+    >
       <div>
         <div>
           <br/>
@@ -63,34 +84,34 @@ export default function ListEntryQA({
           >
             {helpfulClickedQ
               ? (
-                <WriteReviewButtons type="submit">
-                  {`Question Helpful! ${question.question_helpfulness + 1})`}
-                </WriteReviewButtons>
+                <ButtonDefaultSM type="submit">
+                  {`Question Helpful! (${question.question_helpfulness + 1})`}
+                </ButtonDefaultSM>
               )
               : (
-                <WriteReviewButtons
+                <ButtonDefaultSM
                   type="submit"
                   onClick={handleHelpfulnessClickQ}
                 >
                   {`Yes (${question.question_helpfulness})`}
-                </WriteReviewButtons>
+                </ButtonDefaultSM>
               )}
             {reportClickedQ
-              ? <WriteReviewButtons type="submit">Reported</WriteReviewButtons>
+              ? <ReportClicked>Reported</ReportClicked>
               : (
-                <WriteReviewButtons
+                <ButtonDefaultSM
                   type="submit"
                   onClick={handleReportClickQ}
                 >
                   Report
-                </WriteReviewButtons>
+                </ButtonDefaultSM>
               )}
-            <WriteReviewButtons
+            <ButtonDefaultSM
               type="submit"
               onClick={toggleAddAnswerModal}
             >
               Add Answer
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           </div>
         </div>
         <AddAnswerQA
@@ -119,21 +140,21 @@ export default function ListEntryQA({
       <div>
         {Object.values(question.answers).length > 2 ? (
           hiddenAnswers ? (
-            <WriteReviewButtons
+            <ButtonDefaultSM
               type="submit"
               onClick={handleMoreAnswers}
             >
               {`See More Answers (${
                 Object.values(question.answers).length - answersDisplayed
               })`}
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           ) : (
-            <WriteReviewButtons
+            <ButtonDefaultSM
               type="submit"
               onClick={handleMoreAnswers}
             >
               Collapse Answers
-            </WriteReviewButtons>
+            </ButtonDefaultSM>
           )
         ) : null}
       </div>

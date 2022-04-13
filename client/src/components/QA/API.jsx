@@ -1,6 +1,4 @@
-const axios = require('axios');
-const config = require('../config.js');
-
+// DELETE THIS FILE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function getData(endpoint) {
   return axios({
     method: 'get',
@@ -158,17 +156,4 @@ const handleClickTracker = (endpoint, element, widget, time) => {
     }
   }).then((res) => console.log(res))
     .catch((err) => { throw Error(err); });
-};
-
-export {
-  getData,
-  handleHelpfulQuestionSubmit,
-  handleHelpfulAnswerSubmit,
-  handleReportQuestionSubmit,
-  handleReportAnswerSubmit,
-  handleAddQuestionSubmit,
-  handleAddAnswerSubmit,
-  reviewsHelpful,
-  reviewsReport,
-  handleClickTracker,
 };

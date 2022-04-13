@@ -17,6 +17,49 @@ export const ScaledRightArrow = styled(BsArrowLeft)`
   ${ScaledArrow}
 `;
 
+// const Chevron = styled.button`
+//   z-index: 1;
+//   position: absolute;
+//   top: 50%;
+//   width: 47px;
+//   height: 45px;
+//   transform: translate(-50%);
+//   border: 1px solid black;
+//   border-radius: 2px;
+//   background-color: white;
+//   cursor: pointer;
+// `;
+
+// export const LeftChevron = styled(Chevron)`
+//   /* Alternative => left: -80px; */
+//   top: 40%;
+//   right: -80px;
+// `;
+
+// export const RightChevron = styled(Chevron)`
+//   right: -80px;
+// `;
+
+// // Wishlist Carousel Chevrons
+// export const WishlistLeftChevron = styled(Chevron)`
+//   top: 40%;
+//   right: -80px;
+// `;
+
+// export const DeactivatedRightChevron = styled(Chevron)`
+//   right: -80px;
+//   color: rgba(128, 128, 128, 0.5);
+//   border: 2px solid rgba(128, 128, 128, 0.2);
+
+//   &:hover {
+//     cursor: default;
+//   }
+// `;
+
+// export const DeactivatedLeftChevron = styled(DeactivatedRightChevron)`
+//   top: 40%;
+// `;
+
 const Chevron = styled.button`
   z-index: 1;
   position: absolute;
@@ -167,8 +210,8 @@ export const AnimatedWishlistButton = styled(FiHeart)`
 export const DefaultCard = styled.div`
   display: flex;
   flex-direction: column;
-  height: 360px;
-  min-width: 260px;
+  height: 355px;
+  min-width: 255px;
   align-items: center;
   margin-right: 40px;
   border-radius: 10px;
@@ -221,7 +264,7 @@ export const DefaultCardButton = styled.button`
 // `;
 
 // Ratings & Reviews
-export const ReviewButtons = styled.button`
+export const ButtonDefaultLG = styled.button`
   margin-right: 30px;
   height: 50px;
   width: 120px;
@@ -245,7 +288,7 @@ export const ReviewButtons = styled.button`
   }
 `;
 
-export const WriteReviewButtons = styled.button`
+export const ButtonDefaultSM = styled.button`
   border: none;
   border-radius: 15px;
   margin-right: 10px;
@@ -262,4 +305,16 @@ export const WriteReviewButtons = styled.button`
     background-color: rgba(11, 191, 125, .9);
     box-shadow: 0px 5px 10px rgba(46, 229, 157, 0.4);
   }
+`;
+
+export const ReportClicked = styled.button`
+  border: none;
+  border-radius: 15px;
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 15px;
+  color: red;
+  background-color: #fff;
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 `;

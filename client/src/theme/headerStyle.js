@@ -58,12 +58,12 @@ export const Search = styled.div`
       color: rgb(200, 200, 200);
     }
 
-    &:hover {
+    /* &:hover {
       background-color: rgb(229, 229, 229);
       ::placeholder {
         color: rgb(120, 120, 120);
       }
-    }
+    } */
   }
 `;
 
@@ -86,7 +86,6 @@ export const QASearch = styled(Search)`
     padding: 20px;
   }
 `;
-
 
 export const WishlistButton = styled(FiHeart)`
   color: rgb(25, 46, 64);

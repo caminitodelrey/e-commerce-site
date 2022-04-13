@@ -35,15 +35,6 @@ export default function WishlistButton({
     setDisable(!disable);
   };
 
-  // heart render
-  // initial state => AnimatedWishlistButton
-  // once clicked => FaHeart
-  // item removed from localStorage => AnimatedWishlistButton
-  // --> if change is detected in localStorage
-  // --> check if the items with hearts are still in the storage
-  // --> if not, change the heart to the default state
-
-
   switch (isInLocalStorage) {
     case true:
       return (
