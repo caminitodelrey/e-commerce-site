@@ -9,7 +9,6 @@ import {
   TableRowFeature,
   RatingsTableRow,
   RatingsTD,
-  WriteReviewButtons
 } from '../../../theme/modalStyle.js';
 
 import {
@@ -17,9 +16,7 @@ import {
   ButtonDefaultSM,
 } from '../../../theme/buttonStyle.js';
 
-//import AiOutlineCloseCircle from 'react-icons/ai';
-
-export default function WriteReview({ name }) {
+export default function WriteReview() {
   const [writeReview, setWriteReview] = useState(false);
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBoday] = useState('');
@@ -88,22 +85,19 @@ export default function WriteReview({ name }) {
         }}
       >
       <ModalTitle>
-        <div style={{display: 'flex'}}>
-          <h1>Submit Your Review</h1>
-          <h2 onClick={HandleWriteReview} style={{marginLeft: '60%', cursor: 'pointer'}}>X</h2>
-        </div>
-        <h4>{`About the ${name}`}</h4>
+        <h1>Submit Your Review</h1>
       </ModalTitle>
       <ModalBody>
         <form style={{height: '400px'}}>
           <div style={{ margin: '10px 0'}}>
-            <p>Would you recommend this product?*</p>
-            <WriteReviewButtons >Yes</WriteReviewButtons>
-            <WriteReviewButtons >No</WriteReviewButtons>
+            <p>Would you recommend this product?</p>
+            <ButtonDefaultSM>Yes</ButtonDefaultSM>
+            <ButtonDefaultSM>No</ButtonDefaultSM>
           </div>
+
           <table>
             <RatingsTableRow>
-              <RatingsTD style={{ fontWeight: 'bold' }}>Overall Rating*</RatingsTD>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Rating</RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD>
@@ -117,7 +111,7 @@ export default function WriteReview({ name }) {
                 />
               </RatingsTD>
               <RatingsTD>
-                2 Stars
+                2 Star
                 <input
                   type="radio"
                   id="star2"
@@ -127,7 +121,7 @@ export default function WriteReview({ name }) {
                 />
               </RatingsTD>
               <RatingsTD>
-                3 Stars
+                3 Star
                 <input
                   type="radio"
                   id="star3"
@@ -137,7 +131,7 @@ export default function WriteReview({ name }) {
                 />
               </RatingsTD>
               <RatingsTD>
-                4 Stars
+                4 Star
                 <input
                   type="radio"
                   id="star1"
@@ -147,7 +141,7 @@ export default function WriteReview({ name }) {
                 />
               </RatingsTD>
               <RatingsTD>
-                5 Stars
+                5 Star
                 <input
                   type="radio"
                   id="star1"
@@ -158,7 +152,7 @@ export default function WriteReview({ name }) {
               </RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
-              <RatingsTD style={{ fontWeight: 'bold' }}>Fit*</RatingsTD>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Fit</RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD>
@@ -213,7 +207,7 @@ export default function WriteReview({ name }) {
               </RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
-              <RatingsTD style={{ fontWeight: 'bold' }}>Comfort*</RatingsTD>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Comfort</RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD>
@@ -268,7 +262,7 @@ export default function WriteReview({ name }) {
               </RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
-              <RatingsTD style={{ fontWeight: 'bold' }}>Length*</RatingsTD>
+              <RatingsTD style={{ fontWeight: 'bold' }}>Length</RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD>
@@ -325,7 +319,7 @@ export default function WriteReview({ name }) {
             </RatingsTableRow>
             <RatingsTableRow>
               <RatingsTD style={{ fontWeight: 'bold' }}>
-                Quality*
+                quality
               </RatingsTD>
             </RatingsTableRow>
             <RatingsTableRow>
@@ -391,20 +385,18 @@ export default function WriteReview({ name }) {
                 value={reviewSummary}
                 name="reviewSummary"
                 onChange={summaryInputChange}
-                placeholder="Best purchase ever!"
               />
             </label>
           </div>
           <div style={{ margin: '10px 0'}}>
             <label htmlFor="reviewBody">
-              Review Body*:
+              Review Body:
               <br />
               <textarea
                 type="text"
                 value={reviewBody}
                 name="reviewBody"
                 onChange={reviewInputChange}
-                placeholder="Why did you like the product or not?"
               />
             </label>
           </div>
@@ -417,20 +409,19 @@ export default function WriteReview({ name }) {
 
           <table>
             <RatingsTableRow>
-              <td style={{ paddingRight: '10px' }}>Nickname*:</td>
+              <td style={{ paddingRight: '10px' }}>Nickname:</td>
               <td>
                 <input
                   type="text"
                   name="nickname"
                   value={nickName}
                   onChange={nickNameInputChange}
-                  placeholder="jackson11!"
                 />
               </td>
             </RatingsTableRow>
             <RatingsTableRow>
               <td style={{ paddingRight: '10px' }}>
-                Email*:
+                Email:
               </td>
               <td>
                 <input
@@ -438,7 +429,6 @@ export default function WriteReview({ name }) {
                   name="email"
                   value={email}
                   onChange={emailInputChange}
-                  placeholder="jackson11@email.com"
                 />
 
               </td>
@@ -457,3 +447,4 @@ export default function WriteReview({ name }) {
 
   return <div>{writeReview2}</div>;
 }
+
