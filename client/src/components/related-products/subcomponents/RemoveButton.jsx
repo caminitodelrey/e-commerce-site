@@ -9,18 +9,14 @@ export default function RemoveButton({
   setWishlistProducts,
 }) {
   const removeWishlist = () => () => {
-    // get the index of the clickedProduct from wishlistProducts
     const index = wishlistProducts.indexOf(clickedProduct);
-
     const newList = [
       ...wishlistProducts.slice(0, index),
       ...wishlistProducts.slice(index + 1),
     ];
-
     setWishlistProducts(newList);
     localStorage.setItem('wishlist', JSON.stringify(newList));
   };
-
   return (
     <div>
       <AnimateRemoveButton onClick={removeWishlist()} />

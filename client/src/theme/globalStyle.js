@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     color: rgb(50, 78, 89);
   }
 
-  & p, th, td, span, div {
+  & p, th, td, span, div, textarea {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
   }

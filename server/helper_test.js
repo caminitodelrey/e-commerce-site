@@ -10,15 +10,15 @@ const config = require('../config.js');
 //         .catch(err => console.error(err));
 
 function apiRequest(method, endpoint) {
-  console.log('method is ', method);
-  console.log('endpoint is ', endpoint);
+  // console.log('method is ', method);
+  // console.log('endpoint is ', endpoint);
   return axios({
     method: method,
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: endpoint,
     headers: {
       // 'Content-Type': 'application/json',
-      // 'Retry-After': 3600,
+      'Retry-After': 3600,
       Authorization: config.TOKEN,
     },
   });

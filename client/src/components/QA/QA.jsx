@@ -4,9 +4,7 @@ import axios from 'axios';
 import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
 import AddQuestionQA from './componentsQA/AddQuestionQA.jsx';
-import {
-  ButtonDefaultLG,
-} from '../../theme/buttonStyle.js';
+import { ButtonDefaultLG } from '../../theme/buttonStyle.js';
 import {
   // getData,
   handleHelpfulQuestionSubmit,
@@ -51,17 +49,17 @@ export default function QA({ product, onClick }) {
   // /qa/q/add
   // /qa/a/add
 
-  // getData(`qa/questions?product_id=${product.id}`)
   useEffect(() => {
     axios({
       method: 'get',
       url: '/qa',
       params: {
-        productId: product.id
-      }
-    }).then((res) => {
+        productId: product.id,
+      },
+    })
+      .then((res) => {
         setQuestions(
-          res.data.results.sort( // Refactor???????????????????????????
+          res.data.results.sort(
             (a, b) => b.question_helpfulness - a.question_helpfulness,
           ),
         );
@@ -70,7 +68,10 @@ export default function QA({ product, onClick }) {
             (a, b) => b.question_helpfulness - a.question_helpfulness,
           ),
         );
-      }).catch((err) => { throw Error(err); });
+      })
+      .catch((err) => {
+        throw Error(err);
+      });
   }, [product.id]);
 
   const handleMoreQuestions = () => {
@@ -98,12 +99,15 @@ export default function QA({ product, onClick }) {
   // const { product, questions } = this.state;
   // console.log(questions);
   return (
-    <div className="QA" onClick={onClick} style={{'padding': '50px'}}>
-      <h1>Questions & Answers</h1>
-      <SearchQA
-        product={product}
-        handleSearchFilter={handleSearchFilter}
-      />
+    <div className="QA" onClick={onClick} style={{ padding: '50px' }}>
+      <h1
+        style={{
+          marginBottom: '10px',
+        }}
+      >
+        Questions & Answers
+      </h1>
+      <SearchQA product={product} handleSearchFilter={handleSearchFilter} />
       <ListQA
         product={product}
         questions={questionsList}
@@ -115,21 +119,21 @@ export default function QA({ product, onClick }) {
         handleReportAnswerSubmit={handleReportAnswerSubmit}
       />
       <div className="BottomButtonsQA">
-          {questionsList.length - questionsDisplayed > 0 ? (
-            <ButtonDefaultLG
-              style={{ 'width': 'auto', 'display': 'inline-block' }}
-              type="submit"
-              onClick={handleMoreQuestions}
-            >
-              {`More Answered Questions (${
-                questionsList.length - questionsDisplayed
-              })`}
-            </ButtonDefaultLG>
-          ) : null}
-        <ButtonDefaultLG
+        {questionsList.length - questionsDisplayed > 0 ? (
+          <ButtonDefaultLG
+            style={{ width: 'auto', display: 'inline-block' }}
             type="submit"
-            onClick={toggleAddQuestionModal}
-            style={{ 'width': 'auto', 'display': 'inline-block' }}
+            onClick={handleMoreQuestions}
+          >
+            {`More Answered Questions (${
+              questionsList.length - questionsDisplayed
+            })`}
+          </ButtonDefaultLG>
+        ) : null}
+        <ButtonDefaultLG
+          type="submit"
+          onClick={toggleAddQuestionModal}
+          style={{ width: 'auto', display: 'inline-block' }}
         >
           Add a Question +
         </ButtonDefaultLG>

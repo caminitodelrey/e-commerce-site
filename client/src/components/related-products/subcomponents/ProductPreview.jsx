@@ -1,6 +1,6 @@
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import React, { useState, useEffect } from 'react';
-// import { getData } from '../../../../helper.js';
+import axios from 'axios';
 
 import {
   CardAssetImg,
@@ -50,19 +50,6 @@ export default function ProductPreview({ product, handleProductChange }) {
         console.log('err in ProductPreview');
       });
   };
-
-  // const getImages = () => {
-  //   getData(`products/${product.id}/styles`)
-  //     .then(({ data }) => {
-  //       data.results.forEach(({ photos }) => {
-  //         setThumbnails(photos);
-  //         setLength(photos.length);
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       throw Error(err);
-  //     });
-  // };
 
   const renderCarousel = () => {
     setIsHovering(!isHovering);

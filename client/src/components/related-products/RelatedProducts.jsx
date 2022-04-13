@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { getData } from '../../../helper.js';
 import { Carousels, WishlistAccordion } from '../../theme/carouselStyle.js';
 import RelatedCarousel from './carousels/RelatedCarousel.jsx';
 import WishlistCarousel from './carousels/WishlistCarousel.jsx';
@@ -10,34 +9,6 @@ export default function RelatedProducts({ product, handleProductChange, onClick 
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [displayWishlist, setDisplayWishlist] = useState(false);
-
-  // const getRelatedProducts = () => {
-  //   getData(`products/${product.id}/related`)
-  //     .then(({ data }) => {
-  //       data.map((id) => {
-  //         Promise.all([
-  //           getData(`products/${id}`),
-  //           getData(`products/${id}/styles`),
-  //           getData(`reviews/meta?product_id=${id}`),
-  //         ]).then((productArr) => {
-  //           setRelatedProducts((prevState) => [...prevState, {
-  //             id: productArr[0].data.id,
-  //             image: productArr[1].data.results[0].photos[0].url,
-  //             category: productArr[0].data.category,
-  //             name: productArr[0].data.name,
-  //             price: productArr[1].data.results[0].original_price,
-  //             sale: productArr[1].data.results[0].sale_price,
-  //             rating: productArr[2].data.ratings,
-  //           }]);
-  //           setStatus('resolved');
-  //         });
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       setStatus('rejected');
-  //       throw Error(err);
-  //     });
-  // };
 
   const handleServerRoutes = (url, id) => (
     axios({
@@ -57,7 +28,6 @@ export default function RelatedProducts({ product, handleProductChange, onClick 
         productId: product.id,
       }
     })
-    // get data of each related product
     .then(({ data }) => {
       data.map((id) => {
         Promise.all([
@@ -80,11 +50,9 @@ export default function RelatedProducts({ product, handleProductChange, onClick 
     })
     .catch((err) => {
       setStatus('rejected');
-      console.log('err on the client side');
+      console.log('err on the client side: Related Products');
     });
   };
-
-  console.log(getRelatedProducts())
 
   useEffect(() => {
     setRelatedProducts([]);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AnswerListEntryQA from './AnswerListEntryQA.jsx';
 import AddAnswerQA from './AddAnswerQA.jsx';
 
@@ -35,14 +36,29 @@ export default function ListEntryQA({
 
   const handleHelpfulnessClickQ = () => {
     if (!helpfulClickedQ) {
-      handleHelpfulQuestionSubmit(question.question_id);
+      // handleHelpfulQuestionSubmit(question.question_id);
+      axios({
+        method: 'put',
+        url: '/qa/q/helpful',
+        data: {
+          questionId: question.question_id,
+        }
+      }).then((response) => console.log(response))
+      .catch((err) => console.log('ERROR in List Entry QA Axios request to server (PUT to qa/q/helpful)'));
       setHelpfulClickedQ(true);
     }
   };
 
   const handleReportClickQ = () => {
     if (!reportClickedQ) {
-      handleReportQuestionSubmit(question.question_id);
+      axios({
+        method: 'put',
+        url: '/qa/q/report',
+        data: {
+          questionId: question.question_id,
+        }
+      }).then((response) => console.log(response))
+      .catch((err) => console.log('ERROR in List Entry QA Axios request to server (PUT to qa/q/report)'));
       setReportClickedQ(true);
     }
   };
@@ -50,7 +66,11 @@ export default function ListEntryQA({
   // const { question_body, question_helpfulness, answers } = question;
   // const x = question.question_body;
   return (
-    <div>
+    <div
+      style={{
+        borderBottom: '1px solid rgba(169, 169, 169, 0.5)'
+      }}
+    >
       <div>
         <div>
           <br/>

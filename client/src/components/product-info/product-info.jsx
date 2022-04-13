@@ -4,9 +4,7 @@ import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
 import axios from 'axios';
 
-
 export default function ({ product, onClick }) {
-  // const [product, setProductId] = useState(product);
   const [styles, setStyles] = useState(
     product.styles || [
       {
@@ -25,15 +23,6 @@ export default function ({ product, onClick }) {
   const [galleryType, setGalleryType] = useState('default');
   const productDivRef = useRef();
 
-  // useEffect(() => {
-  //   getData(`products/${product.id}/styles`)
-  //     .then((res) => {
-  //       setStyles(res.data.results);
-  //       selectStyle(res.data.results[0]);
-  //     })
-  //     .catch((err) => console.log('getData catch: ', err));
-  // }, [product]);
-
   useEffect(() => {
     axios({
       method: 'get',
@@ -46,7 +35,7 @@ export default function ({ product, onClick }) {
       setStyles(res.data.results);
       selectStyle(res.data.results[0]);
     })
-    .catch((err) => console.log('getData catch: ', err));
+    .catch((err) => console.log('catch in product info'));
   }, [product]);
 
   useEffect(() => {

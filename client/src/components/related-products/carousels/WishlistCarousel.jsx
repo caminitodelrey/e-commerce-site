@@ -33,10 +33,8 @@ export default function WishlistCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(products.length);
 
-  // determines the initial number of product cards shown on page
   const maxDisplayCount = 3;
 
-  // determines the total number of cards
   useEffect(() => {
     setLength(products.length);
   }, [products]);

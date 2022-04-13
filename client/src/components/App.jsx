@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { getData } from '../../helper.js';
+// import { getData } from '../../helper.js';
 
 import { GlobalStyle } from '../theme/globalStyle.js';
 
@@ -59,14 +59,10 @@ export default function App() {
   }
 
   useEffect(() => {
-    console.log(selectedProduct);
+    // console.log(selectedProduct);
   }, [selectedProduct]);
 
   return (
-    // <>
-    // <button onClick={() => handleProductChange(37328)}>Click Me!</button>
-    // </>
-
     <ClickTracker render={(recordClick) => (
       <div data-testid="main">
         <GlobalStyle />

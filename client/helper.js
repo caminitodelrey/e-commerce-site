@@ -1,8 +1,6 @@
 const axios = require('axios');
 const config = require('../config.js');
 
-// http://example.com/page?parameter=value&also=another
-
 function getData(endpoint) {
   return axios({
     method: 'get',

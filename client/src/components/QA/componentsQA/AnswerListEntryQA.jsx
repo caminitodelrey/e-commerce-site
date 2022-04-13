@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import moment from 'moment';
 
 import {
@@ -16,25 +17,46 @@ export default function AnswerListEntryQA({
 
   const handleHelpfulnessClickA = () => {
     if (!helpfulClickedA) {
-      handleHelpfulAnswerSubmit(answer.id);
+      // handleHelpfulAnswerSubmit(answer.id);
+      axios({
+        method: 'put',
+        url: '/qa/a/helpful',
+        data: {
+          answerId: answer.id,
+        }
+      }).then((response) => console.log(response))
+      .catch((err) => console.log('ERROR in AnswerListEntryQA Axios request to server (PUT to qa/a/helpful)'));
       setHelpfulClickedA(true);
     }
   };
 
   const handleReportClickA = () => {
     if (!reportClickedA) {
-      handleReportAnswerSubmit(answer.id);
+      // handleReportAnswerSubmit(answer.id);
+      axios({
+        method: 'put',
+        url: '/qa/a/report',
+        data: {
+          answerId: answer.id,
+        }
+      }).then((response) => console.log(response))
+      .catch((err) => console.log('ERROR in AnswerListEntryQA Axios request to server (PUT to qa/a/report)'));
       setReportClickedA(true);
     }
   };
 
   return (
-    <>
+    <div
+      style={{
+        marginLeft: '25px'
+      }}
+    >
       <br/>
-      <div className="answer-body">
+      <div
+        className="answer-body"
+      >
         <div style={{ "dispay": "flex" }}>
-          <strong>A:</strong>
-          {` ${answer.body}`}
+          <p><strong>A:</strong>{` ${answer.body}`}</p>
         </div>
       </div>
       {answer.photos.length ? (
@@ -54,8 +76,7 @@ export default function AnswerListEntryQA({
           ))}
         </div>
       ) : null}
-      <div className="bottom of answer"
-      >
+      <div className="bottom of answer">
         <span>{`by: ${answer.answerer_name}, `}</span>
         <span>{moment(answer.date).format('MMMM D, YYYY')}</span>
         {helpfulClickedA
@@ -83,6 +104,6 @@ export default function AnswerListEntryQA({
             </ButtonDefaultSM>
           )}
       </div>
-    </>
+    </div>
   );
 }
