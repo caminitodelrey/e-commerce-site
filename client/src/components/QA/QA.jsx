@@ -108,10 +108,10 @@ export default function QA({ product, onClick }) {
         questions={questionsList}
         questionsDisplayed={questionsDisplayed}
         // handleAddAnswerSubmit={handleAddAnswerSubmit}
-        handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
-        handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
-        handleReportQuestionSubmit={handleReportQuestionSubmit}
-        handleReportAnswerSubmit={handleReportAnswerSubmit}
+        // handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
+        // handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
+        // handleReportQuestionSubmit={handleReportQuestionSubmit}
+        // handleReportAnswerSubmit={handleReportAnswerSubmit}
       />
       <div className="BottomButtonsQA">
         {questionsList.length - questionsDisplayed > 0 ? (
@@ -136,7 +136,7 @@ export default function QA({ product, onClick }) {
           product={product}
           addQuestionModal={addQuestionModal}
           toggleAddQuestionModal={toggleAddQuestionModal}
-          handleAddQuestionSubmit={handleAddQuestionSubmit}
+          // handleAddQuestionSubmit={handleAddQuestionSubmit}
         />
       </div>
     </div>

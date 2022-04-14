@@ -18,7 +18,7 @@ export default function AddAnswerQA({
   question,
   addAnswerModal,
   toggleAddAnswerModal,
-  handleAddAnswerSubmit,
+  // handleAddAnswerSubmit,
   addPhotosModal,
   toggleAddPhotosModal,
 }) {
