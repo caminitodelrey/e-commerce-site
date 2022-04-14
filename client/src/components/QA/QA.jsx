@@ -107,7 +107,7 @@ export default function QA({ product, onClick }) {
         product={product}
         questions={questionsList}
         questionsDisplayed={questionsDisplayed}
-        handleAddAnswerSubmit={handleAddAnswerSubmit}
+        // handleAddAnswerSubmit={handleAddAnswerSubmit}
         handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
         handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
         handleReportQuestionSubmit={handleReportQuestionSubmit}
