@@ -5,7 +5,7 @@ export default function ListQA({
   product,
   questions,
   questionsDisplayed,
-  handleAddAnswerSubmit,
+  // handleAddAnswerSubmit,
   handleHelpfulQuestionSubmit,
   handleHelpfulAnswerSubmit,
   handleReportQuestionSubmit,
