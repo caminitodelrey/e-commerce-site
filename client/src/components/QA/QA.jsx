@@ -15,7 +15,7 @@ import {
   handleAddAnswerSubmit,
 } from '../../../helper.js';
 
-// export default function QA() { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
+// export default function QA({ onClick }) { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
 export default function QA({ product, onClick }) {
   const [questions, setQuestions] = useState([
     {
@@ -34,9 +34,15 @@ export default function QA({ product, onClick }) {
   const [filtered, setFiltered] = useState(false);
 
   // // for Testing only, also go to line 11. ~~~~~~~~~~~~~~~~~~~~~~~~
-  // const [product, setProduct] = useState({ id: 37494 }); // type product id here
+  // const [product, setProduct] = useState({ id: 38322 }); // type product id here
   // useEffect(() => {
-  //   getData(`/products/${product.id}`)
+  //   axios({
+  //     method: 'get',
+  //     url: '/qa',
+  //     params: {
+  //       productId: product.id,
+  //     },
+  //   })
   //     .then((res) => setProduct(res.data))
   //     .catch((err) => { throw Error(err); });
   // }, [product.id]);
@@ -96,10 +102,8 @@ export default function QA({ product, onClick }) {
 
   const questionsList = filtered ? filteredQuestions : questions;
 
-  // const { product, questions } = this.state;
-  // console.log(questions);
   return (
-    <div className="QA" onClick={onClick} style={{ margin: '100px 0'}}>
+    <div className="QA" onClick={onClick} style={{ margin: '100px 0' }}>
       <h1
         style={{
           marginBottom: '10px',
