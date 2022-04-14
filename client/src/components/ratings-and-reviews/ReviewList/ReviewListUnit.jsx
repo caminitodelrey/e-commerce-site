@@ -3,7 +3,7 @@ import { AiOutlineCheck } from 'react-icons/ai';
 import { TiStar, TiStarOutline } from 'react-icons/ti';
 import moment from 'moment';
 import ReviewPicsUnit from './ReviewPicsUnit';
-import { reviewsHelpful, reviewsReport } from '../../../../helper.js';
+//import { reviewsHelpful, reviewsReport } from '../../../../helper.js';
 import { ButtonDefaultSM } from '../../../theme/buttonStyle.js';
 import axios from 'axios';
 

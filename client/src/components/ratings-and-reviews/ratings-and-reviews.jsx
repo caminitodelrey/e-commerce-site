@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { getData } from '../../../helper.js';
 import ReviewList from './ReviewList/ReviewList.jsx';
 import RatingBreakDown from './ratingBreakDown/RatingBreakDown.jsx';
 import WriteReview from './writeReview/WriteReview.jsx';
 import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx';
 import axios from 'axios';
-import RatingsInteractive from './writeReview/RatingsInteractive';
 
 export default function RatingsReviews({ product, onClick }) {
   const [reviews, setReviews] = useState([]);
@@ -93,11 +91,6 @@ export default function RatingsReviews({ product, onClick }) {
           <ProductBreakDown metaData={metaData} />
         </div>
       </div>
-
-      {/* <div>
-        <RatingsInteractive />
-      </div> */}
-
       <div
         style={{
           float: 'left',

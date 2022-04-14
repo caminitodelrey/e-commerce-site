@@ -16,7 +16,7 @@ import {
   ButtonDefaultSM,
 } from '../../../theme/buttonStyle.js';
 
-//import RatingsInteractive from './RatingsInteractive.jsx';
+import RatingsInteractive from './RatingsInteractive.jsx';
 
 export default function WriteReview({ name }) {
   const [writeReview, setWriteReview] = useState(false);
@@ -77,8 +77,8 @@ export default function WriteReview({ name }) {
     setQuality(e.target.value);
   };
 
-  const handleRating = (e) => {
-    setStarRating(e.target.value);
+  const handleRating = (num) => {
+    setStarRating(num);
   };
 
   const handleSubmit = (e) => {
@@ -177,64 +177,9 @@ export default function WriteReview({ name }) {
                 </div>
               )}
             </div>
+            <RatingsInteractive handleRating={handleRating}/>
+            <br />
             <table>
-              <RatingsTableRow>
-                <RatingsTD style={{ fontWeight: 'bold' }}>
-                  Overall Rating*
-                </RatingsTD>
-              </RatingsTableRow>
-              <RatingsTableRow>
-                <RatingsTD>
-                  1 Star
-                  <input
-                    type="radio"
-                    id="star1"
-                    name="star"
-                    value="1"
-                    onClick={handleRating}
-                  />
-                </RatingsTD>
-                <RatingsTD>
-                  2 Star
-                  <input
-                    type="radio"
-                    id="star2"
-                    name="star"
-                    value="2"
-                    onClick={handleRating}
-                  />
-                </RatingsTD>
-                <RatingsTD>
-                  3 Star
-                  <input
-                    type="radio"
-                    id="star3"
-                    name="star"
-                    value="3"
-                    onClick={handleRating}
-                  />
-                </RatingsTD>
-                <RatingsTD>
-                  4 Star
-                  <input
-                    type="radio"
-                    id="star1"
-                    name="star"
-                    value="4"
-                    onClick={handleRating}
-                  />
-                </RatingsTD>
-                <RatingsTD>
-                  5 Star
-                  <input
-                    type="radio"
-                    id="star1"
-                    name="star"
-                    value="5"
-                    onClick={handleRating}
-                  />
-                </RatingsTD>
-              </RatingsTableRow>
               <RatingsTableRow>
                 <RatingsTD style={{ fontWeight: 'bold' }}>Fit*</RatingsTD>
               </RatingsTableRow>
