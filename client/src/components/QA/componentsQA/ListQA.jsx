@@ -6,10 +6,10 @@ export default function ListQA({
   questions,
   questionsDisplayed,
   // handleAddAnswerSubmit,
-  handleHelpfulQuestionSubmit,
-  handleHelpfulAnswerSubmit,
-  handleReportQuestionSubmit,
-  handleReportAnswerSubmit,
+  // handleHelpfulQuestionSubmit,
+  // handleHelpfulAnswerSubmit,
+  // handleReportQuestionSubmit,
+  // handleReportAnswerSubmit,
 }) {
   return (
     <div
@@ -26,11 +26,11 @@ export default function ListQA({
           key={q.question_id}
           product={product}
           question={q}
-          handleAddAnswerSubmit={handleAddAnswerSubmit}
-          handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
-          handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
-          handleReportQuestionSubmit={handleReportQuestionSubmit}
-          handleReportAnswerSubmit={handleReportAnswerSubmit}
+          // handleAddAnswerSubmit={handleAddAnswerSubmit}
+          // handleHelpfulQuestionSubmit={handleHelpfulQuestionSubmit}
+          // handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
+          // handleReportQuestionSubmit={handleReportQuestionSubmit}
+          // handleReportAnswerSubmit={handleReportAnswerSubmit}
         />
       ))}
     </div>
