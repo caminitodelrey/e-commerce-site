@@ -9,7 +9,7 @@ import {
   AnimatedWishlistButton,
 } from '../../../theme/buttonStyle.js';
 
-export default function Selector({ productStyles, currentStyle, styleChange }) {
+export default function Selector({ rating, productStyles, currentStyle, styleChange }) {
   const skuKeys = Object.keys(currentStyle.skus);
   const skuVals = Object.values(currentStyle.skus);
   const [currSize, setSize] = useState(-1);
