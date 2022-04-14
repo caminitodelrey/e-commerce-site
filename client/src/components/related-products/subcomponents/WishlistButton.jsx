@@ -15,50 +15,67 @@ export default function WishlistButton({
 }) {
   const [disable, setDisable] = useState(false);
   const [isInLocalStorage, setIsInLocalStorage] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
 
-  const addToWishlist = (selectedProduct) => () => {
-    const itemExists = storedItems.some(
-      (obj) => obj.id === selectedProduct.id,
-    );
-    if (!itemExists) {
-      setWishlistProducts([...wishlistProducts, selectedProduct]);
-      window.localStorage.setItem(
-        'wishlist',
-        JSON.stringify([...wishlistProducts, selectedProduct]),
+  const addToWishlist = () => {
+    if (!isLiked) {
+      if (storedItems) {
+        const itemExists = storedItems.some(
+          (obj) => obj.id === product.id,
+        );
+
+        if (!itemExists) {
+          setWishlistProducts([...wishlistProducts, product]);
+          window.localStorage.setItem(
+            'wishlist',
+            JSON.stringify([...wishlistProducts, product]),
+          );
+        }
+        setIsInLocalStorage(true);
+      } else {
+        setIsInLocalStorage(false);
+        setWishlistProducts([...wishlistProducts, product]);
+        window.localStorage.setItem(
+          'wishlist',
+          JSON.stringify([...wishlistProducts, product]),
+        );
+      }
+      setIsLiked(true);
+    } else {
+      const stringWishlistProducts = wishlistProducts.map((product) => {
+        return JSON.stringify(product);
+      });
+      const index = stringWishlistProducts.indexOf(
+        JSON.stringify(product),
       );
-      setIsInLocalStorage(true);
-      setDisable(!disable);
+
+      const newList = [
+        ...wishlistProducts.slice(0, index),
+        ...wishlistProducts.slice(index + 1),
+      ];
+      setWishlistProducts(newList);
+      localStorage.setItem('wishlist', JSON.stringify(newList));
+      setIsLiked(false);
     }
-    setIsInLocalStorage(true);
-    setDisable(!disable);
   };
 
-  // useEffect(() => {
-  //   addToWishlist()
-  // }, [storedItems])
+  const accentColor = 'rgb(11,191,125)';
 
-  switch (isInLocalStorage) {
-    case true:
-      return (
-        <div
-          onClick={addToWishlist(product)}
-          role="button"
-          disabled={disable}
-        >
-          <FaHeart />
-        </div>
-      )
-    case false:
-      return (
-        <div
-          onClick={addToWishlist(product)}
-          role="button"
-          disabled={disable}
-        >
-          <AnimatedWishlistButton />
-        </div>
-      )
+  if (!isLiked) {
+    return (
+      <AnimatedWishlistButton
+        style={{ height: '100%', width: 'auto', strokeWidth: '1px', fill: "rgba(255,255,255,0)" }}
+        onClick={() => addToWishlist()}
+      />
+    );
   }
+  return (
+    <FiHeart
+      onClick={() => addToWishlist()}
+      style={{ height: '100%', width: 'auto', strokeWidth: '1px', fill: accentColor, stroke: accentColor }}
+    />
+  );
+
 };

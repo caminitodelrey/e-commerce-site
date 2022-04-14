@@ -13,6 +13,8 @@ import ClickTracker from './ClickTracker.jsx';
 // an example with sale price --> id: 37325
 export default function App() {
   const wishlistRef = useRef(null);
+  const [theme, setTheme] = useState('light');
+  const [wishlistProducts, setWishlistProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState({
     "id": 37327,
     "campus": "hr-rfe",
@@ -52,7 +54,7 @@ export default function App() {
 
   return (
     <ClickTracker render={(recordClick) => (
-      <div data-testid="main">
+      <div data-testid="main" >
         <GlobalStyle />
         <Header
           onClick={(event) => recordClick(event, 'Header')}
@@ -61,11 +63,15 @@ export default function App() {
         <WidgetsContainer>
           <ProductInfo
             onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct}
+            wishlistProducts={wishlistProducts}
+            setWishlistProducts={setWishlistProducts}
           />
           <RelatedProducts
             ref={wishlistRef}
             product={selectedProduct}
             handleProductChange={handleProductChange}
+            wishlistProducts={wishlistProducts}
+            setWishlistProducts={setWishlistProducts}
             onClick={(event) => recordClick(event, 'Related Products')}
           />
           <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>

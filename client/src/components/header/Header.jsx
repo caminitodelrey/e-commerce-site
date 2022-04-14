@@ -40,7 +40,7 @@ export default function Header(props) {
   const banners = [banner1, banner2];
   const delay = 2500;
   const [index, setIndex] = useState(0);
-  // const [hasWishlist, setHasWishlist] = useState(false);
+  const [hasWishlist, setHasWishlist] = useState(false);
 
   const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
   // if (storedItems.length > 0) {

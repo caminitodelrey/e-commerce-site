@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Ratings from '../../StarBreakDown/Ratings.jsx';
 import { FcCheckmark } from 'react-icons/fc';
 import { GrClose } from 'react-icons/gr';
 import {
@@ -16,6 +17,8 @@ import axios from 'axios';
 export default function ComparisonModal({ toggleModal, product, mainProduct }) {
   const [features, setFeatures] = useState([]);
   const [isLoaded, setisLoading] = useState(false);
+
+  console.log(product)
 
   const handleServerRoutes = (url, id) => (
     axios({
@@ -98,9 +101,14 @@ export default function ComparisonModal({ toggleModal, product, mainProduct }) {
             <table>
               <thead>
                 <tr>
-                  <ModalProductName>{mainProduct.name}</ModalProductName>
+                  <ModalProductName>
+                    {mainProduct.name}
+                  </ModalProductName>
+
                   <th width="300px"> </th>
-                  <ModalProductName>{product.name}</ModalProductName>
+                  <ModalProductName>
+                    {product.name}
+                  </ModalProductName>
                 </tr>
               </thead>
               <tbody>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Ratings from '../subcomponents/Ratings.jsx';
+import Ratings from '../../StarBreakDown/Ratings.jsx';
 import ProductPreview from '../subcomponents/ProductPreview.jsx';
 import WishlistButton from '../subcomponents/WishlistButton.jsx';
 
