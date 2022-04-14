@@ -1,5 +1,7 @@
 import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { FiHeart } from 'react-icons/fi';
+// import { FaHeart } from 'react-icons/fa';
+
 import {
   TiSocialFacebook,
   TiSocialPinterest,
@@ -12,6 +14,8 @@ import {
   ButtonDefaultLG,
   AnimatedWishlistButton,
 } from '../../../theme/buttonStyle.js';
+
+const accentColor = 'rgba(11,191,125,0.9)';
 
 export default function Selector({
   product,
@@ -169,8 +173,10 @@ export default function Selector({
     } else {
       const stringWishlistProducts = wishlistProducts.map((product) => {
         return JSON.stringify(product);
-      })
-      const index = stringWishlistProducts.indexOf(JSON.stringify(currentProduct));
+      });
+      const index = stringWishlistProducts.indexOf(
+        JSON.stringify(currentProduct),
+      );
 
       const newList = [
         ...wishlistProducts.slice(0, index),
@@ -178,7 +184,25 @@ export default function Selector({
       ];
       setWishlistProducts(newList);
       localStorage.setItem('wishlist', JSON.stringify(newList));
+      setIsLiked(false);
     }
+  };
+
+  const renderHeart = () => {
+    if (!isLiked) {
+      return (
+        <AnimatedWishlistButton
+          style={{ height: '100%', width: 'auto', strokeWidth: '1px', fill: "rgba(255,255,255,0)" }}
+          onClick={() => addToWishList()}
+        />
+      );
+    }
+    return (
+      <FiHeart
+        onClick={() => addToWishList()}
+        style={{ height: '100%', width: 'auto', strokeWidth: '1px', fill: accentColor, stroke: accentColor }}
+      />
+    );
   };
 
   return (
@@ -231,12 +255,7 @@ export default function Selector({
       </StyleDropdowns>
 
       <ButtonWrapper id="ButtonWrapper">
-        <StyledWishListButton>
-          <AnimatedWishlistButton
-            style={{ height: '100%', width: 'auto', strokeWidth: '1px' }}
-            onClick={() => addToWishList()}
-          />
-        </StyledWishListButton>
+        <StyledWishListButton>{renderHeart()}</StyledWishListButton>
         <ButtonDefaultLG
           style={{
             verticalAlign: 'middle',

@@ -15,7 +15,6 @@ export default function WishlistButton({
 }) {
   const [disable, setDisable] = useState(false);
   const [isInLocalStorage, setIsInLocalStorage] = useState(false);
-
   const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
 
   const addToWishlist = (selectedProduct) => () => {
