@@ -9,7 +9,7 @@ import {
   AnimatedWishlistButton,
 } from '../../../theme/buttonStyle.js';
 
-export default function Selector({ rating, productStyles, currentStyle, styleChange }) {
+export default function Selector({product, rating, productStyles, currentStyle, styleChange, wishlistProducts, setWishlistProducts }) {
   const skuKeys = Object.keys(currentStyle.skus);
   const skuVals = Object.values(currentStyle.skus);
   const [currSize, setSize] = useState(-1);
@@ -112,6 +112,19 @@ export default function Selector({ rating, productStyles, currentStyle, styleCha
     );
   };
 
+  const addToWishList = () => {
+    const wishProduct = {
+      id: product.id,
+      image: currentStyle.photos[0].url,
+      category: product.category,
+      name: product.name,
+      price: currentStyle.original_price,
+      sale: currentStyle.sale_price,
+      rating: rating,
+    };
+    console.log(wishProduct)
+  }
+
   return (
     <div>
       <div style={{ fontSize: '1.5em', color: 'rgb(120,120,120)' }}>
@@ -164,7 +177,10 @@ export default function Selector({ rating, productStyles, currentStyle, styleCha
 
       <ButtonWrapper id="ButtonWrapper">
         <StyledWishListButton>
-          <AnimatedWishlistButton style={{height:'100%', width:'auto', strokeWidth:'1px'}} />
+          <AnimatedWishlistButton
+          style={{height:'100%', width:'auto', strokeWidth:'1px'}}
+          onClick={() => addToWishList()}
+          />
         </StyledWishListButton>
         <ButtonDefaultLG
           style={{ verticalAlign: 'middle', display:'inline-block', fontSize: '1.2em', width: 'auto', height: 'auto' }}

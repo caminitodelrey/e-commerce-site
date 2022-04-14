@@ -93,10 +93,13 @@ export default function ({ product, onClick, wishlistProducts, setWishlistProduc
           <ProductCategory style={{margin:'0', fontSize:'.9em'}}>{product.category.toUpperCase()}</ProductCategory>
           <h1 style={{marginBottom:'5px'}}>{product.name}</h1>
           <Selector
+            product={product}
             productStyles={styles}
             currentStyle={selectedStyle}
             styleChange={styleChange}
             rating={rating}
+            wishlistProducts={wishlistProducts}
+            setWishlistProducts={setWishlistProducts}
           />
           <h2>{product.slogan}</h2>
           <p style={{borderBottom: '2px solid rgba(169,169,169, .5)', paddingBottom: '10px', marginBottom:'0'}}>{product.description}</p>
