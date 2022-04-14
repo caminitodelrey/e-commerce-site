@@ -19,6 +19,7 @@ export default function Selector({product, rating, productStyles, currentStyle, 
     value: 'Select a size before adding to cart',
     display: null,
   });
+  const [isLiked, setIsLiked] = useState(false);
 
   const checkError = () => {
     if (currSize === -1) {
@@ -112,8 +113,10 @@ export default function Selector({product, rating, productStyles, currentStyle, 
     );
   };
 
+  const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
+
   const addToWishList = () => {
-    const wishProduct = {
+    const currentProduct = {
       id: product.id,
       image: currentStyle.photos[0].url,
       category: product.category,
@@ -122,7 +125,35 @@ export default function Selector({product, rating, productStyles, currentStyle, 
       sale: currentStyle.sale_price,
       rating: rating,
     };
-    console.log(wishProduct)
+
+    // check if it's in localStorage
+    const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
+
+    if (storedItems) {
+      // if localStorage exists...
+      // check if it's in localStorage
+      const itemExists = storedItems.some(
+        (obj) => obj.id === currentProduct.id,
+      );
+      if (!itemExists) {
+        // add the product to the localStorage
+        setWishlistProducts([...wishlistProducts, currentProduct]);
+        // then add it to localStorage
+        window.localStorage.setItem(
+          'wishlist',
+          JSON.stringify([...wishlistProducts, currentProduct]),
+        );
+      }
+    } else {
+      // update the state in App
+      setWishlistProducts([...wishlistProducts, currentProduct]);
+      // then add it to localStorage
+      window.localStorage.setItem(
+        'wishlist',
+        JSON.stringify([...wishlistProducts, currentProduct]),
+      );
+    }
+    setIsLiked(true);
   }
 
   return (
