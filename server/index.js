@@ -1,9 +1,10 @@
+const app = express();
 const path = require('path');
 const morgan = require('morgan');
-const  {apiRequest}  = require('./helper_test.js');
 const express = require('express');
-const app = express();
 const axios = require('axios');
+const  {apiRequest}  = require('./helper_test.js');
+require('dotenv').config();
 
 // MIDDLEWARE
 app.use(express.static(__dirname + '/../client/dist'));
@@ -11,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 // GET uses query or params
 // POST and PUT uses body
