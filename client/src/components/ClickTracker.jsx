@@ -1,5 +1,4 @@
 import React from 'react';
-import { handleClickTracker } from '../../helper.js';
 
 export default function ClickTracker(props) {
 
