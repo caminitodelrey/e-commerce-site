@@ -12,10 +12,6 @@ export default function ListEntryQA({
   product,
   question,
   handleAddAnswerSubmit,
-  handleHelpfulQuestionSubmit,
-  handleHelpfulAnswerSubmit,
-  handleReportQuestionSubmit,
-  handleReportAnswerSubmit,
 }) {
   const [answersDisplayed, setAnswersDisplayed] = useState(2);
   const [hiddenAnswers, setHiddenAnswers] = useState(true);
@@ -36,7 +32,6 @@ export default function ListEntryQA({
 
   const handleHelpfulnessClickQ = () => {
     if (!helpfulClickedQ) {
-      // handleHelpfulQuestionSubmit(question.question_id);
       axios({
         method: 'put',
         url: '/qa/q/helpful',
@@ -63,8 +58,6 @@ export default function ListEntryQA({
     }
   };
 
-  // const { question_body, question_helpfulness, answers } = question;
-  // const x = question.question_body;
   return (
     <div
       style={{
@@ -85,7 +78,7 @@ export default function ListEntryQA({
             {helpfulClickedQ
               ? (
                 <ButtonDefaultSM type="submit">
-                  {`Question Helpful! (${question.question_helpfulness + 1})`}
+                  {`Thank you for your feedback! (${question.question_helpfulness + 1})`}
                 </ButtonDefaultSM>
               )
               : (
@@ -93,11 +86,11 @@ export default function ListEntryQA({
                   type="submit"
                   onClick={handleHelpfulnessClickQ}
                 >
-                  {`Yes (${question.question_helpfulness})`}
+                  {`Question Helpful (${question.question_helpfulness})`}
                 </ButtonDefaultSM>
               )}
             {reportClickedQ
-              ? <ReportClicked>Reported</ReportClicked>
+              ? <ReportClicked>Question Reported</ReportClicked>
               : (
                 <ButtonDefaultSM
                   type="submit"
@@ -131,8 +124,6 @@ export default function ListEntryQA({
                 product={product}
                 question={question}
                 answer={a}
-                handleHelpfulAnswerSubmit={handleHelpfulAnswerSubmit}
-                handleReportAnswerSubmit={handleReportAnswerSubmit}
               />
             ))}
         </div>

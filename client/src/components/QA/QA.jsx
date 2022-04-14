@@ -15,8 +15,8 @@ import {
   handleAddAnswerSubmit,
 } from '../../../helper.js';
 
-// export default function QA() { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
-export default function QA({ product, onClick }) {
+export default function QA({ onClick }) { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
+// export default function QA({ product, onClick }) {
   const [questions, setQuestions] = useState([
     {
       question_id: 573538,
@@ -33,13 +33,19 @@ export default function QA({ product, onClick }) {
   const [addQuestionModal, setAddQuestionModal] = useState(false);
   const [filtered, setFiltered] = useState(false);
 
-  // // for Testing only, also go to line 11. ~~~~~~~~~~~~~~~~~~~~~~~~
-  // const [product, setProduct] = useState({ id: 37494 }); // type product id here
-  // useEffect(() => {
-  //   getData(`/products/${product.id}`)
-  //     .then((res) => setProduct(res.data))
-  //     .catch((err) => { throw Error(err); });
-  // }, [product.id]);
+  // for Testing only, also go to line 11. ~~~~~~~~~~~~~~~~~~~~~~~~
+  const [product, setProduct] = useState({ id: 38322 }); // type product id here
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: '/qa',
+      params: {
+        productId: product.id,
+      },
+    })
+      .then((res) => setProduct(res.data))
+      .catch((err) => { throw Error(err); });
+  }, [product.id]);
 
   // /qa
   // /qa/q/report
@@ -99,7 +105,7 @@ export default function QA({ product, onClick }) {
   // const { product, questions } = this.state;
   // console.log(questions);
   return (
-    <div className="QA" onClick={onClick} style={{ margin: '100px 0'}}>
+    <div className="QA" onClick={onClick} style={{ margin: '100px 0' }}>
       <h1
         style={{
           marginBottom: '10px',

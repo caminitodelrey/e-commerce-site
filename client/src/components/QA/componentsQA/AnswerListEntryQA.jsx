@@ -9,15 +9,12 @@ import {
 
 export default function AnswerListEntryQA({
   answer,
-  handleHelpfulAnswerSubmit,
-  handleReportAnswerSubmit,
 }) {
   const [helpfulClickedA, setHelpfulClickedA] = useState(false);
   const [reportClickedA, setReportClickedA] = useState(false);
 
   const handleHelpfulnessClickA = () => {
     if (!helpfulClickedA) {
-      // handleHelpfulAnswerSubmit(answer.id);
       axios({
         method: 'put',
         url: '/qa/a/helpful',
@@ -32,7 +29,6 @@ export default function AnswerListEntryQA({
 
   const handleReportClickA = () => {
     if (!reportClickedA) {
-      // handleReportAnswerSubmit(answer.id);
       axios({
         method: 'put',
         url: '/qa/a/report',
@@ -63,7 +59,7 @@ export default function AnswerListEntryQA({
         <div className="pictures">
           {answer.photos.map((pic) => (
             <img
-              key={pic}
+              key={Math.random()}
               src={pic}
               style={{
                 height: '150px',
@@ -81,7 +77,7 @@ export default function AnswerListEntryQA({
         {helpfulClickedA
           ? (
             <ButtonDefaultSM type="submit">
-              {`Answer Helpful! (${answer.helpfulness + 1})`}
+              {`Thank you for your feedback! (${answer.helpfulness + 1})`}
             </ButtonDefaultSM>
           )
           : (
@@ -89,11 +85,11 @@ export default function AnswerListEntryQA({
               type="submit"
               onClick={handleHelpfulnessClickA}
             >
-              {`Yes (${answer.helpfulness})`}
+              {`Helpful (${answer.helpfulness})`}
             </ButtonDefaultSM>
           )}
         {reportClickedA
-          ? <ReportClicked>Reported</ReportClicked>
+          ? <ReportClicked>Answer Reported</ReportClicked>
           : (
             <ButtonDefaultSM
               type="submit"

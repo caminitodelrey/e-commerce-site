@@ -222,7 +222,7 @@ export const ReportClicked = styled.button`
   text-align: center;
   text-decoration: none;
   padding: 8px 15px;
-  color: red;
-  background-color: #fff;
+  color: #fff;
+  background-color: red;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 `;
