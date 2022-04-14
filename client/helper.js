@@ -1,5 +1,6 @@
 const axios = require('axios');
-const config = require('../config.js');
+// const config = require('../config.js');
+require('dotenv').config();
 
 function getData(endpoint) {
   return axios({
@@ -9,7 +10,7 @@ function getData(endpoint) {
     headers: {
       'Content-Type': 'application/json',
       'Retry-After': 3600,
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
   });
 }
@@ -24,7 +25,7 @@ const handleHelpfulQuestionSubmit = (qId) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: `/qa/questions/${qId}/helpful`,
     headers: {
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
@@ -40,7 +41,7 @@ const handleHelpfulAnswerSubmit = (aId) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: `/qa/answers/${aId}/helpful`,
     headers: {
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
@@ -58,7 +59,7 @@ const handleReportQuestionSubmit = (questionId) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: `/qa/answers/${questionId}/report`,
     headers: {
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
@@ -76,7 +77,7 @@ const handleReportAnswerSubmit = (answerId) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: `/qa/answers/${answerId}/report`,
     headers: {
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
   }).then((res) => console.log(res)) // refactor???
     .catch((err) => { throw Error(err); });
@@ -92,7 +93,7 @@ const handleAddQuestionSubmit = (data) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: '/qa/questions/',
     headers: {
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
     data,
   }).then((res) => console.log(res)) // refactor???
@@ -109,7 +110,7 @@ const handleAddAnswerSubmit = (data, qId) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: `/qa/questions/${qId}/answers`,
     headers: {
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
     data,
   }).then((res) => console.log(res)) // refactor???
@@ -123,7 +124,7 @@ const reviewsHelpful = (endpoint) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: endpoint,
     headers: {
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
   }).then((res) => console.log('Reveiw helpful submitted!'))
     .catch((err) => { throw Error(err); });
@@ -135,7 +136,7 @@ const reviewsReport = (endpoint) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: endpoint,
     headers: {
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
   }).then((res) => console.log('Reveiw report submitted!'))
     .catch((err) => { throw Error(err); });
@@ -149,7 +150,7 @@ const handleClickTracker = (endpoint, element, widget, time) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
     url: endpoint,
     headers: {
-      Authorization: config.TOKEN,
+      Authorization: process.env.TOKEN,
     },
     data: {
       "element": element,
