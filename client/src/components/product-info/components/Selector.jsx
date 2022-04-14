@@ -142,28 +142,21 @@ export default function Selector({
       rating: rating,
     };
     if (!isLiked) {
-      // check if it's in localStorage
       const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
 
       if (storedItems) {
-        // if localStorage exists...
-        // check if it's in localStorage
         const itemExists = storedItems.some(
           (obj) => obj.id === currentProduct.id,
         );
         if (!itemExists) {
-          // add the product to the localStorage
           setWishlistProducts([...wishlistProducts, currentProduct]);
-          // then add it to localStorage
           window.localStorage.setItem(
             'wishlist',
             JSON.stringify([...wishlistProducts, currentProduct]),
           );
         }
       } else {
-        // update the state in App
         setWishlistProducts([...wishlistProducts, currentProduct]);
-        // then add it to localStorage
         window.localStorage.setItem(
           'wishlist',
           JSON.stringify([...wishlistProducts, currentProduct]),
