@@ -84,19 +84,19 @@ export default function WriteReview({ name }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (starRating == 0) {
-      return alert('Please enter rating');
+      return alert('Please enter rating.');
     } else if (fit == 0) {
-      return alert('Please enter fit');
+      return alert('Please enter fit.');
     } else if (comfort == 0) {
-      return alert('Please enter comfort');
+      return alert('Please enter comfort.');
     } else if (length == 0) {
-      return alert('Please enter length');
+      return alert('Please enter length.');
     } else if (quality == 0) {
-      return alert('Please enter quality');
+      return alert('Please enter quality.');
     } else if (reviewBody == '') {
-      return alert('Please enter review body');
+      return alert('Please add a review.');
     } else if (nickName == '') {
-      return alert('Please enter username');
+      return alert('Please enter a Nickname.');
     } else if (
       !email.match(
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
@@ -105,7 +105,7 @@ export default function WriteReview({ name }) {
       email.length === 0
     ) {
       return alert(
-        "Please make sure email is in proper format ex. 'jackma@taobao.com",
+        "Please make sure email is in proper format. ex: 'jackma@taobao.com'",
       );
     } else {
       setWriteReview(!writeReview);

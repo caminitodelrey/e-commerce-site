@@ -4,8 +4,9 @@ import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
 import axios from 'axios';
 import { ProductCategory } from '../../theme/carouselStyle.js';
+import Ratings from '../StarBreakDown/Ratings.jsx';
 
-export default function ({ product, onClick }) {
+export default function ({ product, onClick, wishlistProducts, setWishlistProducts }) {
   const [styles, setStyles] = useState(
     product.styles || [
       {
@@ -23,6 +24,7 @@ export default function ({ product, onClick }) {
   const [photoList, setPhotoList] = useState(selectedStyle.photos);
   const [galleryType, setGalleryType] = useState('default');
   const productDivRef = useRef();
+  const [rating, setRating] = useState({ 1: '0' });
 
   useEffect(() => {
     axios({
@@ -35,6 +37,18 @@ export default function ({ product, onClick }) {
       .then((res) => {
         setStyles(res.data.results);
         selectStyle(res.data.results[0]);
+      })
+      .then(() => (
+        axios({
+          method: 'get',
+          url: '/product/reviews',
+          params: {
+            productId: product.id
+          }
+        })
+      ))
+      .then((res) => {
+        setRating(res.data.ratings);
       })
       .catch((err) => console.log('catch in product info'));
   }, [product]);
@@ -75,13 +89,17 @@ export default function ({ product, onClick }) {
     if (galleryType === 'default') {
       return (
         <DetailsDiv id="ProductDetails">
-          <p>Review</p>
+           <Ratings rating={rating} />
           <ProductCategory style={{margin:'0', fontSize:'.9em'}}>{product.category.toUpperCase()}</ProductCategory>
           <h1 style={{marginBottom:'5px'}}>{product.name}</h1>
           <Selector
+            product={product}
             productStyles={styles}
             currentStyle={selectedStyle}
             styleChange={styleChange}
+            rating={rating}
+            wishlistProducts={wishlistProducts}
+            setWishlistProducts={setWishlistProducts}
           />
           <h2>{product.slogan}</h2>
           <p style={{borderBottom: '2px solid rgba(169,169,169, .5)', paddingBottom: '10px', marginBottom:'0'}}>{product.description}</p>

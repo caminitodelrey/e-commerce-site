@@ -1,5 +1,5 @@
 import React from 'react';
-import StarBreakDown from '../../StarBreakDown/StarBreakDown.jsx';
+import StarBreakDown from './StarBreakDown.jsx';
 
 export default function Ratings({ rating }) {
 

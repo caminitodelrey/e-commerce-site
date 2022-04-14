@@ -19,7 +19,6 @@ export default function SearchQA({ product, handleSearchFilter }) {
   };
 
   return (
-    // <QASearch>
     <div>
       <input
         id="search"
@@ -41,6 +40,5 @@ export default function SearchQA({ product, handleSearchFilter }) {
       />
       <i role="presentation" />
     </div>
-    // </QASearch>
   );
 }

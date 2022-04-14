@@ -1,6 +1,12 @@
 import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { FiHeart } from 'react-icons/fi';
-import { TiSocialFacebook, TiSocialPinterest, TiSocialTwitter } from 'react-icons/ti';
+// import { FaHeart } from 'react-icons/fa';
+
+import {
+  TiSocialFacebook,
+  TiSocialPinterest,
+  TiSocialTwitter,
+} from 'react-icons/ti';
 
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
@@ -9,7 +15,17 @@ import {
   AnimatedWishlistButton,
 } from '../../../theme/buttonStyle.js';
 
-export default function Selector({ productStyles, currentStyle, styleChange }) {
+const accentColor = 'rgba(11,191,125,0.9)';
+
+export default function Selector({
+  product,
+  rating,
+  productStyles,
+  currentStyle,
+  styleChange,
+  wishlistProducts,
+  setWishlistProducts,
+}) {
   const skuKeys = Object.keys(currentStyle.skus);
   const skuVals = Object.values(currentStyle.skus);
   const [currSize, setSize] = useState(-1);
@@ -19,6 +35,7 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
     value: 'Select a size before adding to cart',
     display: null,
   });
+  const [isLiked, setIsLiked] = useState(false);
 
   const checkError = () => {
     if (currSize === -1) {
@@ -112,6 +129,75 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
     );
   };
 
+  const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
+
+  const addToWishList = () => {
+    const currentProduct = {
+      id: product.id,
+      image: currentStyle.photos[0].url,
+      category: product.category,
+      name: product.name,
+      price: currentStyle.original_price,
+      sale: currentStyle.sale_price,
+      rating: rating,
+    };
+    if (!isLiked) {
+      const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
+
+      if (storedItems) {
+        const itemExists = storedItems.some(
+          (obj) => obj.id === currentProduct.id,
+        );
+        if (!itemExists) {
+          setWishlistProducts([...wishlistProducts, currentProduct]);
+          window.localStorage.setItem(
+            'wishlist',
+            JSON.stringify([...wishlistProducts, currentProduct]),
+          );
+        }
+      } else {
+        setWishlistProducts([...wishlistProducts, currentProduct]);
+        window.localStorage.setItem(
+          'wishlist',
+          JSON.stringify([...wishlistProducts, currentProduct]),
+        );
+      }
+      setIsLiked(true);
+    } else {
+      const stringWishlistProducts = wishlistProducts.map((product) => {
+        return JSON.stringify(product);
+      });
+      const index = stringWishlistProducts.indexOf(
+        JSON.stringify(currentProduct),
+      );
+
+      const newList = [
+        ...wishlistProducts.slice(0, index),
+        ...wishlistProducts.slice(index + 1),
+      ];
+      setWishlistProducts(newList);
+      localStorage.setItem('wishlist', JSON.stringify(newList));
+      setIsLiked(false);
+    }
+  };
+
+  const renderHeart = () => {
+    if (!isLiked) {
+      return (
+        <AnimatedWishlistButton
+          style={{ height: '100%', width: 'auto', strokeWidth: '1px', fill: "rgba(255,255,255,0)" }}
+          onClick={() => addToWishList()}
+        />
+      );
+    }
+    return (
+      <FiHeart
+        onClick={() => addToWishList()}
+        style={{ height: '100%', width: 'auto', strokeWidth: '1px', fill: accentColor, stroke: accentColor }}
+      />
+    );
+  };
+
   return (
     <div>
       <div style={{ fontSize: '1.5em', color: 'rgb(120,120,120)' }}>
@@ -161,13 +247,16 @@ export default function Selector({ productStyles, currentStyle, styleChange }) {
         {renderQuantity()}
       </StyleDropdowns>
 
-
       <ButtonWrapper id="ButtonWrapper">
-        <StyledWishListButton>
-          <AnimatedWishlistButton style={{height:'100%', width:'auto', strokeWidth:'1px'}} />
-        </StyledWishListButton>
+        <StyledWishListButton>{renderHeart()}</StyledWishListButton>
         <ButtonDefaultLG
-          style={{ verticalAlign: 'middle', display:'inline-block', fontSize: '1.2em', width: 'auto', height: 'auto' }}
+          style={{
+            verticalAlign: 'middle',
+            display: 'inline-block',
+            fontSize: '1.2em',
+            width: 'auto',
+            height: 'auto',
+          }}
           onClick={() => checkError()}
         >
           {' '}
@@ -198,7 +287,7 @@ const StyleDropdowns = styled.div`
   > * {
     background-color: white;
     height: 30px;
-    border-radius:20px;
+    border-radius: 20px;
     padding: 0 5px;
     margin: 0 5px;
   }
@@ -238,9 +327,9 @@ const StyledWishListButton = styled.div`
   display: inline-block;
   width: 50px;
   height: 50px;
-  text-align:center;
+  text-align: center;
   border-radius: 50%;
-  vertical-align:middle;
+  vertical-align: middle;
 `;
 
 const StyleSocialButtons = css`
@@ -275,8 +364,7 @@ const StyledTwitter = styled(TiSocialTwitter)`
 const ButtonWrapper = styled.div`
   margin-top: 10px;
   > * {
-    vertical-align:middle;
+    vertical-align: middle;
     margin: 0 5px;
-
   }
 `;

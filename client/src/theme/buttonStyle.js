@@ -175,7 +175,8 @@ export const DefaultCardButton = styled.button`
 export const ButtonDefaultLG = styled.button`
   margin-right: 30px;
   height: 50px;
-  width: 120px;
+  width: auto;
+  min-width: 120px;
   text-align: center;
   text-decoration: none;
   padding: 15px;
@@ -222,7 +223,19 @@ export const ReportClicked = styled.button`
   text-align: center;
   text-decoration: none;
   padding: 8px 15px;
-  color: red;
+  color: #fff;
+  background-color: red;
+  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
+`;
+
+export const HelpfulClicked = styled.button`
+  border: none;
+  border-radius: 15px;
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 15px;
+  color: rgba(11, 191, 125, 0.9);
   background-color: #fff;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 `;
