@@ -175,7 +175,8 @@ export const DefaultCardButton = styled.button`
 export const ButtonDefaultLG = styled.button`
   margin-right: 30px;
   height: 50px;
-  width: 120px;
+  width: auto;
+  min-width: 120px;
   text-align: center;
   text-decoration: none;
   padding: 15px;

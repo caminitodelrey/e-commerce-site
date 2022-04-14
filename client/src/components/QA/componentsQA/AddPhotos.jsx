@@ -16,12 +16,14 @@ export default function AddPhotosQA({
   product,
   addPhotosModal,
   setPhoto1,
-  // toggleAddQuestionModal,
-  // handleAddQuestionSubmit,
 }) {
   const [photosURL, setPhotosURL] = useState([]);
   const [showAddPhoto, setShowAddPhoto] = useState(false);
   const [photo1Url, setPhoto1Url] = useState('');
+  const [photo2Url, setPhoto2Url] = useState('');
+  const [photo3Url, setPhoto3Url] = useState('');
+  const [photo4Url, setPhoto4Url] = useState('');
+  const [photo5Url, setPhoto5Url] = useState('');
 
   // const handleAddQuestionClick = (data) => {
   //   handleAddQuestionSubmit(data);
@@ -31,8 +33,8 @@ export default function AddPhotosQA({
   //   toggleAddQuestionModal();
   // };
   const handleUploadPhotos = () => {
-    setShowAddPhoto(!showAddPhoto);
     setPhoto1(photo1Url);
+    setShowAddPhoto(!showAddPhoto);
   }
 
   const handlePhoto1UrlChange = (e) => {

@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const express = require('express');
 const app = express();
 const axios = require('axios');
-const { apiRequest } = require('./helper_test.js');
+const { apiRequest, apiPostRequest } = require('./helper_test.js');
 require('dotenv').config();
 
 // MIDDLEWARE
@@ -45,56 +45,54 @@ app.get('/product/related', (req, res) => {
 // ----------------------------------------Q&A Routes-----------------------------
 // GET - Question and Answer data for a single product
 app.get('/qa', (req, res) => {
-  const endpoint = `qa/questions?product_id=${req.query.productId}`;
-  apiRequest('get', endpoint)
+  apiRequest('get', `qa/questions?product_id=${req.query.productId}`)
     .then(({ data }) => res.status(200).send(data))
     .catch((err) => console.log('ERROR in QA - GET q+a data'));
 });
 
-// POST - Add question - NOT WORKING
+// POST - Add question - STILL WORKING ON THIS
 app.post('/qa/q/add', (req, res) => {
-  const endpoint = `/qa/questions/`;
-  apiRequest('put', endpoint)
+  // data: {
+  //   firstName: 'Fred',
+  //   lastName: 'Flintstone'
+  // }
+  console.log(req.body);
+  apiPostRequest('dataObj', '/qa/questions/')
     .then(({ data }) => res.status(201).send(data))
     .catch((err) => console.log('ERROR in QA - POST: add question'));
 });
 
 // PUT - Mark Question as Helpful
 app.put('/qa/q/helpful', (req, res) => {
-  const endpoint = `/qa/questions/${req.body.questionId}/helpful`;
-  apiRequest('put', endpoint)
+  apiRequest('put', `/qa/questions/${req.body.questionId}/helpful`)
     .then(({ data }) => res.status(200).send(data))
     .catch((err) => console.log('ERROR in QA - PUT: question helpful'));
 });
 
 // PUT - Report Question
 app.put('/qa/q/report', (req, res) => {
-  const endpoint = `/qa/questions/${req.body.questionId}/report`;
-  apiRequest('put', endpoint)
+  apiRequest('put', `/qa/questions/${req.body.questionId}/report`)
     .then(({ data }) => res.status(200).send(data))
     .catch((err) => console.log('ERROR in QA - PUT: report question'));
 });
 
 // POST - Add an answer - NOT WORKING
 app.post('/qa/a/add', (req, res) => {
-  const endpoint = `/qa/questions/${req.body.questionId}/answers`;
-  apiRequest('put', endpoint)
+  apiRequest('put', `/qa/questions/${req.body.questionId}/answers`)
     .then(({ data }) => res.status(201).send(data))
     .catch((err) => console.log('ERROR in QA - POST: add an answer'));
 });
 
 // PUT - Mark Answer as Helpful
 app.put('/qa/a/helpful', (req, res) => {
-  const endpoint = `/qa/answers/${req.body.answerId}/helpful`;
-  apiRequest('put', endpoint)
+  apiRequest('put', `/qa/answers/${req.body.answerId}/helpful`)
     .then(({ data }) => res.status(200).send(data))
     .catch((err) => console.log('ERROR in QA - PUT: answer helpful'));
 });
 
 // PUT - Report Answer
 app.put('/qa/a/report', (req, res) => {
-  const endpoint = `/qa/answers/${req.body.answerId}/report`;
-  apiRequest('put', endpoint)
+  apiRequest('put', `/qa/answers/${req.body.answerId}/report`)
     .then(({ data }) => res.status(200).send(data))
     .catch((err) => console.log('ERROR in QA - PUT: report answer'));
 });

@@ -86,7 +86,7 @@ export default function AnswerListEntryQA({
               type="submit"
               onClick={handleHelpfulnessClickA}
             >
-              {`Helpful (${answer.helpfulness})`}
+              {`Answer Helpful (${answer.helpfulness})`}
             </ButtonDefaultSM>
           )}
         {reportClickedA

@@ -25,8 +25,7 @@ export default function AddAnswerQA({
   const [answerBody, setAnswerBody] = useState('');
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
-  // const [photos, setPhotos] = useState([]);
-
+  const [photos, setPhotos] = useState([]);
   const [photo1, setPhoto1] = useState('');
 
   const handleBodyChange = (e) => {
@@ -39,6 +38,12 @@ export default function AddAnswerQA({
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+
+  const addDefaultSrc = (ev) => {
+    ev.target.src =
+      'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png';
+    alert('You must enter the following: a valid image url');
   };
 
   // const toggleAddPhotosModal = () => {
@@ -68,6 +73,7 @@ export default function AddAnswerQA({
       setAnswerBody('');
       setNickName('');
       setEmail('');
+      setPhoto1('');
       toggleAddAnswerModal();
     }
   };
@@ -156,6 +162,7 @@ export default function AddAnswerQA({
                 <br />
                 {photo1 == '' ? null : (
                   <img
+                    onError={addDefaultSrc}
                     style={{
                       height: '50px',
                       width: 'auto',

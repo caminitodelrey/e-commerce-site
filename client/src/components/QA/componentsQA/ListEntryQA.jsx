@@ -43,9 +43,14 @@ export default function ListEntryQA({
         url: '/qa/q/helpful',
         data: {
           questionId: question.question_id,
-        }
-      }).then((response) => console.log(response))
-      .catch((err) => console.log('ERROR in List Entry QA Axios request to server (PUT to qa/q/helpful)'));
+        },
+      })
+        .then((response) => console.log(response))
+        .catch((err) =>
+          console.log(
+            'ERROR in List Entry QA Axios request to server (PUT to qa/q/helpful)',
+          ),
+        );
       setHelpfulClickedQ(true);
     }
   };
@@ -57,9 +62,14 @@ export default function ListEntryQA({
         url: '/qa/q/report',
         data: {
           questionId: question.question_id,
-        }
-      }).then((response) => console.log(response))
-      .catch((err) => console.log('ERROR in List Entry QA Axios request to server (PUT to qa/q/report)'));
+        },
+      })
+        .then((response) => console.log(response))
+        .catch((err) =>
+          console.log(
+            'ERROR in List Entry QA Axios request to server (PUT to qa/q/report)',
+          ),
+        );
       setReportClickedQ(true);
     }
   };
@@ -67,98 +77,80 @@ export default function ListEntryQA({
   return (
     <div
       style={{
-        borderBottom: '1px solid rgba(169, 169, 169, 0.5)'
+        borderBottom: '1px solid rgba(169, 169, 169, 0.5)',
+        minHeight: '50px',
+        paddingTop: '10px',
       }}
     >
-      <div>
-        <div>
-          <br/>
-          <div
-            style={{ "float": "left", "paddingBottom": '10px' }}
-          >
-            <strong>{`Q: ${question.question_body}`}</strong>
-          </div>
-          <div
-            style={{ "float": "right" , "paddingBottom": '10px'}}
-          >
-            {helpfulClickedQ
-              ? (
-                <HelpfulClicked type="submit">
-                  {`Thank you for your feedback! (${question.question_helpfulness + 1})`}
-                </HelpfulClicked>
-              )
-              : (
-                <ButtonDefaultSM
-                  type="submit"
-                  onClick={handleHelpfulnessClickQ}
-                >
-                  {`Question Helpful (${question.question_helpfulness})`}
-                </ButtonDefaultSM>
-              )}
-            {reportClickedQ
-              ? <ReportClicked>Question Reported</ReportClicked>
-              : (
-                <ButtonDefaultSM
-                  type="submit"
-                  onClick={handleReportClickQ}
-                >
-                  Report
-                </ButtonDefaultSM>
-              )}
-            <ButtonDefaultSM
-              type="submit"
-              onClick={toggleAddAnswerModal}
-            >
-              Add Answer
-            </ButtonDefaultSM>
-          </div>
-        </div>
-        <AddAnswerQA
-          product={product}
-          question={question}
-          addAnswerModal={addAnswerModal}
-          toggleAddAnswerModal={toggleAddAnswerModal}
-          handleAddAnswerSubmit={handleAddAnswerSubmit}
-          addPhotosModal={addPhotosModal}
-          toggleAddPhotosModal={toggleAddPhotosModal}
-        />
-        <div>
-          {Object.values(question.answers)
-            .sort((a, b) => b.helpfulness - a.helpfulness)
-            .slice(0, answersDisplayed)
-            .map((a) => (
-              <AnswerListEntryQA
-                key={a.id}
-                product={product}
-                question={question}
-                answer={a}
-              />
-            ))}
-        </div>
+      <div style={{ float: 'left', paddingBottom: '10px' }}>
+        <strong>{`Q: ${question.question_body}`}</strong>
       </div>
-      <div>
-        {Object.values(question.answers).length > 2 ? (
-          hiddenAnswers ? (
-            <ButtonDefaultSM
-              type="submit"
-              onClick={handleMoreAnswers}
-              style={{ margin: '10px 0' }}
-            >
-              {`See More Answers (${
-                Object.values(question.answers).length - answersDisplayed
-              })`}
-            </ButtonDefaultSM>
-          ) : (
-            <ButtonDefaultSM
-              type="submit"
-              onClick={handleMoreAnswers}
-              style={{ margin: '10px 0' }}
-            >
-              Collapse Answers
-            </ButtonDefaultSM>
-          )
-        ) : null}
+      <div style={{ float: 'right', paddingBottom: '10px' }}>
+        {helpfulClickedQ ? (
+          <HelpfulClicked type="submit">
+            {`Thank you for your feedback! (${
+              question.question_helpfulness + 1
+            })`}
+          </HelpfulClicked>
+        ) : (
+          <ButtonDefaultSM type="submit" onClick={handleHelpfulnessClickQ}>
+            {`Question Helpful (${question.question_helpfulness})`}
+          </ButtonDefaultSM>
+        )}
+        {reportClickedQ ? (
+          <ReportClicked>Question Reported</ReportClicked>
+        ) : (
+          <ButtonDefaultSM type="submit" onClick={handleReportClickQ}>
+            Report
+          </ButtonDefaultSM>
+        )}
+        <ButtonDefaultSM type="submit" onClick={toggleAddAnswerModal}>
+          Add Answer
+        </ButtonDefaultSM>
       </div>
+      <AddAnswerQA
+        product={product}
+        question={question}
+        addAnswerModal={addAnswerModal}
+        toggleAddAnswerModal={toggleAddAnswerModal}
+        handleAddAnswerSubmit={handleAddAnswerSubmit}
+        addPhotosModal={addPhotosModal}
+        toggleAddPhotosModal={toggleAddPhotosModal}
+      />
+
+      {Object.values(question.answers)
+        .sort((a, b) => b.helpfulness - a.helpfulness)
+        .slice(0, answersDisplayed)
+        .map((a) => (
+          <AnswerListEntryQA
+            key={a.id}
+            product={product}
+            question={question}
+            answer={a}
+          />
+        ))}
+
+      {Object.values(question.answers).length > 2 ? (
+        hiddenAnswers ? (
+          <ButtonDefaultSM
+            type="submit"
+            onClick={handleMoreAnswers}
+            style={{ margin: '10px 0' }}
+          >
+            {`See More Answers (${
+              Object.values(question.answers).length - answersDisplayed
+            })`}
+          </ButtonDefaultSM>
+        ) : (
+          <ButtonDefaultSM
+            type="submit"
+            onClick={handleMoreAnswers}
+            style={{ margin: '10px 0' }}
+          >
+            Collapse Answers
+          </ButtonDefaultSM>
+        )
+      ) : null}
     </div>
   );
 }
