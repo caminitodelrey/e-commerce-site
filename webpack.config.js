@@ -22,6 +22,11 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    fallback: {
+      "fs": false,
+      "os": false,
+      "path": false
+    },
   },
   devtool: 'inline-source-map',
   mode: 'development',
