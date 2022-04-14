@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PercentageBar from './PercentageBar';
 import StarBreakDown from './StarBreakDown';
 
-export default function RatingBreakDown({ metaData }) {
+export default function RatingBreakDown({ metaData, starFilter }) {
+
+
   const metaData2 = metaData || {
     product_id: '37312',
     ratings: {
@@ -38,23 +40,26 @@ export default function RatingBreakDown({ metaData }) {
   const findRatings = (
     Object.values(metaData2.ratings)
       .map((num, i) => Number(num) * Number(i + 1))
-      .reduce((pre, cur) => pre + cur)
-    / (Number(metaData2.recommended.false) + Number(metaData2.recommended.true))
+      .reduce((pre, cur) => pre + cur) /
+    (Number(metaData2.recommended.false || 0) +
+      Number(metaData2.recommended.true || 0))
   ).toFixed(1);
 
   const recommendPercentage = Math.floor(
-    (Number(metaData2.recommended.true)
-      / (Number(metaData2.recommended.false)
-        + Number(metaData2.recommended.true)))
-      * 100,
+    (Number(metaData2.recommended.true || 0) /
+      (Number(metaData2.recommended.false || 0) +
+        Number(metaData2.recommended.true || 0))) *
+      100,
   );
 
-  const starPercentage = (rating) => Math.floor(
-    (Number(metaData2.ratings[rating])
-        / (Number(metaData2.recommended.false)
-          + Number(metaData2.recommended.true)))
-        * 100,
-  );
+  const starPercentage = (rating) => {
+    return Math.floor(
+      (Number(metaData2.ratings[rating]) /
+        (Number(metaData2.recommended.false || 0) +
+          Number(metaData2.recommended.true || 0))) *
+        100,
+    );
+  };
 
   const starPercentageArray = [
     { percent: starPercentage(5), star: 5 },
@@ -70,14 +75,11 @@ export default function RatingBreakDown({ metaData }) {
       <h1>{`${findRatings} / 5`}</h1>
       <StarBreakDown averageRating={findRatings} height="30" width="30" />
       <div>
-        <div>
-          {recommendPercentage}
-          % of reviews recommend this product
-        </div>
+        <div>{recommendPercentage}% of reviews recommend this product</div>
         <br />
         <div>
-          {starPercentageArray.map((item) => (
-            <div key={Math.random()}>
+          {starPercentageArray.map((item, i) => (
+            <div key={Math.random()} value={5 - i} onClick={() => starFilter(5-i)}>
               <PercentageBar star={item.star} percent={item.percent} />
             </div>
           ))}

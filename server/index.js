@@ -106,6 +106,42 @@ app.get('/product/reviews', (req, res) => {
     .catch((err) => console.log('ERRORRRRRRRRRRR in /product/reviewss GET'));
 });
 
+// get reviews
+app.get('/ratingsReviews/reviews', (req, res) => {
+  const endpoint = `reviews?page=1&count=1000&sort=relevant&product_id=${req.query.productId}`;
+  apiRequest('get', endpoint)
+    .then(({ data }) => {res.send(data)})
+    .catch((err) => console.log('ERRORRRRRRRRRRR in /ratingsReviews/reviewss GET'));
+});
+// get meta data
+app.get('/ratingsReviews/meta', (req, res) => {
+  const endpoint = `reviews/meta?product_id=${req.query.productId}`;
+  apiRequest('get', endpoint)
+    .then(({ data }) => {res.send(data)})
+    .catch((err) => console.log('ERRORRRRRRRRRRR in /RatingsReviews/reviewss GET'));
+});
+// handle review helpful
+app.put('/ratingsReviews/helpful', (req, res) => {
+  const endpoint = `reviews/${req.body.reviewId}/helpful`;
+  apiRequest('put', endpoint)
+    .then(({ data }) => res.send(data))
+    .catch((err) => console.log('ERROR in ratingsReviews - PUT: helpful'));
+});
+// handle review report
+app.put('/ratingsReviews/report', (req, res) => {
+  const endpoint = `reviews/${req.body.reviewId}/report`;
+  apiRequest('put', endpoint)
+    .then(({ data }) => res.send(data))
+    .catch((err) => console.log('ERROR in ratingsReviews - PUT: report'));
+});
+// handle review sort
+app.get('/ratingsReviews/sort', (req, res) => {
+  const endpoint = `reviews?page=1&count=1000&sort=${req.query.dropDown}&product_id=${req.query.productId}`;
+  apiRequest('get', endpoint)
+    .then(({ data }) => {res.send(data)})
+    .catch((err) => console.log('ERRORRRRRRRRRRR in /RatingsReviews/reviewss GET'));
+});
+
 app.listen(PORT, () => {
   console.log(`To get started, visit: http://localhost:${PORT}`);
 });
