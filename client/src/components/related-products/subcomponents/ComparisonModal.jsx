@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Ratings from './Ratings.jsx';
+import Ratings from '../../StarBreakDown/Ratings.jsx';
 import { FcCheckmark } from 'react-icons/fc';
 import { GrClose } from 'react-icons/gr';
 import {
