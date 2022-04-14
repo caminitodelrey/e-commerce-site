@@ -1,6 +1,5 @@
 const axios = require('axios');
 require('dotenv').config();
-// const config = require('../config.js');
 
 function apiRequest(method, endpoint) {
   return axios({
