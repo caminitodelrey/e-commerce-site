@@ -6,6 +6,7 @@ import AddAnswerQA from './AddAnswerQA.jsx';
 import {
   ButtonDefaultSM,
   ReportClicked,
+  HelpfulClicked,
 } from '../../../theme/buttonStyle.js';
 
 export default function ListEntryQA({
@@ -16,6 +17,7 @@ export default function ListEntryQA({
   const [answersDisplayed, setAnswersDisplayed] = useState(2);
   const [hiddenAnswers, setHiddenAnswers] = useState(true);
   const [addAnswerModal, setAddAnswerModal] = useState(false);
+  const [addPhotosModal, setAddPhotosModal] = useState(false);
   const [helpfulClickedQ, setHelpfulClickedQ] = useState(false);
   const [reportClickedQ, setReportClickedQ] = useState(false);
 
@@ -28,6 +30,10 @@ export default function ListEntryQA({
 
   const toggleAddAnswerModal = () => {
     setAddAnswerModal(!addAnswerModal);
+  };
+
+  const toggleAddPhotosModal = () => {
+    setAddPhotosModal(!addPhotosModal);
   };
 
   const handleHelpfulnessClickQ = () => {
@@ -77,9 +83,9 @@ export default function ListEntryQA({
           >
             {helpfulClickedQ
               ? (
-                <ButtonDefaultSM type="submit">
+                <HelpfulClicked type="submit">
                   {`Thank you for your feedback! (${question.question_helpfulness + 1})`}
-                </ButtonDefaultSM>
+                </HelpfulClicked>
               )
               : (
                 <ButtonDefaultSM
@@ -113,6 +119,8 @@ export default function ListEntryQA({
           addAnswerModal={addAnswerModal}
           toggleAddAnswerModal={toggleAddAnswerModal}
           handleAddAnswerSubmit={handleAddAnswerSubmit}
+          addPhotosModal={addPhotosModal}
+          toggleAddPhotosModal={toggleAddPhotosModal}
         />
         <div>
           {Object.values(question.answers)

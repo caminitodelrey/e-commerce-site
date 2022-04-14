@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AddPhotos from './AddPhotos.jsx';
 import {
   ModalContainer,
   ModalTitle,
@@ -18,6 +19,8 @@ export default function AddAnswerQA({
   addAnswerModal,
   toggleAddAnswerModal,
   handleAddAnswerSubmit,
+  addPhotosModal,
+  toggleAddPhotosModal,
 }) {
   const [answerBody, setAnswerBody] = useState('');
   const [nickName, setNickName] = useState('');
@@ -36,12 +39,35 @@ export default function AddAnswerQA({
     setEmail(e.target.value);
   };
 
+  // const toggleAddPhotosModal = () => {
+  //   setAddPhotosModal(!addPhotosModal);
+  // };
+
+  const handleUploadPhotosClick = (photoArray) => {
+    setPhotos(photoArray); // .slice(0, 4) ???
+    toggleAddPhotosModal();
+  }
+
   const handleAddAnswerClick = (data) => {
-    handleAddAnswerSubmit(data, question.question_id);
-    setAnswerBody('');
-    setNickName('');
-    setEmail('');
-    toggleAddAnswerModal();
+    if (answerBody.length < 1) {
+      return alert('Please add an answer.');
+    } else if (nickName.length < 1) {
+      return alert('Please add a Nickname.');
+    } else if (email.length < 1) {
+      return alert('Please add an email.');
+    } else if (
+      !email.match(
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+      )
+    ) {
+      return alert('Please enter a valid email address.');
+    } else {
+      // handleAddAnswerSubmit(data, question.question_id); // FIX THIS -- ADD AXIOS
+      setAnswerBody('');
+      setNickName('');
+      setEmail('');
+      toggleAddAnswerModal();
+    }
   };
 
   if (addAnswerModal) {
@@ -50,11 +76,11 @@ export default function AddAnswerQA({
         <ModalContent>
           <ModalTitle>
             <h1>Submit your answer</h1>
-            <h3
+            <h2
               style={{
                 color: 'rgb(10, 89, 81)',
               }}
-            >{`${product.name}: "${question.question_body}"`}</h3>
+            >{`${product.name}: "${question.question_body}"`}</h2>
           </ModalTitle>
           <ModalBody>
             <div className="add-answer">
@@ -93,6 +119,7 @@ export default function AddAnswerQA({
                     fontWeight: 'lighter',
                     fontStyle: 'italic',
                     fontSize: '80%',
+                    // paddingBottom: '20px',
                   }}
                 >
                   For privacy reasons, do not use your full name or email
@@ -114,9 +141,21 @@ export default function AddAnswerQA({
                   onChange={handleEmailChange}
                 />
                 <br />
-                <span>For authentication reasons, you will not be emailed</span>
+                <span
+                  style={{
+                    fontWeight: 'lighter',
+                    fontStyle: 'italic',
+                    fontSize: '80%',
+                    // paddingBottom: '20px',
+                  }}
+                >
+                  For authentication reasons, you will not be emailed
+                </span>
                 <br />
-                <ButtonDefaultSM type="button">
+                <ButtonDefaultSM
+                type="button"
+                onClick={() => console.log('TOGGLE')}
+                >
                   Upload your photos
                 </ButtonDefaultSM>
                 <div>
@@ -139,6 +178,10 @@ export default function AddAnswerQA({
                 </div>
               </div>
             </div>
+            <AddPhotos
+              toggleAddPhotosModal={toggleAddPhotosModal}
+              handleUploadPhotosClick= {handleUploadPhotosClick}
+            />
           </ModalBody>
         </ModalContent>
       </ModalContainer>

@@ -5,6 +5,7 @@ import moment from 'moment';
 import {
   ButtonDefaultSM,
   ReportClicked,
+  HelpfulClicked,
 } from '../../../theme/buttonStyle.js';
 
 export default function AnswerListEntryQA({
@@ -76,9 +77,9 @@ export default function AnswerListEntryQA({
         <span>{moment(answer.date).format('MMMM D, YYYY')}</span>
         {helpfulClickedA
           ? (
-            <ButtonDefaultSM type="submit">
+            <HelpfulClicked type="submit">
               {`Thank you for your feedback! (${answer.helpfulness + 1})`}
-            </ButtonDefaultSM>
+            </HelpfulClicked>
           )
           : (
             <ButtonDefaultSM

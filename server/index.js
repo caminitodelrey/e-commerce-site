@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const express = require('express');
 const app = express();
 const axios = require('axios');
-const  {apiRequest}  = require('./helper_test.js');
+const { apiRequest } = require('./helper_test.js');
 require('dotenv').config();
 
 // MIDDLEWARE
@@ -25,7 +25,7 @@ app.get('/product', (req, res) => {
     .then((response) => res.status(200).send(response.data))
     // .then((response) => console.log(response.data))
     .catch((err) => console.log('catch on server side - product info'));
-})
+});
 
 // Gets a list of styles from a product
 app.get('/product/styles', (req, res) => {
@@ -43,20 +43,20 @@ app.get('/product/related', (req, res) => {
 });
 
 // ----------------------------------------Q&A Routes-----------------------------
-// GET to /qa
+// GET - Question and Answer data for a single product
 app.get('/qa', (req, res) => {
-  const endpoint = `qa/questions?product_id=${req.query.productId}`
+  const endpoint = `qa/questions?product_id=${req.query.productId}`;
   apiRequest('get', endpoint)
     .then(({ data }) => res.status(200).send(data))
-    .catch((err) => console.log('ERROR in /qa GET'));
+    .catch((err) => console.log('ERROR in QA - GET q+a data'));
 });
 
-// POST - Add a question
+// POST - Add question - NOT WORKING
 app.post('/qa/q/add', (req, res) => {
   const endpoint = `/qa/questions/`;
   apiRequest('put', endpoint)
-    .then(({data}) => res.status(200).send(data))
-    .catch((err) => console.log('ERROR in QA - POST: add qs'));
+    .then(({ data }) => res.status(201).send(data))
+    .catch((err) => console.log('ERROR in QA - POST: add question'));
 });
 
 // PUT - Mark Question as Helpful
@@ -64,7 +64,7 @@ app.put('/qa/q/helpful', (req, res) => {
   const endpoint = `/qa/questions/${req.body.questionId}/helpful`;
   apiRequest('put', endpoint)
     .then(({ data }) => res.status(200).send(data))
-    .catch((err) => console.log('ERROR in QA - PUT: mark qs as helpful'));
+    .catch((err) => console.log('ERROR in QA - PUT: question helpful'));
 });
 
 // PUT - Report Question
@@ -72,14 +72,14 @@ app.put('/qa/q/report', (req, res) => {
   const endpoint = `/qa/questions/${req.body.questionId}/report`;
   apiRequest('put', endpoint)
     .then(({ data }) => res.status(200).send(data))
-    .catch((err) => console.log('ERROR in QA - PUT: report qs'));
+    .catch((err) => console.log('ERROR in QA - PUT: report question'));
 });
 
-// POST - Add an an answer
+// POST - Add an answer - NOT WORKING
 app.post('/qa/a/add', (req, res) => {
   const endpoint = `/qa/questions/${req.body.questionId}/answers`;
   apiRequest('put', endpoint)
-    .then(({ data }) => res.status(200).send(data))
+    .then(({ data }) => res.status(201).send(data))
     .catch((err) => console.log('ERROR in QA - POST: add an answer'));
 });
 
@@ -88,7 +88,7 @@ app.put('/qa/a/helpful', (req, res) => {
   const endpoint = `/qa/answers/${req.body.answerId}/helpful`;
   apiRequest('put', endpoint)
     .then(({ data }) => res.status(200).send(data))
-    .catch((err) => console.log('ERROR in QA - PUT: mark answer helpful'));
+    .catch((err) => console.log('ERROR in QA - PUT: answer helpful'));
 });
 
 // PUT - Report Answer
@@ -96,14 +96,16 @@ app.put('/qa/a/report', (req, res) => {
   const endpoint = `/qa/answers/${req.body.answerId}/report`;
   apiRequest('put', endpoint)
     .then(({ data }) => res.status(200).send(data))
-    .catch((err) => console.log('ERROR in QA - PUT: report an answer'));
+    .catch((err) => console.log('ERROR in QA - PUT: report answer'));
 });
 
 // ----------------------------------------Ratings & Reviews Routes-----------------------------
 app.get('/product/reviews', (req, res) => {
   const endpoint = `/reviews/meta?product_id=${req.query.productId}`;
   apiRequest('get', endpoint)
-    .then(({ data }) => {res.status(200).send(data)})
+    .then(({ data }) => {
+      res.status(200).send(data);
+    })
     .catch((err) => console.log('ERRORRRRRRRRRRR in /product/reviewss GET'));
 });
 
@@ -111,15 +113,23 @@ app.get('/product/reviews', (req, res) => {
 app.get('/ratingsReviews/reviews', (req, res) => {
   const endpoint = `reviews?page=1&count=1000&sort=relevant&product_id=${req.query.productId}`;
   apiRequest('get', endpoint)
-    .then(({ data }) => {res.send(data)})
-    .catch((err) => console.log('ERRORRRRRRRRRRR in /ratingsReviews/reviewss GET'));
+    .then(({ data }) => {
+      res.send(data);
+    })
+    .catch((err) =>
+      console.log('ERRORRRRRRRRRRR in /ratingsReviews/reviewss GET'),
+    );
 });
 // get meta data
 app.get('/ratingsReviews/meta', (req, res) => {
   const endpoint = `reviews/meta?product_id=${req.query.productId}`;
   apiRequest('get', endpoint)
-    .then(({ data }) => {res.send(data)})
-    .catch((err) => console.log('ERRORRRRRRRRRRR in /RatingsReviews/reviewss GET'));
+    .then(({ data }) => {
+      res.send(data);
+    })
+    .catch((err) =>
+      console.log('ERRORRRRRRRRRRR in /RatingsReviews/reviewss GET'),
+    );
 });
 // handle review helpful
 app.put('/ratingsReviews/helpful', (req, res) => {
@@ -139,8 +149,12 @@ app.put('/ratingsReviews/report', (req, res) => {
 app.get('/ratingsReviews/sort', (req, res) => {
   const endpoint = `reviews?page=1&count=1000&sort=${req.query.dropDown}&product_id=${req.query.productId}`;
   apiRequest('get', endpoint)
-    .then(({ data }) => {res.send(data)})
-    .catch((err) => console.log('ERRORRRRRRRRRRR in /RatingsReviews/reviewss GET'));
+    .then(({ data }) => {
+      res.send(data);
+    })
+    .catch((err) =>
+      console.log('ERRORRRRRRRRRRR in /RatingsReviews/reviewss GET'),
+    );
 });
 
 app.listen(PORT, () => {

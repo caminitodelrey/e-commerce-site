@@ -102,8 +102,6 @@ export default function QA({ onClick }) { // for testing only, comment out ~~~~~
 
   const questionsList = filtered ? filteredQuestions : questions;
 
-  // const { product, questions } = this.state;
-  // console.log(questions);
   return (
     <div className="QA" onClick={onClick} style={{ margin: '100px 0' }}>
       <h1
