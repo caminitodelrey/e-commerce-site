@@ -45,12 +45,12 @@ const RelatedProducts = forwardRef(
               rating: productArr[2].data.ratings,
             }]);
             setStatus('resolved');
+          })
+          .catch((err) => {
+            setStatus('rejected');
+            console.log('err on the client side: Related Products');
           });
         })
-        .catch((err) => {
-          setStatus('rejected');
-          console.log('err on the client side: Related Products');
-        });
       });
     };
 

@@ -19,10 +19,16 @@ export default function WishlistButton({
   const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
 
   const addToWishlist = (selectedProduct) => () => {
-    const itemExists = storedItems.some(
-      (obj) => obj.id === selectedProduct.id,
-    );
-    if (!itemExists) {
+    if (storedItems) {
+      const itemExists = storedItems.some(
+        (obj) => obj.id === selectedProduct.id,
+      );
+      setIsInLocalStorage(true);
+    } else {
+      setIsInLocalStorage(false);
+    }
+
+    if (!isInLocalStorage) {
       setWishlistProducts([...wishlistProducts, selectedProduct]);
       window.localStorage.setItem(
         'wishlist',

@@ -4,6 +4,7 @@ import Selector from './components/Selector.jsx';
 import ImageGallery from './components/ImageGallery.jsx';
 import axios from 'axios';
 import { ProductCategory } from '../../theme/carouselStyle.js';
+import Ratings from '../StarBreakDown/Ratings.jsx';
 
 export default function ({ product, onClick }) {
   const [styles, setStyles] = useState(
