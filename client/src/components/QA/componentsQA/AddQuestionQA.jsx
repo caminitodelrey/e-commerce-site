@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   ModalContainer,
   ModalTitle,
@@ -35,11 +36,31 @@ export default function AddQuestionQA({
   };
 
   const handleAddQuestionClick = (data) => {
-    handleAddQuestionSubmit(data);
-    setQuestionBody('');
-    setNickName('');
-    setEmail('');
-    toggleAddQuestionModal();
+    if (questionBody.length < 1) {
+      return alert('Please add a question.');
+    } else if (nickName.length < 1) {
+      return alert('Please add a Nickname.');
+    } else if (email.length < 1) {
+      return alert('Please add an email.');
+    } else if (
+      !email.match(
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+      )
+    ) {
+      return alert('Please enter a valid email address.');
+    } else {
+      axios({
+        method: 'post',
+        url: '/qa/q/add',
+        data,
+      })
+        .then((res) => console.log(res)) // REFACTOR OR REMOVE CONSOLE.LOG
+        .catch((err) => console.error(err));
+      setQuestionBody('');
+      setNickName('');
+      setEmail('');
+      toggleAddQuestionModal();
+    }
   };
 
   if (addQuestionModal) {
@@ -108,7 +129,7 @@ export default function AddQuestionQA({
                 <br />
                 <span>For authentication reasons, you will not be emailed</span>
                 <div>
-                  <ButtonDefaultSM
+                  <ButtonDefaultLG
                     type="button"
                     onClick={() =>
                       handleAddQuestionClick({
@@ -120,13 +141,13 @@ export default function AddQuestionQA({
                     }
                   >
                     Submit Question
-                  </ButtonDefaultSM>
-                  <ButtonDefaultSM
+                  </ButtonDefaultLG>
+                  <ButtonDefaultLG
                     type="button"
                     onClick={toggleAddQuestionModal}
                   >
                     Cancel
-                  </ButtonDefaultSM>
+                  </ButtonDefaultLG>
                 </div>
               </div>
             </div>

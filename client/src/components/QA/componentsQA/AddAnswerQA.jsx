@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import AddPhotos from './AddPhotos.jsx';
 import {
   ModalContainer,
@@ -70,6 +71,21 @@ export default function AddAnswerQA({
       return alert('Please enter a valid email address.');
     } else {
       // handleAddAnswerSubmit(data, question.question_id); // FIX THIS -- ADD AXIOS
+      axios({
+        method: 'post',
+        url: '/qa/a/add',
+        data: {
+          questionId: question.question_id,
+          data: {
+            body: answerBody,
+            name: nickName,
+            email,
+            photos,
+          }
+        }
+      })
+        .then((res) => console.log(res)) // REFACTOR OR REMOVE CONSOLE.LOG
+        .catch((err) => console.error(err));
       setAnswerBody('');
       setNickName('');
       setEmail('');
