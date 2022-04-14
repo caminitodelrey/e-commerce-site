@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getData } from '../../../helper.js';
 import ReviewList from './ReviewList/ReviewList.jsx';
 import RatingBreakDown from './ratingBreakDown/RatingBreakDown.jsx';
 import WriteReview from './writeReview/WriteReview.jsx';
