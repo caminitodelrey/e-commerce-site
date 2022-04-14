@@ -25,7 +25,9 @@ export default function AddAnswerQA({
   const [answerBody, setAnswerBody] = useState('');
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
-  const [photos, setPhotos] = useState([]);
+  // const [photos, setPhotos] = useState([]);
+
+  const [photo1, setPhoto1] = useState('');
 
   const handleBodyChange = (e) => {
     setAnswerBody(e.target.value);
@@ -43,10 +45,10 @@ export default function AddAnswerQA({
   //   setAddPhotosModal(!addPhotosModal);
   // };
 
-  const handleUploadPhotosClick = (photoArray) => {
-    setPhotos(photoArray); // .slice(0, 4) ???
+  const handleUploadPhotosClick = (photo) => {
+    setPhoto1(photo);
     toggleAddPhotosModal();
-  }
+  };
 
   const handleAddAnswerClick = (data) => {
     if (answerBody.length < 1) {
@@ -152,12 +154,22 @@ export default function AddAnswerQA({
                   For authentication reasons, you will not be emailed
                 </span>
                 <br />
-                <ButtonDefaultSM
-                type="button"
-                onClick={() => console.log('TOGGLE')}
-                >
-                  Upload your photos
-                </ButtonDefaultSM>
+                {photo1 == '' ? null : (
+                  <img
+                    style={{
+                      height: '50px',
+                      width: 'auto',
+                    }}
+                    src={photo1}
+                    alt={'Photo1'}
+                  />
+                )}
+                <AddPhotos
+                  // setPhotos={setPhotos}
+                  setPhoto1={setPhoto1}
+                  toggleAddPhotosModal={toggleAddPhotosModal}
+                  handleUploadPhotosClick={handleUploadPhotosClick}
+                />
                 <div>
                   <ButtonDefaultLG
                     type="button"
@@ -178,10 +190,6 @@ export default function AddAnswerQA({
                 </div>
               </div>
             </div>
-            <AddPhotos
-              toggleAddPhotosModal={toggleAddPhotosModal}
-              handleUploadPhotosClick= {handleUploadPhotosClick}
-            />
           </ModalBody>
         </ModalContent>
       </ModalContainer>
