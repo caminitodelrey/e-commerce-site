@@ -5,15 +5,6 @@ import SearchQA from './componentsQA/SearchQA.jsx';
 import ListQA from './componentsQA/ListQA.jsx';
 import AddQuestionQA from './componentsQA/AddQuestionQA.jsx';
 import { ButtonDefaultLG } from '../../theme/buttonStyle.js';
-import {
-  // getData,
-  handleHelpfulQuestionSubmit,
-  handleHelpfulAnswerSubmit,
-  handleReportQuestionSubmit,
-  handleReportAnswerSubmit,
-  handleAddQuestionSubmit,
-  handleAddAnswerSubmit,
-} from '../../../helper.js';
 
 // export default function QA({ onClick }) { // for testing only, comment out ~~~~~~~~~~~~~~~~~~~~~~
 export default function QA({ product, onClick }) {
