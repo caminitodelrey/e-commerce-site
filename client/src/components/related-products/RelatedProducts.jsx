@@ -5,9 +5,9 @@ import WishlistCarousel from './carousels/WishlistCarousel.jsx';
 import axios from 'axios';
 
 const RelatedProducts = forwardRef(
-  ({ product, handleProductChange, onClick }, ref) => {
+  ({ product, handleProductChange, onClick, wishlistProducts, setWishlistProducts }, ref) => {
     const [status, setStatus] = useState('pending');
-    const [wishlistProducts, setWishlistProducts] = useState([]);
+    // const [wishlistProducts, setWishlistProducts] = useState([]);
     const [relatedProducts, setRelatedProducts] = useState([]);
 
     const handleServerRoutes = (url, id) => (

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { ProductCategory } from '../../theme/carouselStyle.js';
 import Ratings from '../StarBreakDown/Ratings.jsx';
 
-export default function ({ product, onClick }) {
+export default function ({ product, onClick, wishlistProducts, setWishlistProducts }) {
   const [styles, setStyles] = useState(
     product.styles || [
       {
