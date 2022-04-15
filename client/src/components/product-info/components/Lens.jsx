@@ -33,28 +33,36 @@ export default function Lens({ photo, photoContainer, exitZoom }) {
     // console.log(numberMap(5, -20, 0, -100, 100));
     // console.log(xPos , lensElement.current.clientWidth)
 
+    const lensW = lensElement.current.clientWidth;
+
     const backgroundX = numberMap(
       xPos,
       0,
-      lensElement.current.clientWidth,
+      lensW,
       0,
-      lensElement.current.clientWidth * ratio - lensElement.current.clientWidth,
+      lensW * ratio - lensW,
     );
 
-    const imgHeight = (lensElement.current.clientWidth * ratio) * (photo.width/photo.height);
+    const lensH = lensElement.current.clientHeight;
+    // const imgHeight = (lensW * ratio) * (photo.width/photo.height);
+    const imgRatio = photo.width / photo.height;
+    // const imgHeight = (lensW * imgRatio) * ratio;
+    let imgHeight = (photo.height * lensW) / photo.width
+    imgHeight *= ratio;
     const backgroundY = numberMap(
       yPos,
       0,
-      lensElement.current.clientHeight,
+      lensH,
       0,
-      lensElement.current.clientHeight*ratio - lensElement.current.clientHeight,
+      // lensElement.current.clientHeight + (imgHeight - lensElement.current.clientHeight) ,
+      // lensElement.current.clientHeight + (lensElement.current.clientHeight * ratio - lensElement.current.clientHeight),
+      imgHeight - lensH,
     );
 
     // console.log(lensElement.current.clientWidth, photoContainerState.clientWidth)
     // console.log(backgroundX, backgroundY);
     // console.log(photo.width/photo.height);
-    console.log(imgHeight, lensElement.current.clientHeight)
-    lensElement.current.style.backgroundSize = `${lensElement.current.clientWidth * 2.5}px`;
+    lensElement.current.style.backgroundSize = `${lensW * ratio}px ${imgHeight}px`;
     lensElement.current.style.backgroundPosition = `-${backgroundX}px -${backgroundY}px`;
     lensElement.current.style.cursor = 'zoom-out';
   };

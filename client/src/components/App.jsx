@@ -19,20 +19,24 @@ export default function App() {
   const [theme, setTheme] = useState('light');
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState({
-    "id": 37327,
+    "id": 37311,
     "campus": "hr-rfe",
-    "name": "Dorris 400 Tank Top",
-    "slogan": "Rerum alias numquam nobis rem ex quasi voluptatem veritatis.",
-    "description": "Modi et est excepturi occaecati asperiores nulla in dicta et. Ex nihil inventore reprehenderit impedit atque qui. Iusto quis fuga. Velit similique molestiae perferendis ea. Itaque repellendus tenetur enim harum ipsa voluptatem rerum magni. Repellat eligendi qui recusandae quas.",
-    "category": "Tank Top",
-    "default_price": "830.00",
-    "created_at": "2021-08-13T14:37:33.285Z",
-    "updated_at": "2021-08-13T14:37:33.285Z",
+    "name": "Camo Onesie",
+    "slogan": "Blend in to your crowd",
+    "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+    "category": "Jackets",
+    "default_price": "140.00",
+    "created_at": "2021-08-13T14:37:33.145Z",
+    "updated_at": "2021-08-13T14:37:33.145Z",
     "features": [
-        {
-            "feature": "Buttons",
-            "value": "\"Blue Resin\""
-        }
+      {
+        "feature": "Fabric",
+        "value": "Canvas"
+      },
+      {
+        "feature": "Buttons",
+        "value": "Brass"
+      }
     ]
   });
 
@@ -64,14 +68,6 @@ export default function App() {
       <ClickTracker render={(recordClick) => (
         <div data-testid="main" >
           <GlobalStyle />
-          {/* <button onClick={themeToggler}> Switch Theme </button> */}
-
-          {/* <button onClick={themeToggler}>
-          {theme === 'dark' ?
-            <span aria-label="Light mode" role="img">🌞</span> :
-            <span aria-label="Dark mode" role="img">🌜</span>}
-          </button> */}
-
           <Header
             onClick={(event) => recordClick(event, 'Header')}
             executeScroll={executeScroll}

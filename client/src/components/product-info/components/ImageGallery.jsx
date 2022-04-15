@@ -56,16 +56,30 @@ export default function ImageGallery({
   };
 
   useEffect(() => {
-    if (!expanded) {
-      // galleryWrapperRef.current.style.height = 'auto';
-      galleryWrapperRef.current.style.width='60%';
-      // galleryWrapperRef.current.style.maxHeight='100%';
+    const photoObj = new Image();
+    photoObj.src = photoList[mainPhoto].url;
+    photoObj.onload = function () {
+      const imgRatio = photoObj.width / photoObj.height;
+      console.log(imgRatio);
+      if (!expanded) {
+        // galleryWrapperRef.current.style.maxHeight = '80vh';
+        galleryWrapperRef.current.style.maxWidth='60%';
+        galleryWrapperRef.current.style.maxHeight= `800px`;
+        galleryWrapperRef.current.style.height= `auto`;
+        // galleryWrapperRef.current.style.maxHeight='100%';
 
-    } else {
-      // galleryWrapperRef.current.style.height = '80vh';
-      galleryWrapperRef.current.style.width='80%';
-      // galleryWrapperRef.current.style.maxHeight='auto';
+      } else {
+        // galleryWrapperRef.current.style.maxHeight = 'none';
+        galleryWrapperRef.current.style.maxWidth= `auto`;
+        galleryWrapperRef.current.style.maxHeight= `100%`;
+        galleryWrapperRef.current.style.height= `800px`;
+        galleryWrapperRef.current.style.verticalAlign= 'middle';
+        // galleryWrapperRef.current.style.width='80%';
+
+        // galleryWrapperRef.current.style.maxHeight='auto';
+      }
     }
+
   }, [expanded]);
 
   const exitZoom = () => {
@@ -287,10 +301,12 @@ const GalleryWrapper = styled.div`
   display:inline-block;
   vertical-align:middle;
   height:auto;
-  width:50%;
+  max-width:60%;
   margin:none;
-  max-height:80vh;
+  max-height: 800px;
 `;
+
+// max-height:80vh;
 
 const GalleryThumbNav = styled.div`
   position: absolute;
