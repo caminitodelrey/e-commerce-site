@@ -107,7 +107,7 @@ export const HeaderInner = styled(HeaderOuter)`
 
 export const Logo = styled.div`
   > h1 {
-    color: black;
+    color: ${({ theme }) => theme.logo};
   }
 `;
 

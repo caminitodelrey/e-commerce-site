@@ -10,7 +10,7 @@ export default function Toggle({ theme, themeToggler }) {
   return (
     <ToggleContainer>
       <ToggleInput type="checkbox" onChange={themeToggler} />
-      <ToggleLabel for="input" />
+      <ToggleLabel htmlFor="input" />
     </ToggleContainer>
   )
 };
