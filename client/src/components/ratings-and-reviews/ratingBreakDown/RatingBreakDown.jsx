@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PercentageBar from './PercentageBar';
-import StarBreakDown from './StarBreakDown';
+import StarBreakDown from '../../StarBreakDown/StarBreakDown';
 
 export default function RatingBreakDown({ metaData, starFilter }) {
 
