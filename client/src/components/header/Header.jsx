@@ -3,6 +3,7 @@ import { GiMountainCave } from 'react-icons/gi';
 import { FiHeart, FiShoppingBag } from 'react-icons/fi';
 
 import React, { useState, useEffect } from 'react';
+import Toggle from './Toggle.jsx';
 import HeaderSearch from './HeaderSearch.jsx';
 
 import {
@@ -60,13 +61,14 @@ export default function Header({ onClick, executeScroll, theme, themeToggler }) 
 
   return (
     <div onClick={onClick} data-testid="header">
-      <DarkLightToggleContainer>
+      {/* <DarkLightToggleContainer>
         <DarkLightToggle onClick={themeToggler}>
           {theme === 'dark' ?
           <span aria-label="Light mode" role="img">🌞</span> :
           <span aria-label="Dark mode" role="img">🌜</span>}
         </DarkLightToggle>
-      </DarkLightToggleContainer>
+      </DarkLightToggleContainer> */}
+      <Toggle theme={theme} themeToggler={themeToggler} />
       <HeaderOuter>
         <HeaderInner>
           <Logo>

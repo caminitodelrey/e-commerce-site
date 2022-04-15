@@ -12,6 +12,7 @@ export const DarkLightToggleContainer = styled.div`
 
 export const DarkLightToggle = styled.button`
   margin: 10px 30px 0;
+  with
 `;
 
 // Shrinking Header
@@ -70,20 +71,12 @@ export const Search = styled.div`
     ::placeholder {
       color: rgb(200, 200, 200);
     }
-
-    /* &:hover {
-      background-color: rgb(229, 229, 229);
-      ::placeholder {
-        color: rgb(120, 120, 120);
-      }
-    } */
   }
 `;
 
 export const HeaderSearch = styled(Search)`
-  /* position: absolute;
-  right: 180px; */
-  position: relative;
+  position: absolute;
+  right: 120px;
 
   > input {
     padding: 12px;
