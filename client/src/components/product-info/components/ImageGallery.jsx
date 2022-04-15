@@ -289,7 +289,7 @@ const GalleryWrapper = styled.div`
   height:auto;
   width:50%;
   margin:none;
-  max-height:100vh;
+  max-height:80vh;
 `;
 
 const GalleryThumbNav = styled.div`

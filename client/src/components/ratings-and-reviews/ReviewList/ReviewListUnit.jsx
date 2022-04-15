@@ -118,7 +118,7 @@ export default function ReivewListUnit({ review }) {
         ))}
       </div>
       <br />
-      <div>
+      <div style={{ padding: '20px', backgroundColor: 'rgb(230, 230, 230)', borderRadius: '10px' }}>
         {singleReview.response ? (`Response: ${singleReview.response}`) : null}
       </div>
       <div>
