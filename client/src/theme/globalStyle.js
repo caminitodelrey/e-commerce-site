@@ -23,10 +23,10 @@ export const darkTheme = {
 
 export const GlobalStyle = createGlobalStyle`
 
-  :root {
+  /* :root {
     --theme-background-primary: #151618;
     --theme-primary: #FFFFFF;
-  }
+  } */
 
   html, body {
     padding: 0;
@@ -34,7 +34,6 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
-    transition: all 0.50s linear;
   }
 
   h1, h2, h3, h4 {

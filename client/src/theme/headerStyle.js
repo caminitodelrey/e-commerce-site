@@ -7,6 +7,7 @@ export const ToggleContainer = styled.div`
   place-items: end;
   position: relative;
   padding: 20px 30px 0 0;
+  background: ${({ theme }) => theme.body};
 `;
 
 const reverse = keyframes`
