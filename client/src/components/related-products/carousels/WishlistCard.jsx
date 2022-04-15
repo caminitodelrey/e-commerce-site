@@ -23,7 +23,6 @@ export default function WishlistCard({
   wishlistProducts,
   setWishlistProducts,
 }) {
-  console.log(products)
   return (
     <>
       {products.map((product) => (
@@ -51,28 +50,22 @@ export default function WishlistCard({
           </CardAssetContainer>
 
           <div className="product-card__details">
-            <ProductCategory>
-              {product.category.toUpperCase()}
-            </ProductCategory>
+            <ProductCategory>{product.category.toUpperCase()}</ProductCategory>
             <ProductName>{product.name}</ProductName>
 
             {product.sale ? (
               <PriceContainer>
                 <ProductPrice style={{ color: 'red' }}>
                   $
-                  {product.price.replace(/\.00$/, '')
-                  - product.sale.replace(/\.00$/, '')}
+                  {product.price.replace(/\.00$/, '') -
+                    product.sale.replace(/\.00$/, '')}
                 </ProductPrice>
                 <PreSalePrice>
-                  $
-                  {product.price.replace(/\.00$/, '')}
+                  ${product.price.replace(/\.00$/, '')}
                 </PreSalePrice>
               </PriceContainer>
             ) : (
-              <ProductPrice>
-                $
-                {product.price.replace(/\.00$/, '')}
-              </ProductPrice>
+              <ProductPrice>${product.price.replace(/\.00$/, '')}</ProductPrice>
             )}
 
             <div className="product-card__rating">
