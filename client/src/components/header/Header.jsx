@@ -1,6 +1,6 @@
 import { MdLocalShipping } from 'react-icons/md';
 import { GiMountainCave } from 'react-icons/gi';
-import { FiHeart, FiShoppingBag } from 'react-icons/fi';
+import { FiHeart, FiShoppingBag, FiGitlab } from 'react-icons/fi';
 
 import React, { useState, useEffect } from 'react';
 import Toggle from './Toggle.jsx';
@@ -38,7 +38,12 @@ const banner2 = (
   </Slide>
 );
 
-export default function Header({ onClick, executeScroll, theme, themeToggler }) {
+export default function Header({
+  onClick,
+  executeScroll,
+  theme,
+  themeToggler,
+}) {
   const banners = [banner1, banner2];
   const delay = 2500;
   const [index, setIndex] = useState(0);
@@ -63,13 +68,14 @@ export default function Header({ onClick, executeScroll, theme, themeToggler }) 
       <HeaderOuter>
         <HeaderInner>
           <Logo>
-
             <h1>
-              <GiMountainCave
-                style={{ height: '100%', width: 'auto' }}
-              />
-              CAMINITO
+              <GiMountainCave style={{
+                height: '37px',
+                width: 'auto',
+                paddingRight: '2px',
+              }} />
             </h1>
+            <h1>CAMINITO</h1>
           </Logo>
 
           <div>
@@ -81,20 +87,19 @@ export default function Header({ onClick, executeScroll, theme, themeToggler }) 
 
           <ThirdInnerContainer>
             <HeaderSearch />
-            { storedItems.length > 0 ? (
+            {storedItems.length > 0 ? (
               <div>
                 <WishlistIndicator />
-                <WishlistButton onClick={executeScroll}/>
+                <WishlistButton onClick={executeScroll} />
                 <ShopButton />
               </div>
             ) : (
               <div>
-                <WishlistButton onClick={executeScroll}/>
+                <WishlistButton onClick={executeScroll} />
                 <ShopButton />
               </div>
             )}
           </ThirdInnerContainer>
-
         </HeaderInner>
       </HeaderOuter>
 

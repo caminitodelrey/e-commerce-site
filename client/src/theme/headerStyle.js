@@ -108,6 +108,9 @@ export const HeaderInner = styled(HeaderOuter)`
 `;
 
 export const Logo = styled.div`
+  display: flex;
+  flex-direction: row;
+
   > h1 {
     color: ${({ theme }) => theme.blackToWhite};
   }
