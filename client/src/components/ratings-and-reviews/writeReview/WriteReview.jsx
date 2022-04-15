@@ -16,9 +16,14 @@ import {
   ButtonDefaultSM,
 } from '../../../theme/buttonStyle.js';
 
-//import RatingsInteractive from './RatingsInteractive.jsx';
+import AddPhoto from './AddPhoto.jsx';
+import RatingsInteractive from './RatingsInteractive.jsx';
 
 export default function WriteReview({ name }) {
+  const [showPic, setShowPic] = useState(false);
+  const [picUrlContainer, setPicUrlContainer] = useState([]);
+  const [picUrl, setPicUrl] = useState('');
+  const [showAddPhoto, setShowAddPhoto] = useState(false);
   const [writeReview, setWriteReview] = useState(false);
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBoday] = useState('');
@@ -77,9 +82,29 @@ export default function WriteReview({ name }) {
     setQuality(e.target.value);
   };
 
-  const handleRating = (e) => {
-    setStarRating(e.target.value);
+  const handleRating = (num) => {
+    setStarRating(num);
   };
+
+  const handleShowAddPhoto = (e) => {
+    setPicUrl(e)
+  }
+
+  const toggleAddPhoto = (e) => {
+    e.preventDefault();
+    setShowAddPhoto(!showAddPhoto);
+  }
+
+  const addDefaultSrc = (ev) => {
+    alert('404 Picture not found')
+    ev.target.src = 'https://http.cat/404';
+  }
+
+  const handleShowPic = (e) => {
+
+    setShowPic(!showPic);
+    setPicUrl('');
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -177,65 +202,12 @@ export default function WriteReview({ name }) {
                 </div>
               )}
             </div>
+            <RatingsInteractive handleRating={handleRating}/>
+            <br />
             <table>
               <tbody>
-                <RatingsTableRow>
-                  <RatingsTD style={{ fontWeight: 'bold' }}>
-                    Overall Rating*
-                  </RatingsTD>
-                </RatingsTableRow>
-                <RatingsTableRow>
-                  <RatingsTD>
-                    1 Star
-                    <input
-                      type="radio"
-                      id="star1"
-                      name="star"
-                      value="1"
-                      onClick={handleRating}
-                    />
-                  </RatingsTD>
-                  <RatingsTD>
-                    2 Star
-                    <input
-                      type="radio"
-                      id="star2"
-                      name="star"
-                      value="2"
-                      onClick={handleRating}
-                    />
-                  </RatingsTD>
-                  <RatingsTD>
-                    3 Star
-                    <input
-                      type="radio"
-                      id="star3"
-                      name="star"
-                      value="3"
-                      onClick={handleRating}
-                    />
-                  </RatingsTD>
-                  <RatingsTD>
-                    4 Star
-                    <input
-                      type="radio"
-                      id="star1"
-                      name="star"
-                      value="4"
-                      onClick={handleRating}
-                    />
-                  </RatingsTD>
-                  <RatingsTD>
-                    5 Star
-                    <input
-                      type="radio"
-                      id="star1"
-                      name="star"
-                      value="5"
-                      onClick={handleRating}
-                    />
-                  </RatingsTD>
-                </RatingsTableRow>
+
+
                 <RatingsTableRow>
                   <RatingsTD style={{ fontWeight: 'bold' }}>Fit*</RatingsTD>
                 </RatingsTableRow>
@@ -490,9 +462,35 @@ export default function WriteReview({ name }) {
             </div>
             <div style={{ margin: '10px 0' }}>
               <p>Upload photos (optional)</p>
-              <ButtonDefaultSM onClick={(e) => e.preventDefault()}>
+              {picUrl !== '' ?
+                <div>
+                  <img
+                    style={{height: '65px', width: '50px'}}
+                    src={picUrl}
+                    onError={addDefaultSrc}
+                  />
+                </div>
+               : null
+              }
+              <ButtonDefaultSM onClick={(e)=> toggleAddPhoto(e)}>
                 Add photos
               </ButtonDefaultSM>
+              <ButtonDefaultSM
+                onClick={(e)=> {
+                  e.preventDefault();
+                  setPicUrl('');
+                }}
+              >
+                Clear photos
+              </ButtonDefaultSM>
+              <>
+                {!showAddPhoto ? null
+                  : <AddPhoto
+                      handleShowPic={handleShowPic}
+                      handleShowAddPhoto={handleShowAddPhoto}
+                      toggleAddPhoto={toggleAddPhoto}
+                    />}
+              </>
             </div>
 
             <table>

@@ -6,7 +6,6 @@ import RatingBreakDown from './ratingBreakDown/RatingBreakDown.jsx';
 import WriteReview from './writeReview/WriteReview.jsx';
 import ProductBreakDown from './productBreakDown/ProductBreakDown.jsx';
 import axios from 'axios';
-import RatingsInteractive from './writeReview/RatingsInteractive';
 
 export default function RatingsReviews({ product, onClick }) {
   const [reviews, setReviews] = useState([]);
@@ -95,11 +94,6 @@ export default function RatingsReviews({ product, onClick }) {
           <ProductBreakDown metaData={metaData} />
         </div>
       </div>
-
-      {/* <div>
-        <RatingsInteractive />
-      </div> */}
-
       <div
         style={{
           float: 'left',
@@ -109,7 +103,7 @@ export default function RatingsReviews({ product, onClick }) {
         <div style={{ marginTop: '30px' }}>
           <h4>
             {`${
-              Number(reviewCount.true || 0) + Number(reviewCount.false || 0)
+              Number(reviews.length || 0)
             } reviews, sorted by `}
             <StyledDropdown
               onChange={handleDropDown}
