@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const lightTheme = {
-  body: '#FFF',
+  body: 'var(--white)',
   text: '#000',
   toggleBorder: '#FFF',
   header: 'rgb(50, 78, 89)',
@@ -25,10 +25,11 @@ export const darkTheme = {
 
 export const GlobalStyle = createGlobalStyle`
 
-  /* :root {
-    --theme-background-primary: #151618;
-    --theme-primary: #FFFFFF;
-  } */
+  :root {
+    --dark-green: rgb(3, 115, 83);
+    --accent-green: rgb(11, 191, 125);
+    --white: #FFFFFF;
+  }
 
   html, body {
     padding: 0;
