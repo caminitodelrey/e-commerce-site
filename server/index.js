@@ -50,14 +50,9 @@ app.get('/qa', (req, res) => {
     .catch((err) => console.log('ERROR in QA - GET q+a data'));
 });
 
-// POST - Add question - STILL WORKING ON THIS
+// POST - Add Question
 app.post('/qa/q/add', (req, res) => {
-  // data: {
-  //   firstName: 'Fred',
-  //   lastName: 'Flintstone'
-  // }
-  console.log(req.body);
-  apiPostRequest('dataObj', '/qa/questions/')
+  apiPostRequest(req.body, '/qa/questions/')
     .then(({ data }) => res.status(201).send(data))
     .catch((err) => console.log('ERROR in QA - POST: add question'));
 });
@@ -76,9 +71,9 @@ app.put('/qa/q/report', (req, res) => {
     .catch((err) => console.log('ERROR in QA - PUT: report question'));
 });
 
-// POST - Add an answer - NOT WORKING
+// POST - Add Answer
 app.post('/qa/a/add', (req, res) => {
-  apiRequest('put', `/qa/questions/${req.body.questionId}/answers`)
+  apiPostRequest(req.body.data, `/qa/questions/${req.body.questionId}/answers`)
     .then(({ data }) => res.status(201).send(data))
     .catch((err) => console.log('ERROR in QA - POST: add an answer'));
 });
@@ -104,7 +99,7 @@ app.get('/product/reviews', (req, res) => {
     .then(({ data }) => {
       res.status(200).send(data);
     })
-    .catch((err) => console.log('ERRORRRRRRRRRRR in /product/reviewss GET'));
+    .catch((err) => console.log('Error in /product/reviewss GET'));
 });
 
 // get reviews
