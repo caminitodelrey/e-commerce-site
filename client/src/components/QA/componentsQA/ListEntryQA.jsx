@@ -12,7 +12,7 @@ import {
 export default function ListEntryQA({
   product,
   question,
-  handleAddAnswerSubmit,
+  // handleAddAnswerSubmit,
 }) {
   const [answersDisplayed, setAnswersDisplayed] = useState(2);
   const [hiddenAnswers, setHiddenAnswers] = useState(true);
@@ -113,7 +113,7 @@ export default function ListEntryQA({
         question={question}
         addAnswerModal={addAnswerModal}
         toggleAddAnswerModal={toggleAddAnswerModal}
-        handleAddAnswerSubmit={handleAddAnswerSubmit}
+        // handleAddAnswerSubmit={handleAddAnswerSubmit}
         addPhotosModal={addPhotosModal}
         toggleAddPhotosModal={toggleAddPhotosModal}
       />

@@ -104,9 +104,11 @@ export default function ({ product, onClick, wishlistProducts, setWishlistProduc
           <h2>{product.slogan}</h2>
           <p style={{borderBottom: '2px solid rgba(169,169,169, .5)', paddingBottom: '10px', marginBottom:'0'}}>{product.description}</p>
           {product.features.map((obj) => (
-            <div key={JSON.stringify(obj)}>
-              <p style={{display:'inline-block', fontWeight:'900'}}>{obj.feature}:</p>
-              <p style={{paddingLeft:'5px', display:'inline-block'}}>{obj.value}</p>
+            <div key={Math.random()}>
+              <p style={{display:'inline-block', fontWeight:'900'}}>{obj.feature}</p>
+              { obj.value && (
+                <p style={{display:'inline-block'}}>: {obj.value}</p>
+              )}
             </div>
           ))}
         </DetailsDiv>
@@ -134,7 +136,7 @@ const ProductDiv = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: row;
-  height:100vh;
+  min-height:80vh;
 `;
 
 const DetailsDiv = styled.div`

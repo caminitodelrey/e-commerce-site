@@ -27,7 +27,7 @@ export default function WishlistCard({
     <>
       {products.map((product) => (
         <CardContainer
-          key={product.id}
+          key={Math.random()}
           style={{ width: `calc(100% / ${maxDisplayCount})` }}
         >
           <CardAssetContainer>

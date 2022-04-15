@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import AddPhotos from './AddPhotos.jsx';
 import {
   ModalContainer,
   ModalTitle,
@@ -19,15 +17,12 @@ export default function AddAnswerQA({
   question,
   addAnswerModal,
   toggleAddAnswerModal,
-  // handleAddAnswerSubmit,
-  addPhotosModal,
-  toggleAddPhotosModal,
+  handleAddAnswerSubmit,
 }) {
   const [answerBody, setAnswerBody] = useState('');
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
   const [photos, setPhotos] = useState([]);
-  const [photo1, setPhoto1] = useState('');
 
   const handleBodyChange = (e) => {
     setAnswerBody(e.target.value);
@@ -41,65 +36,11 @@ export default function AddAnswerQA({
     setEmail(e.target.value);
   };
 
-  const addDefaultSrc = (ev) => {
-    ev.target.src =
-      'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png';
-    alert('You must enter the following: a valid image url');
-  };
-
-  // const toggleAddPhotosModal = () => {
-  //   setAddPhotosModal(!addPhotosModal);
-  // };
-
-  const handleUploadPhotosClick = (photo) => {
-    setPhoto1(photo);
-    toggleAddPhotosModal();
-  };
-
   const handleAddAnswerClick = (data) => {
-    if (answerBody.length < 1) {
-      return alert('Please add an answer.');
-    } else if (nickName.length < 1) {
-      return alert('Please add a Nickname.');
-    } else if (email.length < 1) {
-      return alert('Please add an email.');
-    } else if (
-      !email.match(
-        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-      )
-    ) {
-      return alert('Please enter a valid email address.');
-    } else {
-      // handleAddAnswerSubmit(data, question.question_id); // FIX THIS -- ADD AXIOS
-      axios({
-        method: 'post',
-        url: '/qa/a/add',
-        data: {
-          questionId: question.question_id,
-          data: {
-            body: answerBody,
-            name: nickName,
-            email,
-            photos,
-          },
-        },
-      })
-        .then((res) => console.log(res)) // REFACTOR OR REMOVE CONSOLE.LOG
-        .catch((err) => console.error(err));
-      setAnswerBody('');
-      setNickName('');
-      setEmail('');
-      setPhoto1('');
-      toggleAddAnswerModal();
-    }
-
-  };
-
-  const clickX = () => {
+    handleAddAnswerSubmit(data, question.question_id);
     setAnswerBody('');
     setNickName('');
     setEmail('');
-    setPhoto1('');
     toggleAddAnswerModal();
   };
 
@@ -108,23 +49,12 @@ export default function AddAnswerQA({
       <ModalContainer>
         <ModalContent>
           <ModalTitle>
-            <div
-              style={{
-                display: 'flex'
-              }}>
-              <h1>Submit your answer</h1>
-              <h1
-                onClick={clickX}
-                style={{
-                  cursor: 'Pointer',
-                  marginLeft: '55%',
-                }}>X</h1>
-            </div>
-            <h2
+            <h1>Submit your answer</h1>
+            <h3
               style={{
                 color: 'rgb(10, 89, 81)',
               }}
-            >{`${product.name}: "${question.question_body}"`}</h2>
+            >{`${product.name}: "${question.question_body}"`}</h3>
           </ModalTitle>
           <ModalBody>
             <div className="add-answer">
@@ -139,7 +69,6 @@ export default function AddAnswerQA({
                   style={{
                     height: '100px',
                     width: '550px',
-                    marginBottom: '10px',
                   }}
                   onChange={handleBodyChange}
                 />
@@ -159,17 +88,16 @@ export default function AddAnswerQA({
                   onChange={handleNameChange}
                 />
                 <br />
-                <div
+                <span
                   style={{
                     fontWeight: 'lighter',
                     fontStyle: 'italic',
                     fontSize: '80%',
-                    marginBottom: '10px',
                   }}
                 >
                   For privacy reasons, do not use your full name or email
                   address
-                </div>
+                </span>
               </div>
               <div className="add-answer-email">
                 <span>Email*</span>
@@ -186,33 +114,11 @@ export default function AddAnswerQA({
                   onChange={handleEmailChange}
                 />
                 <br />
-                <span
-                  style={{
-                    fontWeight: 'lighter',
-                    fontStyle: 'italic',
-                    fontSize: '80%',
-                  }}
-                >
-                  For authentication reasons, you will not be emailed
-                </span>
+                <span>For authentication reasons, you will not be emailed</span>
                 <br />
-                {photo1 == '' ? null : (
-                  <img
-                    onError={addDefaultSrc}
-                    style={{
-                      height: '50px',
-                      width: 'auto',
-                    }}
-                    src={photo1}
-                    alt={'Photo1'}
-                  />
-                )}
-                <AddPhotos
-                  // setPhotos={setPhotos}
-                  setPhoto1={setPhoto1}
-                  toggleAddPhotosModal={toggleAddPhotosModal}
-                  handleUploadPhotosClick={handleUploadPhotosClick}
-                />
+                <ButtonDefaultSM type="button">
+                  Upload your photos
+                </ButtonDefaultSM>
                 <div>
                   <ButtonDefaultLG
                     type="button"

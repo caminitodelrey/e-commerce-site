@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { StyledDropdown } from '../../theme/dropdownStyle';
+
 import ReviewList from './ReviewList/ReviewList.jsx';
 import RatingBreakDown from './ratingBreakDown/RatingBreakDown.jsx';
 import WriteReview from './writeReview/WriteReview.jsx';
@@ -79,6 +81,7 @@ export default function RatingsReviews({ product, onClick }) {
 
   return (
     <div className='ratings-reviews' onClick={onClick}>
+      <h1 style={{ marginBottom: '0' }}>Ratings & Reviews</h1>
       <div
         style={{
           float: 'left',
@@ -103,16 +106,18 @@ export default function RatingsReviews({ product, onClick }) {
           width: '70%',
         }}
       >
-        <div>
+        <div style={{ marginTop: '30px' }}>
           <h4>
             {`${
               Number(reviewCount.true || 0) + Number(reviewCount.false || 0)
             } reviews, sorted by `}
-            <select onChange={handleDropDown}>
+            <StyledDropdown
+              onChange={handleDropDown}
+            >
               <option value="0">Relevant</option>
               <option value="1">Helpful</option>
               <option value="2">Recent</option>
-            </select>
+            </StyledDropdown>
           </h4>
         </div>
         <div>
