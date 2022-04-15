@@ -125,13 +125,13 @@ const heartbeat = keyframes`
 `;
 
 export const AnimatedWishlistButton = styled(FiHeart)`
-  color: rgba(11, 191, 125, 0.9);
+  color: rgba(11, 191, 125);
   cursor: pointer;
 
   &:hover {
     animation: ${heartbeat} 1s infinite;
-    fill: rgba(11, 191, 125, 0.9);
-    color: rgba(11, 191, 125, 0.9);
+    fill: rgba(11, 191, 125);
+    color: rgba(11, 191, 125);
     opacity: 1;
     transition: opacity 500mx;
   }

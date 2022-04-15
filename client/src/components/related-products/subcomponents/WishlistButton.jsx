@@ -65,17 +65,11 @@ export default function WishlistButton({
 
   if (!isLiked) {
     return (
-      <AnimatedWishlistButton
-        style={{ height: '100%', width: 'auto', strokeWidth: '1px', fill: "rgba(255,255,255,0)" }}
-        onClick={() => addToWishlist()}
-      />
+      <AnimatedWishlistButton onClick={() => addToWishlist()} />
     );
   }
   return (
-    <FiHeart
-      onClick={() => addToWishlist()}
-      style={{ height: '100%', width: 'auto', strokeWidth: '1px', fill: accentColor, stroke: accentColor }}
-    />
+    <FiHeart onClick={() => addToWishlist()} />
   );
 
 };
