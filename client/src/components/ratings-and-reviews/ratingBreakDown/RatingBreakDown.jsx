@@ -71,7 +71,7 @@ export default function RatingBreakDown({ metaData, starFilter }) {
 
   return (
     <div>
-      <h1>Ratings & Reviews</h1>
+      {/* <h1>Ratings & Reviews</h1> */}
       <h1>{`${findRatings} / 5`}</h1>
       <StarBreakDown averageRating={findRatings} height="30" width="30" />
       <div>

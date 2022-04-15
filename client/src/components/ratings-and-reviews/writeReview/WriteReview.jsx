@@ -138,7 +138,7 @@ export default function WriteReview({ name }) {
                 X
               </h1>
             </div>
-            <h4>{`About the ${name}`}</h4>
+            <h2 style={{ marginTop: '0', color: 'rgb(3, 115, 83)' }}>{`About the ${name}`}</h2>
           </div>
         </ModalTitle>
         <ModalBody>
