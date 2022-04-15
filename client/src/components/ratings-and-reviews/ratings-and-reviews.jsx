@@ -100,7 +100,7 @@ export default function RatingsReviews({ product, onClick }) {
         <div>
           <h4>
             {`${
-              Number(reviewCount.true || 0) + Number(reviewCount.false || 0)
+              Number(reviews.length || 0)
             } reviews, sorted by `}
             <select onChange={handleDropDown}>
               <option value="0">Relevant</option>
