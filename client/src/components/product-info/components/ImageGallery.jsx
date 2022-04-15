@@ -66,6 +66,7 @@ export default function ImageGallery({
         galleryWrapperRef.current.style.maxWidth='60%';
         galleryWrapperRef.current.style.maxHeight= `800px`;
         galleryWrapperRef.current.style.height= `auto`;
+        galleryWrapperRef.current.style.width = `auto`;
         // galleryWrapperRef.current.style.maxHeight='100%';
 
       } else {
