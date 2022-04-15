@@ -14,9 +14,9 @@ export const Chevron = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid rgb(50, 78, 89);
-  color: color: rgb(50, 78, 89);
-  background-color: #fff;
+  color: rgb(80, 80, 80);
+  border: none;
+  background-color: rgb(190, 190, 190);
 
   display: flex;
   justify-content: center;
@@ -25,8 +25,9 @@ export const Chevron = styled.button`
 `;
 
 export const DeactivatedChevron = styled(Chevron)`
-  color: rgba(128, 128, 128, 0.5);
-  border: 2px solid rgba(128, 128, 128);
+  color: rgb(190, 190, 190);
+  border: none;
+  background-color: rgb(220, 220, 220);
 
   &:hover {
     cursor: default;

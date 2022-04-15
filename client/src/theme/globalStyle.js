@@ -7,6 +7,7 @@ export const lightTheme = {
   header: 'rgb(50, 78, 89)',
   otherText: '#000',
   logo: 'rgb(0, 0, 0)',
+  icons: 'rgb(25, 46, 64)',
 }
 export const darkTheme = {
   body: 'rgb(35,36,37)',
@@ -15,6 +16,7 @@ export const darkTheme = {
   header: '#fff',
   otherText: 'rgb(169, 169, 169)',
   logo: 'rgb(255, 255, 255)',
+  icons: 'rgb(255, 255, 255)',
 }
 
 // usage example ==> color: var(--theme-primary);

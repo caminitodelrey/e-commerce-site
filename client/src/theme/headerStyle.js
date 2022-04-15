@@ -6,7 +6,7 @@ export const ToggleContainer = styled.div`
   display: grid;
   place-items: end;
   position: relative;
-  padding: 10px 30px 0 0;
+  padding: 20px 30px 0 0;
 `;
 
 const reverse = keyframes`
@@ -65,6 +65,7 @@ export const ToggleLabel = styled.label`
 `;
 
 export const ToggleInput = styled.input`
+  cursor: pointer;
   opacity: 0;
   position: absolute;
   z-index: 2;
@@ -140,7 +141,7 @@ export const Search = styled.div`
     color: rgb(3, 115, 83);
 
     ::placeholder {
-      color: rgb(200, 200, 200);
+      color: rgb(169, 169, 169);
     }
   }
 `;
@@ -158,7 +159,6 @@ export const QASearch = styled(Search)`
   position: relative;
   margin: 30px 0;
   width: 100vw;
-  /* right: 120px; */
 
   > input {
     padding: 20px;
@@ -175,25 +175,25 @@ export const WishlistIndicator = styled.div`
 `;
 
 export const WishlistButton = styled(FiHeart)`
-  color: rgb(25, 46, 64);
+  color: ${({ theme }) => theme.icons};
   width: 20px;
   height: 20px;
   padding: 0 20px 0 110px;
 
   &:hover {
-    color: rgb(25, 46, 64);
+    color: ${({ theme }) => theme.icons};
     fill: rgba(11, 191, 125, .7);
     cursor: pointer;
   }
 `;
 
 export const ShopButton = styled(FiShoppingBag)`
-  color: rgb(25, 46, 64);
+  color: ${({ theme }) => theme.icons};
   width: 20px;
   height: 20px;
 
   &:hover {
-    color: rgb(25, 46, 64);
+    color: ${({ theme }) => theme.icons};
     fill: rgba(11, 191, 125, .7);
     cursor: pointer;
   }
