@@ -12,11 +12,7 @@ import {
   ButtonDefaultLG,
 } from '../../../theme/buttonStyle.js';
 
-export default function AddPhotosQA({
-  product,
-  addPhotosModal,
-  setPhoto1,
-}) {
+export default function AddPhotosQA({ product, addPhotosModal, setPhoto1 }) {
   const [photosURL, setPhotosURL] = useState([]);
   const [showAddPhoto, setShowAddPhoto] = useState(false);
   const [photo1Url, setPhoto1Url] = useState('');
@@ -35,13 +31,29 @@ export default function AddPhotosQA({
   const handleUploadPhotos = () => {
     setPhoto1(photo1Url);
     setShowAddPhoto(!showAddPhoto);
-  }
+  };
 
   const handlePhoto1UrlChange = (e) => {
     setPhoto1Url(e.target.value);
   };
 
-  const addPhotoComponent = !showAddPhoto ?
+  const handlePhoto2UrlChange = (e) => {
+    setPhoto2Url(e.target.value);
+  };
+
+  const handlePhoto3UrlChange = (e) => {
+    setPhoto3Url(e.target.value);
+  };
+
+  const handlePhoto4UrlChange = (e) => {
+    setPhoto4Url(e.target.value);
+  };
+
+  const handlePhoto5UrlChange = (e) => {
+    setPhoto5Url(e.target.value);
+  };
+
+  const addPhotoComponent = !showAddPhoto ? (
     <ButtonDefaultSM
       onClick={handleUploadPhotos}
       style={{
@@ -49,47 +61,90 @@ export default function AddPhotosQA({
         marginBottom: '25px',
       }}
     >
-        Upload your photos
+      Upload your photos
     </ButtonDefaultSM>
-    : (
-      <ModalContainer>
-        <ModalContent>
-          <ModalTitle>
-            <h1>Add photos to your answer</h1>
-          </ModalTitle>
-          <ModalBody>
-            <div className="add-photos-body">
-              <textarea
-                type="text"
-                name="add-answer-body"
-                maxLength="1000"
-                value={photo1Url}
-                placeholder="Paste url here..."
-                style={{
-                  height: '25px',
-                  width: '550px',
-                }}
-                onChange={handlePhoto1UrlChange}
-              />
-            </div>
-            <ButtonDefaultLG
-              type="button"
-              onClick={handleUploadPhotos}
-            >
+  ) : (
+    <ModalContainer>
+      <ModalContent>
+        <ModalTitle>
+          <h1>Add photos to your answer</h1>
+        </ModalTitle>
+        <ModalBody>
+          <textarea
+            type="text"
+            name="photo1Url"
+            maxLength="1000"
+            value={photo1Url}
+            placeholder="Paste url here..."
+            style={{
+              height: '25px',
+              width: '550px',
+            }}
+            onChange={handlePhoto1UrlChange}
+          />
+          <textarea
+            type="text"
+            name="photo2Url"
+            maxLength="1000"
+            value={photo2Url}
+            placeholder="Paste url here..."
+            style={{
+              height: '25px',
+              width: '550px',
+            }}
+            onChange={handlePhoto2UrlChange}
+          />
+          <textarea
+            type="text"
+            name="photo3Url"
+            maxLength="1000"
+            value={photo3Url}
+            placeholder="Paste url here..."
+            style={{
+              height: '25px',
+              width: '550px',
+            }}
+            onChange={handlePhoto3UrlChange}
+          />
+          <textarea
+            type="text"
+            name="photo4Url"
+            maxLength="1000"
+            value={photo4Url}
+            placeholder="Paste url here..."
+            style={{
+              height: '25px',
+              width: '550px',
+            }}
+            onChange={handlePhoto4UrlChange}
+          />
+          <textarea
+            type="text"
+            name="photo5Url"
+            maxLength="1000"
+            value={photo5Url}
+            placeholder="Paste url here..."
+            style={{
+              height: '25px',
+              width: '550px',
+            }}
+            onChange={handlePhoto5UrlChange}
+          />
+          <div
+            style={{
+              marginTop: '15px',
+            }}>
+            <ButtonDefaultLG type="button" onClick={handleUploadPhotos}>
               Upload Photos
             </ButtonDefaultLG>
-            <ButtonDefaultLG
-              type="button"
-              onClick={handleUploadPhotos}
-            >
+            <ButtonDefaultLG type="button" onClick={handleUploadPhotos}>
               Cancel
             </ButtonDefaultLG>
-          </ModalBody>
-        </ModalContent>
-      </ModalContainer>
-    );
+          </div>
+        </ModalBody>
+      </ModalContent>
+    </ModalContainer>
+  );
 
-  return (
-    <div>{addPhotoComponent}</div>
-  )
+  return <div>{addPhotoComponent}</div>;
 }
