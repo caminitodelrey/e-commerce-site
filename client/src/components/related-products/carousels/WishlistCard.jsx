@@ -23,6 +23,7 @@ export default function WishlistCard({
   wishlistProducts,
   setWishlistProducts,
 }) {
+  console.log(products)
   return (
     <>
       {products.map((product) => (

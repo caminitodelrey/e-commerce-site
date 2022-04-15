@@ -69,13 +69,13 @@ export default function ({ product, onClick, wishlistProducts, setWishlistProduc
     setPhotoList(selectedStyle.photos);
   }, [selectedStyle]);
 
-  useEffect(() => {
-    if (galleryType === 'default' && productDivRef) {
-      // productDivRef.current.style.height = '800px';
-    } else {
-      productDivRef.current.style.height = 'auto';
-    }
-  }, [galleryType]);
+  // useEffect(() => {
+  //   if (galleryType === 'default' && productDivRef) {
+  //     // productDivRef.current.style.height = '800px';
+  //   } else {
+  //     productDivRef.current.style.height = 'auto';
+  //   }
+  // }, [galleryType]);
 
   const styleChange = (index) => {
     selectStyle(styles[index]);
@@ -136,7 +136,7 @@ const ProductDiv = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: row;
-  min-height:80vh;
+  min-height:800px;
 `;
 
 const DetailsDiv = styled.div`

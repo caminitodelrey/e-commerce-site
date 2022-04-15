@@ -73,6 +73,7 @@ export default function Header({
                 height: '37px',
                 width: 'auto',
                 paddingRight: '2px',
+                color: 'rgb(11, 191, 125)'
               }} />
             </h1>
             <h1>CAMINITO</h1>
