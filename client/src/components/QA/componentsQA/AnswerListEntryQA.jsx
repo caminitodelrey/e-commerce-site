@@ -8,9 +8,7 @@ import {
   HelpfulClicked,
 } from '../../../theme/buttonStyle.js';
 
-export default function AnswerListEntryQA({
-  answer,
-}) {
+export default function AnswerListEntryQA({ answer }) {
   const [helpfulClickedA, setHelpfulClickedA] = useState(false);
   const [reportClickedA, setReportClickedA] = useState(false);
 
@@ -21,9 +19,14 @@ export default function AnswerListEntryQA({
         url: '/qa/a/helpful',
         data: {
           answerId: answer.id,
-        }
-      }).then((response) => console.log(response))
-      .catch((err) => console.log('ERROR in AnswerListEntryQA Axios request to server (PUT to qa/a/helpful)'));
+        },
+      })
+        .then((response) => console.log(response))
+        .catch((err) =>
+          console.log(
+            'ERROR in AnswerListEntryQA Axios request to server (PUT to qa/a/helpful)',
+          ),
+        );
       setHelpfulClickedA(true);
     }
   };
@@ -35,9 +38,14 @@ export default function AnswerListEntryQA({
         url: '/qa/a/report',
         data: {
           answerId: answer.id,
-        }
-      }).then((response) => console.log(response))
-      .catch((err) => console.log('ERROR in AnswerListEntryQA Axios request to server (PUT to qa/a/report)'));
+        },
+      })
+        .then((response) => console.log(response))
+        .catch((err) =>
+          console.log(
+            'ERROR in AnswerListEntryQA Axios request to server (PUT to qa/a/report)',
+          ),
+        );
       setReportClickedA(true);
     }
   };
@@ -45,15 +53,16 @@ export default function AnswerListEntryQA({
   return (
     <div
       style={{
-        marginLeft: '25px'
+        marginLeft: '25px',
       }}
     >
-      <br/>
-      <div
-        className="answer-body"
-      >
-        <div style={{ "dispay": "flex" }}>
-          <p><strong>A:</strong>{` ${answer.body}`}</p>
+      <br />
+      <div className="answer-body">
+        <div style={{ dispay: 'flex' }}>
+          <p>
+            <strong>A:</strong>
+            {` ${answer.body}`}
+          </p>
         </div>
       </div>
       {answer.photos.length ? (
@@ -75,30 +84,33 @@ export default function AnswerListEntryQA({
       <div className="bottom of answer">
         <span>{`by: ${answer.answerer_name}, `}</span>
         <span>{moment(answer.date).format('MMMM D, YYYY')}</span>
-        {helpfulClickedA
-          ? (
-            <HelpfulClicked type="submit">
-              {`Thank you for your feedback! (${answer.helpfulness + 1})`}
-            </HelpfulClicked>
-          )
-          : (
-            <ButtonDefaultSM
-              type="submit"
-              onClick={handleHelpfulnessClickA}
-            >
-              {`Answer Helpful (${answer.helpfulness})`}
-            </ButtonDefaultSM>
-          )}
-        {reportClickedA
-          ? <ReportClicked>Answer Reported</ReportClicked>
-          : (
-            <ButtonDefaultSM
-              type="submit"
-              onClick={handleReportClickA}
-            >
-              Report
-            </ButtonDefaultSM>
-          )}
+        {helpfulClickedA ? (
+          <HelpfulClicked
+            style={{
+              marginLeft: '10px',
+            }}
+            type="submit"
+          >
+            {`Thank you for your feedback! (${answer.helpfulness + 1})`}
+          </HelpfulClicked>
+        ) : (
+          <ButtonDefaultSM
+            type="submit"
+            onClick={handleHelpfulnessClickA}
+            style={{
+              marginLeft: '10px',
+            }}
+          >
+            {`Answer Helpful (${answer.helpfulness})`}
+          </ButtonDefaultSM>
+        )}
+        {reportClickedA ? (
+          <ReportClicked>Answer Reported</ReportClicked>
+        ) : (
+          <ButtonDefaultSM type="submit" onClick={handleReportClickA}>
+            Report
+          </ButtonDefaultSM>
+        )}
       </div>
     </div>
   );

@@ -9,11 +9,7 @@ import {
   HelpfulClicked,
 } from '../../../theme/buttonStyle.js';
 
-export default function ListEntryQA({
-  product,
-  question,
-  // handleAddAnswerSubmit,
-}) {
+export default function ListEntryQA({ product, question }) {
   const [answersDisplayed, setAnswersDisplayed] = useState(2);
   const [hiddenAnswers, setHiddenAnswers] = useState(true);
   const [addAnswerModal, setAddAnswerModal] = useState(false);
@@ -113,7 +109,6 @@ export default function ListEntryQA({
         question={question}
         addAnswerModal={addAnswerModal}
         toggleAddAnswerModal={toggleAddAnswerModal}
-        // handleAddAnswerSubmit={handleAddAnswerSubmit}
         addPhotosModal={addPhotosModal}
         toggleAddPhotosModal={toggleAddPhotosModal}
       />

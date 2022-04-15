@@ -19,7 +19,6 @@ export default function AddAnswerQA({
   question,
   addAnswerModal,
   toggleAddAnswerModal,
-  // handleAddAnswerSubmit,
   addPhotosModal,
   toggleAddPhotosModal,
 }) {
@@ -27,7 +26,7 @@ export default function AddAnswerQA({
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
   const [photos, setPhotos] = useState([]);
-  const [photo1, setPhoto1] = useState('');
+  const [photo1, setPhoto1] = useState(''); // REMOVE
 
   const handleBodyChange = (e) => {
     setAnswerBody(e.target.value);
@@ -47,12 +46,9 @@ export default function AddAnswerQA({
     alert('You must enter the following: a valid image url');
   };
 
-  // const toggleAddPhotosModal = () => {
-  //   setAddPhotosModal(!addPhotosModal);
-  // };
-
-  const handleUploadPhotosClick = (photo) => {
-    setPhoto1(photo);
+  const handleUploadPhotosClick = (photos) => {
+    setPhoto1(photos);
+    setPhotos(photos);
     toggleAddPhotosModal();
   };
 
@@ -70,7 +66,7 @@ export default function AddAnswerQA({
     ) {
       return alert('Please enter a valid email address.');
     } else {
-      // handleAddAnswerSubmit(data, question.question_id); // FIX THIS -- ADD AXIOS
+      const cat = 'https://images.unsplash.com/photo-1615789591457-74a63395c990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFieSUyMGNhdHxlbnwwfHwwfHw%3D&w=1000&q=80';
       axios({
         method: 'post',
         url: '/qa/a/add',
@@ -208,7 +204,7 @@ export default function AddAnswerQA({
                   />
                 )}
                 <AddPhotos
-                  // setPhotos={setPhotos}
+                  setPhotos={setPhotos}
                   setPhoto1={setPhoto1}
                   toggleAddPhotosModal={toggleAddPhotosModal}
                   handleUploadPhotosClick={handleUploadPhotosClick}
@@ -227,7 +223,7 @@ export default function AddAnswerQA({
                   >
                     Submit Answer
                   </ButtonDefaultLG>
-                  <ButtonDefaultLG type="button" onClick={toggleAddAnswerModal}>
+                  <ButtonDefaultLG type="button" onClick={clickX}>
                     Cancel
                   </ButtonDefaultLG>
                 </div>

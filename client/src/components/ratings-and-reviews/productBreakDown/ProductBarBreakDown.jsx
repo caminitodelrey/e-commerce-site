@@ -19,13 +19,12 @@ export default function ProductBarBreakDown({ product }) {
     height: 0,
     borderStyle: 'solid',
     borderWidth: '10px 10px 0 10px',
-    borderColor: 'black transparent transparent transparent',
+    borderColor: 'rgb(3, 115, 83) transparent transparent transparent',
     position: 'absolute',
     marginTop: '-11px',
   };
 
   return (
-
     <div>
       {percent === 0 ? null : (
         <div
@@ -51,15 +50,14 @@ export default function ProductBarBreakDown({ product }) {
                 right: 0,
                 top: 0,
                 fontSize: '12px',
-                color: 'black'
+                color: 'black',
               }}
             >
               {fit[1]}
             </div>
           </div>
         </div>
-      ) }
+      )}
     </div>
-
   );
 }

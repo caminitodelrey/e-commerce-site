@@ -54,7 +54,7 @@ export default function AddQuestionQA({
         url: '/qa/q/add',
         data,
       })
-        .then((res) => console.log(res)) // REFACTOR OR REMOVE CONSOLE.LOG
+        .then((res) => console.log(res))
         .catch((err) => console.error(err));
       setQuestionBody('');
       setNickName('');

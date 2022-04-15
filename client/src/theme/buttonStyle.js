@@ -70,6 +70,7 @@ export const CompareButton = styled.button`
   color: rgba(11, 191, 125, 0.9);
   background-color: transparent;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s;
 
   &:hover {
     cursor: pointer;
@@ -161,6 +162,7 @@ export const DefaultCardButton = styled.button`
   border: 2px solid rgba(11, 191, 125, 0.9);
   color: rgba(11, 191, 125, 0.9);
   background-color: transparent;
+  transition: all 0.5s;
 
   &:hover {
     cursor: pointer;
@@ -187,6 +189,7 @@ export const ButtonDefaultLG = styled.button`
   border: 2px solid rgba(11, 191, 125, 0.9);
   color: rgba(11, 191, 125, 0.9);
   background-color: transparent;
+  transition: all 0.5s;
 
   &:hover {
     cursor: pointer;
@@ -211,6 +214,7 @@ export const ButtonDefaultSM = styled.button`
   color: rgba(11, 191, 125, 0.9);
   background-color: transparent;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s;
 
   &:hover {
     cursor: pointer;

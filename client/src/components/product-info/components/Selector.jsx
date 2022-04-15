@@ -335,6 +335,8 @@ const StyledWishListButton = styled.div`
 const StyleSocialButtons = css`
   width: 40px;
   height: auto;
+  cursor: pointer;
+  transition: all 0.5s;
 `;
 
 const StyledFacebook = styled(TiSocialFacebook)`

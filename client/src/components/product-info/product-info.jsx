@@ -6,7 +6,12 @@ import axios from 'axios';
 import { ProductCategory } from '../../theme/carouselStyle.js';
 import Ratings from '../StarBreakDown/Ratings.jsx';
 
-export default function ({ product, onClick, wishlistProducts, setWishlistProducts }) {
+export default function ({
+  product,
+  onClick,
+  wishlistProducts,
+  setWishlistProducts,
+}) {
   const [styles, setStyles] = useState(
     product.styles || [
       {
@@ -38,15 +43,15 @@ export default function ({ product, onClick, wishlistProducts, setWishlistProduc
         setStyles(res.data.results);
         selectStyle(res.data.results[0]);
       })
-      .then(() => (
+      .then(() =>
         axios({
           method: 'get',
           url: '/product/reviews',
           params: {
-            productId: product.id
-          }
-        })
-      ))
+            productId: product.id,
+          },
+        }),
+      )
       .then((res) => {
         setRating(res.data.ratings);
       })
@@ -69,14 +74,6 @@ export default function ({ product, onClick, wishlistProducts, setWishlistProduc
     setPhotoList(selectedStyle.photos);
   }, [selectedStyle]);
 
-  // useEffect(() => {
-  //   if (galleryType === 'default' && productDivRef) {
-  //     // productDivRef.current.style.height = '800px';
-  //   } else {
-  //     productDivRef.current.style.height = 'auto';
-  //   }
-  // }, [galleryType]);
-
   const styleChange = (index) => {
     selectStyle(styles[index]);
   };
@@ -89,9 +86,11 @@ export default function ({ product, onClick, wishlistProducts, setWishlistProduc
     if (galleryType === 'default') {
       return (
         <DetailsDiv id="ProductDetails">
-           <Ratings rating={rating} />
-          <ProductCategory style={{margin:'0', fontSize:'.9em'}}>{product.category.toUpperCase()}</ProductCategory>
-          <h1 style={{marginBottom:'5px'}}>{product.name}</h1>
+          <Ratings rating={rating} />
+          <ProductCategory style={{ margin: '0', fontSize: '.9em' }}>
+            {product.category.toUpperCase()}
+          </ProductCategory>
+          <h1 style={{ marginBottom: '5px' }}>{product.name}</h1>
           <Selector
             product={product}
             productStyles={styles}
@@ -102,12 +101,22 @@ export default function ({ product, onClick, wishlistProducts, setWishlistProduc
             setWishlistProducts={setWishlistProducts}
           />
           <h2>{product.slogan}</h2>
-          <p style={{borderBottom: '2px solid rgba(169,169,169, .5)', paddingBottom: '10px', marginBottom:'0'}}>{product.description}</p>
+          <p
+            style={{
+              borderBottom: '2px solid rgba(169,169,169, .5)',
+              paddingBottom: '10px',
+              marginBottom: '0',
+            }}
+          >
+            {product.description}
+          </p>
           {product.features.map((obj) => (
             <div key={Math.random()}>
-              <p style={{display:'inline-block', fontWeight:'900'}}>{obj.feature}</p>
-              { obj.value && (
-                <p style={{display:'inline-block'}}>: {obj.value}</p>
+              <p style={{ display: 'inline-block', fontWeight: '900' }}>
+                {obj.feature}
+              </p>
+              {obj.value && (
+                <p style={{ display: 'inline-block' }}>: {obj.value}</p>
               )}
             </div>
           ))}
@@ -136,7 +145,7 @@ const ProductDiv = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: row;
-  min-height:800px;
+  min-height: 800px;
 `;
 
 const DetailsDiv = styled.div`
@@ -144,6 +153,6 @@ const DetailsDiv = styled.div`
   padding-left: 30px;
   width: 40%;
   vertical-align: middle;
-  height:100%;
+  height: 100%;
   overflow: 'auto';
 `;
