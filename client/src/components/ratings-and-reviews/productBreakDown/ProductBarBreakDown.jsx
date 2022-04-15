@@ -44,13 +44,14 @@ export default function ProductBarBreakDown({ product }) {
           </div>
           <div style={containerStyles}>
             <div style={fillerStyles} />
-            <div style={{ fontSize: '12px' }}>{fit[0]}</div>
+            <div style={{ fontSize: '12px', color: 'black' }}>{fit[0]}</div>
             <div
               style={{
                 position: 'absolute',
                 right: 0,
                 top: 0,
                 fontSize: '12px',
+                color: 'black'
               }}
             >
               {fit[1]}
