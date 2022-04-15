@@ -42,7 +42,15 @@ export default function AddPhotosQA({
   };
 
   const addPhotoComponent = !showAddPhoto ?
-    <ButtonDefaultSM onClick={handleUploadPhotos}>Upload your photos</ButtonDefaultSM>
+    <ButtonDefaultSM
+      onClick={handleUploadPhotos}
+      style={{
+        marginTop: '15px',
+        marginBottom: '25px',
+      }}
+    >
+        Upload your photos
+    </ButtonDefaultSM>
     : (
       <ModalContainer>
         <ModalContent>

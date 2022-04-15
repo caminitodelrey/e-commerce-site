@@ -216,6 +216,8 @@ export const ButtonDefaultSM = styled.button`
   }
 `;
 
+
+
 export const ReportClicked = styled.button`
   border: none;
   border-radius: 15px;
