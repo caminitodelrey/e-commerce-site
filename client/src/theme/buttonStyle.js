@@ -14,9 +14,10 @@ export const Chevron = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid rgb(50, 78, 89);
-  color: color: rgb(50, 78, 89);
-  background-color: white;
+  color: rgb(80, 80, 80);
+  border: none;
+  background-color: rgb(190, 190, 190);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,8 +25,9 @@ export const Chevron = styled.button`
 `;
 
 export const DeactivatedChevron = styled(Chevron)`
-  color: rgba(128, 128, 128, 0.5);
-  border: 2px solid rgba(128, 128, 128, 0.2);
+  color: rgb(190, 190, 190);
+  border: none;
+  background-color: rgb(220, 220, 220);
 
   &:hover {
     cursor: default;
@@ -60,13 +62,13 @@ export const CompareButtonContainer = styled.div`
 `;
 
 export const CompareButton = styled.button`
-  border: none;
+  border: 1px solid rgba(11, 191, 125, 0.9);
   border-radius: 15px;
   text-align: center;
   text-decoration: none;
   padding: 8px 15px;
   color: rgba(11, 191, 125, 0.9);
-  background-color: #fff;
+  background-color: transparent;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 
   &:hover {
@@ -103,6 +105,7 @@ const rotation = keyframes`
 `;
 
 export const AnimateRemoveButton = styled(MdOutlineClose)`
+  color: rgba(11, 191, 125);
   &:hover {
     animation: ${rotation} 2s infinite linear;
   }
@@ -122,13 +125,13 @@ const heartbeat = keyframes`
 `;
 
 export const AnimatedWishlistButton = styled(FiHeart)`
-  color: rgba(11, 191, 125, 0.9);
+  color: rgba(11, 191, 125);
   cursor: pointer;
 
   &:hover {
     animation: ${heartbeat} 1s infinite;
-    fill: rgba(11, 191, 125, 0.9);
-    color: rgba(11, 191, 125, 0.9);
+    fill: rgba(11, 191, 125);
+    color: rgba(11, 191, 125);
     opacity: 1;
     transition: opacity 500mx;
   }
@@ -157,7 +160,7 @@ export const DefaultCardButton = styled.button`
   border-radius: 30px;
   border: 2px solid rgba(11, 191, 125, 0.9);
   color: rgba(11, 191, 125, 0.9);
-  background-color: #fff;
+  background-color: transparent;
 
   &:hover {
     cursor: pointer;
@@ -183,7 +186,7 @@ export const ButtonDefaultLG = styled.button`
   border-radius: 30px;
   border: 2px solid rgba(11, 191, 125, 0.9);
   color: rgba(11, 191, 125, 0.9);
-  background-color: #fff;
+  background-color: transparent;
 
   &:hover {
     cursor: pointer;
@@ -198,14 +201,15 @@ export const ButtonDefaultLG = styled.button`
 `;
 
 export const ButtonDefaultSM = styled.button`
-  border: none;
+  border: 1px solid rgba(11, 191, 125, 0.9);
   border-radius: 15px;
   margin-right: 10px;
   text-align: center;
   text-decoration: none;
   padding: 8px 15px;
+  margin: 10px 10px 10px 0;
   color: rgba(11, 191, 125, 0.9);
-  background-color: #fff;
+  background-color: transparent;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 
   &:hover {
@@ -236,6 +240,6 @@ export const HelpfulClicked = styled.button`
   text-decoration: none;
   padding: 8px 15px;
   color: rgba(11, 191, 125, 0.9);
-  background-color: #fff;
+  background-color: transparent;
   box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.2);
 `;

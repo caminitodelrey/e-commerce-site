@@ -1,7 +1,9 @@
 import { MdLocalShipping } from 'react-icons/md';
-import { FiHeart, FiShoppingBag } from 'react-icons/fi';
+import { GiMountainCave } from 'react-icons/gi';
+import { FiHeart, FiShoppingBag, FiGitlab } from 'react-icons/fi';
 
 import React, { useState, useEffect } from 'react';
+import Toggle from './Toggle.jsx';
 import HeaderSearch from './HeaderSearch.jsx';
 
 import {
@@ -36,13 +38,18 @@ const banner2 = (
   </Slide>
 );
 
-export default function Header(props) {
+export default function Header({
+  onClick,
+  executeScroll,
+  theme,
+  themeToggler,
+}) {
   const banners = [banner1, banner2];
   const delay = 2500;
   const [index, setIndex] = useState(0);
-  // const [hasWishlist, setHasWishlist] = useState(false);
+  const [hasWishlist, setHasWishlist] = useState(false);
 
-  // const storedItems = JSON.parse(window.localStorage.getItem('wishlist'));
+  const storedItems = JSON.parse(window.localStorage.getItem('wishlist')) || [];
 
   useEffect(() => {
     setTimeout(
@@ -56,10 +63,18 @@ export default function Header(props) {
   }, [index]);
 
   return (
-    <div onClick={props.onClick} data-testid="header">
+    <div onClick={onClick} data-testid="header">
+      <Toggle theme={theme} themeToggler={themeToggler} />
       <HeaderOuter>
         <HeaderInner>
           <Logo>
+            <h1>
+              <GiMountainCave style={{
+                height: '37px',
+                width: 'auto',
+                paddingRight: '2px',
+              }} />
+            </h1>
             <h1>CAMINITO</h1>
           </Logo>
 
@@ -72,25 +87,19 @@ export default function Header(props) {
 
           <ThirdInnerContainer>
             <HeaderSearch />
-            {/* { storedItems.length > 0 ? (
+            {storedItems.length > 0 ? (
               <div>
                 <WishlistIndicator />
-                <WishlistButton onClick={props.executeScroll}/>
+                <WishlistButton onClick={executeScroll} />
                 <ShopButton />
               </div>
             ) : (
               <div>
-                <WishlistButton onClick={props.executeScroll}/>
+                <WishlistButton onClick={executeScroll} />
                 <ShopButton />
               </div>
-            )} */}
-            <div>
-              <WishlistIndicator />
-              <WishlistButton onClick={props.executeScroll}/>
-              <ShopButton />
-            </div>
+            )}
           </ThirdInnerContainer>
-
         </HeaderInner>
       </HeaderOuter>
 
