@@ -109,7 +109,7 @@ export const HeaderInner = styled(HeaderOuter)`
 
 export const Logo = styled.div`
   > h1 {
-    color: ${({ theme }) => theme.logo};
+    color: ${({ theme }) => theme.blackToWhite};
   }
 `;
 
@@ -207,7 +207,7 @@ export const Slideshow = styled.div`
   width: 100%;
   overflow: hidden;
   margin: 0 auto;
-  background-color: rgb(245, 245, 245);
+  background-color: ${({ theme }) => theme.banner};
 `;
 
 export const BannerSlider = styled.div`
@@ -225,7 +225,7 @@ export const Slide = styled.div`
 export const BannerText = styled.p`
   text-align: center;
   line-height: .5;
-  color: black;
+  color: ${({ theme }) => theme.blackToWhite};
   font-weight: 700;
   font-size: .9em;
 `;
@@ -233,7 +233,7 @@ export const BannerText = styled.p`
 export const BannerLink = styled.p`
   text-align: center;
   line-height: .5;
-  color: black;
+  color: ${({ theme }) => theme.blackToWhite};
   font-size: .7em;
   text-decoration: underline;
   cursor: pointer;

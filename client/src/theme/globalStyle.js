@@ -6,8 +6,9 @@ export const lightTheme = {
   toggleBorder: '#FFF',
   header: 'rgb(50, 78, 89)',
   otherText: '#000',
-  logo: 'rgb(0, 0, 0)',
+  blackToWhite: 'rgb(0, 0, 0)',
   icons: 'rgb(25, 46, 64)',
+  banner: 'rgb(245, 245, 245)',
 }
 export const darkTheme = {
   body: 'rgb(35,36,37)',
@@ -15,8 +16,9 @@ export const darkTheme = {
   toggleBorder: '#6B8096',
   header: '#fff',
   otherText: 'rgb(169, 169, 169)',
-  logo: 'rgb(255, 255, 255)',
+  blackToWhite: 'rgb(255, 255, 255)',
   icons: 'rgb(255, 255, 255)',
+  banner: 'rgb(128, 128, 128)',
 }
 
 // usage example ==> color: var(--theme-primary);
