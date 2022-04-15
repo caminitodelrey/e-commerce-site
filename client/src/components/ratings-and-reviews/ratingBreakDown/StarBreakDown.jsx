@@ -54,7 +54,7 @@ function StarBreakDown({ averageRating, height, width }) {
             position: 'relative',
             display: 'inline-block',
             height: `${height}px`,
-            backgroundColor: 'black',
+            backgroundColor: 'rgb(3, 115, 83)',
             width: `${parseInt(item * width, 10)}px`,
           }}
           >

@@ -54,7 +54,7 @@ function StarBreakDown({ averageRating, height, width }) {
             position: 'relative',
             display: 'inline-block',
             height: `${height}px`,
-            backgroundColor: '#333333',
+            backgroundColor: 'rgb(3, 115, 83)',
             width: `${parseInt(item * width, 10)}px`,
           }}
           >
@@ -62,6 +62,7 @@ function StarBreakDown({ averageRating, height, width }) {
               style={{
                 height: `${height}px`,
                 width: `${width}px`,
+                // filter: 'invert()',
               }}
               src="star.png"
               alt="stars alt"
