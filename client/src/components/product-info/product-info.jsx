@@ -136,7 +136,7 @@ const ProductDiv = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: row;
-  min-height:100vh;
+  min-height:80vh;
 `;
 
 const DetailsDiv = styled.div`
