@@ -1,18 +1,89 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { FiHeart, FiShoppingBag } from 'react-icons/fi';
 
 // Dark/Light Mode Toggle
-export const DarkLightToggleContainer = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-  background-color: #fff;
-  width: 100%;
-  height: auto;
+export const ToggleContainer = styled.div`
+  display: grid;
+  place-items: end;
+  position: relative;
+  padding: 10px 30px 0 0;
 `;
 
-export const DarkLightToggle = styled.button`
-  margin: 10px 30px 0;
-  with
+const reverse = keyframes`
+  0% {
+    left: 22px;
+    width: 8px;
+  }
+  60% {
+    left: 10px;
+    width: 19px;
+  }
+  100% {
+    left: -3px;
+  }
+`;
+
+const toggleTheme = keyframes`
+  0% {
+    left: -3px;
+  }
+  60% {
+    left: -3px;
+    width: 19px;
+  }
+  100% {
+    left: 21px;
+    width: 8px;
+  }
+`;
+
+export const ToggleLabel = styled.label`
+  width: 35px;
+  height: 10px;
+  display: flex;
+  position: relative;
+  transition: all 350ms ease-in;
+  border-radius: 100px;
+  border: 5px solid rgb(25, 46, 64);
+  background: rgba(25, 46, 64, .9);
+
+  :before {
+    animation-name: ${reverse};
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+    transition: all 350ms ease-in;
+    content: '';
+    width: 8px;
+    height: 8px;
+    top: -3px;
+    left: -3px;
+    position: absolute;
+    border-radius: 50%;
+    border: 4px solid rgb(225, 220, 220);
+    background: rgb(225, 225, 255);
+  }
+`;
+
+export const ToggleInput = styled.input`
+  opacity: 0;
+  position: absolute;
+  z-index: 2;
+  right: 30px;
+  width: 50px;
+
+  &:checked + ${ToggleLabel} {
+    border: 5px solid rgb(245, 245, 245);
+    background: rgb(255, 255, 255);
+  }
+
+  &:checked + ${ToggleLabel}:before {
+    border: 5px solid rgb(10, 89, 81);
+    background: rgba(10, 89, 81, .9);
+    top: -4px;
+    animation-name: ${toggleTheme};
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+  }
 `;
 
 // Shrinking Header
@@ -23,7 +94,7 @@ export const HeaderOuter = styled.div`
   top: -30;
   height: 80px;
   width: 100%;
-  background-color: #fff;
+  background: ${({ theme }) => theme.body};
   /* color: rgb(25, 46, 64); */
 `;
 

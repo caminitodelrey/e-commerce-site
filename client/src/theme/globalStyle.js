@@ -15,7 +15,15 @@ export const darkTheme = {
   otherText: 'rgb(169, 169, 169)',
 }
 
+// usage example ==> color: var(--theme-primary);
+
 export const GlobalStyle = createGlobalStyle`
+
+  :root {
+    --theme-background-primary: #151618;
+    --theme-primary: #FFFFFF;
+  }
+
   html, body {
     padding: 0;
     margin: 0;

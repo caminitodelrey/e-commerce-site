@@ -104,6 +104,7 @@ const rotation = keyframes`
 `;
 
 export const AnimateRemoveButton = styled(MdOutlineClose)`
+  color: rgba(11, 191, 125);
   &:hover {
     animation: ${rotation} 2s infinite linear;
   }

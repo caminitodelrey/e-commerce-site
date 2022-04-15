@@ -7,8 +7,6 @@ import Toggle from './Toggle.jsx';
 import HeaderSearch from './HeaderSearch.jsx';
 
 import {
-  DarkLightToggleContainer,
-  DarkLightToggle,
   HeaderOuter,
   HeaderInner,
   Logo,
@@ -61,13 +59,6 @@ export default function Header({ onClick, executeScroll, theme, themeToggler }) 
 
   return (
     <div onClick={onClick} data-testid="header">
-      {/* <DarkLightToggleContainer>
-        <DarkLightToggle onClick={themeToggler}>
-          {theme === 'dark' ?
-          <span aria-label="Light mode" role="img">🌞</span> :
-          <span aria-label="Dark mode" role="img">🌜</span>}
-        </DarkLightToggle>
-      </DarkLightToggleContainer> */}
       <Toggle theme={theme} themeToggler={themeToggler} />
       <HeaderOuter>
         <HeaderInner>
