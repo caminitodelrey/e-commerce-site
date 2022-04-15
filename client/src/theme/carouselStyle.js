@@ -121,7 +121,7 @@ export const PriceContainer = styled.div`
 
 export const ProductPrice = styled.p`
   margin-top: -8px;
-  color: rgb(10, 89, 81);
+  /* color: rgb(10, 89, 81); */
   font-size: 0.9em;
 `;
 

@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { GlobalStyle, WidgetsContainer } from '../theme/globalStyle.js';
+
+import {ThemeProvider} from "styled-components";
+import { GlobalStyle, WidgetsContainer, lightTheme, darkTheme } from '../theme/globalStyle.js';
+
 import Header from './header/Header.jsx';
 import ProductInfo from './product-info/product-info.jsx';
 import RelatedProducts from './related-products/RelatedProducts.jsx';
@@ -52,32 +55,48 @@ export default function App() {
     });
   }
 
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  };
+
   return (
-    <ClickTracker render={(recordClick) => (
-      <div data-testid="main" >
-        <GlobalStyle />
-        <Header
-          onClick={(event) => recordClick(event, 'Header')}
-          executeScroll={executeScroll}
-        />
-        <WidgetsContainer>
-          <ProductInfo
-            onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct}
-            wishlistProducts={wishlistProducts}
-            setWishlistProducts={setWishlistProducts}
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <ClickTracker render={(recordClick) => (
+        <div data-testid="main" >
+          <GlobalStyle />
+          {/* <button onClick={themeToggler}> Switch Theme </button> */}
+
+          {/* <button onClick={themeToggler}>
+          {theme === 'dark' ?
+            <span aria-label="Light mode" role="img">🌞</span> :
+            <span aria-label="Dark mode" role="img">🌜</span>}
+          </button> */}
+
+          <Header
+            onClick={(event) => recordClick(event, 'Header')}
+            executeScroll={executeScroll}
+            theme={theme}
+            themeToggler={themeToggler}
           />
-          <RelatedProducts
-            ref={wishlistRef}
-            product={selectedProduct}
-            handleProductChange={handleProductChange}
-            wishlistProducts={wishlistProducts}
-            setWishlistProducts={setWishlistProducts}
-            onClick={(event) => recordClick(event, 'Related Products')}
-          />
-          <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
-          <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
-        </WidgetsContainer>
-      </div>
-    )} />
+          <WidgetsContainer>
+            <ProductInfo
+              onClick={(event) => recordClick(event, 'Product Info')} product={selectedProduct}
+              wishlistProducts={wishlistProducts}
+              setWishlistProducts={setWishlistProducts}
+            />
+            <RelatedProducts
+              ref={wishlistRef}
+              product={selectedProduct}
+              handleProductChange={handleProductChange}
+              wishlistProducts={wishlistProducts}
+              setWishlistProducts={setWishlistProducts}
+              onClick={(event) => recordClick(event, 'Related Products')}
+            />
+            <QA product={selectedProduct} onClick={(event) => recordClick(event, 'Questions and Answers')}/>
+            <RatingsReviews product={selectedProduct} onClick={(event) => recordClick(event, 'Ratings and Reviews')}/>
+          </WidgetsContainer>
+        </div>
+      )} />
+    </ThemeProvider>
   );
 }

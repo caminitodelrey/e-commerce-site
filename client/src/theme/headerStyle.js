@@ -1,13 +1,26 @@
 import styled from 'styled-components';
 import { FiHeart, FiShoppingBag } from 'react-icons/fi';
 
+// Dark/Light Mode Toggle
+export const DarkLightToggleContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+`;
+
+export const DarkLightToggle = styled.button`
+  margin: 10px 30px 0;
+`;
+
 // Shrinking Header
 export const HeaderOuter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   top: -30;
-  height: 100px;
+  height: 80px;
   width: 100%;
   background-color: #fff;
   /* color: rgb(25, 46, 64); */
@@ -16,7 +29,7 @@ export const HeaderOuter = styled.div`
 export const HeaderInner = styled(HeaderOuter)`
   position: sticky;
   top: 0;
-  height: 70px;
+  height: 50px;
   padding: 5px 30px;
 `;
 
@@ -68,8 +81,9 @@ export const Search = styled.div`
 `;
 
 export const HeaderSearch = styled(Search)`
-  position: absolute;
-  right: 120px;
+  /* position: absolute;
+  right: 180px; */
+  position: relative;
 
   > input {
     padding: 12px;
