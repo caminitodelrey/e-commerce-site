@@ -25,7 +25,7 @@ export default function QA({ product, onClick }) {
   const [filtered, setFiltered] = useState(false);
 
   // // for Testing only, also go to line 11. ~~~~~~~~~~~~~~~~~~~~~~~~
-  // const [product, setProduct] = useState({ id: 38322 }); // type product id here
+  // const [product, setProduct] = useState({ id: 38322 }); // TESTING type product id here
   // useEffect(() => {
   //   axios({
   //     method: 'get',
@@ -37,14 +37,6 @@ export default function QA({ product, onClick }) {
   //     .then((res) => setProduct(res.data))
   //     .catch((err) => { throw Error(err); });
   // }, [product.id]);
-
-  // /qa
-  // /qa/q/report
-  // /qa/a/report
-  // /qa/q/helpful
-  // /qa/a/helpful
-  // /qa/q/add
-  // /qa/a/add
 
   useEffect(() => {
     axios({

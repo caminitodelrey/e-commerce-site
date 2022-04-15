@@ -12,7 +12,12 @@ import {
   ButtonDefaultLG,
 } from '../../../theme/buttonStyle.js';
 
-export default function AddPhotosQA({ product, addPhotosModal, setPhoto1 }) {
+export default function AddPhotosQA({
+  product,
+  addPhotosModal,
+  setPhoto1,
+  setPhotos,
+}) {
   const [photosURL, setPhotosURL] = useState([]);
   const [showAddPhoto, setShowAddPhoto] = useState(false);
   const [photo1Url, setPhoto1Url] = useState('');
@@ -21,15 +26,23 @@ export default function AddPhotosQA({ product, addPhotosModal, setPhoto1 }) {
   const [photo4Url, setPhoto4Url] = useState('');
   const [photo5Url, setPhoto5Url] = useState('');
 
-  // const handleAddQuestionClick = (data) => {
-  //   handleAddQuestionSubmit(data);
-  //   setQuestionBody('');
-  //   setNickName('');
-  //   setEmail('');
-  //   toggleAddQuestionModal();
-  // };
   const handleUploadPhotos = () => {
-    setPhoto1(photo1Url);
+    setPhoto1(photo1Url); // REMOVE
+    setPhotos([photo1Url, photo2Url, photo3Url, photo4Url, photo5Url]);
+    setPhoto1Url('');
+    setPhoto2Url('');
+    setPhoto3Url('');
+    setPhoto4Url('');
+    setPhoto5Url('');
+    setShowAddPhoto(!showAddPhoto);
+  };
+
+  const toggleAddPhotoModal = () => {
+    setPhoto1Url('');
+    setPhoto2Url('');
+    setPhoto3Url('');
+    setPhoto4Url('');
+    setPhoto5Url('');
     setShowAddPhoto(!showAddPhoto);
   };
 
@@ -55,7 +68,7 @@ export default function AddPhotosQA({ product, addPhotosModal, setPhoto1 }) {
 
   const addPhotoComponent = !showAddPhoto ? (
     <ButtonDefaultSM
-      onClick={handleUploadPhotos}
+      onClick={toggleAddPhotoModal}
       style={{
         marginTop: '15px',
         marginBottom: '25px',
@@ -137,7 +150,7 @@ export default function AddPhotosQA({ product, addPhotosModal, setPhoto1 }) {
             <ButtonDefaultLG type="button" onClick={handleUploadPhotos}>
               Upload Photos
             </ButtonDefaultLG>
-            <ButtonDefaultLG type="button" onClick={handleUploadPhotos}>
+            <ButtonDefaultLG type="button" onClick={toggleAddPhotoModal}>
               Cancel
             </ButtonDefaultLG>
           </div>
