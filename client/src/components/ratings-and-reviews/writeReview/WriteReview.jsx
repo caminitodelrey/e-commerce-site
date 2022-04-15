@@ -16,9 +16,11 @@ import {
   ButtonDefaultSM,
 } from '../../../theme/buttonStyle.js';
 
+import AddPhoto from './AddPhoto.jsx';
 import RatingsInteractive from './RatingsInteractive.jsx';
 
 export default function WriteReview({ name }) {
+  const [showAddPhoto, setShowAddPhoto] = useState(false);
   const [writeReview, setWriteReview] = useState(false);
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBoday] = useState('');

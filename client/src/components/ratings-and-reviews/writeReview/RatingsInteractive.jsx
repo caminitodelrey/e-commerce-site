@@ -16,7 +16,8 @@ export default function RatingsInteractive ({handleRating}) {
                     type='radio'
                     name='rating'
                     value={ratingValue}
-                    onClick={() => handleRating(ratingValue)}
+                    onClick={() => {handleRating(ratingValue);}}
+                    onClick={() => {setRating(ratingValue)}}
                   ></input>
                   <FaStar
                     style={{cursor: 'pointer', transition: 'color 500ms'}}
