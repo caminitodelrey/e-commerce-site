@@ -19,7 +19,7 @@ export default function ReivewListUnit({ review }) {
     recommend: true,
     photos: { url: '' },
   };
-
+  const [showReportMessage, setShowReportMessage] = useState(false);
   const [singleReview, setSingleReview] = useState(review2);
   const [helpfulButton, setHelpfulButton] = useState(true);
 
@@ -46,6 +46,7 @@ export default function ReivewListUnit({ review }) {
       }
     })
     setHelpfulButton(!helpfulButton);
+    setShowReportMessage(true);
     setSingleReview({ ...review2, helpfulness: review2.helpfulness - 1 });
   };
 
@@ -134,7 +135,7 @@ export default function ReivewListUnit({ review }) {
             onClick={handleHelpful}
             style={{ cursor: 'pointer' }}
           >
-            {`Yes (${singleReview.helpfulness})`}
+            {`Helpful (${singleReview.helpfulness})`}
           </ButtonDefaultSM>
           <ButtonDefaultSM
             className="helpful"
@@ -143,10 +144,16 @@ export default function ReivewListUnit({ review }) {
             onClick={handleReport}
             style={{ cursor: 'pointer' }}
           >
-            No
+            Report
           </ButtonDefaultSM>
         </div>
-      ) : (
+      ) : showReportMessage ?
+        <div style={{ paddingBottom: '10px' }}>
+        <ButtonDefaultSM style={{ display: 'flex', textIndent: '5px', backgroundColor: 'red'}}>
+          <div style={{color: 'white'}}>Report submitted</div>
+        </ButtonDefaultSM>
+      </div>
+        : (
         <div style={{ paddingBottom: '10px' }}>
           <ButtonDefaultSM style={{ display: 'flex', textIndent: '5px' }}>
             <span>{`Helpful (${singleReview.helpfulness})`}</span>
