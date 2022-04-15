@@ -6,8 +6,4 @@ export const StyledDropdown = styled.select`
   border-radius: 20px;
   background-color: white;
   width: auto;
-
-  > option {
-    color: red;
-  }
 `;
