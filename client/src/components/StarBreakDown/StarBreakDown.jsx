@@ -1,4 +1,5 @@
 import React from 'react';
+import { StarImg } from '../../theme/globalStyle';
 
 function StarBreakDown({ averageRating, height, width }) {
   let rating = averageRating || 0;
@@ -58,11 +59,10 @@ function StarBreakDown({ averageRating, height, width }) {
             width: `${parseInt(item * width, 10)}px`,
           }}
           >
-            <img
+            <StarImg
               style={{
                 height: `${height}px`,
                 width: `${width}px`,
-                // filter: 'invert()',
               }}
               src="star.png"
               alt="stars alt"

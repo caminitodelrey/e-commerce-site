@@ -9,6 +9,7 @@ export const lightTheme = {
   blackToWhite: 'rgb(0, 0, 0)',
   icons: 'rgb(25, 46, 64)',
   banner: 'rgb(245, 245, 245)',
+  star: 'brightness(1)',
 }
 export const darkTheme = {
   body: 'rgb(35,36,37)',
@@ -19,7 +20,12 @@ export const darkTheme = {
   blackToWhite: 'rgb(255, 255, 255)',
   icons: 'rgb(255, 255, 255)',
   banner: 'rgb(128, 128, 128)',
+  star: 'brightness(0.19)',
 }
+
+export const StarImg = styled.img`
+  filter: ${({ theme }) => theme.star};
+`;
 
 // usage example ==> color: var(--theme-primary);
 
