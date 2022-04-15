@@ -119,7 +119,7 @@ export default function ReivewListUnit({ review }) {
       </div>
       <br />
       <div>
-        {singleReview.response ? `Response: ${singleReview.response}` : null}
+        {singleReview.response ? (`Response: ${singleReview.response}`) : null}
       </div>
       <div>
         {singleReview.recommend ? <AiOutlineCheck /> : null}
