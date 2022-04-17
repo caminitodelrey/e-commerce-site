@@ -1,42 +1,134 @@
 # Front End Capstone
+## Overview
+The goal of the capstone was to build a frontend ecommerce site based on a business requirements document over the course of three weeks. Teams are expected to design the project based on a low fidelity wireframe and pass data from an API provided by the project stakeholders.
+
+The first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow, Trello, and Google Sheets. We adapted an agile scrum methodology and held daily standups to keep track of the team's progress on the sub-components of each widget. The main strengths of this storefront are clear and easy to read usability, a cohesive user experience, as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including styled-components and React Hooks, within a day of the sprint planning session.
+
+***
 
 ## Table of Contents
 
-  - [Usage](#usage)
-  - [Requirements](#requirements)
+  - [Proejct Details](#project-details)
+  - [Features](#features)
+  - [Tech Specs](#tech-specs)
   - [Development](#development)
-    - [Installing Dependencies](#installing-dependencies)
-  - [Contributing](#contributing)
-    - [Contributors](#contributors)
-  - [License](#license)
+  - [Deployment](#deployment)
+  - [Contributors](#contributors)
 
-## Usage
+## Features
+Because this application is meant to simulate the aspects of a professional E-Commerce site, certain features (like adding to cart) won't have any profound effect, but the experience is simulated to a degree to provide the user with plenty of detailed and complex interactions. The following features were included with this web application as per a "business requirement document" provided with this project's assignment. Some creative liberties were taken in order to ensure a smooth and pleasant user experience.
+### Product Overview
 
-## Requirements
+This is the first widget displayed on the page and it gives various information about the product, including a description, price, set of features, images, etc.
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
+**Style selector**
+- Similar styles of a product can be selected via thumbnail images. A checkmark is displayed in order to indicate the currently selected style.
+- Selecting a style will update the list of sizes available for that style, as well as the quantity for each of those sizes currently in stock.
+- The "Add to Cart" button does not currently add to a cart on the site, but it will report an error when clicked without the proper size or quantity selected.
+- Social media buttons are also included, without actual functionality at this time, but they demonstrate the appropiate layout that would be required for implementing the feature.
 
-- Node 16.13.1
+**Image gallery**
+- The selected style will also be reflected in the image gallery to the left. The image gallery will have thumbnails that can be scrolled through on the left hand side. There are also arrows in the bottom right corner to navigate these images.
+- Upon clicking the large image, the image gallery will overtake the product overview component. Then the image can be clicked again to enter a image zoom mode. The enlarged image will pan in accordance with the movement of the user's mouse in order to fully explore the image at 2.5 times its previous size.
+### Related Products and Wishlist Carousels
+
+The Related Products carousel displays a list of products related to the main product while the Wishlist carousel is unique to each user, displaying only the products that have been wishlisted by the user. This widget includes the following features:
+
+**Conditionally renderd scroll buttons**
+  - The buttons appear when the number of products overflow past the page.
+  - They deactivate when there are no more cards to scroll through.
+
+**Feature comparison table**
+  - On clicking the compare button in the product description, a modal containing a dynamically rendered comparison table is displayed.
+
+**Wishlist button**
+  - The functionality to add a product to the Wishlist carousel is shared by the following buttons: the heart icon in each product card found in the related product carousel; the heart icon in the product overview section; and the '+ Add Current Outfit' button in the Wishlist carousel.
+  - Upon clicking a wishlist button, the product is added to Wishlist carousel. Once the product has been added, it cannot be re-added.
+  - Using the browser's localStorage, the data of wishlisted items persist even after a page refreshed.
+
+**Remove button**
+  - Upon clicking the 'X' icon in the Wishlist carousel, the product is removed from teh list. The user can re-add the product after it has been removed.
+### Questions & Answers
+This module wil allow asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
+1. Search for a question
+2. View questions
+3. View answers
+4. Ask a question
+5. Answer a question
+  - All question and answer data is obtained through HTTP requests to the API. If a different product is selected, it will trigger a request to the API and the module will re-render. After the data is received, questions and answers are sorted by their helpfulness, or number of helpful upvotes. Users are able to report both questions and answers to the website, as well as vote on a question or answer helpfulness up to a total of one time.
+  - The search bar will only begin to filter questions after three characters are typed. It will also continuously resort both answers and questions by their helpfulness.
+  - Adding a new question or answer will trigger a modal view with a form to be filled out and submitted. Upon submission, each field is validated based on a set of requirements provided in the business documents. Upon a successful submission, an post request will be sent to the API to persist the data.
+### Ratings & Reviews
+
+The Ratings & Reviews module is the bottommost on the product detail page. This component will allow customer to veiw and submit reviews for the selected product.
+
+**Ratings**
+- This component displays ratings about selected product dynamically.
+- Star ratings are displayed to represent the various review scores of the product. Upon being clicked, they will filter the reviews featured to only include ratings with the specified score.
+
+**Reviews**
+- This component dynamically renders reviews about selected products, and reviews can be sorted by the drop-down button.
+- The Write Review button opens a submmission form with validation for the client to rate products.
+- Reviews can be sorted in several ways, including a drop down bar for various metrics (date, helpfulness, and relevancy).
+
+## Tech Specs
+- [React Hooks](https://reactjs.org/)
+- [Node](https://nodejs.dev/)
+- [Express](https://expressjs.com/)
+- [Axios](https://axios-http.com/)
+- [Moment](https://momentjs.com/)
+- [Babel](https://babeljs.io/), [Webpack](https://webpack.js.org/)
+- [Jest](https://jestjs.io/), [Testing Library](https://testing-library.com/)
+- [ESLint](https://eslint.org/)
+- [styled-components](https://styled-components.com/)
+
+***
+
 ## Development
 
-### Installing Dependencies
+### Pre-Installation Requirements
 
-From within the root directory:
-
-```sh
-npm install
-npm run client-dev
+```
+Node v16.13.1
+NPM v8.1.2
 ```
 
-## Contributing
+***
 
-### Contributors
+### Installation
 
-* [Colin Fitzhenry](https://github.com/cgf5033)
-* [Haley Jung](https://github.com/haleyjung)
-* [Jordan Moore](https://github.com/jordo-mordo)
-* [Yilin Liu](https://github.com/yiiiiilin)
+From the root directory, run the following commands in your terminal.
 
-## License
+1. Install packages:
 
-MIT © Caminito del Rey
+```
+npm install
+```
+
+2. To initialize Webpack & Bundle:
+```
+npm run build
+```
+
+3. To start the server:
+
+```
+npm run server-dev
+```
+
+4. If changes are made to the site, once can run this command to have changes automatically compiled into the bundle file:
+```
+npm run react-dev
+```
+***
+
+## Deployment
+
+We deployed
+## Contributors
+Hack Reactor RFE2202 | Team: Caminito del Rey
+
+* [Colin Fitzhenry](https://github.com/cgf5033) - Questions & Answers
+* [Haley Jung](https://github.com/haleyjung) - Related Products
+* [Jordan Moore](https://github.com/jordo-mordo) - Product Information
+* [Yilin Liu](https://github.com/yiiiiilin) - Ratings & Reviews
