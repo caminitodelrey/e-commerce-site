@@ -1,14 +1,13 @@
 # Front End Capstone
+
 ## Overview
+
 The goal of the capstone was to build a frontend ecommerce site based on a business requirements document over the course of three weeks. Teams are expected to design the project based on a low fidelity wireframe and pass data from an API provided by the project stakeholders.
 
 The first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow, Trello, and Google Sheets. We adapted an agile scrum methodology and held daily standups to keep track of the team's progress on the sub-components of each widget. The main strengths of this storefront are clear and easy to read usability, a cohesive user experience, as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including styled-components and React Hooks, within a day of the sprint planning session.
 
-***
-
 ## Table of Contents
 
-  - [Proejct Details](#project-details)
   - [Features](#features)
   - [Tech Specs](#tech-specs)
   - [Development](#development)
@@ -16,10 +15,18 @@ The first phase of our development was becoming acclimated to utilizing project 
   - [Contributors](#contributors)
 
 ## Features
-Because this application is meant to simulate the aspects of a professional E-Commerce site, certain features (like adding to cart) won't have any profound effect, but the experience is simulated to a degree to provide the user with plenty of detailed and complex interactions. The following features were included with this web application as per a "business requirement document" provided with this project's assignment. Some creative liberties were taken in order to ensure a smooth and pleasant user experience.
+
+https://user-images.githubusercontent.com/73789849/163725147-ca1a76ee-61fc-4617-9ba5-4fc94bc08a9b.mov
+
+As the application is meant to simulate the specified aspects of a professional ecommerce site according to the business requirement document, certain features such as adding a product to cart have been excluded on purpose. The experience is simulated to a degree to provide the user with plenty of detailed and complex interactions. We have developed the following features with some creative liberties to ensure a smooth and pleasant user experience.
+
 ### Product Overview
 
-This is the first widget displayed on the page and it gives various information about the product, including a description, price, set of features, images, etc.
+This is the first widget displayed on the page and it gives various information about the product, including a description, price, set of features, and images.
+
+
+https://user-images.githubusercontent.com/73789849/163725830-33a55f6c-bcf6-432e-b7e7-2f548b79915c.mov
+
 
 **Style selector**
 - Similar styles of a product can be selected via thumbnail images. A checkmark is displayed in order to indicate the currently selected style.
@@ -27,12 +34,21 @@ This is the first widget displayed on the page and it gives various information 
 - The "Add to Cart" button does not currently add to a cart on the site, but it will report an error when clicked without the proper size or quantity selected.
 - Social media buttons are also included, without actual functionality at this time, but they demonstrate the appropiate layout that would be required for implementing the feature.
 
+
+https://user-images.githubusercontent.com/73789849/163726127-e77a17f0-3aea-46ba-9ed9-00fa2af91483.mov
+
+
 **Image gallery**
 - The selected style will also be reflected in the image gallery to the left. The image gallery will have thumbnails that can be scrolled through on the left hand side. There are also arrows in the bottom right corner to navigate these images.
 - Upon clicking the large image, the image gallery will overtake the product overview component. Then the image can be clicked again to enter a image zoom mode. The enlarged image will pan in accordance with the movement of the user's mouse in order to fully explore the image at 2.5 times its previous size.
+
 ### Related Products and Wishlist Carousels
 
 The Related Products carousel displays a list of products related to the main product while the Wishlist carousel is unique to each user, displaying only the products that have been wishlisted by the user. This widget includes the following features:
+
+
+https://user-images.githubusercontent.com/73789849/163726432-ee468c63-ba13-466e-a153-b668616c6014.mov
+
 
 **Conditionally renderd scroll buttons**
   - The buttons appear when the number of products overflow past the page.
@@ -41,6 +57,10 @@ The Related Products carousel displays a list of products related to the main pr
 **Feature comparison table**
   - On clicking the compare button in the product description, a modal containing a dynamically rendered comparison table is displayed.
 
+
+https://user-images.githubusercontent.com/73789849/163726962-ba5a0bd5-b5b0-4d92-afb1-08204935539a.mov
+
+
 **Wishlist button**
   - The functionality to add a product to the Wishlist carousel is shared by the following buttons: the heart icon in each product card found in the related product carousel; the heart icon in the product overview section; and the '+ Add Current Outfit' button in the Wishlist carousel.
   - Upon clicking a wishlist button, the product is added to Wishlist carousel. Once the product has been added, it cannot be re-added.
@@ -48,8 +68,15 @@ The Related Products carousel displays a list of products related to the main pr
 
 **Remove button**
   - Upon clicking the 'X' icon in the Wishlist carousel, the product is removed from teh list. The user can re-add the product after it has been removed.
+
 ### Questions & Answers
+
 This module wil allow asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
+
+
+https://user-images.githubusercontent.com/73789849/163727132-d875cd1e-7a64-41f6-a8ad-4e5ca0c8a966.mov
+
+
 1. Search for a question
 2. View questions
 3. View answers
@@ -58,7 +85,12 @@ This module wil allow asking and answering of questions for the selected product
   - All question and answer data is obtained through HTTP requests to the API. If a different product is selected, it will trigger a request to the API and the module will re-render. After the data is received, questions and answers are sorted by their helpfulness, or number of helpful upvotes. Users are able to report both questions and answers to the website, as well as vote on a question or answer helpfulness up to a total of one time.
   - The search bar will only begin to filter questions after three characters are typed. It will also continuously resort both answers and questions by their helpfulness.
   - Adding a new question or answer will trigger a modal view with a form to be filled out and submitted. Upon submission, each field is validated based on a set of requirements provided in the business documents. Upon a successful submission, an post request will be sent to the API to persist the data.
+
 ### Ratings & Reviews
+
+
+https://user-images.githubusercontent.com/73789849/163725061-6947bddd-e889-4f7e-b4d3-88e955319bcb.mov
+
 
 The Ratings & Reviews module is the bottommost on the product detail page. This component will allow customer to veiw and submit reviews for the selected product.
 
@@ -124,7 +156,8 @@ npm run react-dev
 
 ## Deployment
 
-We deployed
+The application has been deployed with both AWS and Heroku. The site is currently live with Heroku only, and can be found [here](https://caminito-ecommerce.herokuapp.com/).
+
 ## Contributors
 Hack Reactor RFE2202 | Team: Caminito del Rey
 
