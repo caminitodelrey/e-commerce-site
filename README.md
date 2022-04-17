@@ -9,6 +9,10 @@ The first phase of our development was becoming acclimated to utilizing project 
 ## Table of Contents
 
   - [Features](#features)
+    - [Product Overview](#product-overview)
+    - [Related Products and Wishlist Carousels](#related-products-and-wishlist-carousels)   
+    - [Questions and Answers](#questions-and-answers)   
+    - [Ratings and Reviews](#ratings-and-reviews)
   - [Tech Specs](#tech-specs)
   - [Development](#development)
   - [Deployment](#deployment)
@@ -69,7 +73,7 @@ https://user-images.githubusercontent.com/73789849/163726962-ba5a0bd5-b5b0-4d92-
 **Remove button**
   - Upon clicking the 'X' icon in the Wishlist carousel, the product is removed from teh list. The user can re-add the product after it has been removed.
 
-### Questions & Answers
+### Questions and Answers
 
 This module wil allow asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
 
@@ -86,7 +90,7 @@ https://user-images.githubusercontent.com/73789849/163727132-d875cd1e-7a64-41f6-
   - The search bar will only begin to filter questions after three characters are typed. It will also continuously resort both answers and questions by their helpfulness.
   - Adding a new question or answer will trigger a modal view with a form to be filled out and submitted. Upon submission, each field is validated based on a set of requirements provided in the business documents. Upon a successful submission, an post request will be sent to the API to persist the data.
 
-### Ratings & Reviews
+### Ratings and Reviews
 
 
 https://user-images.githubusercontent.com/73789849/163725061-6947bddd-e889-4f7e-b4d3-88e955319bcb.mov
