@@ -46,6 +46,8 @@ https://user-images.githubusercontent.com/73789849/163726127-e77a17f0-3aea-46ba-
 - The selected style will also be reflected in the image gallery to the left. The image gallery will have thumbnails that can be scrolled through on the left hand side. There are also arrows in the bottom right corner to navigate these images.
 - Upon clicking the large image, the image gallery will overtake the product overview component. Then the image can be clicked again to enter a image zoom mode. The enlarged image will pan in accordance with the movement of the user's mouse in order to fully explore the image at 2.5 times its previous size.
 
+***
+
 ### Related Products and Wishlist Carousels
 
 The Related Products carousel displays a list of products related to the main product while the Wishlist carousel is unique to each user, displaying only the products that have been wishlisted by the user. This widget includes the following features:
@@ -73,6 +75,8 @@ https://user-images.githubusercontent.com/73789849/163726962-ba5a0bd5-b5b0-4d92-
 **Remove button**
   - Upon clicking the 'X' icon in the Wishlist carousel, the product is removed from teh list. The user can re-add the product after it has been removed.
 
+***
+
 ### Questions and Answers
 
 This module wil allow asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
@@ -90,8 +94,9 @@ https://user-images.githubusercontent.com/73789849/163727132-d875cd1e-7a64-41f6-
   - The search bar will only begin to filter questions after three characters are typed. It will also continuously resort both answers and questions by their helpfulness.
   - Adding a new question or answer will trigger a modal view with a form to be filled out and submitted. Upon submission, each field is validated based on a set of requirements provided in the business documents. Upon a successful submission, an post request will be sent to the API to persist the data.
 
-### Ratings and Reviews
+***
 
+### Ratings and Reviews
 
 https://user-images.githubusercontent.com/73789849/163725061-6947bddd-e889-4f7e-b4d3-88e955319bcb.mov
 
@@ -118,8 +123,6 @@ The Ratings & Reviews module is the bottommost on the product detail page. This 
 - [ESLint](https://eslint.org/)
 - [styled-components](https://styled-components.com/)
 
-***
-
 ## Development
 
 ### Pre-Installation Requirements
@@ -128,8 +131,6 @@ The Ratings & Reviews module is the bottommost on the product detail page. This 
 Node v16.13.1
 NPM v8.1.2
 ```
-
-***
 
 ### Installation
 
@@ -156,7 +157,6 @@ npm run server-dev
 ```
 npm run react-dev
 ```
-***
 
 ## Deployment
 
