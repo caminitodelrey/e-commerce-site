@@ -4,7 +4,7 @@
 
 The goal of the capstone was to build a frontend ecommerce site based on a business requirements document over the course of three weeks. Teams are expected to design the project based on a low fidelity wireframe and pass data from an API provided by the project stakeholders.
 
-The first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow, Trello, and Google Sheets. We adapted an agile scrum methodology and held daily standups to keep track of the team's progress on the sub-components of each widget. The main strengths of this storefront are clear and easy to read usability, a cohesive user experience, as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including styled-components and React Hooks, within a day of the sprint planning session.
+The first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow, Trello, and Google Sheets. For the consistency of the codebase, we implemented [Airbnb Style Guide](https://github.com/airbnb/javascript). We adapted an agile scrum methodology and held daily standups to keep track of the team's progress on the sub-components of each widget. The main strengths of this storefront are clear and easy to read usability, a cohesive user experience, as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including styled-components and React Hooks, within a day of the sprint planning session.
 
 ## Table of Contents
 
