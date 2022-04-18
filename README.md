@@ -7,18 +7,52 @@ The goal of the capstone was to build a frontend ecommerce site based on a busin
 The first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow, Trello, and Google Sheets. For the consistency of the codebase, we implemented [Airbnb Style Guide](https://github.com/airbnb/javascript). We adapted an agile scrum methodology and held daily standups to keep track of the team's progress on the sub-components of each widget. The main strengths of this storefront are clear and easy to read usability, a cohesive user experience, as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including styled-components and React Hooks, within a day of the sprint planning session.
 
 ## Table of Contents
-
+  
+  - [Tech Specs](#tech-specs)
   - [Features](#features)
     - [Product Overview](#product-overview)
     - [Related Products and Wishlist Carousels](#related-products-and-wishlist-carousels)   
     - [Questions and Answers](#questions-and-answers)   
     - [Ratings and Reviews](#ratings-and-reviews)
-  - [Tech Specs](#tech-specs)
   - [Development](#development)
   - [Deployment](#deployment)
   - [Contributors](#contributors)
 
+## Tech Specs
+<p align="left"> 
+  <a href="https://reactjs.org/" target="_blank"> 
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/>     </a>
+  <a href="https://nodejs.org" target="_blank"> 
+    <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="nodejs" width="40" height="40"/> 
+  </a>
+  <a href="https://expressjs.com" target="_blank"> 
+    <img src="https://cdn.worldvectorlogo.com/logos/express-109.svg" alt="express" width="60" height="40"/> 
+  </a>
+  <a href="https://webpack.js.org" target="_blank"> 
+    <img src="https://cdn.worldvectorlogo.com/logos/webpack-icon.svg" alt="webpack" width="40" height="40"/> 
+  </a> 
+  <a href="https://babeljs.io/" target="_blank"> 
+    <img src="https://d33wubrfki0l68.cloudfront.net/7a197cfe44548cc1a3f581152af70a3051e11671/78df8/img/babel.svg" alt="babel" width="60" height="40"/> 
+  </a>
+  <a href="https://jestjs.io/" target="_blank"> 
+    <img src="https://iconape.com/wp-content/png_logo_vector/jest-logo.png" alt="jest" width="40" height="40"/> 
+  </a>
+  <a href="https://testing-library.com/docs/react-testing-library/intro/" target="_blank"> 
+    <img src="https://testing-library.com/img/octopus-64x64.png" alt="react-testing-library" width="40" height="40"/> 
+  </a>
+  <a href="https://eslint.org/" target="_blank"> 
+    <img src="https://cdn.worldvectorlogo.com/logos/eslint-1.svg" alt="eslint" width="40" height="40"/> 
+  </a>
+  <a href="https://momentjs.com/" target="_blank"> 
+    <img src="https://cdn.worldvectorlogo.com/logos/momentjs.svg" alt="moment" width="40" height="40"/> 
+  </a>
+  <a href="https://styled-components.com/" target="_blank"> 
+    <img src="https://cdn.worldvectorlogo.com/logos/styled-components-1.svg" alt="styled-components" width="40" height="40"/> 
+  </a> 
+</p>
+
 ## Features
+**Theme Toggle: Dark and Light Modes**
 
 https://user-images.githubusercontent.com/73789849/163725147-ca1a76ee-61fc-4617-9ba5-4fc94bc08a9b.mov
 
@@ -111,17 +145,6 @@ The Ratings & Reviews module is the bottommost on the product detail page. This 
 - This component dynamically renders reviews about selected products, and reviews can be sorted by the drop-down button.
 - The Write Review button opens a submmission form with validation for the client to rate products.
 - Reviews can be sorted in several ways, including a drop down bar for various metrics (date, helpfulness, and relevancy).
-
-## Tech Specs
-- [React Hooks](https://reactjs.org/)
-- [Node](https://nodejs.dev/)
-- [Express](https://expressjs.com/)
-- [Axios](https://axios-http.com/)
-- [Moment](https://momentjs.com/)
-- [Babel](https://babeljs.io/), [Webpack](https://webpack.js.org/)
-- [Jest](https://jestjs.io/), [Testing Library](https://testing-library.com/)
-- [ESLint](https://eslint.org/)
-- [styled-components](https://styled-components.com/)
 
 ## Development
 
