@@ -193,6 +193,6 @@ The application was deployed with both Amazon EC2 and Heroku. The site is curren
 Hack Reactor RFE2202 | Team: Caminito del Rey
 
 * [Colin Fitzhenry](https://github.com/cgf5033) - Questions & Answers
-* [Haley Jung](https://github.com/haleyjung) - Related Products
+* [Haley Jung](https://github.com/haleyjung) - Related Products and Wishlist Carousels & Header
 * [Jordan Moore](https://github.com/jordo-mordo) - Product Information
 * [Yilin Liu](https://github.com/yiiiiilin) - Ratings & Reviews
