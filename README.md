@@ -160,7 +160,7 @@ npm run react-dev
 
 ## Deployment
 
-The application has been deployed with both AWS and Heroku. The site is currently live with Heroku only, and can be found below:
+The application was deployed with both AWS and Heroku. The site is currently live with Heroku only, and can be found below:
 
 <a href="https://caminito-ecommerce.herokuapp.com/"><img alt="Powered by Heroku" title="Powered by Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/></a>
 
