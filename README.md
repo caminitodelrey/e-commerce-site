@@ -187,7 +187,7 @@ npm run build
 npm run server-dev
 ```
 
-4. If changes are made to the site, once can run this command to have changes automatically compiled into the bundle file:
+4. To automatically compile changes into the bundle file:
 ```
 npm run react-dev
 ```
