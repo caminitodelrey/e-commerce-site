@@ -2,7 +2,7 @@
 
 ## Overview
 
-Front End Capstone is an e-commerce site built with React and Express, following a business requirements document and an API provided by the project stakeholders. Working as a team of four engineers, the first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow and Trello. For the consistency of the codebase, we implemented [Airbnb Style Guide](https://github.com/airbnb/javascript). We adapted an agile scrum methodology and held daily standups to keep track of each member's progress on the sub-components of the product. The main strengths of this storefront are a cohesive user experience, clear and easy-to-read usability as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including styled-components and React Hooks, within a day of the sprint planning session.
+Front End Capstone is an e-commerce site built with React and Express, following a business requirements document and an API provided by the project stakeholders. Working as a team of four engineers, the first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow and Trello. For the consistency of the codebase, we implemented [Airbnb Style Guide](https://github.com/airbnb/javascript). We adapted an agile scrum methodology and held daily standup to keep track of each member's progress on the sub-components of the product. The main strengths of this storefront are a cohesive user experience, clear and easy-to-read usability as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including styled-components and React Hooks, within a day of the sprint planning session.
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
   - [Deployment](#deployment)
   - [Contributors](#contributors)
 
-## Tech Specs
+## Tech Stack
 <p align="left">
   <a href="https://reactjs.org/" target="_blank">
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/>     </a>
@@ -53,54 +53,68 @@ Front End Capstone is an e-commerce site built with React and Express, following
 </p>
 
 ## Features
-**Theme Toggle: Dark and Light Modes**
 
-https://user-images.githubusercontent.com/73789849/163725147-ca1a76ee-61fc-4617-9ba5-4fc94bc08a9b.mov
+### Dark and Light Mode
 
-As the application is meant to simulate the specified aspects of a professional ecommerce site according to the business requirement document, certain features such as adding a product to cart have been excluded on purpose. The experience is simulated to a degree to provide the user with plenty of detailed and complex interactions. We have developed the following features with some creative liberties to ensure a smooth and pleasant user experience.
+<img src='./client/asset/FEC_ThemeToggle.gif' align="center"/>
 
 ### Product Overview
 
-This is the first widget displayed on the page and it gives various information about the product, including a description, price, set of features, and images.
-
-
-https://user-images.githubusercontent.com/73789849/163725830-33a55f6c-bcf6-432e-b7e7-2f548b79915c.mov
-
+> This is the first widget displayed on the page and it gives various information about the product, including a description, price, set of features, and images.
 
 **Style selector**
+<img src='./client/asset/FEC_product-overview_style-selector.gif' align="center"/>
+
+<details>
+<summary>Read more about this feature</summary>
+
 - Similar styles of a product can be selected via thumbnail images. A checkmark is displayed in order to indicate the currently selected style.
 - Selecting a style will update the list of sizes available for that style, as well as the quantity for each of those sizes currently in stock.
 - The "Add to Cart" button does not currently add to a cart on the site, but it will report an error when clicked without the proper size or quantity selected.
 - Social media buttons are also included, without actual functionality at this time, but they demonstrate the appropiate layout that would be required for implementing the feature.
 
+</details>
 
-https://user-images.githubusercontent.com/73789849/163726127-e77a17f0-3aea-46ba-9ed9-00fa2af91483.mov
-
+&nbsp;
 
 **Image gallery**
+<img src='./client/asset/FEC_product-overview_image-gallery.gif' align="center"/>
+
+<details>
+<summary>Read more about this feature</summary>
 - The selected style will also be reflected in the image gallery to the left. The image gallery will have thumbnails that can be scrolled through on the left hand side. There are also arrows in the bottom right corner to navigate these images.
 - Upon clicking the large image, the image gallery will overtake the product overview component. Then the image can be clicked again to enter a image zoom mode. The enlarged image will pan in accordance with the movement of the user's mouse in order to fully explore the image at 2.5 times its previous size.
 
-***
+</details>
+
+&nbsp;
 
 ### Related Products and Wishlist Carousels
 
-The Related Products carousel displays a list of products related to the main product while the Wishlist carousel is unique to each user, displaying only the products that have been wishlisted by the user. This widget includes the following features:
+> The Related Products carousel displays a list of products related to the main product while the Wishlist carousel is unique to each user, displaying only the products that have been wishlisted by the user. This widget includes the following features:
 
+**Scroll functionality and comparison table**
+<img src='./client/asset/FEC_carousels_scroll_modal.gif' align="center"/>
 
-https://user-images.githubusercontent.com/73789849/163726432-ee468c63-ba13-466e-a153-b668616c6014.mov
+<details>
+<summary>Read more about this feature</summary>
 
-
-**Conditionally renderd scroll buttons**
+ **Conditionally renderd scroll buttons**
   - The buttons appear when the number of products overflow past the page.
   - They deactivate when there are no more cards to scroll through.
 
 **Feature comparison table**
   - On clicking the compare button in the product description, a modal containing a dynamically rendered comparison table is displayed.
 
+</details>
 
-https://user-images.githubusercontent.com/73789849/163726962-ba5a0bd5-b5b0-4d92-afb1-08204935539a.mov
+&nbsp;
 
+**Wishlist an item**
+<img src='./client/asset/FEC_carousel_action-buttons.gif' align="center"/>
+
+<details>
+<summary>Read more about this feature</summary>
 
 **Wishlist button**
   - The functionality to add a product to the Wishlist carousel is shared by the following buttons: the heart icon in each product card found in the related product carousel; the heart icon in the product overview section; and the '+ Add Current Outfit' button in the Wishlist carousel.
@@ -110,15 +124,19 @@ https://user-images.githubusercontent.com/73789849/163726962-ba5a0bd5-b5b0-4d92-
 **Remove button**
   - Upon clicking the 'X' icon in the Wishlist carousel, the product is removed from teh list. The user can re-add the product after it has been removed.
 
-***
+</details>
+
+&nbsp;
 
 ### Questions and Answers
 
-This module wil allow asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
+> This module wil allow asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
 
 
-https://user-images.githubusercontent.com/73789849/163727132-d875cd1e-7a64-41f6-a8ad-4e5ca0c8a966.mov
+<img src='./client/asset/FEC_QA.gif' align="center"/>
 
+<details>
+<summary>Read more about this feature</summary>
 
 1. Search for a question
 2. View questions
@@ -129,14 +147,16 @@ https://user-images.githubusercontent.com/73789849/163727132-d875cd1e-7a64-41f6-
   - The search bar will only begin to filter questions after three characters are typed. It will also continuously resort both answers and questions by their helpfulness.
   - Adding a new question or answer will trigger a modal view with a form to be filled out and submitted. Upon submission, each field is validated based on a set of requirements provided in the business documents. Upon a successful submission, an post request will be sent to the API to persist the data.
 
-***
+</details>
 
+&nbsp;
 ### Ratings and Reviews
+> The Ratings & Reviews module is the bottommost on the product detail page. This component will allow customer to veiw and submit reviews for the selected product.
 
-https://user-images.githubusercontent.com/73789849/163725061-6947bddd-e889-4f7e-b4d3-88e955319bcb.mov
+<img src='./client/asset/FEC_Ratings&Reviews.gif' align="center"/>
 
-
-The Ratings & Reviews module is the bottommost on the product detail page. This component will allow customer to veiw and submit reviews for the selected product.
+<details>
+<summary>Read more about this feature</summary>
 
 **Ratings**
 - This component displays ratings about selected product dynamically.
@@ -147,7 +167,9 @@ The Ratings & Reviews module is the bottommost on the product detail page. This 
 - The Write Review button opens a submmission form with validation for the client to rate products.
 - Reviews can be sorted in several ways, including a drop down bar for various metrics (date, helpfulness, and relevancy).
 
-***
+</details>
+
+&nbsp;
 
 ## Development
 
@@ -192,12 +214,11 @@ npm run react-dev
 
 ## Deployment
 
-The application was deployed to both Amazon EC2 instance and Heroku. The site is currently live on Heroku only and can be found at: 
+The application was deployed to both Amazon EC2 instance and Heroku. The site is currently live on Heroku only and can be found at:
 
 <a href="https://caminito-ecommerce.herokuapp.com/"><img alt="Powered by Heroku" title="Powered by Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/></a>
 
 ## Contributors
-Hack Reactor RFE2202 | Team: Caminito del Rey
 
 * [Colin Fitzhenry](https://github.com/cgf5033) - Questions & Answers
 * [Haley Jung](https://github.com/haleyjung) - Related Products and Wishlist Carousels & Header
