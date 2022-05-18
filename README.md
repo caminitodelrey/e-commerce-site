@@ -223,12 +223,6 @@ npm run server-dev
 npm run react-dev
 ```
 
-## Deployment
-
-The application was deployed to both Amazon EC2 instance and Heroku. The site is currently live on Heroku only and can be found at:
-
-<a href="https://caminito-ecommerce.herokuapp.com/"><img alt="Powered by Heroku" title="Powered by Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/></a>
-
 ## Contributors
 
 * [Colin Fitzhenry](https://github.com/cgf5033) - Questions & Answers
