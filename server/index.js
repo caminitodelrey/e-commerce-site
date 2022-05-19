@@ -1,18 +1,26 @@
 const path = require('path');
 const morgan = require('morgan');
+const compression = require('compression');
 const express = require('express');
 const app = express();
 const axios = require('axios');
 const { apiRequest, apiPostRequest } = require('./helper_test.js');
 require('dotenv').config();
 
+const PORT = process.env.PORT;
+
 // MIDDLEWARE
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+app.use(compression());
 
-const PORT = process.env.PORT;
+app.get('*.js', function (req, res, next) {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 
 // GET uses query or params
 // POST and PUT uses body

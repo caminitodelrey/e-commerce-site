@@ -134,7 +134,7 @@ export default function ImageGallery({
           {checkmark}
           <GalleryThumbImg
             selected={selected}
-            alt=""
+            alt="Thumbnail image"
             src={photo.thumbnail_url}
           />
         </GalleryThumbDiv>
@@ -288,7 +288,7 @@ export default function ImageGallery({
           ref={bigImageContainerRef}
           style={{ width: JSON.stringify(imgSize) }}
           src={photoList[mainPhoto].url}
-          alt=""
+          alt="big image"
           expanded={expanded}
           onClick={() => bigImageClick()}
         />

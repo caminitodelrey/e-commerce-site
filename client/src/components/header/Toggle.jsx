@@ -9,8 +9,10 @@ import {
 export default function Toggle({ theme, themeToggler }) {
   return (
     <ToggleContainer>
-      <ToggleInput type="checkbox" onChange={themeToggler} />
+      <label>
+        <ToggleInput type="checkbox" onChange={themeToggler} />
+      </label>
       <ToggleLabel htmlFor="input" />
     </ToggleContainer>
-  )
-};
+  );
+}

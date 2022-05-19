@@ -1,5 +1,8 @@
-const path = require('path');
 const webpack = require('webpack');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+var CompressionPlugin = require('compression-webpack-plugin');
+const path = require('path');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
@@ -36,7 +39,29 @@ module.exports = {
     new webpack.ProvidePlugin({
         process: 'process/browser',
     }),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'client/dist/**/**', to: DIST_DIR }
+      ]
+    }),
+    new ImageminPlugin(),
+    new CompressionPlugin({
+      // asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
   ],
   devtool: 'inline-source-map',
   mode: 'development',
+  optimization: {
+    minimizer: [
+      (compiler) => {
+        const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+        new UglifyJsPlugin().apply(compiler);
+      },
+    ],
+  },
 };

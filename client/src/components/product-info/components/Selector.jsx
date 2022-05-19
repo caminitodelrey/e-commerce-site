@@ -219,6 +219,7 @@ export default function Selector({
                 <StyleThumb
                   selected
                   src={style.photos[0].thumbnail_url}
+                  alt="Style Selector Thumbnail"
                   onClick={() => handleStyleClick(index)}
                 />
                 <StyledCheckmark />
