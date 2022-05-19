@@ -26,7 +26,7 @@ app.get('/product', (req, res) => {
   apiRequest('get', endpoint)
     .then((response) => res.status(200).send(response.data))
     // .then((response) => console.log(response.data))
-    .catch((err) => console.log('catch on server side - product info'));
+    .catch((err) => console.log( 'catch on server side - product info'));
 });
 
 // Gets a list of styles from a product
@@ -34,7 +34,7 @@ app.get('/product/styles', (req, res) => {
   const endpoint = `products/${req.query.productId}/styles`;
   apiRequest('get', endpoint)
     .then(({ data }) => res.status(200).send(data))
-    .catch((err) => console.log('catch on server side - styles'));
+    .catch((err) => console.log( 'catch on server side - styles'));
 });
 
 app.get('/product/related', (req, res) => {

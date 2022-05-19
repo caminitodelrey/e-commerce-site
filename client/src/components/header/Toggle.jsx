@@ -9,10 +9,8 @@ import {
 export default function Toggle({ theme, themeToggler }) {
   return (
     <ToggleContainer>
-      <label>
-        <ToggleInput type="checkbox" onChange={themeToggler} />
-      </label>
-      <ToggleLabel htmlFor="input" />
+      <ToggleInput id="light-dark-toggle" type="checkbox" onChange={themeToggler} />
+      <ToggleLabel htmlFor="input" for="light-dark-toggle" />
     </ToggleContainer>
   );
 }

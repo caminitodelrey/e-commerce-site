@@ -75,11 +75,11 @@ const WishlistCarousel = forwardRef(
             {length <= maxDisplayCount ? (
               <div></div>
             ) : currentIndex > 0 ? (
-              <Chevron className="left-arrow" onClick={prev}>
+              <Chevron className="left-arrow" onClick={prev} aria-label="Left Scroll">
                 <FaChevronLeft />
               </Chevron>
             ) : (
-              <DeactivatedChevron className="left-arrow">
+              <DeactivatedChevron className="left-arrow" aria-label="Left Scroll">
                 <FaChevronLeft />
               </DeactivatedChevron>
             )}
@@ -87,11 +87,11 @@ const WishlistCarousel = forwardRef(
             {length <= maxDisplayCount ? (
               <div></div>
             ) : currentIndex < length - maxDisplayCount ? (
-              <Chevron className="right-arrow" onClick={next}>
+              <Chevron className="right-arrow" onClick={next} aria-label="Right Scroll">
                 <FaChevronRight />
               </Chevron>
             ) : (
-              <DeactivatedChevron className="right-arrow">
+              <DeactivatedChevron className="right-arrow" aria-label="Right Scroll">
                 <FaChevronRight />
               </DeactivatedChevron>
             )}

@@ -38,8 +38,6 @@ export default function RelatedCarousel({
   });
 
   const { display, clickedProduct } = modal;
-
-  // determines the initial number of product cards maxDisplayCountn on page
   const maxDisplayCount = 4;
 
   useEffect(() => {
@@ -79,11 +77,11 @@ export default function RelatedCarousel({
           {length <= maxDisplayCount ? (
             <div></div>
           ) : currentIndex > 0 ? (
-            <Chevron className="left-arrow" onClick={prev}>
+            <Chevron className="left-arrow" onClick={prev} aria-label="Left Scroll">
               <FaChevronLeft />
             </Chevron>
           ) : (
-            <DeactivatedChevron className="left-arrow">
+            <DeactivatedChevron className="left-arrow" aria-label="Left Scroll">
               <FaChevronLeft />
             </DeactivatedChevron>
           )}
@@ -91,11 +89,11 @@ export default function RelatedCarousel({
           {length <= maxDisplayCount ? (
             <div></div>
           ) : currentIndex < length - maxDisplayCount ? (
-            <Chevron className="right-arrow" onClick={next}>
+            <Chevron className="right-arrow" onClick={next} aria-label="Right Scroll">
               <FaChevronRight />
             </Chevron>
           ) : (
-            <DeactivatedChevron className="right-arrow">
+            <DeactivatedChevron className="right-arrow" aria-label="Right Scroll">
               <FaChevronRight />
             </DeactivatedChevron>
           )}
