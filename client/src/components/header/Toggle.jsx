@@ -10,7 +10,7 @@ export default function Toggle({ theme, themeToggler }) {
   return (
     <ToggleContainer>
       <ToggleInput id="light-dark-toggle" type="checkbox" onChange={themeToggler} />
-      <ToggleLabel htmlFor="input" for="light-dark-toggle" />
+      <ToggleLabel htmlFor="light-dark-toggle" />
     </ToggleContainer>
   );
 }

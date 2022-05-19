@@ -187,7 +187,7 @@ npm install
 
 2. To initialize Webpack & Bundle:
 ```
-npm run build
+npm run build-dev
 ```
 
 3. To start the server:

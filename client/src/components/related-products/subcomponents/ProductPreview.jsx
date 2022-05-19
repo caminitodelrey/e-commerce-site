@@ -89,12 +89,16 @@ export default function ProductPreview({ product, handleProductChange }) {
             product.image ||
             'https://images.unsplash.com/photo-1555617117-08d2a80f6aa9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
           }
+          loading="lazy"
+          decoding="async"
           alt="Thumbnail product image"
           onClick={() => handleProductChange(product.id)}
         />
       ) : (
         <CardAssetImg
           src={currentPreviewURL}
+          loading="lazy"
+          decoding="async"
           alt="Product image"
           onClick={() => {
             handleProductChange(product.id);
@@ -124,12 +128,16 @@ export default function ProductPreview({ product, handleProductChange }) {
                     <ThumbnailCardContainer
                       className='CardContainer'
                       key={thumbnail.thumbnail_url}
+                      loading="lazy"
+                      decoding="async"
                       alt="Thumbnail product image"
                       style={{ width: `calc(100% / ${maxDisplayCount})` }}
                     >
                       <ThumbnailAssetContainer className='AssetContainer'>
                         <ThumbnailImg
                           src={thumbnail.thumbnail_url}
+                          loading="lazy"
+                          decoding="async"
                           alt="Thumbnail product image"
                           onClick={() => handleMainPreviewChange(thumbnail.url)}
                         />

@@ -277,7 +277,6 @@ export default function ImageGallery({
 
   return (
     <GalleryWrapper id={'Gallery Wrapper'} galleryType={galleryType} ref={galleryWrapperRef} wrapperSize={wrapperSize}>
-
       <BigImageContainer id="bigImageContainer">
       {renderGalleryThumbNav()}
       {renderImageNav()}
@@ -285,10 +284,11 @@ export default function ImageGallery({
         {renderLens()}
         <BigImage
           id="bigImage"
+          loading="eager"
           ref={bigImageContainerRef}
           style={{ width: JSON.stringify(imgSize) }}
           src={photoList[mainPhoto].url}
-          alt="big image"
+          alt="Main image preview"
           expanded={expanded}
           onClick={() => bigImageClick()}
         />
