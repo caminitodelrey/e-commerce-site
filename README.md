@@ -6,7 +6,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
 
 ## Table of Contents
 
-  - [Tech Specs](#tech-specs)
+  - [Tech Stack](#tech-stack)
   - [Features](#features)
     - [Product Overview](#product-overview)
     - [Related Products and Wishlist Carousels](#related-products-and-wishlist-carousels)
