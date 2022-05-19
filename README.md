@@ -20,45 +20,23 @@ Front End Capstone is an e-commerce site built with React and Express, following
   - [Contributors](#contributors)
 
 ## Tech Stack
-<p align="left">
-  <a href="https://reactjs.org/" target="_blank">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/>     </a>
-  <a href="https://nodejs.org" target="_blank">
-    <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="nodejs" width="40" height="40"/>
-  </a>
-  <a href="https://expressjs.com" target="_blank">
-    <img src="https://cdn.worldvectorlogo.com/logos/express-109.svg" alt="express" width="60" height="40"/>
-  </a>
-  <a href="https://webpack.js.org" target="_blank">
-    <img src="https://cdn.worldvectorlogo.com/logos/webpack-icon.svg" alt="webpack" width="40" height="40"/>
-  </a>
-  <a href="https://babeljs.io/" target="_blank">
-    <img src="https://d33wubrfki0l68.cloudfront.net/7a197cfe44548cc1a3f581152af70a3051e11671/78df8/img/babel.svg" alt="babel" width="60" height="40"/>
-  </a>
-  <a href="https://jestjs.io/" target="_blank">
-    <img src="https://iconape.com/wp-content/png_logo_vector/jest-logo.png" alt="jest" width="40" height="40"/>
-  </a>
-  <a href="https://testing-library.com/docs/react-testing-library/intro/" target="_blank">
-    <img src="https://testing-library.com/img/octopus-64x64.png" alt="react-testing-library" width="40" height="40"/>
-  </a>
-  <a href="https://eslint.org/" target="_blank">
-    <img src="https://cdn.worldvectorlogo.com/logos/eslint-1.svg" alt="eslint" width="40" height="40"/>
-  </a>
-  <a href="https://momentjs.com/" target="_blank">
-    <img src="https://cdn.worldvectorlogo.com/logos/momentjs.svg" alt="moment" width="40" height="40"/>
-  </a>
-  <a href="https://styled-components.com/" target="_blank">
-    <img src="https://cdn.worldvectorlogo.com/logos/styled-components-1.svg" alt="styled-components" width="40" height="40"/>
-  </a>
-</p>
+![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=for-the-badge)
+![Node](https://img.shields.io/badge/-Node-9ACD32?logo=node.js&logoColor=white&style=for-the-badge)
+![Express](https://img.shields.io/badge/-Express-DCDCDC?logo=express&logoColor=black&style=for-the-badge)
+![Webpack](https://img.shields.io/badge/-Webpack-8DD6F9?logo=webpack&logoColor=white&style=for-the-badge)
+![Babel](https://img.shields.io/badge/-Babel-F9DC3E?logo=babel&logoColor=white&style=for-the-badge)
+![Jest](https://img.shields.io/badge/-Jest-C21325?logo=jest&logoColor=white&style=for-the-badge)
+![Testing Library](https://img.shields.io/badge/-Testing_Library-E33332?logo=testing-library&logoColor=white&style=for-the-badge)
+![ESLint](https://img.shields.io/badge/-ESLint-4B32C3?logo=eslint&logoColor=white&style=for-the-badge)
+![Moment](https://img.shields.io/badge/-Moment-5A6AB1?logo=moment&logoColor=white&style=for-the-badge)
+![Styled Components](https://img.shields.io/badge/-Styled_Components-DB7093?logo=styled-components&logoColor=white&style=for-the-badge)
 
 ## Features
 
 ### Dark and Light Mode
 
-<img src='./client/asset/FEC_ThemeToggle.gif' align="center"/>
+<img src='./client/demo/FEC_ThemeToggle.gif' align="center"/>
 
-&nbps;
 
 ***
 
@@ -67,7 +45,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
 > This is the first widget displayed on the page and it gives various information about the product, including a description, price, set of features, and images.
 
 **Style selector**
-<img src='./client/asset/FEC_product-overview_style-selector.gif' align="center"/>
+<img src='./client/demo/FEC_product-overview_style-selector.gif' align="center"/>
 
 <details>
 <summary>Read more about this feature</summary>
@@ -82,7 +60,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
 &nbsp;
 
 **Image gallery**
-<img src='./client/asset/FEC_product-overview_image-gallery.gif' align="center"/>
+<img src='./client/demo/FEC_product-overview_image-gallery.gif' align="center"/>
 
 <details>
 <summary>Read more about this feature</summary>
@@ -100,7 +78,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
 > The Related Products carousel displays a list of products related to the main product while the Wishlist carousel is unique to each user, displaying only the products that have been wishlisted by the user. This widget includes the following features:
 
 **Scroll functionality and comparison table**
-<img src='./client/asset/FEC_carousels_scroll_modal.gif' align="center"/>
+<img src='./client/demo/FEC_carousels_scroll_modal.gif' align="center"/>
 
 <details>
 <summary>Read more about this feature</summary>
@@ -117,7 +95,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
 &nbsp;
 
 **Wishlist an item**
-<img src='./client/asset/FEC_carousel_action-buttons.gif' align="center"/>
+<img src='./client/demo/FEC_carousel_action-buttons.gif' align="center"/>
 
 <details>
 <summary>Read more about this feature</summary>
@@ -141,7 +119,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
 > This module wil allow asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
 
 
-<img src='./client/asset/FEC_QA.gif' align="center"/>
+<img src='./client/demo/FEC_QA.gif' align="center"/>
 
 <details>
 <summary>Read more about this feature</summary>
@@ -164,7 +142,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
 ### Ratings and Reviews
 > The Ratings & Reviews module is the bottommost on the product detail page. This component will allow customer to veiw and submit reviews for the selected product.
 
-<img src='./client/asset/FEC_Ratings&Reviews.gif' align="center"/>
+<img src='./client/demo/FEC_Ratings&Reviews.gif' align="center"/>
 
 <details>
 <summary>Read more about this feature</summary>
