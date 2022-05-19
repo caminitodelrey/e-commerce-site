@@ -58,6 +58,10 @@ Front End Capstone is an e-commerce site built with React and Express, following
 
 <img src='./client/asset/FEC_ThemeToggle.gif' align="center"/>
 
+&nbps;
+
+***
+
 ### Product Overview
 
 > This is the first widget displayed on the page and it gives various information about the product, including a description, price, set of features, and images.
@@ -88,6 +92,8 @@ Front End Capstone is an e-commerce site built with React and Express, following
 </details>
 
 &nbsp;
+
+***
 
 ### Related Products and Wishlist Carousels
 
@@ -128,6 +134,8 @@ Front End Capstone is an e-commerce site built with React and Express, following
 
 &nbsp;
 
+***
+
 ### Questions and Answers
 
 > This module wil allow asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
@@ -150,6 +158,9 @@ Front End Capstone is an e-commerce site built with React and Express, following
 </details>
 
 &nbsp;
+
+***
+
 ### Ratings and Reviews
 > The Ratings & Reviews module is the bottommost on the product detail page. This component will allow customer to veiw and submit reviews for the selected product.
 
@@ -211,12 +222,6 @@ npm run server-dev
 ```
 npm run react-dev
 ```
-
-## Deployment
-
-The application was deployed to both Amazon EC2 instance and Heroku. The site is currently live on Heroku only and can be found at:
-
-<a href="https://caminito-ecommerce.herokuapp.com/"><img alt="Powered by Heroku" title="Powered by Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/></a>
 
 ## Contributors
 
