@@ -30,7 +30,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
 ![ESLint](https://img.shields.io/badge/-ESLint-4B32C3?logo=eslint&logoColor=white&style=for-the-badge)
 ![Moment](https://img.shields.io/badge/-Moment-5A6AB1?logo=moment&logoColor=white&style=for-the-badge)
 ![Styled Components](https://img.shields.io/badge/-Styled_Components-DB7093?logo=styled-components&logoColor=white&style=for-the-badge)
-
+![AWS](https://img.shields.io/badge/-AWS-000000?logo=amazon-aws&logoColor=white&style=for-the-badge)
 ## Features
 
 ### Dark and Light Mode
@@ -200,6 +200,14 @@ npm run server-dev
 ```
 npm run react-dev
 ```
+
+## Deployment
+
+The site deployed to the AWS EC2 instance, which can be found [here](http://ec2-184-72-149-44.compute-1.amazonaws.com/).
+
+
+## Lighthouse Testing
+<img src="./client/demo/Lighthouse.png">
 
 ## Contributors
 
