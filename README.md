@@ -1,3 +1,5 @@
+<div id="top"></div>
+
 # Front End Capstone
 
 ## Overview
@@ -17,6 +19,7 @@ Front End Capstone is an e-commerce site built with React and Express, following
     - [Environment Variables Management](#environment-variables-management)
     - [Installation](#installation)
   - [Deployment](#deployment)
+  - [Lighthouse](#lighthouse)
   - [Contributors](#contributors)
 
 ## Tech Stack
@@ -203,11 +206,12 @@ npm run react-dev
 
 ## Deployment
 
-The site deployed to the AWS EC2 instance, which can be found [here](http://ec2-184-72-149-44.compute-1.amazonaws.com/).
+The site is currently deployed in AWS EC2, which can be accessed [here](http://ec2-184-72-149-44.compute-1.amazonaws.com/).
 
+![status up](https://napkin-examples.npkn.net/site-status-badge/)
 
-## Lighthouse Testing
-<img src="./client/demo/Lighthouse.png">
+## Lighthouse
+<img src="./client/demo/Lighthouse.png" alt="Lighthout performance test result">
 
 ## Contributors
 
@@ -215,3 +219,5 @@ The site deployed to the AWS EC2 instance, which can be found [here](http://ec2-
 * [Haley Jung](https://github.com/haleyjung) - Related Products and Wishlist Carousels & Header
 * [Jordan Moore](https://github.com/jordo-mordo) - Product Information
 * [Yilin Liu](https://github.com/yiiiiilin) - Ratings & Reviews
+
+<p align="right">(<a href="#top">back to top</a>)</p>
